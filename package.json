@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Vildmusen/UPS/issues"
   },
-  "homepage": "https://github.com/Vildmusen/UPS#readme"
+  "homepage": "https://github.com/Vildmusen/UPS#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
 }
