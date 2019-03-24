@@ -32,7 +32,7 @@ I detta projekt så användes följande:
 Inte specifierat ännu.
 
 # Sätta upp och använda utvecklingsmiljö
-För att kunna bidra till projektet så behöver du ha en korrekt uppsatt utvecklingsmiljö. Se mer i våra wiki.
+För att kunna bidra till projektet så behöver du ha en korrekt uppsatt utvecklingsmiljö. Se mer i våran wiki.
 
 # Credits
 Inte specificerat ännu.
