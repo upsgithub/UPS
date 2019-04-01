@@ -1,6 +1,10 @@
 .btn{
     text-decoration: none;
+    border: none;
+
     &--default{
-        border: none;
+        padding: 10px 20px;
+        background: var(--btnBg);
+        color: var(--btnColor);
     }
 }
