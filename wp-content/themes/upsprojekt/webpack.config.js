@@ -13,10 +13,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'vue-style-loader',
-          'css-loader'
+          'vue-style-loader'
         ],
-      },      {
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -36,7 +36,16 @@ module.exports = {
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      } ,
+      {
+        test: /\.css$/,
+        use: [
+        {loader: 'style-loader'},
+        {loader: 'css-loader', options: {importLoaders: 1}},
+        {loader: 'postcss-loader'}
+        ],
+        include: __dirname + '/src'
+      } 
     ]
   },
   resolve: {

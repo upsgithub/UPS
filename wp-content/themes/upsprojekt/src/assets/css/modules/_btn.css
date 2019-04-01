@@ -1,0 +1,6 @@
+.btn{
+    text-decoration: none;
+    &--default{
+        border: none;
+    }
+}

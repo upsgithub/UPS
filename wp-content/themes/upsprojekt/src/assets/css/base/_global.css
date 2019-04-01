@@ -1,0 +1,6 @@
+body {
+    background: var(--globalBg);
+}
+* {
+	box-sizing: border-box;
+}
