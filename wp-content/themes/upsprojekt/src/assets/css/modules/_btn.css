@@ -1,6 +1,7 @@
 .btn{
     text-decoration: none;
     border: none;
+    font-weight: bolder;
 
     &--default{
         padding: 10px 20px;
