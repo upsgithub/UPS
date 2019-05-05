@@ -16,7 +16,7 @@
                 <h2>Student</h2>
             </div>
         </div> 
-        <div class="menu item logo">
+        <div class="menu logo">
             <img src="../assets/img/logo_bred_placeholder.png" />
         </div>
         <div class="menu item sixth">
@@ -40,18 +40,20 @@
 </template>
 
 <style>
+    
     .menu{
         width: 1000px;
-        height: 120px;
+        height: 140px;
         overflow: hidden;
         background: #30242e;
-        padding: 10px 30px;
+        padding: 20px 30px 0px 30px;
         text-align: center;
     }
 
         .item{
             height: 90px;
             float: left;
+            text-align: center;
         }
 
             .item-img{
@@ -63,35 +65,53 @@
             .item-text{
                 width: 100%;
                 height: 20%;
-                text-align: center;
                 padding: 0;
             }
+        
+        .logo{
+            height: 90px;
+            width: 33.3%;
+            float: left;
+            padding: 0;
+        }
 
-            .logo{
-                width: 33.3%;
-                padding: 0;
-                text-align: center;
-            }
-
-                .logo img{
-                    height: 110%;
-                }
+        .logo img{
+            height: 120%;
+        }
 
             .sixth{
                 width: 16.6%;
             }
 
-        img{
-            max-width: 100%;
-            height: 90%;
+    .item img{
+        max-width: 100%;
+        height: 90%;
+    }
+
+    .menu h2{
+        padding: 0;
+        margin: 0;
+        color: #eb5e43;
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .menu{
+            height: 160px;
+            padding: 0;
         }
 
-        h2{
-            padding: 0;
-            margin: 0;
-            color: #eb5e43;
-            font-family: Minion Pro;
-            font-size: 16px;
-            font-weight: 100;
+        .sixth {
+            display: none;
         }
+
+        .logo {
+            width: 100%;
+        }
+
+        .logo img{
+            height: 100%;
+        }
+    }
 </style>
