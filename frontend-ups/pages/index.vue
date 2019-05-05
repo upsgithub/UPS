@@ -1,6 +1,7 @@
 <template>
     <section class="container">
-        <Menu />
+        <Header />
+        <Slide />
         <div class="content">
             this is just filler!
         </div>
@@ -9,13 +10,15 @@
 </template>
 
 <script>
-import Menu from '~/components/Menu.vue'
+import Header from '~/components/Header.vue'
 import Footer from '~/components/Footer.vue'
+import Slide from '~/components/Slideshow.vue'
 
 export default {
   components: {
-    Menu,
-    Footer
+    Header,
+    Footer,
+    Slide
   }
 }
 </script>
@@ -27,7 +30,7 @@ export default {
 
 .content{
     width: 1000px;
-    height: 500px;
+    height: 200px;
 }
 
 </style>
