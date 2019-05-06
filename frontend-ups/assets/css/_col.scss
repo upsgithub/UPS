@@ -5,3 +5,6 @@ $column: calc(100% / 12);
 .col-4{
     width: calc(#{$column} * 4);
 }
+.col-6{
+    width: calc(#{$column} * 6);
+}
