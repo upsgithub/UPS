@@ -17,7 +17,7 @@
                     <h2>Student</h2>
                 </div>
             </div> 
-            <div class="logo col-6">
+            <div class="logo col-4">
                 <img src="../assets/img/logo_bred_placeholder.png" />
             </div>
             <div class="menu-item col-2">
@@ -43,18 +43,16 @@
 <style lang="scss">
     .menu{
         background: #30242e;
+        padding: 15px 0px;
         text-align: center;
         position: absolute;
         top: 0;
-        height: 135px;
-        padding: 0;
 
         &-item{
             position: relative;
             text-align: center;
             max-width: 135px;
             margin-top: 20px;
-            display: none;
             float:left;
             &::after{
                 clear: both;
@@ -73,7 +71,7 @@
 
     .logo{
         padding: 0;
-
+        max-width: 270px;
         float: left;
         &::after{
             clear: both;
@@ -81,7 +79,7 @@
     }
     
     .logo img{
-        height: 135px;
+        width: 100%;
     }
 
     .text h2{
@@ -92,22 +90,23 @@
         font-weight: 100;
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (max-width: 800px) {
         .menu{
-            height: auto;
-            padding: 15px 0px;
+            height: 100px;
+            padding: 0;
         }
 
         .logo{
-            width: 33.3%;
+            width: auto; 
+            height: 150px;
         }
 
         .logo img{
-            width: 100%;
+            max-width: 270px;
         }
 
         .menu-item{
-            display: block;
+            display: none;
         }
     }
 </style>
