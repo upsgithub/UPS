@@ -1,0 +1,7 @@
+$column: calc(100% / 12);
+.col-2{
+    width: calc(#{$column} * 2);
+}
+.col-4{
+    width: calc(#{$column} * 4);
+}
