@@ -31,7 +31,7 @@ export default {
 }
 
 .content{
-    width: 1000px;
+    width: 100%;
     height: 500px;
 }
 

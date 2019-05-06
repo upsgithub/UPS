@@ -40,9 +40,8 @@
 </template>
 
 <style>
-    
     .menu{
-        width: 1000px;
+        width: 100%;
         height: 140px;
         overflow: hidden;
         background: #30242e;
@@ -56,17 +55,17 @@
             text-align: center;
         }
 
-            .item-img{
-                width: 100%;
-                height: 80%;
-                padding: 0;
-            }
+        .item-img{
+            width: 100%;
+            height: 80%;
+            padding: 0;
+        }
 
-            .item-text{
-                width: 100%;
-                height: 20%;
-                padding: 0;
-            }
+        .item-text{
+            width: 100%;
+            height: 20%;
+            padding: 0;
+        }
         
         .logo{
             height: 90px;
@@ -80,7 +79,7 @@
         }
 
             .sixth{
-                width: 16.6%;
+                width: calc(2 / 12);
             }
 
     .item img{

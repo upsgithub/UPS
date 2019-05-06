@@ -33,7 +33,7 @@
 
 <style>
     .footer{
-        width: 1000px;
+        width: 100%;
         height: 120px;
         overflow: hidden;
         background: #30242e;
