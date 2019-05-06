@@ -25,9 +25,13 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .container {
     font-family: Minion Pro;
+    
+    &--full{
+      width: 100%;
+    }
 }
 
 .content{
