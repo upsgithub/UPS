@@ -1,29 +1,29 @@
 <template>
     <div class="footer">
-        <div class="footer holder">
-            <div class="footer item third">
-                <div class="footer item-top">
+        <div class="wrapper">
+            <div class="footer-item col-4">
+                <div class="text">
                     <h4>Kontakt oss</h4>
                 </div>
-                <div class="footer item-bottom">
+                <div class="img">
                     <img src="../assets/img/mail.png" />
                 </div>
             </div>
-            <div class="footer item third">
-                <div class="footer item-top">
+            <div class="footer-item col-4">
+                <div class="text">
                     <h4>Sociala medier</h4>
                 </div>
-                <div class="footer item-bottom">
+                <div class="img">
                     <img src="../assets/img/facebook.png" />
                     <img src="../assets/img/insta.png" />
                     <img src="../assets/img/soundcloud.png" />
                 </div>
             </div>
-            <div class="footer item third">
-                <div class="footer item-top">
+            <div class="footer-item col-4">
+                <div class="text">
                     <h4>Adress</h4>
                 </div>
-                <div class="footer item-bottom">
+                <div class="img">
                     <p>Uppsala Politicesstuderande Box 514, c/o Statsvetenskapliga institutionen 751 20</p>
                 </div>
             </div>
@@ -31,14 +31,41 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
+
     .footer{
-        width: 100%;
-        height: 120px;
-        overflow: hidden;
-        background: #30242e;
-        padding: 10px 30px;
-        text-align: center;
+        display:none;
+    }
+
+    @media only screen and (min-width: 800px) {
+        .footer{
+            display:block;
+            width: 100%;
+            height: 120px;
+            overflow: hidden;
+            background: #30242e;
+            padding: 10px 30px;
+            text-align: center;
+
+            &-item{
+                float:left;
+                &::after{
+                    clear: both;
+                }
+
+                text{
+                    height: 50%;
+                }
+
+                img{
+                    height: 50%;
+                }
+            }
+        }
+    }
+
+    
+    /* 
     }
 
     .holder{
@@ -78,5 +105,9 @@
 
     img{
         margin: 0 7px;
+    } */
+    
+    @media only screen and (min-width: 800px) {
+        
     }
 </style>
