@@ -24,7 +24,7 @@
                     <h4>Adress</h4>
                 </div>
                 <div class="img">
-                    <p>Uppsala Politicesstuderande Box 514, c/o Statsvetenskapliga institutionen 751 20</p>
+                    <p>Uppsala Politicesstuderande Box 514, <br>c/o Statsvetenskapliga institutionen 751 20 Uppsala</p>
                 </div>
             </div>
         </div>
@@ -49,65 +49,35 @@
 
             &-item{
                 float:left;
+                margin-top: 20px;
                 &::after{
                     clear: both;
                 }
 
-                text{
+                .text{
                     height: 50%;
                 }
 
-                img{
+                .img{
+                    margin-top: 15px;
                     height: 50%;
+                }
+
+                .img img {
+                    width: 7%;
+                    margin: 0 7px;
                 }
             }
         }
-    }
-
-    
-    /* 
-    }
-
-    .holder{
-        width: 800px;
-        margin: 0 auto;
-    }
-
-        .item{
-            height: 90px;
-            float: left;
+         
+        .text h4{
+            color: #ffffff;
+            font-weight: bold;
         }
 
-        .item-top{
-            height: 50%;
-            width: 100%;
+        .img p{
+            color: #ffffff;
+            font-size: 10px;
         }
-
-        .item-bottom{
-            height: 50%;
-            width: 100%;
-            padding: 7px;
-        }
-
-        .third{
-            width: 33.3%;
-        }
-    
-    h4{
-        color: #ffffff;
-        font-weight: bold;
-    }
-
-    p{
-        color: #ffffff;
-        font-size: 10px;
-    }
-
-    img{
-        margin: 0 7px;
-    } */
-    
-    @media only screen and (min-width: 800px) {
-        
     }
 </style>

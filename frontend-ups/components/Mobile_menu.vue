@@ -1,6 +1,6 @@
 <template>
     <div class="menu mobile container--full">
-        test
+        <p style="color:white"> Placeholder for mobile menu buttons</p>
     </div>
 </template>
         
