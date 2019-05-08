@@ -10,6 +10,7 @@
               </div>
             </div>
         </div>
+        <Mobile_menu />
         <Footer />
   </section>
 </template>
