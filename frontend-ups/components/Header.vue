@@ -52,7 +52,6 @@
     }
     
     .wrapper{
-        min-width: 800px;
         display: inline-block;
     }
 
@@ -91,6 +90,10 @@
                     height: auto;
                 }
             }
+        }
+
+        .wrapper{
+            min-width: 800px;
         }
 
         .logo{
