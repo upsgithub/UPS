@@ -2,38 +2,38 @@
     <div class="menu container--full">
         <div class="wrapper">
             <div class="menu-item col-2">
-                <div class="img">
+                <!-- <div class="img">
                     <img src="../assets/img/book.png" />
-                </div>
+                </div> -->
                 <div class="text">
-                    <h2>Utbildning</h2>
+                    <h2><a href="#">Utbildning</a></h2>
                 </div>
             </div> 
             <div class="menu-item col-2">
-                <div class="img">
+                <!-- <div class="img">
                     <img src="../assets/img/profile.png" />
-                </div>
+                </div> -->
                 <div class="text">
-                    <h2>Student</h2>
+                    <h2><a href="#">Student</a></h2>
                 </div>
             </div> 
             <div class="logo col-4">
                 <img src="../assets/img/logo_bred_placeholder.png" />
             </div>
             <div class="menu-item col-2">
-                <div class="img">
+                <!-- <div class="img">
                     <img src="../assets/img/calendar.png" />
-                </div>
+                </div> -->
                 <div class="text">
-                    <h2>Event</h2>
+                    <h2><a href="#">Event</a></h2>
                 </div>
             </div> 
             <div class="menu-item col-2">
-                <div class="img">
+                <!-- <div class="img">
                     <img src="../assets/img/foreningen.png" />
-                </div>
+                </div> -->
                 <div class="text">
-                    <h2>Föreningen</h2>
+                    <h2><a href="#">Föreningen</a></h2>
                 </div>
             </div> 
         </div>
@@ -53,12 +53,13 @@
     }
     
     .wrapper{
+        min-width: 800px;
         display: inline-block;
     }
 
     .logo{
         padding: 0;
-        width: auto;
+        width: 100%;
         float: left;
         &::after{
             clear: both;
@@ -73,14 +74,14 @@
     @media only screen and (min-width: 800px) {
         .menu{
         padding: 7.5px 0px;
-        height: 120px;
+        height: 100px;
         
             &-item{
                 display: block;
                 position: relative;
                 text-align: center;
                 max-width: 145px;
-                margin-top: 20px;
+                margin-top: 10px;
                 float:left;
                 &::after{
                     clear: both;
@@ -94,7 +95,6 @@
         }
 
         .logo{
-            margin-top: 10px;
             width: 33.3%;
         }
 
@@ -105,10 +105,18 @@
 
         .text h2{
             padding: 0;
-            margin: 0;
+            margin: 20px 0;
             color: #eb5e43;
-            font-size: 16px;
+            font-size: 20px;
             font-weight: 100;
+        }
+
+        .text a{
+            color:#eb5e43;
+
+            &:hover{
+                border-bottom: 1px solid #eb5e43;
+            }
         }
     }
 
