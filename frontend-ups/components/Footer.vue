@@ -31,7 +31,7 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
     .footer{
         width: 100%;
         height: 120px;
@@ -39,6 +39,16 @@
         background: #30242e;
         padding: 10px 30px;
         text-align: center;
+
+        h4, p{
+            color: #ffffff;
+        }
+        h4{
+            font-weight: bold;
+        }
+        p{
+            font-size: 10px;
+        }
     }
 
     .holder{
@@ -65,16 +75,6 @@
         .third{
             width: 33.3%;
         }
-    
-    h4{
-        color: #ffffff;
-        font-weight: bold;
-    }
-
-    p{
-        color: #ffffff;
-        font-size: 10px;
-    }
 
     img{
         margin: 0 7px;
