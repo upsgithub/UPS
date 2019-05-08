@@ -1,0 +1,13 @@
+.container {
+    font-family: Minion Pro;
+    
+    &-content{
+        width: 90%;
+        min-height: 500px;
+        margin: 20px auto 20px auto;
+    }
+
+    &--full{
+      width: 100%;
+    }
+}

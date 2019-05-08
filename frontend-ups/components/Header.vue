@@ -44,8 +44,7 @@
     .menu{
         background: #30242e;
         text-align: center;
-        position: absolute;
-        top: 0;
+        position: relative;
 
         &-item{
             display: none;
