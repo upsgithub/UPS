@@ -5,4 +5,8 @@ a{
     &:hover{
         cursor: pointer;
     }
+
+}
+body{
+    color: #{$defaultTxtColor};
 }

@@ -1,82 +1,83 @@
 <template>
     <div class="footer">
-        <div class="footer holder">
-            <div class="footer item third">
-                <div class="footer item-top">
+        <div class="wrapper">
+            <div class="footer-item col-4">
+                <div class="text">
                     <h4>Kontakt oss</h4>
                 </div>
-                <div class="footer item-bottom">
+                <div class="img">
                     <img src="../assets/img/mail.png" />
                 </div>
             </div>
-            <div class="footer item third">
-                <div class="footer item-top">
+            <div class="footer-item col-4">
+                <div class="text">
                     <h4>Sociala medier</h4>
                 </div>
-                <div class="footer item-bottom">
+                <div class="img">
                     <img src="../assets/img/facebook.png" />
                     <img src="../assets/img/insta.png" />
                     <img src="../assets/img/soundcloud.png" />
                 </div>
             </div>
-            <div class="footer item third">
-                <div class="footer item-top">
+            <div class="footer-item col-4">
+                <div class="text">
                     <h4>Adress</h4>
                 </div>
-                <div class="footer item-bottom">
-                    <p>Uppsala Politicesstuderande Box 514, c/o Statsvetenskapliga institutionen 751 20</p>
+                <div class="img">
+                    <p>Uppsala Politicesstuderande Box 514, <br>c/o Statsvetenskapliga institutionen 751 20 Uppsala</p>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<style>
+<style lang="scss">
+
     .footer{
-        width: 100%;
-        height: 120px;
-        overflow: hidden;
-        background: #30242e;
-        padding: 10px 30px;
-        text-align: center;
+        display:none;
     }
 
-    .holder{
-        width: 800px;
-        margin: 0 auto;
-    }
-
-        .item{
-            height: 90px;
-            float: left;
-        }
-
-        .item-top{
-            height: 50%;
+    @media only screen and (min-width: 800px) {
+        .footer{
+            display:block;
             width: 100%;
+            height: 120px;
+            overflow: hidden;
+            background: #30242e;
+            padding: 10px 30px;
+            text-align: center;
+
+            &-item{
+                float:left;
+                margin-top: 20px;
+                &::after{
+                    clear: both;
+                }
+
+                .text{
+                    height: 50%;
+                }
+
+                .img{
+                    margin-top: 15px;
+                    height: 50%;
+                }
+
+                .img img {
+                    width: 7%;
+                    margin: 0 7px;
+                }
+            }
+        }
+         
+        .text h4{
+            color: #ffffff;
+            font-weight: bold;
         }
 
-        .item-bottom{
-            height: 50%;
-            width: 100%;
-            padding: 7px;
+        .img p{
+            color: #ffffff;
+            font-size: 10px;
         }
-
-        .third{
-            width: 33.3%;
-        }
-    
-    h4{
-        color: #ffffff;
-        font-weight: bold;
-    }
-
-    p{
-        color: #ffffff;
-        font-size: 10px;
-    }
-
-    img{
-        margin: 0 7px;
     }
 </style>
