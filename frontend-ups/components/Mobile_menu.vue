@@ -14,7 +14,6 @@
     
     .mobile{
         position: fixed;
-        top: 90%;
-
+        bottom: 0;
     }
 </style>

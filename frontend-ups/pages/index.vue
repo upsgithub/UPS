@@ -10,14 +10,14 @@
               </div>
             </div>
         </div>
-        <Mobile_menu />
+        <MobileMenu />
         <Footer />
   </section>
 </template>
 
 <script>
 import Header from '~/components/Header.vue'
-import Mobile_menu from '~/components/Mobile_menu.vue'
+import MobileMenu from '~/components/Mobile_menu.vue'
 import Footer from '~/components/Footer.vue'
 //import wp from '~/assets/wp'
 import axios from 'axios'
@@ -41,7 +41,7 @@ export default {
   },
   components: {
     Header,
-    Mobile_menu,
+    MobileMenu,
     Footer
   }
 }
