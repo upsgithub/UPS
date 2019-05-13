@@ -10,6 +10,7 @@
               </div>
             </div>
         </div>
+        <Sponsor />
         <MobileMenu />
         <Footer />
   </section>
@@ -17,6 +18,7 @@
 
 <script>
 import Header from '~/components/Header.vue'
+import Sponsor from '~/components/Sponsor.vue'
 import MobileMenu from '~/components/Mobile_menu.vue'
 import Footer from '~/components/Footer.vue'
 //import wp from '~/assets/wp'

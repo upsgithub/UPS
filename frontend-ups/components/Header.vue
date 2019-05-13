@@ -52,7 +52,7 @@
 export default {
     methods: {
         menu_hover : function(opt){
-            alert("This is not working, please help.");
+            // alert("This is not working, please help.");
             // current = this.$els.opt;
             // if(current.style.display === "none"){
             //     current.style.display = "block";
