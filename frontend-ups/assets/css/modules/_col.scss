@@ -1,6 +1,9 @@
 .col-2{
     width: calc(#{$column} * 2);
 }
+.col-3{
+    width: calc(#{$column} * 3);
+}
 .col-4{
     width: calc(#{$column} * 4);
 }

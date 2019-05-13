@@ -117,12 +117,9 @@ export default {
             }
         }
 
-        .wrapper{
-            min-width: 800px;
-        }
-
         .logo{
             width: 33.3%;
+            min-width: 250px;
         }
 
         .logo img{

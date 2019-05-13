@@ -11,9 +11,10 @@
             </div>
         </div>
         <Sponsor />
+        <br><br>
         <MobileMenu />
         <Footer />
-  </section>
+    </section>
 </template>
 
 <script>
@@ -43,6 +44,7 @@ export default {
   },
   components: {
     Header,
+    Sponsor,
     MobileMenu,
     Footer
   }
