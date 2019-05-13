@@ -69,6 +69,10 @@
                 }
             }
         }
+
+        .wrapper{
+            max-width: 800px;
+        }
          
         .text h4{
             color: #ffffff;
