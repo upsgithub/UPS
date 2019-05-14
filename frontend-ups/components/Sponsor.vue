@@ -1,11 +1,11 @@
 <template>
-    <div class="sponsorer container--full">
+    <div class="samarbeten container--full">
         <div class="wrapper">
             <h4>Våra samarbetspartners</h4>
-            <div class="sponsor-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
-            <div class="sponsor-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
-            <div class="sponsor-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
-            <div class="sponsor-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
+            <div class="samarbete-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
+            <div class="samarbete-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
+            <div class="samarbete-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
+            <div class="samarbete-logo col-6"><img src="../assets/img/logo_bred_placeholder.png" /></div>
         </div>
     </div>
 </template>
@@ -17,16 +17,16 @@ export default {
 </script>
 
 <style lang="scss">
-    .sponsorer{
+    .samarbeten{
         width: auto;
         border-top: 1px solid lightgrey;
         border-bottom: 1px solid lightgrey;   
-        margin: 0 20px;
+        margin: 20px;
         padding: 25px 0;
         text-align: center;
     }
 
-    .sponsor-logo{
+    .samarbete-logo{
         margin-top: 25px;
         padding: 0 5px;
         float: left;
@@ -35,16 +35,16 @@ export default {
         }
     }
 
-    .sponsor-logo img{
+    .samarbete-logo img{
         width: 100%;
     }
 
     @media only screen and (min-width: 600px) {
-        .sponsor-logo{
+        .samarbete-logo{
             width: 25%;
         }
 
-        .sponsorer wrapper{
+        .samarbeteer wrapper{
             min-width: none;
         }
     }
