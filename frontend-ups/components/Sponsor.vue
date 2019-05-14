@@ -21,7 +21,7 @@ export default {
         width: auto;
         border-top: 1px solid lightgrey;
         border-bottom: 1px solid lightgrey;   
-        margin: 20px;
+        margin: 20px 0;
         padding: 25px 0;
         text-align: center;
     }
