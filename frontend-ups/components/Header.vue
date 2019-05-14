@@ -114,6 +114,7 @@ export default {
                     width: 30%;
                     height: auto;
                 }
+
             }
         }
 
@@ -130,42 +131,6 @@ export default {
             width: auto;
             max-height: 90px;
         }
-
-        .text h2{
-            padding: 0;
-            margin: 20px 0;
-            color: #eb5e43;
-            font-size: 20px;
-            font-weight: 100;
-        }
-
-        .text a{
-            color:#eb5e43;
-
-            &:hover{
-                border-bottom: 1px solid #eb5e43;
-            }
-        }
-
-        .dropdown{
-            display: none;
-            width: 90px;            
-            margin: 0 auto;
-            background: #eb5e43;
-        }
-
-        .dropdown-item{
-            border-bottom: 1px solid #30242e;
-        }
-
-        .dropdown h3{
-            padding: 0;
-            color: #30242e;
-            font-size: 16px;
-            padding: 5px;
-            font-weight: 100;
-        }
-
     }
 </style>
 
