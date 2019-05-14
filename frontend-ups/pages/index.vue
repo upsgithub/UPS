@@ -9,8 +9,15 @@
                 <div class="post-content" v-html="post.excerpt.rendered"></div>
               </div>
             </div>
+            <Sponsor />
+            <div class="posts">
+              <h1> Posts from rest api</h1>
+              <div class="post" v-for="post in posts" :key="post.id">
+                <h4>{{ post.title.rendered }}</h4>
+                <div class="post-content" v-html="post.excerpt.rendered"></div>
+              </div>
+            </div>
         </div>
-        <Sponsor />
         <br><br>
         <MobileMenu />
         <Footer />
