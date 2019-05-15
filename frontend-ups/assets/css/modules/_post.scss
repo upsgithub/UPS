@@ -1,3 +1,58 @@
 .post{
-    margin: 15px 0px;
+    text-align: center;
+    float:left;
+    &::after{
+        clear: both;
+    }
+
+    &-title{
+        h1{
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+    }
+    &-text{
+        &::after{
+            clear: both;
+        }
+        p{
+            margin-bottom: 20px;
+        }
+    }
+    &-picture{
+        float: left;
+        img{
+            width: 100%;
+            margin: auto 0;
+        }
+        &::after{
+            clear: both;
+        }
+    }
+}
+
+.post-picture{
+    display:none;
+}
+
+@media only screen and (min-width: 800px) {
+    .post{
+        width: calc(8.33% * 7);
+        text-align: left;
+
+        &-title{
+            margin: 0 20px;
+        }
+        &-text{
+            margin: 0 20px;
+        }
+    }
+
+    .post-picture{
+        display: block;
+    }
+
+    button{
+        margin: 0 20px;
+    }
 }
