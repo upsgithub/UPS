@@ -9,6 +9,7 @@
                 <div class="post-content" v-html="post.excerpt.rendered"></div>
               </div>
             </div>
+            <button>Test</button>
             <Sponsor />
             <div class="posts">
               <h1> Posts from rest api</h1>
