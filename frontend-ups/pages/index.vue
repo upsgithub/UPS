@@ -19,7 +19,6 @@
                     <img src="../assets/img/placeholder_img.png" /> 
                 </div>
             </div>
-
             <Sponsor />
             <div class="posts container--full">
                 <div class="posts" v-for="post in posts" :key="post.id">
