@@ -6,7 +6,7 @@
                     <img src="../assets/img/book.png" />
                 </div> -->
                 <div class="text">
-                    <h2><a href="#">Utbildning</a></h2>
+                    <h2><router-link to="/utbildning">Utbildning</router-link></h2>
                 </div>
             </div> 
             <div class="menu-item col-2">
@@ -14,7 +14,7 @@
                     <img src="../assets/img/profile.png" />
                 </div> -->
                 <div class="text">
-                    <h2><a href="#" class="dropdown-student" @mouseover="menu_hover('student')">Student</a></h2>
+                    <h2><nuxt-link to="/student">Student</nuxt-link></h2>
                 </div>
                 <div class="dropdown" id="student">
                     <div class="dropdown-item"><h3><a href="#">Option 1</a></h3></div>
@@ -24,16 +24,16 @@
                 </div>
             </div> 
             <div class="logo col-4">
-                <a href="#">
+                <nuxt-link to="/">
                     <img src="../assets/img/logo_bred_placeholder.png" />
-                </a>
+                </nuxt-link>
             </div>
             <div class="menu-item col-2">
                 <!-- <div class="img">
                     <img src="../assets/img/calendar.png" />
                 </div> -->
                 <div class="text">
-                    <h2><a href="#">Event</a></h2>
+                    <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
             </div> 
             <div class="menu-item col-2">
@@ -41,7 +41,7 @@
                     <img src="../assets/img/foreningen.png" />
                 </div> -->
                 <div class="text">
-                    <h2><a href="#">Föreningen</a></h2>
+                    <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
                 </div>
             </div> 
         </div>
