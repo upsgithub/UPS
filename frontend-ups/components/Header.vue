@@ -75,10 +75,6 @@ export default {
             display: none;
         }
     }
-    
-    .wrapper{
-        display: inline-block;
-    }
 
     .logo{
         padding: 0;
@@ -95,6 +91,7 @@ export default {
     }
 
     @media only screen and (min-width: 800px) {
+        
         .menu{
         padding: 7.5px 0px;
         height: 100px;
@@ -118,9 +115,6 @@ export default {
             }
         }
 
-        .wrapper{
-            min-width: 750px;
-        }
 
         .logo{
             width: 33.3%;

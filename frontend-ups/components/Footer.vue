@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <div class="wrapper">
+        <div class="content-wrapper">
             <div class="footer-item col-4">
                 <div class="text">
                     <h4>Kontakt oss</h4>
@@ -49,7 +49,6 @@
 
             &-item{
                 float:left;
-                margin-top: 20px;
                 &::after{
                     clear: both;
                 }

@@ -1,7 +1,7 @@
 <template>
     <section class="container">
         <Header />
-        <div class="container-content">
+        <div class="content-wrapper">
             <div class="posts container--full">
                 <div class="post col-12">
                     <div class="post-title">
@@ -75,6 +75,7 @@ export default {
 </script>
 
 <style lang="scss">
+
 .posts{
     display: inline-block;
 }

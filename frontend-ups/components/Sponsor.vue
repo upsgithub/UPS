@@ -22,7 +22,7 @@ export default {
         border-top: 1px solid lightgrey;
         border-bottom: 1px solid lightgrey;   
         margin: 20px 0;
-        padding: 25px 0;
+        padding: 20px 10px;
         text-align: center;
     }
 
@@ -42,10 +42,6 @@ export default {
     @media only screen and (min-width: 600px) {
         .samarbete-logo{
             width: 25%;
-        }
-
-        .samarbeteer wrapper{
-            min-width: none;
         }
     }
 </style>
