@@ -2,12 +2,12 @@
     <div class="menu mobile container--full">
         <div class="mobile-item col-3">
             <div class="text">
-                <h2><a href="#">Utbildning</a></h2>
+                <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
             </div>
         </div> 
         <div class="mobile-item col-3">
             <div class="text">
-                <h2><a href="#" class="dropdown-student">Student</a></h2>
+                <h2><nuxt-link to="/student">Student</nuxt-link></h2>
             </div>
             <div class="dropdown" id="student">
                 <div class="dropdown-item"><h3><a href="#">Option 1</a></h3></div>
@@ -18,12 +18,12 @@
         </div>
         <div class="mobile-item col-3">
             <div class="text">
-                <h2><a href="#">Event</a></h2>
+                <h2><nuxt-link to="/event">Event</nuxt-link></h2>
             </div>
         </div> 
         <div class="mobile-item col-3">
             <div class="text">
-                <h2><a href="#">Föreningen</a></h2>
+                <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
             </div>
         </div>
     </div>
