@@ -1,29 +1,31 @@
 <template>
     <div class="menu mobile container--full">
-        <div class="mobile-item col-3">
-            <div class="text">
-                <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
-            </div>
-        </div> 
-        <div class="mobile-item col-3">
-            <div class="text">
-                <h2><nuxt-link to="/student">Student</nuxt-link></h2>
-            </div>
-            <div class="dropdown" id="student">
-                <div class="dropdown-item"><h3><a href="#">Option 1</a></h3></div>
-                <div class="dropdown-item"><h3><a href="#">Option 2</a></h3></div>
-                <div class="dropdown-item"><h3><a href="#">Option 3</a></h3></div>
-                <div class="dropdown-item"><h3><a href="#">Option 4</a></h3></div>
-            </div>
+        <div class="dropdown" id="student">
+            <div class="dropdown-item"><h3><nuxt-link to="/student">Student</nuxt-link></h3></div>
+            <div class="dropdown-item"><h3><nuxt-link to="/student">Student</nuxt-link></h3></div>
+            <div class="dropdown-item"><h3><nuxt-link to="/student">Student</nuxt-link></h3></div>
+            <div class="dropdown-item"><h3><nuxt-link to="/student">Student</nuxt-link></h3></div>
         </div>
-        <div class="mobile-item col-3">
-            <div class="text">
-                <h2><nuxt-link to="/event">Event</nuxt-link></h2>
+        <div class="content-wrapper">
+            <div class="mobile-item col-3">
+                <div class="text">
+                    <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
+                </div>
+            </div> 
+            <div class="mobile-item col-3">
+                <div class="text">
+                    <h2><nuxt-link to="/student">Student</nuxt-link></h2>
+                </div>
             </div>
-        </div> 
-        <div class="mobile-item col-3">
-            <div class="text">
-                <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
+            <div class="mobile-item col-3">
+                <div class="text">
+                    <h2><nuxt-link to="/event">Event</nuxt-link></h2>
+                </div>
+            </div> 
+            <div class="mobile-item col-3">
+                <div class="text">
+                    <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
+                </div>
             </div>
         </div>
     </div>
@@ -45,16 +47,38 @@
             &::after{
                 clear: both;
             }
-
-            img{
-                width: 30%;
-                height: auto;
-            }
         }
     }
 
-    .mobile h2{
-        font-size: 15px;
+    .text h2{
+        padding: 0;
+        margin: 14px 0;
+        color: #eb5e43;
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+    .dropdown{
+        display: none;
+        width: 100%;            
+        margin: 0 auto;
+        background: #30242e;
+    }
+
+    .dropdown-item{
+        border-bottom: 1px solid #eb5e43;
+    }
+
+    .dropdown h3{
+        padding: 0;
+        color: #eb5e43;
+        font-size: 14px;
+        padding: 5px;
+        font-weight: 100;
+    }
+
+    @media only screen and (min-width: 450px) {
+
     }
     
     @media only screen and (min-width: 800px) {
