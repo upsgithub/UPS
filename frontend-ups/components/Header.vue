@@ -1,130 +1,117 @@
 <template>
-    <div class="menu container--full">
-        <div class="wrapper">
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/book.png" />
-                </div> -->
-                <div class="text">
-                    <h2><router-link to="/utbildning">Utbildning</router-link></h2>
-                </div>
-            </div> 
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/profile.png" />
-                </div> -->
-                <div class="text">
-                    <h2><nuxt-link to="/student">Student</nuxt-link></h2>
-                </div>
-                <div class="dropdown" id="student">
-                    <div class="dropdown-item"><h3><a href="#">Option 1</a></h3></div>
-                    <div class="dropdown-item"><h3><a href="#">Option 2</a></h3></div>
-                    <div class="dropdown-item"><h3><a href="#">Option 3</a></h3></div>
-                    <div class="dropdown-item"><h3><a href="#">Option 4</a></h3></div>
-                </div>
-            </div> 
-            <div class="logo col-4">
-                <nuxt-link to="/">
-                    <img src="../assets/img/logo_bred_placeholder.png" />
-                </nuxt-link>
+    <div class="menu">
+        <div class="menu item sixth">
+            <div class="menu item-img">
+                <img src="../assets/img/book.png" />
             </div>
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/calendar.png" />
-                </div> -->
-                <div class="text">
-                    <h2><nuxt-link to="/event">Event</nuxt-link></h2>
-                </div>
-            </div> 
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/foreningen.png" />
-                </div> -->
-                <div class="text">
-                    <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
-                </div>
-            </div> 
+            <div class="menu item-text">
+                <h2>Utbildning</h2>
+            </div>
+        </div> 
+        <div class="menu item sixth">
+            <div class="menu item-img">
+                <img src="../assets/img/profile.png" />
+            </div>
+            <div class="menu item-text">
+                <h2>Student</h2>
+            </div>
+        </div> 
+        <div class="menu logo">
+            <img src="../assets/img/logo_bred_placeholder.png" />
         </div>
+        <div class="menu item sixth">
+            <div class="menu item-img">
+                <img src="../assets/img/calendar.png" />
+            </div>
+            <div class="menu item-text">
+                <h2>Event</h2>
+            </div>
+        </div> 
+        <div class="menu item sixth">
+            <div class="menu item-img">
+                <img src="../assets/img/foreningen.png" />
+            </div>
+            <div class="menu item-text">
+                <h2>Föreningen</h2>
+            </div>
+        </div> 
+
     </div>
 </template>
 
-<script>
-export default {
-    methods: {
-        menu_hover : function(opt){
-            // alert("This is not working, please help.");
-            // current = this.$els.opt;
-            // if(current.style.display === "none"){
-            //     current.style.display = "block";
-            // } else {
-            //     current.style.display = "none";
-            // }
-        }
-    }
-}
-</script>
-
-
-<style lang="scss">
+<style>
+    
     .menu{
+        width: 1000px;
+        height: 140px;
+        overflow: hidden;
         background: #30242e;
+        padding: 20px 30px 0px 30px;
         text-align: center;
-        position: relative;
+    }
 
-        &-item{
-            display: none;
+        .item{
+            height: 90px;
+            float: left;
+            text-align: center;
         }
-    }
 
-    .logo{
-        padding: 0;
-        width: 100%;
-        float: left;
-        &::after{
-            clear: both;
-        }
-    }
-
-    .logo img{
-        margin-bottom: -5px;
-        width: 70%;
-    }
-
-    @media only screen and (min-width: 800px) {
-        
-        .menu{
-        padding: 7.5px 0px;
-        height: 100px;
-        
-            &-item{
-                display: block;
-                position: relative;
-                text-align: center;
-                max-width: 145px;
-                margin-top: 10px;
-                float:left;
-                &::after{
-                    clear: both;
-                }
-
-                img{
-                    width: 30%;
-                    height: auto;
-                }
-
+            .item-img{
+                width: 100%;
+                height: 80%;
+                padding: 0;
             }
-        }
 
-
+            .item-text{
+                width: 100%;
+                height: 20%;
+                padding: 0;
+            }
+        
         .logo{
+            height: 90px;
             width: 33.3%;
-            min-width: 250px;
+            float: left;
+            padding: 0;
         }
 
         .logo img{
-            width: auto;
-            max-height: 90px;
+            height: 120%;
+        }
+
+            .sixth{
+                width: 16.6%;
+            }
+
+    .item img{
+        max-width: 100%;
+        height: 90%;
+    }
+
+    .menu h2{
+        padding: 0;
+        margin: 0;
+        color: #eb5e43;
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .menu{
+            height: 160px;
+            padding: 0;
+        }
+
+        .sixth {
+            display: none;
+        }
+
+        .logo {
+            width: 100%;
+        }
+
+        .logo img{
+            height: 100%;
         }
     }
 </style>
-
