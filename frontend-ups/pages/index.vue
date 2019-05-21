@@ -1,6 +1,7 @@
 <template>
     <section class="container">
         <Header />
+        <!-- <Slideshow /> Jag får den inte att hitta jssor.slider i assets/slider/js... osv --> 
         <div class="content-wrapper">
             <div class="posts container--full">
                 <div class="post col-12">
@@ -42,6 +43,7 @@
 
 <script>
 import Header from '~/components/Header.vue'
+import Slideshow from '~/components/Slideshow.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import MobileMenu from '~/components/Mobile_menu.vue'
 import Footer from '~/components/Footer.vue'
@@ -67,6 +69,7 @@ export default {
   },
   components: {
     Header,
+    Slideshow,
     Sponsor,
     MobileMenu,
     Footer
