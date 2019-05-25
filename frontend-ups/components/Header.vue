@@ -101,7 +101,7 @@ export default {
                 position: relative;
                 text-align: center;
                 max-width: 145px;
-                margin-top: 10px;
+                margin-top:15px;
                 float:left;
                 &::after{
                     clear: both;
@@ -114,7 +114,6 @@ export default {
 
             }
         }
-
 
         .logo{
             width: 33.3%;
