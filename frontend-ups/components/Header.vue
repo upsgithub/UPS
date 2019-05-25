@@ -6,7 +6,7 @@
                     <img src="../assets/img/book.png" />
                 </div> -->
                 <div class="text">
-                    <h2><router-link to="/utbildning">Utbildning</router-link></h2>
+                    <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                 </div>
             </div> 
             <div class="menu-item col-2">

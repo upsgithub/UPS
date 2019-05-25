@@ -1,21 +1,39 @@
 <template>
     <div class="menu mobile container--full">
         <div class="content">
-            <!--
             <div class="mobile-items utbildning" ref="utbildning">
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Kandidat</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/student">Master</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/event">Skugga en student</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/utbildning">Master</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/utbildning">Skugga en student</nuxt-link></h2></div>
             </div>
-            -->
+            <div class="mobile-items utbildning" ref="student">
+                <div class="mobile-item"><h2><nuxt-link to="/student">Student</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/student">Medlem</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/student">Produkter</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/student">Alumn</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/student">Stipendier</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/student">Projektpotten</nuxt-link></h2></div>
+            </div>
+            <div class="mobile-items utbildning" ref="event">
+                <div class="mobile-item"><h2><nuxt-link to="/event">Event</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/event">Inlägg</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/event">Kalender</nuxt-link></h2></div>
+            </div>
+            <div class="mobile-items utbildning" ref="forening">
+                <div class="mobile-item"><h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/forening">Utskott</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/forening">Policys</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h2></div>
+            </div>
             <div class="mobile-main" ref="main">
-                <div class="mobile-item" @click="showhide('utbildning')"><h2>Utbildning</h2></div>
-                <div class="mobile-item" @click="showhide('utbildning')"><h2>Student</h2></div>
-                <div class="mobile-item" @click="showhide('utbildning')"><h2>Event</h2></div>
-                <div class="mobile-item" @click="showhide('utbildning')"><h2>Föreningen</h2></div>
+                <div class="mobile-item" @click="show('utbildning')"><h2>Utbildning</h2></div>
+                <div class="mobile-item" @click="show('student')"><h2>Student</h2></div>
+                <div class="mobile-item" @click="show('event')"><h2>Event</h2></div>
+                <div class="mobile-item" @click="show('forening')"><h2>Föreningen</h2></div>
             </div>
-            <div class="burger" @click="showhide('main')">
+            <div class="burger" @click="showhide()">
                 <img src="../assets/img/burger.png" />
             </div>
         </div>
@@ -24,12 +42,16 @@
 
 <script>
 export default{
-    data: {
-        main: false,
-        utbildning: false,
-        student: false,
-        event: false,
-        forening: false
+    data: function() {
+        return {
+            menus: [
+                {name: "main", active: false, height: 190},
+                {name: "utbildning", active: false, height: 190},
+                {name: "student", active: false, height: 290},
+                {name: "event", active: false, height: 140},
+                {name: "forening", active: false, height: 240}
+            ]
+        }
     },
     head: {
         script: [
@@ -40,14 +62,39 @@ export default{
         ]
     },
     methods: {
-        showhide: function(input) {
-            this.input = !(this.input);
-            if(this.input){
-                this.$refs[input].style.display = "block";
-                $(this.$refs[input]).animate({height: "190px"}, 500);
-            } else {
-                $(this.$refs[input]).delay(200).css("height", "0px");
-                $(this.$refs[input]).delay(200).css("display", "none");
+        show: function(input){
+
+            // hittar rätt meny och sätter active 
+            for(var i = 1; i < this.menus.length; i++){
+                if(this.menus[i].name == input){
+                    this.menus[i].active = true;
+                }
+            }
+
+            // "stänger av" mainmenu för att rita upp den aktiva och sätter sen på den igen, så att nästa tryck på hamburgaren stänger allt. 
+            this.menus[0].active = false;
+            this.showhideHelp();
+            this.menus[0].active = true;
+        },
+        showhide: function() {
+
+            // on/off på mainmenu, samt stänger alla inre menyer
+            this.menus[0].active = !this.menus[0].active;
+            for(var i = 1; i < this.menus.length; i++){
+                this.menus[i].active = false;
+            }
+            this.showhideHelp();
+        },
+        // "ritar" den aktiva menyn
+        showhideHelp: function() {
+            for(var i = 0; i < this.menus.length; i++){
+                var current = this.menus[i].name;
+                var height = this.menus[i].height;
+                if(this.menus[i].active){
+                    $(this.$refs[current]).fadeIn(0).animate({height: height}, 500);
+                } else {
+                    $(this.$refs[current]).animate({height: "0px"}, 200).fadeOut(0);
+                }
             }
         }
     }
@@ -97,8 +144,6 @@ export default{
         margin: 5px 15px;
         width: 50px;
     }
-    
-    
 
     @media only screen and (min-width: 450px) {
 
