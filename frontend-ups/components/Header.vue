@@ -1,26 +1,26 @@
 <template>
     <div class="menu container--full">
         <div class="wrapper">
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/book.png" />
-                </div> -->
+            <div class="menu-item col-2" @mouseover="show('utbildning')" @mouseleave="hide('utbildning')">
                 <div class="text">
                     <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                 </div>
+                <div class="desktop-dropdown" ref="utbildning">
+                    <div class="desktop-item"><h3><nuxt-link to="/utbildning">Kandidat</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/utbildning">Master</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/utbildning">Skugga en student</nuxt-link></h3></div>
+                </div>
             </div> 
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/profile.png" />
-                </div> -->
+            <div class="menu-item col-2" @mouseover="show('student')" @mouseleave="hide('student')">
                 <div class="text">
                     <h2><nuxt-link to="/student">Student</nuxt-link></h2>
                 </div>
-                <div class="dropdown" id="student">
-                    <div class="dropdown-item"><h3><a href="#">Option 1</a></h3></div>
-                    <div class="dropdown-item"><h3><a href="#">Option 2</a></h3></div>
-                    <div class="dropdown-item"><h3><a href="#">Option 3</a></h3></div>
-                    <div class="dropdown-item"><h3><a href="#">Option 4</a></h3></div>
+                <div class="desktop-dropdown" ref="student">
+                    <div class="desktop-item"><h3><nuxt-link to="/student">Medlem</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/student">Produkter</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/student">Alumn</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/student">Stipendier</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/student">Projektpotten</nuxt-link></h3></div>
                 </div>
             </div> 
             <div class="logo col-4">
@@ -28,20 +28,24 @@
                     <img src="../assets/img/logo_bred_placeholder.png" />
                 </nuxt-link>
             </div>
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/calendar.png" />
-                </div> -->
+            <div class="menu-item col-2" @mouseover="show('event')" @mouseleave="hide('event')">
                 <div class="text">
                     <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
+                <div class="desktop-dropdown" ref="event">
+                <div class="desktop-item"><h3><nuxt-link to="/event">Inlägg</nuxt-link></h3></div>
+                <div class="desktop-item"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
+            </div>
             </div> 
-            <div class="menu-item col-2">
-                <!-- <div class="img">
-                    <img src="../assets/img/foreningen.png" />
-                </div> -->
+            <div class="menu-item col-2" @mouseover="show('forening')" @mouseleave="hide('forening')">
                 <div class="text">
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
+                </div>
+                <div class="desktop-dropdown" ref="forening">
+                    <div class="desktop-item"><h3><nuxt-link to="/forening">Utskott</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/forening">Policys</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h3></div>
                 </div>
             </div> 
         </div>
@@ -51,14 +55,11 @@
 <script>
 export default {
     methods: {
-        menu_hover : function(opt){
-            // alert("This is not working, please help.");
-            // current = this.$els.opt;
-            // if(current.style.display === "none"){
-            //     current.style.display = "block";
-            // } else {
-            //     current.style.display = "none";
-            // }
+        show : function(menu){
+            $(this.$refs[menu]).fadeIn(200);
+        },
+        hide : function(menu){
+            $(this.$refs[menu]).fadeOut(200);
         }
     }
 }
@@ -123,6 +124,27 @@ export default {
         .logo img{
             width: auto;
             max-height: 90px;
+        }
+
+        .desktop{
+            &-dropdown{
+                margin-top: 40px;
+                display: none;
+            }
+
+            &-item{
+                padding-top: 10px;
+                height: 36px;
+                background: #30242e;
+                border-top: 1px solid grey;
+
+                h3{
+                    margin: 0;
+                    font-size: 14px;
+                }
+            }
+        
+            
         }
     }
 </style>

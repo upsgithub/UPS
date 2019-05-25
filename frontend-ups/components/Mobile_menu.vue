@@ -1,13 +1,13 @@
 <template>
     <div class="menu mobile container--full">
         <div class="content">
-            <div class="mobile-items utbildning" ref="utbildning">
+            <div class="mobile-items" ref="utbildning">
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Kandidat</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Master</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Skugga en student</nuxt-link></h2></div>
             </div>
-            <div class="mobile-items utbildning" ref="student">
+            <div class="mobile-items" ref="student">
                 <div class="mobile-item"><h2><nuxt-link to="/student">Student</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/student">Medlem</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/student">Produkter</nuxt-link></h2></div>
@@ -15,12 +15,12 @@
                 <div class="mobile-item"><h2><nuxt-link to="/student">Stipendier</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/student">Projektpotten</nuxt-link></h2></div>
             </div>
-            <div class="mobile-items utbildning" ref="event">
+            <div class="mobile-items" ref="event">
                 <div class="mobile-item"><h2><nuxt-link to="/event">Event</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/event">Inlägg</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/event">Kalender</nuxt-link></h2></div>
             </div>
-            <div class="mobile-items utbildning" ref="forening">
+            <div class="mobile-items" ref="forening">
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Utskott</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h2></div>
