@@ -50,32 +50,7 @@
         }
     }
 
-    .text h2{
-        padding: 0;
-        margin: 14px 0;
-        color: #eb5e43;
-        font-size: 16px;
-        font-weight: 100;
-    }
-
-    .dropdown{
-        display: none;
-        width: 100%;            
-        margin: 0 auto;
-        background: #30242e;
-    }
-
-    .dropdown-item{
-        border-bottom: 1px solid #eb5e43;
-    }
-
-    .dropdown h3{
-        padding: 0;
-        color: #eb5e43;
-        font-size: 14px;
-        padding: 5px;
-        font-weight: 100;
-    }
+    
 
     @media only screen and (min-width: 450px) {
 
