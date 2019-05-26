@@ -67,7 +67,7 @@ export default {
             $(this.$refs[menu]).fadeIn(200);
         },
         hide : function(menu){
-            $(this.$refs[menu]).fadeOut(200);
+            $(this.$refs[menu]).fadeOut(500);
         }
     }
 }
