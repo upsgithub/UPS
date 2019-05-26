@@ -16,6 +16,9 @@
 .col-7{
     width: calc(#{$column} * 7);
 }
+.col-10{
+    width: calc(#{$column} * 10);
+}
 .col-12{
     width: 100%;
 }

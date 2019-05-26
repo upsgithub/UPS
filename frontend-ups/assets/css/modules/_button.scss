@@ -1,8 +1,9 @@
 button{
     border: none;
-    height: 35px;
+    min-height: 35px;
+    max-height: 45px;
     min-width: 95px;
-    max-width: 170px;
+    max-width: 200px;
     font-size: 14px;
     color: #ffffff;
     background: #EB5E43;
@@ -11,6 +12,6 @@ button{
 
 @media only screen and (min-width: 800px) {
     button{
-        font-size: 18px;
+        font-size: 16px;
     }
 }

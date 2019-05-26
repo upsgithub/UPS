@@ -22,10 +22,17 @@
             </div>
             <div class="mobile-items" ref="forening">
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/forening">Utskott</nuxt-link></h2></div>
+                <div class="mobile-item" @click="show('utskotten')"><h2>Utskotten</h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Policys</nuxt-link></h2></div>
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h2></div>
+            </div>
+            <div class="mobile-items" ref="utskotten">
+                <div class="mobile-item"><h2><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/utskott">Utskott2</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/utskott">Utskott3</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/utskott">Utskott4</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/utskott">Utskott5</nuxt-link></h2></div>
             </div>
             <div class="mobile-main" ref="main">
                 <div class="mobile-item" @click="show('utbildning')"><h2>Utbildning</h2></div>
@@ -49,7 +56,8 @@ export default{
                 {name: "utbildning", active: false, height: 190},
                 {name: "student", active: false, height: 290},
                 {name: "event", active: false, height: 140},
-                {name: "forening", active: false, height: 240}
+                {name: "forening", active: false, height: 240},
+                {name: "utskotten", active: false, height: 240}
             ]
         }
     },
@@ -69,6 +77,10 @@ export default{
                 if(this.menus[i].name == input){
                     this.menus[i].active = true;
                 }
+            }
+
+            if(input == "utskotten"){
+                this.menus[4].active = false;
             }
 
             // "stänger av" mainmenu för att rita upp den aktiva och sätter sen på den igen, så att nästa tryck på hamburgaren stänger allt. 
@@ -91,7 +103,7 @@ export default{
                 var current = this.menus[i].name;
                 var height = this.menus[i].height;
                 if(this.menus[i].active){
-                    $(this.$refs[current]).fadeIn(0).animate({height: height}, 500);
+                    $(this.$refs[current]).fadeIn(0).animate({height: height}, 300);
                 } else {
                     $(this.$refs[current]).animate({height: "0px"}, 200).fadeOut(0);
                 }

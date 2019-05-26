@@ -42,10 +42,18 @@
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
-                    <div class="desktop-item"><h3><nuxt-link to="/forening">Utskott</nuxt-link></h3></div>
                     <div class="desktop-item"><h3><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h3></div>
                     <div class="desktop-item"><h3><nuxt-link to="/forening">Policys</nuxt-link></h3></div>
                     <div class="desktop-item"><h3><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h3></div>
+                    <div class="desktop-item" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
+                        <div class="desktop-dropdown inner" ref="utskotten">
+                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h3></div>
+                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott2</nuxt-link></h3></div>
+                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott3</nuxt-link></h3></div>
+                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott4</nuxt-link></h3></div>
+                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott5</nuxt-link></h3></div>
+                        </div>
+                    </div>
                 </div>
             </div> 
         </div>
@@ -141,10 +149,13 @@ export default {
                 h3{
                     margin: 0;
                     font-size: 14px;
+                    color:#eb5e43;
                 }
             }
-        
-            
+        }
+
+        .inner{
+            margin-top: 9px;
         }
     }
 </style>
