@@ -103,7 +103,11 @@ export default{
                 var current = this.menus[i].name;
                 var height = this.menus[i].height;
                 if(this.menus[i].active){
-                    $(this.$refs[current]).fadeIn(0).animate({height: height}, 300);
+                    if(current != "main"){
+                        $(this.$refs[current]).delay(200).fadeIn(0).animate({height: height}, 200);
+                    } else {
+                        $(this.$refs[current]).fadeIn(0).animate({height: height}, 200);
+                    }
                 } else {
                     $(this.$refs[current]).animate({height: "0px"}, 200).fadeOut(0);
                 }

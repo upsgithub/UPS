@@ -1,7 +1,6 @@
 button{
     border: none;
-    min-height: 35px;
-    max-height: 45px;
+    height: 35px;
     min-width: 95px;
     max-width: 200px;
     font-size: 14px;
@@ -12,6 +11,6 @@ button{
 
 @media only screen and (min-width: 800px) {
     button{
-        font-size: 16px;
+        font-size: 13px;
     }
 }
