@@ -28,8 +28,8 @@
                 </div>        
             </div>
             <div class="utskotten">
-                <div class="utskotten-text">
                 <h3>Utskotten</h3>
+                <div class="utskotten-text">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ex sit amet justo feugiat viverra. Pellentesque sit amet velit tempor, euismod augue viverra, laoreet mauris. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris vel ipsum vitae mi maximus rhoncus eu nec ex. In sollicitudin ut elit semper elementum. Praesent vitae magna non arcu imperdiet tempor id quis libero. Nunc id tempus neque. Pellentesque ac leo sapien.
                    Curabitur gravida vulputate sapien, et semper odio sagittis eu. </p>
                 </div>
@@ -99,11 +99,14 @@
 
 @media only screen and (min-width: 600px) {
     .ordfaranderiet{
-            &-picture{
-                width: 25%;
-                max-width: 167px;
-            }
+        margin: 10px 0 40px 0;
+
+        &-picture{
+            margin-top: 10px;
+            width: 25%;
+            max-width: 167px;
         }
+    }
     
     .utskotten{
         &-picture{
