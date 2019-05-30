@@ -12,7 +12,9 @@ h4{
     font-size: 16px;
 }
 
-// Lägger dessa här så att css funkar både på < 800 och > 800
+h5{
+    font-size: 13px;
+}
 
 .text h2{
     padding: 0;
@@ -22,7 +24,6 @@ h4{
     font-weight: 100;
 }
 
-
 a{
     color:#eb5e43;
 
@@ -31,7 +32,6 @@ a{
     }
 }
 
-// slut på fusk
 
 body{
     color: #{$defaultTxtColor};
