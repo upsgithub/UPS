@@ -128,8 +128,21 @@ export default {
 
         .desktop{
             &-dropdown{
-                margin-top: 40px;
+                margin-top: 54px;
                 display: none;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 50%;
+                    width: 0;
+                    height: 0;
+                    border: 16px solid transparent;
+                    border-bottom-color: #EB5E43;
+                    border-top: 0;
+                    margin-left: -16px;
+                    margin-top:76px;
+                }
             }
 
             &-item{
@@ -143,8 +156,6 @@ export default {
                     font-size: 14px;
                 }
             }
-        
-            
         }
     }
 </style>
