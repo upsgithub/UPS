@@ -45,8 +45,8 @@
                     <div class="desktop-item"><h3><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h3></div>
                     <div class="desktop-item"><h3><nuxt-link to="/forening">Policys</nuxt-link></h3></div>
                     <div class="desktop-item"><h3><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h3></div>
-                    <div class="desktop-item" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
-                        <div class="desktop-dropdown inner" ref="utskotten">
+                    <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
+                        <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item"><h3><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h3></div>
                             <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott2</nuxt-link></h3></div>
                             <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott3</nuxt-link></h3></div>
@@ -55,6 +55,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div> 
         </div>
     </div>
@@ -115,12 +116,11 @@ export default {
                 &::after{
                     clear: both;
                 }
-
+               
                 img{
                     width: 30%;
                     height: auto;
                 }
-
             }
         }
 
@@ -136,7 +136,7 @@ export default {
 
         .desktop{
             &-dropdown{
-                margin-top: 54px;
+                margin-top: 40px;
                 display: none;
                 &::after {
                     content: '';
@@ -145,30 +145,39 @@ export default {
                     left: 50%;
                     width: 0;
                     height: 0;
-                    border: 16px solid transparent;
+                    border: 14px solid transparent;
                     border-bottom-color: #EB5E43;
                     border-top: 0;
-                    margin-left: -16px;
-                    margin-top:76px;
+                    margin-left: -14px;
+                    margin-top: 64px;
+                }
+
+                &-inner{
+                    display: none;
+                    position: relative;
+                    top: -39px;
+                    left: 100%;
                 }
             }
 
             &-item{
                 padding-top: 10px;
-                height: 36px;
                 background: #30242e;
                 border-top: 1px solid grey;
+                display: inline-block;
+                min-width: 125px;
+                position: relative;
 
                 h3{
-                    margin: 0;
-                    font-size: 14px;
+                    padding-bottom: 10px;
+                    font-size: 16px;
                     color:#eb5e43;
                 }
-            }
+            }   
         }
 
         .inner{
-            margin-top: 9px;
+            height: 40px;
         }
     }
 </style>
