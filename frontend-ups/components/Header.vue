@@ -55,7 +55,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div> 
         </div>
     </div>
@@ -65,10 +64,10 @@
 export default {
     methods: {
         show : function(menu){
-            $(this.$refs[menu]).fadeIn(200);
+            $(this.$refs[menu]).fadeIn(150);
         },
         hide : function(menu){
-            $(this.$refs[menu]).fadeOut(500);
+            $(this.$refs[menu]).fadeOut(50);
         }
     }
 }
