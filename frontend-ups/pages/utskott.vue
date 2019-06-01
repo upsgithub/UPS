@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <Header />
         <div class="utskott-background">
             <h3>Utbildningsrådet</h3>
         </div>
@@ -33,8 +32,6 @@
             <Sponsor />
             <Instagram />
         </div>
-        <MobileMenu />
-        <Footer />
     </div>
 </template>
 
@@ -98,19 +95,13 @@
 </style>
 
 <script>
-import Header from '~/components/Header.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
-import MobileMenu from '~/components/Mobile_menu.vue'
-import Footer from '~/components/Footer.vue'
 
 export default {
     components: {
-        Header,
         Sponsor,
-        Instagram,
-        MobileMenu,
-        Footer
+        Instagram
     }
 }
 </script>

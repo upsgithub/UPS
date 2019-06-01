@@ -1,25 +1,9 @@
 <template>
-    <section class="container">
-        <Header />
-        <nuxt />
-        <MobileMenu />
-        <Footer />
-    </section>
+  <div>
+    <nuxt />
+  </div>
 </template>
 
-<script>
-import Header from '~/components/Header.vue'
-import MobileMenu from '~/components/Mobile_menu.vue'
-import Footer from '~/components/Footer.vue'
-
-export default{
-    components: {
-        Header,
-        MobileMenu,
-        Footer
-    }
-}
-</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
