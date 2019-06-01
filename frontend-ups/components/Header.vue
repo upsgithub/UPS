@@ -33,8 +33,8 @@
                     <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="event">
-                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Inlägg</nuxt-link></h3></div>
-                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
+                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/blogg">Inlägg</nuxt-link></h3></div>
+                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/kalender">Kalender</nuxt-link></h3></div>
             </div>
             </div> 
             <div class="menu-item col-2" @mouseleave="hide('forening')">

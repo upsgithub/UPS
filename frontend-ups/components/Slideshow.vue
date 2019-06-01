@@ -4,22 +4,22 @@
             <!-- Loading Screen -->
             <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                 <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="../assets/slider/img/spin.svg" />
-            </div>
+            </div>  
             <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:984px;height:380px;overflow:hidden;">
-                <div>
-                    <img data-u="image" src="../assets/slider/img/001.jpg" />
+                <div ref="1">
+                    <nuxt-link :to="{ path: link }"><img data-u="image" src="../assets/slider/img/001.jpg" /></nuxt-link>
                 </div>
-                <div>
-                    <img data-u="image" src="../assets/slider/img/002.jpg" />
+                <div ref="2">
+                    <nuxt-link :to="{ path: link }"><img data-u="image" src="../assets/slider/img/002.jpg" /></nuxt-link>
                 </div>
-                <div>
-                    <img data-u="image" src="../assets/slider/img/003.jpg" />
+                <div ref="3">
+                    <nuxt-link :to="{ path: link }"><img data-u="image" src="../assets/slider/img/003.jpg" /></nuxt-link>
                 </div>
-                <div>
-                    <img data-u="image" src="../assets/slider/img/004.jpg" />
+                <div ref="4">
+                    <nuxt-link :to="{ path: link }"><img data-u="image" src="../assets/slider/img/004.jpg" /></nuxt-link>
                 </div>
-                <div>
-                    <img data-u="image" src="../assets/slider/img/005.jpg" />
+                <div ref="5">
+                    <nuxt-link :to="{ path: link }"><img data-u="image" src="../assets/slider/img/005.jpg" /></nuxt-link>
                 </div>
             </div>
             <!-- Bullet Navigator -->
@@ -42,11 +42,28 @@
                 </svg>
             </div>
         </div>
+        <div class="image-footer"><h4>{{ message }}</h4> <nuxt-link :to="{ path: link }"  class="a-button right"><button>{{ buttonMessage }}</button></nuxt-link></div>
     </div>
 </template>
 
 <script>
 export default {
+    data: function() {
+        return{
+            current: 0,
+            timer: '',
+            message: "",
+            buttonMessage: "",
+            link: "",
+            messages: [
+                {text: "Kandidat Uppsalapolitices - Utbildningen i kandidatprogrammet...", btnText: "Läs mer!", linkTo: "kandidat"},
+                {text: "Master Uppsalapolitices - 2 år till för den som är sugen...", btnText: "Läs mer!", linkTo: "master"},
+                {text: "Event hos UPS - Det här håller vi på med...", btnText: "Läs mer!", linkTo: "event"},
+                {text: "Vilka är vi? Kolla in hos föreningen...", btnText: "Läs mer!", linkTo: "forening"},
+                {text: "Behöver du översyn? CHECKA IN KALENDERN", btnText: "Läs mer!", linkTo: "kalender"}
+            ]
+        }
+    },
     head: {
         script: [
             { 
@@ -59,10 +76,33 @@ export default {
             }             
         ]
     },
-    mounted:function(){
-        this.runSlider()
+    created: function() {
+        
     },
-    methods: {   
+    mounted: function(){
+        this.runSlider();
+        this.fetchEventList();
+        this.timer = setInterval(this.fetchEventList, 200)
+    },
+    watch:{
+        current: function() {
+            this.message = this.messages[(this.current - 1)].text;
+            this.buttonMessage = this.messages[(this.current - 1)].btnText;
+            this.link = this.messages[(this.current - 1)].linkTo
+        }
+    },
+    computed: {
+
+    },
+    methods: {
+        fetchEventList:function(){
+            for(var i = 1; i <= 5; i++){
+                if($(this.$refs[i]).parent().css("left") == "0px"){
+                    this.current = i;
+                }
+            }
+        },
+
         runSlider:function(){
 
             var jssor_1_SlideshowTransitions = [{$Duration:800,$Opacity:2}];
@@ -113,6 +153,29 @@ export default {
 </script>
 
 <style lang="scss">
+.image-footer{
+    height: 55px;
+    margin-bottom: 40px;
+    padding: 10px 20px;
+    background: #30242e;
+
+    h4{
+        width: calc(100% - 105px);
+        height: 18px;
+        float: left;
+        color: #eb5e43;
+        margin-top: 8px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.slider-wrapper{
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+}
 
 #jssor_1{
     margin: 0;
@@ -123,6 +186,24 @@ export default {
     height:280px;
     overflow:hidden;
     visibility:hidden;
+}
+
+.jssora051{
+    visibility:hidden;
+}
+
+@media only screen and (min-width: 800px) {
+    .image-footer{
+        padding: 10px 20px 10px 40px;
+
+        h4{
+            width: 80%;
+        }
+    }
+
+    .jssora051{
+        visibility: visible;
+    }
 }
 
 .jssorl-009-spin img {

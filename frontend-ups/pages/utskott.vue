@@ -29,8 +29,8 @@
                 </div>
                 
             </div>
+            <Upcoming />
             <Sponsor />
-            <Instagram />
         </div>
     </div>
 </template>
@@ -96,12 +96,12 @@
 
 <script>
 import Sponsor from '~/components/Sponsor.vue'
-import Instagram from '~/components/Instagram.vue'
+import Upcoming from '~/components/Upcoming.vue'
 
 export default {
     components: {
         Sponsor,
-        Instagram
+        Upcoming
     }
 }
 </script>
