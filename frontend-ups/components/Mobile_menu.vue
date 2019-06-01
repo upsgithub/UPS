@@ -3,17 +3,17 @@
         <div class="content">
             <div class="mobile-items" ref="utbildning">
                 <div class="mobile-item"><h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/utbildning">Kandidat</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/utbildning">Master</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/utbildning">Skugga en student</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/kandidat">Kandidat</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/master">Master</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/skugga">Skugga en student</nuxt-link></h2></div>
             </div>
             <div class="mobile-items" ref="student">
                 <div class="mobile-item"><h2><nuxt-link to="/student">Student</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/student">Medlem</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/student">Produkter</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/student">Alumn</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/student">Stipendier</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/student">Projektpotten</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/medlem">Medlem</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/produkter">Produkter</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/alumn">Alumn</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/stipendier">Stipendier</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/projektpotten">Projektpotten</nuxt-link></h2></div>
             </div>
             <div class="mobile-items" ref="event">
                 <div class="mobile-item"><h2><nuxt-link to="/event">Event</nuxt-link></h2></div>
@@ -23,9 +23,9 @@
             <div class="mobile-items" ref="forening">
                 <div class="mobile-item"><h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2></div>
                 <div class="mobile-item" @click="show('utskotten')"><h2>Utskotten</h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/forening">Policys</nuxt-link></h2></div>
-                <div class="mobile-item"><h2><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/fristaende">Fristående ämbeten</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/policy">Policys</nuxt-link></h2></div>
+                <div class="mobile-item"><h2><nuxt-link to="/protokoll">Mötesprotokoll</nuxt-link></h2></div>
             </div>
             <div class="mobile-items" ref="utskotten">
                 <div class="mobile-item"><h2><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h2></div>

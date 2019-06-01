@@ -1,13 +1,13 @@
 <template>
     <div class="containter">
         <div class="plain-background">
-            <h3>Master</h3>
+            <h3>Alumn</h3>
         </div>
         <div class="content-wrapper">
             <div class="plain container--full">
                 <div class="plain-text col-12">
                     <div class="post-title">
-                        <h1> Master </h1>
+                        <h1> Alumn </h1>
                     </div>
                     <div class="post-text">
                         <p> 

@@ -6,9 +6,9 @@
                     <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
-                    <div class="desktop-item"><h3><nuxt-link to="/utbildning">Kandidat</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/utbildning">Master</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/utbildning">Skugga en student</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/kandidat">Kandidat</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/master">Master</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/skugga">Skugga en student</nuxt-link></h3></div>
                 </div>
             </div> 
             <div class="menu-item col-2" @mouseover="show('student')" @mouseleave="hide('student')">
@@ -16,11 +16,11 @@
                     <h2><nuxt-link to="/student">Student</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="student">
-                    <div class="desktop-item"><h3><nuxt-link to="/student">Medlem</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/student">Produkter</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/student">Alumn</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/student">Stipendier</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/student">Projektpotten</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/medlem">Medlem</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/produkter">Produkter</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/alumn">Alumn</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/stipendier">Stipendier</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/projektpotten">Projektpotten</nuxt-link></h3></div>
                 </div>
             </div> 
             <div class="logo col-4">
@@ -42,9 +42,9 @@
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
-                    <div class="desktop-item"><h3><nuxt-link to="/forening">Fristående ämbeten</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/forening">Policys</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/forening">Mötesprotokoll</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/fristaende">Fristående ämbeten</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/policy">Policys</nuxt-link></h3></div>
+                    <div class="desktop-item"><h3><nuxt-link to="/protokoll">Mötesprotokoll</nuxt-link></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item"><h3><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h3></div>
