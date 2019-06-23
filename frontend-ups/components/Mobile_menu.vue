@@ -41,7 +41,7 @@
                 <div class="mobile-item" @click="show('forening')"><h2>Föreningen</h2></div>
             </div>
             <div class="burger" @click="showhide()">
-                <img src="../assets/img/burger.png" />
+                <img src="../assets/img/menu-button.png" />
             </div>
         </div>
     </div>
@@ -120,6 +120,7 @@ export default{
 <style lang="scss">
 
     .mobile{
+        z-index: 3;
         display: block;
         position: fixed;
         bottom: 0;
