@@ -1,7 +1,10 @@
 <template>
-    <div class="content-wrapper">        
+<div class="index-wrapper">
+    <div class="content-wrapper--full">
         <Slideshow />
         <div class="image-footer"><h4>Politices kandidatsprogram - Studienra inom programmet...</h4> <nuxt-link to="/kandidat" class="a-button right"><button>Läs mer</button></nuxt-link></div>
+    </div>
+    <div class="content-wrapper"> 
         <div class="posts container--full">
             <div class="post col-12">
                 <div class="post-title">
@@ -34,6 +37,7 @@
             </div>
         </div>
     </div>  
+</div>
 </template>
 
 <script>
@@ -68,7 +72,7 @@ export default {
 
 <style lang="scss">
 .image-footer{
-    width: calc(100% + 40px);
+    width: 100%;
     height: 55px;
     margin-left: -20px;
     margin-bottom: 40px;
@@ -86,10 +90,10 @@ export default {
     }
 }
 
-.slider-wrapper{
-    margin-top: -20px;
-    margin-left: -20px;
-    margin-right: -20px;
+.slideshow-wrapper{
+    width: 100em;
+    background: #30242e;
+    display: inline-block;
 }
 
 .posts{
