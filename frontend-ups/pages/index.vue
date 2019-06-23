@@ -82,6 +82,7 @@ export default {
     margin: 0 auto;
     // margin-bottom: 40px;
     padding: 10px 20px;
+    background: #30242e;
     
 
     &-holder{

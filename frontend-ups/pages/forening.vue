@@ -38,8 +38,8 @@
                 <div class="utskotten-picture col-12"><img src="../assets/img/placeholder_img.png" /><h3>Utbildningsutskottet</h3></div>
             </div>
         </div>
-        <Instagram />
         <Sponsor />
+        <Instagram />
     </div>
 </template>
 

@@ -85,7 +85,7 @@ export default {
             var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
             /*#region responsive code begin*/
 
-            var MAX_WIDTH = 10000;
+            var MAX_WIDTH = 1200;
 
             function ScaleSlider() {
                 var containerElement = jssor_1_slider.$Elmt.parentNode;

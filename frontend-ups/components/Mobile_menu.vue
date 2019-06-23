@@ -120,7 +120,7 @@ export default{
 <style lang="scss">
 
     .mobile{
-        z-index: 3;
+        z-index: 1000;
         display: block;
         position: fixed;
         bottom: 0;

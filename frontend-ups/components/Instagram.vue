@@ -1,22 +1,44 @@
 <template>
     <div class="instagram">
-        <!-- Place <div> tag where you want the feed to appear -->
-    <div id="curator-feed"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
-    <!-- The Javascript can be moved to the end of the html page before the </body> tag -->
-
+        <a href="https://www.instagram.com/uppsalapolitices/"><div class="title"><img src="../assets/img/insta.png" /><h4>Uppsalapolitices</h4></div></a>
+        <div id="curator-feed"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div>
     </div>
 </template>
 
 <style lang="scss">
 
+    .instagram {
+        margin: 0 -20px;
+        background: rgba(242, 241, 239, 1); 
+        margin-top: 40px;
+        margin-bottom: -20px;
+    }
+
+    .title{
+        height: 20px;
+        padding: 8px;
+
+        img{
+            width: 20px;
+            margin-right: 8px;
+            float: left;
+        }
+
+        h4{
+            color: black;
+        }
+    }
+
+    #curator-feed{
+        padding: 20px;
+    }
+
     @media only screen and (min-width: 800px) {
 
-        .instagram {
-
-            border-top: 1px solid lightgray;
-            margin-top: 40px;
-            margin-bottom: 20px;
+        .title{
+            text-align: left;
         }
+
     }
     
 </style>
