@@ -2,7 +2,11 @@
 <div class="index-wrapper">
     <div class="content-wrapper--full">
         <Slideshow />
-        <div class="image-footer"><h4>Politices kandidatsprogram - Studienra inom programmet...</h4> <nuxt-link to="/kandidat" class="a-button right"><button>Läs mer</button></nuxt-link></div>
+        <div class="image-footer-holder">
+            <div class="image-footer">
+                <h4>Politices kandidatsprogram - Studienra inom programmet...</h4> <nuxt-link to="/kandidat" class="a-button right"><button>Läs mer</button></nuxt-link>
+            </div>
+        </div>
     </div>
     <div class="content-wrapper"> 
         <div class="posts container--full">
@@ -72,12 +76,20 @@ export default {
 
 <style lang="scss">
 .image-footer{
-    width: 100%;
+    width: calc(100% - 40px);
+    max-width: 1200px;
     height: 55px;
-    margin-left: -20px;
-    margin-bottom: 40px;
+    margin: 0 auto;
+    // margin-bottom: 40px;
     padding: 10px 20px;
-    background: #30242e;
+    
+
+    &-holder{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #30242e;
+    }
 
     h4{
         width: calc(100% - 95px);
