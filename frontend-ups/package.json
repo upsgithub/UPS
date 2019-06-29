@@ -14,7 +14,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
-    "vue-carousel": "^0.18.0"
+    "swiper": "^4.5.0"
   },
   "devDependencies": {
     "node-sass": "^4.12.0",
