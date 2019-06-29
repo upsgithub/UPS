@@ -27,6 +27,7 @@ export default {
   ** Global CSS
   */
   css: [
+    'swiper/dist/css/swiper.min.css',
     '~/assets/css/styles.scss'
   ],
 

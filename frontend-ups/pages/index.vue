@@ -76,8 +76,10 @@ export default {
 </script>
 
 <style lang="scss">
+.image-footer-holder{
+    width: 100%;
+}
 .image-footer{
-    width: calc(100% - 40px);
     max-width: 1200px;
     height: 55px;
     margin: 0 auto;
@@ -104,23 +106,20 @@ export default {
     }
 }
 
-.slideshow-wrapper{
-    width: 100em;
-    background: #30242e;
-    display: inline-block;
-}
-
 .posts{
     display: inline-block;
     
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
     .image-footer{
-        padding: 10px 20px 10px 40px;
+        padding: 10px 40px;
 
         h4{
             width: 80%;
+        }
+        button{
+            margin-right: 0px;
         }
     }
     
