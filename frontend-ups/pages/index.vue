@@ -47,6 +47,7 @@
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
+
 //import wp from '~/assets/wp'
 import axios from 'axios'
 
