@@ -1,0 +1,37 @@
+.ig-img {
+    width: 100%;
+    margin: 20px 0%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;  
+    align-items: center;
+}
+
+.ig-container {
+    background-color:  #EFEFEF;
+    display:inline-block;
+}
+.ig-wrapper {
+    margin-bottom: 65px;
+    background-color: #EFEFEF;
+}
+
+.ig-logo {
+    width: 20px;
+    float: left;
+    margin-right: 5px;
+}
+
+@media only screen and (min-width: 800px) {
+    .ig-img {
+        margin-bottom: 5%;
+        width: 21.2%;
+        margin-right: 5%;
+        &:last-child {
+            margin-right: 0;
+        }
+        
+    }
+}
