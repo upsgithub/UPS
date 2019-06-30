@@ -63,8 +63,8 @@
                 </div>
             </div>
             <Sponsor />
-            <Instagram />
         </div>
+        <Instagram />
     </div>        
 </template>
 

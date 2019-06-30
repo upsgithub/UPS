@@ -40,13 +40,16 @@
                 </div>
             </div>
         </div>
+        
     </div>  
+    <Instagram />
 </div>
 </template>
 
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
+import Instagram from '~/components/Instagram.vue'
 
 //import wp from '~/assets/wp'
 import axios from 'axios'
@@ -69,6 +72,7 @@ export default {
     }
   },
   components: {
+    Instagram,
     Sponsor,
     Slideshow
   }

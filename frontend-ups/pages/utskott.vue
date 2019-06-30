@@ -29,9 +29,9 @@
                 </div>
                 
             </div>
-            <Sponsor />
-            <Instagram />
+            <Sponsor />    
         </div>
+        <Instagram />
     </div>
 </template>
 

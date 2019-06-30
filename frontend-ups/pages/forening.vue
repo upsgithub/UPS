@@ -40,7 +40,6 @@
             </div>
         </div>
         <Sponsor />
-        
     </div>
     <Instagram />
     </div>
