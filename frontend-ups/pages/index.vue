@@ -59,23 +59,23 @@ export default {
     const posts = await wp.posts();
     return {post: posts}
   }, */
-  fetch({ store }){
-    return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
-      store.commit('frontPagePosts', res.data)
-    }).catch((error) => {
-      console.log(error)
-    })
-  },
-  computed: {
-    posts(){
-      return this.$store.state.posts
+    fetch({ store }){
+        return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
+            store.commit('frontPagePosts', res.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
+    computed: {
+        posts(){
+            return this.$store.state.posts
+        }
+    },
+    components: {
+        Instagram,
+        Sponsor,
+        Slideshow
     }
-  },
-  components: {
-    Instagram,
-    Sponsor,
-    Slideshow
-  }
 }
 </script>
 
