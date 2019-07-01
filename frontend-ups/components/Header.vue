@@ -47,11 +47,9 @@
                     <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/protokoll">Mötesprotokoll</nuxt-link></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
-                            <div class="desktop-item" @click="hide('utskotten')"><h3><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h3></div>
-                            <div class="desktop-item" @click="hide('utskotten')"><h3><nuxt-link to="/utskott">Utskott2</nuxt-link></h3></div>
-                            <div class="desktop-item" @click="hide('utskotten')"><h3><nuxt-link to="/utskott">Utskott3</nuxt-link></h3></div>
-                            <div class="desktop-item" @click="hide('utskotten')"><h3><nuxt-link to="/utskott">Utskott4</nuxt-link></h3></div>
-                            <div class="desktop-item" @click="hide('utskotten')"><h3><nuxt-link to="/utskott">Utskott5</nuxt-link></h3></div>
+                            <div class="desktop-item" @clcik="hide('utskotten')" v-for="utskott in all_utskott">
+                                <h3><nuxt-link v-bind:to="'/utskott/'+ utskott[0] ">{{ utskott[1] }}</nuxt-link></h3></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,8 +59,29 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+    data:function() {
+        return {
+            all_utskott: []
+        }
+    },
+    created: function(){
+        this.get_all_utskott();
+    },
     methods: {
+        get_all_utskott: function() {
+
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
+                
+            for(var i = 0; i < response.data.length; i++ ){
+                this.all_utskott.push([response.data[i].id, response.data[i].title.rendered]);
+            }
+
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
         show : function(menu){
             $(this.$refs[menu]).fadeIn(150);
         },
