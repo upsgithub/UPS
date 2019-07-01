@@ -89,7 +89,7 @@ export default{
 
 <style lang="scss">
 .slideshow{
-    height: 280px;
+    height: 200px;
     width: 100%;
 }
 .swiper-container{

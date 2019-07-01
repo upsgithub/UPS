@@ -4,7 +4,7 @@
         <Slideshow />
         <div class="image-footer-holder">
             <div class="image-footer">
-                <h4>Politices kandidatsprogram - Studienra inom programmet...</h4> <nuxt-link to="/kandidat" class="a-button right"><button>Läs mer</button></nuxt-link>
+                <h4>Politices kandidatsprogram - Studierna inom programmet...</h4> <nuxt-link to="/kandidat" class="a-button right"><button>Läs mer</button></nuxt-link>
             </div>
         </div>
     </div>
