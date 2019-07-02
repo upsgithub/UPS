@@ -1,6 +1,6 @@
 <template>
-    <div class="container">
-        <div class="utskott-background">
+    <div v-if="loaded" class="container">
+        <div class="utskott-background" v-bind:style="{ backgroundImage: 'url(' + background + ')' }">
             <h3>{{ utskottsnamn }}</h3>
         </div>
         <div class="content-wrapper">
@@ -18,10 +18,10 @@
                         <h1>Kontakt</h1>
                     </div>
                     <div class="utskott-picture">
-                        <img src="../assets/img/profile.png" />
+                        <img v-bind:src="utskott_acf.ordforande_bild.url" />
                     </div>
                     <h4>Ordförande</h4>
-                    <h5>{{ utskott_ordfarande }}</h5>
+                    <h5>{{ utskott_acf.ordforande_namn }}</h5>
                     <button>Kontakta {{ utskottsnamn }}</button>
                 </div>
                 
@@ -63,6 +63,7 @@
         img{
             width:60%;
             max-width: 230px;
+            border-radius: 100px;
         }
     }
 }
@@ -101,9 +102,9 @@ export default {
         return {
             utskottsnamn: "",
             utskottstext: "",
-            utskott_ordfarande: "",
-            kontaktlank: "",
-            bannertext: ""
+            utskott_acf: [],
+            loaded: false,
+            background: "http://api.uppsalapolitices.se//wp-content//uploads//2019//06//utbildning-1024x683.jpeg"
         }
     },
     created: function(){
@@ -114,16 +115,15 @@ export default {
 
             this.utskottsnamn = "Loading...";
             this.utskottstext = "Loading...";
-            this.utskott_ordfarande = "Loading...";
-            this.kontaktlank = "Loading...";
-            this.bannertext = "Loading...";
 
             var currentUrl = this.$route.path;
 
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2' + currentUrl).then((response) => {
                 this.utskottsnamn = response.data.title.rendered;
                 this.utskottstext = response.data.content.rendered;
-                this.utskott_ordfarande = currentUrl;
+                this.utskott_acf = response.data.acf;
+                //this.utskott_media = response.data.better_featured_image.media_details.thumbnail.large.source_url;
+                this.loaded = true;
             }).catch((error) => {
                 console.log(error)
             })
