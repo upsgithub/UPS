@@ -6,7 +6,7 @@
                     <h2><nuxt-link to="/pages/78">Utbildning</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
-                    <div class="desktop-item" @clcik="hide('utbildning')" v-for="page in utbildning">
+                    <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning">
                         <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                     </div>
                 </div>
@@ -16,7 +16,7 @@
                     <h2><nuxt-link to="/pages/97">Student</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="student">
-                    <div class="desktop-item" @clcik="hide('student')" v-for="page in student">
+                    <div class="desktop-item" @click="hide('student')" v-for="page in student">
                         <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                     </div>
                 </div>
@@ -40,13 +40,13 @@
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
-                    <div class="desktop-item" @clcik="hide('forening')" v-for="page in forening">
+                    <div class="desktop-item" @click="hide('forening')" v-for="page in forening">
                         <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                     </div>
                     <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
-                            <div class="desktop-item wide" @clcik="hide('utskotten')" v-for="page in utskott">
+                            <div class="desktop-item wide" @click="hide('utskotten')" v-for="page in utskott">
                                 <h3><nuxt-link v-bind:to="'/utskott/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                             </div>
                         </div>
