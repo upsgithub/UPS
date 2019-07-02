@@ -3,6 +3,10 @@
     <div class="container--full">
       <div class="content-wrapper">
         <FullCalendar
+          :fixedWeekCount="fixedWeekCount"
+          :showNonCurrentDates="showNonCurrentDates"
+          :buttonText="buttonText"
+          :locale="locale"
           :timeFormat="timeFormat"
           :firstDay="firstDay"
           :eventTimeFormat="eventTimeFormat"
@@ -29,6 +33,7 @@
 import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
+import frLocale from "@fullcalendar/core/locales/sv";
 import Sponsor from "~/components/Sponsor.vue";
 import Instagram from "~/components/Instagram.vue";
 
@@ -40,6 +45,12 @@ export default {
   },
   data() {
     return {
+      fixedWeekCount: false,
+      showNonCurrentDates: false,
+      buttonText: {
+        today: "Idag"
+      },
+      locale: "sv",
       defaultView: "dayGridMonth",
       firstDay: 1,
       calendarPlugins: [dayGridPlugin, googleCalendarPlugin],
@@ -52,7 +63,7 @@ export default {
       timeFormat: "HH:mm",
       eventTimeFormat: {
         hour: "numeric",
-        minute: "2-digit",
+        minute: "2-digit"
         //meridiem: "short"
       }
     };

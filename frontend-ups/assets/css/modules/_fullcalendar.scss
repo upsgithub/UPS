@@ -3,6 +3,20 @@
  * Docs & License: https://fullcalendar.io/
  * (c) 2018 Adam Shaw
  */
+
+ span {
+  display: block;
+  
+}
+
+.fc-time {
+  text-align: center;
+}
+
+.fc-title {
+  margin-left: 5px;
+}
+
  .fc {
     direction: ltr;
     text-align: left; }
@@ -793,7 +807,9 @@
   /* Toolbar
   --------------------------------------------------------------------------------------------------*/
   .fc-toolbar {
-    text-align: center; }
+    text-align: center; 
+    }
+
   
   .fc-toolbar.fc-header-toolbar {
     margin-bottom: 1em; }
@@ -805,7 +821,10 @@
     float: left; }
   
   .fc-toolbar .fc-right {
-    float: right; }
+    float: right; 
+  }
+
+
   
   .fc-toolbar .fc-center {
     display: inline-block; }
@@ -960,7 +979,8 @@
   .fc-time-grid {
     /* so slats/bg/content/etc positions get scoped within here */
     position: relative;
-    z-index: 1; }
+    z-index: 1;      
+}
   
   .fc-time-grid {
     min-height: 100%;
@@ -1085,6 +1105,7 @@
   */
   .fc-time-grid-event {
     overflow: hidden;
+    
     /* don't let the bg flow over rounded corners */ }
   
   .fc-time-grid-event.fc-selected {
@@ -1121,6 +1142,7 @@
   
   .fc-time-grid-event.fc-short .fc-time span {
     display: none;
+    
     /* don't display the full time text... */ }
   
   .fc-time-grid-event.fc-short .fc-time:before {
