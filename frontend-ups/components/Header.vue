@@ -3,24 +3,22 @@
         <div class="wrapper">
             <div class="menu-item col-2" @mouseleave="hide('utbildning')">
                 <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
-                    <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
+                    <h2><nuxt-link to="/pages/78">Utbildning</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
                     <div class="desktop-item" @clcik="hide('utbildning')" v-for="page in utbildning">
-                        <h3><nuxt-link v-bind:to="'/utbildning/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                     </div>
                 </div>
             </div> 
             <div class="menu-item col-2" @mouseleave="hide('student')">
                 <div class="text" @mouseover="show('student')" @click="hide('student')">
-                    <h2><nuxt-link to="/student">Student</nuxt-link></h2>
+                    <h2><nuxt-link to="/pages/97">Student</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="student">
-                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/medlem">Medlem</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/produkter">Produkter</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/alumn">Alumn</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/stipendier">Stipendier</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/projektpotten">Projektpotten</nuxt-link></h3></div>
+                    <div class="desktop-item" @clcik="hide('utbildning')" v-for="page in student">
+                        <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                    </div>
                 </div>
             </div> 
             <div class="logo col-4">
@@ -64,7 +62,8 @@ export default {
     data:function() {
         return {
             utskott: [],
-            utbildning: []
+            utbildning: [],
+            student: []
         }
     },
     created: function(){
@@ -74,15 +73,24 @@ export default {
     methods: {
         get_all_pages: function() {
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages').then((response) => {
-                get_all_utbildning(response);
+                this.get_all_utbildning(response);
+                this.get_all_student(response);
+            }).catch((error) => {
+                console.log(error)
             })
             
         },
         get_all_utbildning: function(response) {
-            for(var i = 0; i < response.data.length; i++ ){
-                //response.data[i].parent == 78
-                if(true){
+            for(var i = 0; i < response.data.length; i++){
+                if(response.data[i].parent == 78){
                     this.utbildning.push([response.data[i].id, response.data[i].title.rendered]);
+                }
+            }
+        },
+        get_all_student: function(response) {
+            for(var i = 0; i < response.data.length; i++){
+                if(response.data[i].parent == 97){
+                    this.student.push([response.data[i].id, response.data[i].title.rendered]);
                 }
             }
         },
@@ -172,7 +180,7 @@ export default {
             &-dropdown{
                 position: relative;
                 z-index: 1000;
-                margin-top: 40px;
+                margin-top: 36px;
                 display: none;
                 &::after {
                     content: '';
