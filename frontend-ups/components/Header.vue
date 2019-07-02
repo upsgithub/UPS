@@ -46,7 +46,7 @@
                     <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
-                            <div class="desktop-item" @clcik="hide('utskotten')" v-for="page in utskott">
+                            <div class="desktop-item wide" @clcik="hide('utskotten')" v-for="page in utskott">
                                 <h3><nuxt-link v-bind:to="'/utskott/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                             </div>
                         </div>
@@ -211,6 +211,7 @@ export default {
                     position: relative;
                     top: -42px;
                     left: 100%;
+                                    
                 }
             }
 
@@ -227,11 +228,19 @@ export default {
                     font-size: 16px;
                     color:#eb5e43;
                 }
+
+                
             }   
         }
 
         .inner{
             height: 40px;
+        }
+
+        .wide{
+            width: 150px;
+            word-break: break-word;
+            padding-left: 0 5px;   
         }
     }
 </style>
