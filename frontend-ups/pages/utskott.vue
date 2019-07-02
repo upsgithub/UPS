@@ -9,10 +9,8 @@
                     <div class="post-title">
                         <h1> Vad gör vi? </h1>
                     </div>
-                    <div class="post-text">
-                        <p> 
+                    <div class="post-text" v-html="utskottstext">
                             {{ utskottstext }}
-                        </p>
                     </div>
                 </div>
                 <div class="utskott-kontakt col-12">

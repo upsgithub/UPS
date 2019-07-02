@@ -16,7 +16,7 @@
                     <h2><nuxt-link to="/pages/97">Student</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="student">
-                    <div class="desktop-item" @clcik="hide('utbildning')" v-for="page in student">
+                    <div class="desktop-item" @clcik="hide('student')" v-for="page in student">
                         <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
                     </div>
                 </div>
@@ -40,9 +40,10 @@
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
-                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/fristaende">Fristående ämbeten</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/policy">Policys</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/protokoll">Mötesprotokoll</nuxt-link></h3></div>
+                    <div class="desktop-item" @clcik="hide('forening')" v-for="page in forening">
+                        <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                    </div>
+                    <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item" @clcik="hide('utskotten')" v-for="page in utskott">
@@ -63,7 +64,8 @@ export default {
         return {
             utskott: [],
             utbildning: [],
-            student: []
+            student: [],
+            forening: []
         }
     },
     created: function(){
@@ -75,6 +77,7 @@ export default {
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages').then((response) => {
                 this.get_all_utbildning(response);
                 this.get_all_student(response);
+                this.get_all_forening(response);
             }).catch((error) => {
                 console.log(error)
             })
@@ -91,6 +94,13 @@ export default {
             for(var i = 0; i < response.data.length; i++){
                 if(response.data[i].parent == 97){
                     this.student.push([response.data[i].id, response.data[i].title.rendered]);
+                }
+            }
+        },
+        get_all_forening: function(response) {
+            for(var i = 0; i < response.data.length; i++){
+                if(response.data[i].parent == 138){
+                    this.forening.push([response.data[i].id, response.data[i].title.rendered]);
                 }
             }
         },
@@ -199,7 +209,7 @@ export default {
                 &-inner{
                     display: none;
                     position: relative;
-                    top: -39px;
+                    top: -42px;
                     left: 100%;
                 }
             }
@@ -209,7 +219,7 @@ export default {
                 background: #30242e;
                 border-top: 1px solid grey;
                 display: inline-block;
-                min-width: 125px;
+                width: 125px;
                 position: relative;
 
                 h3{
