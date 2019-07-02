@@ -17,10 +17,8 @@
           :defaultView="defaultView"
           :plugins="calendarPlugins"
         />
-        <sponsor />
       </div>
     </div>
-    <instagram />
   </div>
 </template>
 
@@ -38,35 +36,35 @@ import Sponsor from "~/components/Sponsor.vue";
 import Instagram from "~/components/Instagram.vue";
 
 export default {
-  components: {
-    FullCalendar,
-    Sponsor,
-    Instagram
-  },
-  data() {
-    return {
-      fixedWeekCount: false,
-      showNonCurrentDates: false,
-      buttonText: {
-        today: "Idag"
-      },
-      locale: "sv",
-      defaultView: "dayGridMonth",
-      firstDay: 1,
-      calendarPlugins: [dayGridPlugin, googleCalendarPlugin],
-      googleCalendarApiKey: "AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo",
-      weekNumbers: true,
-      weekNumbersWithinDays: true,
-      events: {
-        googleCalendarId: "lucas.bornegrim@gmail.com"
-      },
-      timeFormat: "HH:mm",
-      eventTimeFormat: {
-        hour: "numeric",
-        minute: "2-digit"
-        //meridiem: "short"
-      }
-    };
-  }
+    components: {
+        FullCalendar,
+        Sponsor,
+        Instagram
+    },
+    data() {
+        return {
+            fixedWeekCount: false,
+            showNonCurrentDates: false,
+            buttonText: {
+                today: "Idag"
+            },
+            locale: "sv",
+            defaultView: "dayGridMonth",
+            firstDay: 1,
+            calendarPlugins: [dayGridPlugin, googleCalendarPlugin],
+            googleCalendarApiKey: "AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo",
+            weekNumbers: true,
+            weekNumbersWithinDays: true,
+            events: {
+                googleCalendarId: "lucas.bornegrim@gmail.com"
+            },
+            timeFormat: "HH:mm",
+            eventTimeFormat: {
+                hour: "numeric",
+                minute: "2-digit"
+                //meridiem: "short"
+            }
+        };
+    }
 };
 </script>

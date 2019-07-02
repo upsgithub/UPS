@@ -1,6 +1,7 @@
 <template>
     <div class="menu container--full">
         <div class="wrapper">
+
             <div class="menu-item col-2" @mouseleave="hide('utbildning')">
                 <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
                     <h2><nuxt-link to="/pages/78">Utbildning</nuxt-link></h2>
@@ -11,6 +12,7 @@
                     </div>
                 </div>
             </div> 
+
             <div class="menu-item col-2" @mouseleave="hide('student')">
                 <div class="text" @mouseover="show('student')" @click="hide('student')">
                     <h2><nuxt-link to="/pages/97">Student</nuxt-link></h2>
@@ -21,20 +23,23 @@
                     </div>
                 </div>
             </div> 
+
             <div class="logo col-4">
                 <nuxt-link to="/">
                     <img src="../assets/img/logo_bred_placeholder.png" />
                 </nuxt-link>
             </div>
+
             <div class="menu-item col-2" @mouseleave="hide('event')">
                 <div class="text" @mouseover="show('event')" @click="hide('event')">
                     <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="event">
-                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Inlägg</nuxt-link></h3></div>
-                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
-            </div>
+                    <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Inlägg</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
+                </div>
             </div> 
+
             <div class="menu-item col-2" @mouseleave="hide('forening')">
                 <div class="text" @mouseover="show('forening')" @click="hide('forening')">
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
@@ -53,6 +58,7 @@
                     </div>
                 </div>
             </div> 
+            
         </div>
     </div>
 </template>
@@ -74,7 +80,7 @@ export default {
     },
     methods: {
         get_all_pages: function() {
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages').then((response) => {
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
                 this.get_all_utbildning(response);
                 this.get_all_student(response);
                 this.get_all_forening(response);

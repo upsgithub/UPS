@@ -15,26 +15,27 @@
                             Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
                         </p>
                     </div>
-                    <h4>KOMMANDE EVENT</h4>
-                    <nuxt-link to="/kalender" class="a-button"><button>Kalender!</button></nuxt-link>
                     <nuxt-link to="/blogg" class="a-button"><button>Blogg</button></nuxt-link>
+                    <h4>KOMMANDE EVENT</h4>
+                    <kalender />
                 </div>
             </div>
             <Sponsor />
-            
         </div>
         <Instagram />
     </div>        
 </template>
 
 <script>
+import kalender from '~/components/kalender.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 
 export default {
     components: {
         Sponsor,
-        Instagram
+        Instagram,
+        kalender
     }
 }
 </script>
