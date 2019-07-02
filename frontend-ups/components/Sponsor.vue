@@ -16,7 +16,8 @@ export default {
     data:function() {
         return {
             Samarbeten: [],
-            Sponsors_exist: false
+            Sponsors_exist: false,
+            width_of_sponsor: 0
         }
     },
     created:function(){
@@ -27,6 +28,7 @@ export default {
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/partner').then((response) => {
                 this.Samarbeten = response.data;
                 this.Sponsors_exist = true;
+                this.width_of_sponsor = 100 / response.data.length;
             }).catch((error) => {
                 console.log(error)
             })
