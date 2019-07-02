@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="utskott-background">
-            <h3>Utbildningsrådet</h3>
+            <h3>{{ utskottsnamn }}</h3>
         </div>
         <div class="content-wrapper">
             <div class="utskott container--full">
@@ -11,8 +11,7 @@
                     </div>
                     <div class="post-text">
                         <p> 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ex sit amet justo feugiat viverra. Pellentesque sit amet velit tempor, euismod augue viverra, laoreet mauris. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris vel ipsum vitae mi maximus rhoncus eu nec ex. In sollicitudin ut elit semper elementum. Praesent vitae magna non arcu imperdiet tempor id quis libero. Nunc id tempus neque. Pellentesque ac leo sapien.
-                            Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
+                            {{ utskottstext }}
                         </p>
                     </div>
                 </div>
@@ -24,14 +23,14 @@
                         <img src="../assets/img/profile.png" />
                     </div>
                     <h4>Ordförande</h4>
-                    <h5>Viktoria Pirainen</h5>
-                    <button>Kontakta Utbildningsrådet</button>
+                    <h5>{{ utskott_ordfarande }}</h5>
+                    <button>Kontakta {{ utskottsnamn }}</button>
                 </div>
                 
             </div>
-            <Sponsor />
-            <Instagram />
+            <Sponsor />    
         </div>
+        <Instagram />
     </div>
 </template>
 
@@ -97,8 +96,46 @@
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
+import axios from 'axios'
 
 export default {
+    data:function() {
+        return {
+            utskottsnamn: "",
+            utskottstext: "",
+            utskott_ordfarande: "",
+            kontaktlank: "",
+            bannertext: ""
+        }
+    },
+    created: function(){
+        this.get_utskott();
+    },
+    methods: {
+        get_utskott: function() {
+
+            this.utskottsnamn = "Loading...";
+            this.utskottstext = "Loading...";
+            this.utskott_ordfarande = "Loading...";
+            this.kontaktlank = "Loading...";
+            this.bannertext = "Loading...";
+
+            var currentUrl = this.$route.path;
+
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2' + currentUrl).then((response) => {
+                this.utskottsnamn = response.data.title.rendered;
+                this.utskottstext = response.data.content.rendered;
+                this.utskott_ordfarande = currentUrl;
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+    },
+    watch:{
+        $route(to, from){
+            this.get_utskott();
+        }
+    },
     components: {
         Sponsor,
         Instagram

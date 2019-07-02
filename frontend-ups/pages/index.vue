@@ -1,5 +1,14 @@
 <template>
-    <div class="content-wrapper">
+<div class="index-wrapper">
+    <div class="content-wrapper--full">
+        <Slideshow />
+        <div class="image-footer-holder">
+            <div class="image-footer">
+                <h4>Politices kandidatsprogram - Studierna inom programmet...</h4> <nuxt-link to="/kandidat" class="a-button right"><button>Läs mer</button></nuxt-link>
+            </div>
+        </div>
+    </div>
+    <div class="content-wrapper"> 
         <div class="posts container--full">
             <div class="post col-12">
                 <div class="post-title">
@@ -31,11 +40,17 @@
                 </div>
             </div>
         </div>
+        
     </div>  
+    <Instagram />
+</div>
 </template>
 
 <script>
 import Sponsor from '~/components/Sponsor.vue'
+import Slideshow from '~/components/Slideshow.vue'
+import Instagram from '~/components/Instagram.vue'
+
 //import wp from '~/assets/wp'
 import axios from 'axios'
 
@@ -44,33 +59,77 @@ export default {
     const posts = await wp.posts();
     return {post: posts}
   }, */
-  fetch({ store }){
-    return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
-      store.commit('frontPagePosts', res.data)
-    }).catch((error) => {
-      console.log(error)
-    })
-  },
-  computed: {
-    posts(){
-      return this.$store.state.posts
+    fetch({ store }){
+        return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
+            store.commit('frontPagePosts', res.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
+    computed: {
+        posts(){
+            return this.$store.state.posts
+        }
+    },
+    components: {
+        Instagram,
+        Sponsor,
+        Slideshow
     }
-  },
-  components: {
-    Sponsor
-  }
 }
 </script>
 
 <style lang="scss">
+.image-footer-holder{
+    width: 100%;
+}
+.image-footer{
+    max-width: 1200px;
+    height: 55px;
+    margin: 0 auto;
+    // margin-bottom: 40px;
+    padding: 10px 20px;
+    background: #30242e;
+    
+
+    &-holder{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background: #30242e;
+    }
+
+    h4{
+        width: calc(100% - 95px);
+        height: 18px;
+        float: left;
+        color: #eb5e43;
+        margin-top: 8px;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+}
 
 .posts{
     display: inline-block;
+    
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
+    .image-footer{
+        padding: 10px 40px;
+
+        h4{
+            width: 80%;
+        }
+        button{
+            margin-right: 0px;
+        }
+    }
+    
     .posts{
         margin-top: 20px;
+        padding-right: 20px;
     }
 }
 </style>

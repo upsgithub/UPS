@@ -27,6 +27,7 @@ export default {
   ** Global CSS
   */
   css: [
+    'swiper/dist/css/swiper.min.css',
     '~/assets/css/styles.scss'
   ],
 
@@ -34,6 +35,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src: '~/plugins/vue-instagram', ssr: false}
   ],
 
   /*

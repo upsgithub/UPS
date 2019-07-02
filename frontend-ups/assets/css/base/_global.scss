@@ -32,6 +32,15 @@ a{
     }
 }
 
+.a-button{
+    &:hover{
+        border-bottom: none;
+    }
+}
+
+.right{
+    float: right;
+}
 
 body{
     color: #{$defaultTxtColor};

@@ -1,4 +1,5 @@
 <template>
+<div class="container--full">
     <div class="content-wrapper">
         <div class="ordfaranderiet">
             <h3>Ordföranderiet</h3>
@@ -39,7 +40,8 @@
             </div>
         </div>
         <Sponsor />
-        <Instagram />
+    </div>
+    <Instagram />
     </div>
 </template>
 

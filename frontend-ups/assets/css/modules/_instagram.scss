@@ -1,0 +1,57 @@
+.ig-img {
+    width: 100%;
+    margin: 20px 0%;
+    //float: left;
+    
+}
+
+.ig-flex {
+    display: flex;
+
+}
+.ig-container {
+    background-color:  #EFEFEF;
+}
+.ig-wrapper {
+    background-color: #EFEFEF;
+}
+
+.ig-h3 {
+    padding-top: 9px!important;
+    float: left;
+    clear: both;
+    width: auto;
+    position: absolute;
+    margin: -35px 0 0 50px!important;
+    padding: 0!important;
+    color: black;
+    text-transform: uppercase;
+    font: bold 1.125em/1.4em Montserrat, sans-serif;
+}
+
+.ig-logo {
+    border-radius: 50%;
+    width: 40px;
+    margin-right: 5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    background: rgba(0,0,0,.75);
+}
+
+@media only screen and (min-width: 800px) {
+    .ig-img {
+        // border-style: dotted;
+        // border-color: red;
+        cursor: pointer;
+        margin-bottom: 5%;
+        width: 21.2%;
+        margin-right: 5%;
+        &:last-child {
+            margin-right: 0;
+        }
+        
+    }
+}
