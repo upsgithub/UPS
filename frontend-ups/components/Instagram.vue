@@ -38,16 +38,18 @@
 
 <script>
 export default {
-  data: {
-    token: "37108703.1677ed0.3fbc500e19324c9184ff4875de875e84"
-  },
-  methods: {
-    clickIgImg(link) {
-      window.location.href = link;
+    data:function() {
+        return {
+            token: "37108703.1677ed0.3fbc500e19324c9184ff4875de875e84"
+        }
     },
-    clickIgLogo(link) {
-      window.location.href = link;
+    methods: {
+        clickIgImg(link) {
+            window.location.href = link;
+        },
+        clickIgLogo(link) {
+            window.location.href = link;
+        }
     }
-  }
 };
 </script>
