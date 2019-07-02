@@ -74,7 +74,7 @@ export default {
     },
     methods: {
         get_all_pages: function() {
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages').then((response) => {
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
                 this.get_all_utbildning(response);
                 this.get_all_student(response);
                 this.get_all_forening(response);
