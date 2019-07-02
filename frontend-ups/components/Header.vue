@@ -1,26 +1,26 @@
 <template>
     <div class="menu container--full">
         <div class="wrapper">
-            <div class="menu-item col-2" @mouseover="show('utbildning')" @mouseleave="hide('utbildning')">
-                <div class="text">
+            <div class="menu-item col-2" @mouseleave="hide('utbildning')">
+                <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
                     <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
-                    <div class="desktop-item"><h3><nuxt-link to="/kandidat">Kandidat</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/master">Master</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/skugga">Skugga en student</nuxt-link></h3></div>
+                    <div class="desktop-item" @clcik="hide('utbildning')" v-for="page in utbildning">
+                        <h3><nuxt-link v-bind:to="'/utbildning/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                    </div>
                 </div>
             </div> 
-            <div class="menu-item col-2" @mouseover="show('student')" @mouseleave="hide('student')">
-                <div class="text">
+            <div class="menu-item col-2" @mouseleave="hide('student')">
+                <div class="text" @mouseover="show('student')" @click="hide('student')">
                     <h2><nuxt-link to="/student">Student</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="student">
-                    <div class="desktop-item"><h3><nuxt-link to="/medlem">Medlem</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/produkter">Produkter</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/alumn">Alumn</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/stipendier">Stipendier</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/projektpotten">Projektpotten</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/medlem">Medlem</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/produkter">Produkter</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/alumn">Alumn</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/stipendier">Stipendier</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('student')"><h3><nuxt-link to="/projektpotten">Projektpotten</nuxt-link></h3></div>
                 </div>
             </div> 
             <div class="logo col-4">
@@ -28,47 +28,81 @@
                     <img src="../assets/img/logo_bred_placeholder.png" />
                 </nuxt-link>
             </div>
-            <div class="menu-item col-2" @mouseover="show('event')" @mouseleave="hide('event')">
-                <div class="text">
+            <div class="menu-item col-2" @mouseleave="hide('event')">
+                <div class="text" @mouseover="show('event')" @click="hide('event')">
                     <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="event">
-                <div class="desktop-item"><h3><nuxt-link to="/event">Inlägg</nuxt-link></h3></div>
-                <div class="desktop-item"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
+                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Inlägg</nuxt-link></h3></div>
+                <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
             </div>
             </div> 
-            <div class="menu-item col-2" @mouseover="show('forening')" @mouseleave="hide('forening')">
-                <div class="text">
+            <div class="menu-item col-2" @mouseleave="hide('forening')">
+                <div class="text" @mouseover="show('forening')" @click="hide('forening')">
                     <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
-                    <div class="desktop-item"><h3><nuxt-link to="/fristaende">Fristående ämbeten</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/policy">Policys</nuxt-link></h3></div>
-                    <div class="desktop-item"><h3><nuxt-link to="/protokoll">Mötesprotokoll</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/fristaende">Fristående ämbeten</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/policy">Policys</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/protokoll">Mötesprotokoll</nuxt-link></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
-                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utbildningsrådet</nuxt-link></h3></div>
-                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott2</nuxt-link></h3></div>
-                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott3</nuxt-link></h3></div>
-                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott4</nuxt-link></h3></div>
-                            <div class="desktop-item"><h3><nuxt-link to="/utskott">Utskott5</nuxt-link></h3></div>
+                            <div class="desktop-item" @clcik="hide('utskotten')" v-for="page in utskott">
+                                <h3><nuxt-link v-bind:to="'/utskott/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
             </div> 
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+    data:function() {
+        return {
+            utskott: [],
+            utbildning: []
+        }
+    },
+    created: function(){
+        this.get_all_pages();
+        this.get_all_utskott();
+    },
     methods: {
+        get_all_pages: function() {
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages').then((response) => {
+                get_all_utbildning(response);
+            })
+            
+        },
+        get_all_utbildning: function(response) {
+            for(var i = 0; i < response.data.length; i++ ){
+                //response.data[i].parent == 78
+                if(true){
+                    this.utbildning.push([response.data[i].id, response.data[i].title.rendered]);
+                }
+            }
+        },
+        get_all_utskott: function() {
+
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
+                
+            for(var i = 0; i < response.data.length; i++ ){
+                this.utskott.push([response.data[i].id, response.data[i].title.rendered]);
+            }
+
+            }).catch((error) => {
+                console.log(error)
+            })
+        },
         show : function(menu){
-            $(this.$refs[menu]).fadeIn(200);
+            $(this.$refs[menu]).fadeIn(150);
         },
         hide : function(menu){
-            $(this.$refs[menu]).fadeOut(500);
+            $(this.$refs[menu]).fadeOut(50);
         }
     }
 }
@@ -136,6 +170,8 @@ export default {
 
         .desktop{
             &-dropdown{
+                position: relative;
+                z-index: 1000;
                 margin-top: 40px;
                 display: none;
                 &::after {
@@ -149,7 +185,7 @@ export default {
                     border-bottom-color: #EB5E43;
                     border-top: 0;
                     margin-left: -14px;
-                    margin-top: 64px;
+                    margin-top: -14px;
                 }
 
                 &-inner{
