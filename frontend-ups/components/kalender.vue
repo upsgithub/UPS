@@ -1,7 +1,4 @@
 <template>
-  <div>
-    <div class="container--full">
-      <div class="content-wrapper">
         <FullCalendar
           :fixedWeekCount="fixedWeekCount"
           :showNonCurrentDates="showNonCurrentDates"
@@ -17,9 +14,6 @@
           :defaultView="defaultView"
           :plugins="calendarPlugins"
         />
-      </div>
-    </div>
-  </div>
 </template>
 
 <style lang="sass" scoped>
@@ -32,14 +26,10 @@ import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import frLocale from "@fullcalendar/core/locales/sv";
-import Sponsor from "~/components/Sponsor.vue";
-import Instagram from "~/components/Instagram.vue";
 
 export default {
     components: {
-        FullCalendar,
-        Sponsor,
-        Instagram
+        FullCalendar
     },
     data() {
         return {

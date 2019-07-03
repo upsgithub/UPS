@@ -26,6 +26,7 @@
                 <img src="../assets/img/placeholder_img.png" /> 
             </div>
         </div>
+        <kommandeEvent />
         <Sponsor />
         <div class="posts container--full">
             <div class="posts" v-for="post in posts" :key="post.id">
@@ -50,6 +51,7 @@
 import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
 import Instagram from '~/components/Instagram.vue'
+import KommandeEvent from '~/components/kommandeEvent.vue'
 
 //import wp from '~/assets/wp'
 import axios from 'axios'
@@ -74,7 +76,8 @@ export default {
     components: {
         Instagram,
         Sponsor,
-        Slideshow
+        Slideshow,
+        KommandeEvent
     }
 }
 </script>
