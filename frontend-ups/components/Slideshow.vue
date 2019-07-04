@@ -14,7 +14,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
                 <div class="swiper-slide">
@@ -26,7 +26,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
                 <div class="swiper-slide">
@@ -62,7 +62,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
             </div>

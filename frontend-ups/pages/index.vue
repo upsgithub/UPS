@@ -25,8 +25,8 @@
             <div class="post-picture col-5">
                 <picture>
                     <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
-                    <source data-loading="~assets/img/placeholder_img.png?lqip" data-srcset="~assets/img/placeholder_img.png" type="image/png">
-                    <img data-loading="~assets/img/placeholder_img.png?lqip" data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
+                    <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
+                    <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                 </picture>
             </div>
         </div>
