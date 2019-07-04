@@ -40,6 +40,10 @@
             border: 0;
         }
     }
+    &-footer{
+        margin:20px;
+        font-style: italic;
+    }
 }
 
 .post-picture{
@@ -76,7 +80,4 @@
         margin: 0 20px;
     }
     
-    .posts{
-        margin-top: 20px;
-    }
 }

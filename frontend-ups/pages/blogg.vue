@@ -16,6 +16,7 @@
                         <h1>{{ currentPost[0].title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="currentPost[0].content.rendered"></div>
+                        <div class="post-footer">Uppsala Politicesstudernade - {{ currentPost[0].date }}</div>
                     </div>
                 </div>
             </div>
@@ -33,6 +34,7 @@
                         <h1>{{ post.title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="post.content.rendered"></div>
+                        <div class="post-footer">Uppsala Politicesstudernade - {{ post.date }}</div>
                     </div>
                     <hr>
                 </div>
@@ -99,11 +101,13 @@ export default {
         get_posts:function(start, current){
             return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
                 this.currentPostPos = current;
+                res.data[current].date = res.data[current].date.substring(0, 10);
                 this.currentPost.push(res.data[current]);
                 this.nrOfPosts = res.data.length;
                 this.latestPosts = [];
                 for (var i = 0; i < 4; i++){
                     if((1 + start + i) < res.data.length){
+                        res.data[1 + start + i].date = res.data[1 + start + i].date.substring(0, 10);
                         this.latestPosts.push(res.data[1+ start + i]);
                     }
                 }
