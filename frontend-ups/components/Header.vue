@@ -65,68 +65,29 @@
 
 <script>
 import axios from 'axios'
+import {store} from '../store/index.js'
+
 export default {
-    data:function() {
-        return {
-            utskott: [],
-            utbildning: [],
-            student: [],
-            forening: []
-        }
-    },
-    created: function(){
-        this.get_all_pages();
-        this.get_all_utskott();
-    },
     methods: {
-        get_all_pages: function() {
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
-                this.get_all_utbildning(response);
-                this.get_all_student(response);
-                this.get_all_forening(response);
-            }).catch((error) => {
-                console.log(error)
-            })
-            
-        },
-        get_all_utbildning: function(response) {
-            for(var i = 0; i < response.data.length; i++){
-                if(response.data[i].parent == 78){
-                    this.utbildning.push([response.data[i].id, response.data[i].title.rendered]);
-                }
-            }
-        },
-        get_all_student: function(response) {
-            for(var i = 0; i < response.data.length; i++){
-                if(response.data[i].parent == 97){
-                    this.student.push([response.data[i].id, response.data[i].title.rendered]);
-                }
-            }
-        },
-        get_all_forening: function(response) {
-            for(var i = 0; i < response.data.length; i++){
-                if(response.data[i].parent == 138){
-                    this.forening.push([response.data[i].id, response.data[i].title.rendered]);
-                }
-            }
-        },
-        get_all_utskott: function() {
-
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
-                
-            for(var i = 0; i < response.data.length; i++ ){
-                this.utskott.push([response.data[i].id, response.data[i].title.rendered]);
-            }
-
-            }).catch((error) => {
-                console.log(error)
-            })
-        },
         show : function(menu){
             $(this.$refs[menu]).fadeIn(150);
         },
         hide : function(menu){
             $(this.$refs[menu]).fadeOut(50);
+        }
+    },
+    computed: {
+        utskott(){
+            return this.$store.state.utskott
+        },
+        utbildning(){
+            return this.$store.state.utbildning
+        },
+        student(){
+            return this.$store.state.student
+        },
+        forening(){
+            return this.$store.state.forening
         }
     }
 }

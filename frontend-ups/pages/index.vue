@@ -32,7 +32,7 @@
         </div>
         <kommandeEvent />
         <Sponsor />
-        <div v-if="loaded" class="posts container--full">
+        <div class="posts container--full">
             <div class="posts" v-for="post in posts" :key="post.id">
                 <div class="post-picture col-5">
                     <picture>
@@ -60,34 +60,26 @@ import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
-
-//import wp from '~/assets/wp'
 import axios from 'axios'
 
 export default {
-  /* async asyncData ({ params }) {
-    const posts = await wp.posts();
-    return {post: posts}
-  }, */
-    data:function() {
-        return {
-            posts: [],
-            loaded: false
-        }
+    fetch({ store }){
+        return axios.all([
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
+        ]).then(axios.spread((postRes, utskottRes, pageRes) => {
+            store.commit('frontPagePosts', postRes.data),
+            store.commit('headerUtskott', utskottRes.data),
+            store.commit('headerPages', pageRes.data),
+            store.commit('allPages', pagesRes.data)
+        })).catch((error) =>
+            console.log(error)    
+        )
     },
-    created:function(){
-        this.get_posts();
-    },
-    methods: {
-        get_posts:function(){
-            return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
-                for(var i = 0; i < 3; i++){
-                    this.posts.push(res.data[i]);
-                }
-                this.loaded = true;
-            }).catch((error) => {
-                console.log(error)
-            })
+    computed: {
+        posts(){
+            return this.$store.state.posts
         }
     },
     components: {
