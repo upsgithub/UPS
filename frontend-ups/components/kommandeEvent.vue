@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h4 v-if="empty_item()" class="event-header" >KOMMANDE EVENT</h4>
+  <div class="upcoming-event">
+    <h4 v-if="empty_item()" class="event-header" >Kommande event</h4>
     <div class="flex-container-event">
       <div @click="clickBox( item.htmlLink )" class="event-box" v-for="item in filteredItems" :key="item.id" >
         <h4 class="event-text">{{ item.summary }}</h4>
@@ -10,8 +10,10 @@
   </div>
 </template>
 
-<style lang="sass">
-
+<style lang="scss">
+.upcoming-event{
+  margin: 40px 0;
+}
 </style>
 
 <script>

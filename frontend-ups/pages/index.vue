@@ -20,7 +20,7 @@
                         Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
                     </p>
                 </div>
-                <button>Mer om oss</button>
+                <nuxt-link to="/forening"><button>Mer om oss</button></nuxt-link>
             </div>
             <div class="post-picture col-5">
                 <picture>
@@ -32,7 +32,7 @@
         </div>
         <kommandeEvent />
         <Sponsor />
-        <div class="posts container--full">
+        <div v-if="loaded" class="posts container--full">
             <div class="posts" v-for="post in posts" :key="post.id">
                 <div class="post-picture col-5">
                     <picture>
@@ -69,16 +69,25 @@ export default {
     const posts = await wp.posts();
     return {post: posts}
   }, */
-    fetch({ store }){
-        return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
-            store.commit('frontPagePosts', res.data)
-        }).catch((error) => {
-            console.log(error)
-        })
+    data:function() {
+        return {
+            posts: [],
+            loaded: false
+        }
     },
-    computed: {
-        posts(){
-            return this.$store.state.posts
+    created:function(){
+        this.get_posts();
+    },
+    methods: {
+        get_posts:function(){
+            return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
+                for(var i = 0; i < 3; i++){
+                    this.posts.push(res.data[i]);
+                }
+                this.loaded = true;
+            }).catch((error) => {
+                console.log(error)
+            })
         }
     },
     components: {
@@ -101,7 +110,7 @@ export default {
     // margin-bottom: 40px;
     padding: 10px 20px;
     background: #30242e;
-    
+    line-height: 80%;
 
     &-holder{
         width: 100%;
@@ -121,11 +130,6 @@ export default {
     }
 }
 
-.posts{
-    display: inline-block;
-    
-}
-
 @media only screen and (min-width: 768px) {
     .image-footer{
         padding: 10px 40px;
@@ -138,9 +142,5 @@ export default {
         }
     }
     
-    .posts{
-        margin-top: 20px;
-        padding-right: 20px;
-    }
 }
 </style>

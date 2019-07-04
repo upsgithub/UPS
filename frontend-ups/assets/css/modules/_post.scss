@@ -8,7 +8,7 @@
     &-title{
         h1{
             font-size: 24px;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
     }
     &-text{
@@ -17,6 +17,10 @@
         }
         p{
             margin-bottom: 20px;
+        }
+        img{
+            width: 100%;
+            height: auto;
         }
     }
     &-picture{
@@ -29,10 +33,21 @@
             clear: both;
         }
     }
+    &-noimage{
+        margin-top: 20px;
+        border-bottom:1px solid grey;
+        &-noborder{
+            border: 0;
+        }
+    }
 }
 
 .post-picture{
     display:none;
+}
+
+.posts{
+    display: inline-block;   
 }
 
 @media only screen and (min-width: 800px) {
@@ -46,13 +61,22 @@
         &-text{
             margin: 0 20px;
         }
+        &-noimage{
+            width: auto;
+        }
     }
 
     .post-picture{
         display: block;
+        padding-right: 20px;
+        padding-top: 20px;
     }
 
     button{
         margin: 0 20px;
+    }
+    
+    .posts{
+        margin-top: 20px;
     }
 }
