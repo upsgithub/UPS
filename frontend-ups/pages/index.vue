@@ -23,7 +23,11 @@
                 <button>Mer om oss</button>
             </div>
             <div class="post-picture col-5">
-                <img src="../assets/img/placeholder_img.png" /> 
+                <picture>
+                    <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
+                    <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
+                    <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
+                </picture>
             </div>
         </div>
         <kommandeEvent />
@@ -31,7 +35,11 @@
         <div class="posts container--full">
             <div class="posts" v-for="post in posts" :key="post.id">
                 <div class="post-picture col-5">
-                    <img src="../assets/img/placeholder_img.png" /> 
+                    <picture>
+                        <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
+                        <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
+                        <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
+                    </picture>
                 </div>
                 <div class="post col-12">
                     <div class="post-title">

@@ -2,10 +2,11 @@
   "name": "frontend-ups",
   "version": "1.0.0",
   "description": "My amazing Nuxt.js project",
+  "homepage": "file:///C:\\Users\\vikto\\Documents\\Ups\\UPS\\frontend-ups\\dist",
   "author": "esplito",
   "private": true,
   "scripts": {
-    "dev": "nuxt --spa",
+    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate"
@@ -17,14 +18,19 @@
     "@fullcalendar/vue": "^4.2.2",
     "@nuxtjs/axios": "^5.3.6",
     "cross-env": "^5.2.0",
+    "lazysizes": "^5.1.0",
     "nuxt": "^2.4.0",
     "swiper": "^4.5.0",
     "vue-instagram": "^2.0.1",
     "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
+    "@bazzite/nuxt-optimized-images": "^0.2.1",
+    "imagemin-mozjpeg": "^8.0.0",
+    "imagemin-pngquant": "^8.0.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.9",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "webp-loader": "^0.5.0"
   }
 }

@@ -5,7 +5,7 @@
         <div v-if="Sponsors_exist" class="samarbeten-wrapper">
                   
             <div class="samarbete-logo col-6" v-for="sponsor in Samarbeten">
-                <a class="a-button" v-bind:to="sponsor.acf.lank"><img v-bind:src="sponsor.acf.bild.url" /></a>
+                <a class="a-button" v-bind:href="sponsor.acf.lank"><img v-bind:src="sponsor.acf.bild.url" /></a>
             </div>
         </div>
     </div>
