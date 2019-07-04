@@ -2,14 +2,15 @@
     <div class="containter">
         <div class="plain-background">
             <h3>{{ sida_namn }}</h3>
-            
+           
         </div>
-        <div class="content-wrapper">
         
-            <div class="plain container--full">
-                <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                <div  v-else class="plain-text col-12">
-                    <div class="post-title">
+        <div class="content-wrapper">
+            
+            <div class="plain container--full">     
+                <div class="plain-text col-12">
+                <sync-loader v-if="loading" class="vue-spinner" :loading="true" :color="color"></sync-loader>
+                    <div v-else class="post-title">
                     
                         <h1> {{ sida_title }} </h1>
                         
@@ -21,6 +22,7 @@
                     </div>
                 </div>
             </div>
+            
             <KommandeEvent />
             <Sponsor />
         </div>

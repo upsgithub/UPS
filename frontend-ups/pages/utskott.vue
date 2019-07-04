@@ -1,21 +1,19 @@
 <template>
-
-    <div v-if="loaded" class="container">
+    <div  class="container">
         <div class="utskott-background" v-bind:style="{ backgroundImage: 'url(' + background + ')' }">
             <h3>{{ utskottsnamn }}</h3>
-        </div>
-        <div class="content-wrapper">
-            <div class="utskott container--full">
             
+        </div>
+        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        <div v-else class="content-wrapper">
+            <div class="utskott container--full">
                 <div class="utskott-text col-12">
                 
                     <div class="post-title">
-                    
                         <h1> Vad gör vi? </h1>
-                        
                     </div>
                     <div class="post-text" v-html="utskottstext">
-                        
+                    
                             {{ utskottstext }}
                             
                     </div>
@@ -27,7 +25,7 @@
                         <h1>Kontakt</h1>
                     </div>
                     <div class="utskott-picture">
-                        <img v-bind:src="utskott_acf.ordforande_bild.url" />
+                        <img v-if="loaded" v-bind:src="utskott_acf.ordforande_bild.url" />
                     </div>
                     <h4>Ordförande</h4>
                     <h5>{{ utskott_acf.ordforande_namn }}</h5>
