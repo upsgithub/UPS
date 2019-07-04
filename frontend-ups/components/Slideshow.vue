@@ -76,7 +76,7 @@
             <!-- If we need scrollbar -->
             <div class="swiper-scrollbar"></div>
         </div>
-    </div>
+    </div>    
 </template>
 
 <script>
@@ -90,7 +90,7 @@ export default{
             slidesPerView: 1,
             centeredSlides: true,
             autoplay: {
-                delay: 3000,
+                delay: 4000,
                 disableOnInteraction: true,
             },
             loop: true,
