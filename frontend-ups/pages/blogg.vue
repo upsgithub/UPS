@@ -6,6 +6,7 @@
         <div class="image-footer-holder" id="home-anchor">
             <div class="image-footer">
                 <h4>Sensate Inlägget:</h4>
+                <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
             </div>        
         </div>    
         <div class="content-wrapper--small">
@@ -52,11 +53,14 @@
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
 
 export default {
     data:function() {
         return {
+            loading: true,
+            color: "#eb5e43",
             currentPost: [],
             currentPostPos: 0,
             latestPosts: [],
@@ -109,6 +113,7 @@ export default {
                 }
                 this.latestPosts.slice(current, 1);
                 this.loaded = true;
+                this.loading = false;
             }).catch((error) => {
                 console.log(error)
             })
@@ -125,7 +130,8 @@ export default {
     components: {
         Sponsor,
         Instagram,
-        KommandeEvent
+        KommandeEvent,
+        SyncLoader
     }
 }
 </script>
