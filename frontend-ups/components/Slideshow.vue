@@ -14,7 +14,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
                 <div class="swiper-slide">
@@ -26,11 +26,18 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
                 <div class="swiper-slide">
                     <nuxt-link to="/student">
+                        <!-- <picture>
+                            <source data-srcset="~assets/img/globe_new@1920w.jpeg?webp"
+                            sizes="auto" type="image/webp" alt="globe"/>
+                            <source data-srcset="~assets/img/globe_new@1920w.jpeg"
+                            sizes="auto" type="image/jpeg" alt="globe"/>
+                            <img data-src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        </picture> -->
                         <img srcset="~assets/img/globe_new@320w.jpeg 320w,
                         ~assets/img/globe_new@480w.jpeg 480w,
                         ~assets/img/globe_new@768w.jpeg 768w,
@@ -38,7 +45,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
             </div>
