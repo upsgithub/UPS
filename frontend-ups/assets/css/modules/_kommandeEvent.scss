@@ -1,0 +1,64 @@
+.event-box {
+    border-style: solid;
+    border-width: thin;
+    margin: 5px;
+    height: 125px;
+    //min-width: 125px;
+    width: 125px;
+    //flex: 1 0 calc(50% - 40px);
+    cursor: pointer;
+}
+
+.flex-container-event {
+    margin-top: 25px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+}
+
+.event-text {
+    margin-top: 25px;
+    margin-bottom:50px;
+    text-align: center;
+}
+
+.event-header {
+    text-align: center;
+}
+.event-date {
+    color: white;
+    background-color: #30242E;
+    padding: 3px;
+}
+
+@media only screen and (min-width: 400px) {
+    .event-box{
+        margin: 10px;
+        width: 140px;
+    }    
+}
+
+@media only screen and (min-width: 500px) {
+    .event-box{
+        margin: 15px;
+        width: 180px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .event-box{
+        margin: 20px;
+        width: 210px;
+    }
+    
+}
+
+@media only screen and (min-width: 800px) {
+    .event-box{
+        margin: 20px;
+        max-width: 230px;
+        flex: 1 0 calc(25% - 40px);
+    }
+    
+}

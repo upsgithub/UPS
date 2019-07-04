@@ -18,6 +18,7 @@
                     <button>Läs mer!</button>
                 </div>
             </div>
+            <KommandeEvent />
             <Sponsor />
             
         </div>
@@ -28,11 +29,13 @@
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
+import KommandeEvent from '~/components/kommandeEvent.vue'
 
 export default {
     components: {
         Sponsor,
-        Instagram
+        Instagram,
+        KommandeEvent
     }
 }
 </script>

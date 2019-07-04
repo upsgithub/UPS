@@ -16,10 +16,12 @@
                         </p>
                     </div>
                     <nuxt-link to="/blogg" class="a-button"><button>Blogg</button></nuxt-link>
-                    <h4>KOMMANDE EVENT</h4>
+                    
+                    <kommandeEvent />
                     <kalender />
                 </div>
             </div>
+            
             <Sponsor />
         </div>
         <Instagram />
@@ -30,12 +32,14 @@
 import kalender from '~/components/kalender.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
+import kommandeEvent from '~/components/kommandeEvent.vue'
 
 export default {
     components: {
         Sponsor,
         Instagram,
-        kalender
+        kalender,
+        kommandeEvent
     }
 }
 </script>

@@ -26,6 +26,7 @@
                 </div>
                 
             </div>
+            <KommandeEvent />
             <Sponsor />    
         </div>
         <Instagram />
@@ -95,6 +96,7 @@
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
+import KommandeEvent from '~/components/kommandeEvent.vue'
 import axios from 'axios'
 
 export default {
@@ -136,7 +138,8 @@ export default {
     },
     components: {
         Sponsor,
-        Instagram
+        Instagram,
+        KommandeEvent
     }
 }
 </script>
