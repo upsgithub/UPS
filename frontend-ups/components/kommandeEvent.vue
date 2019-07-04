@@ -2,6 +2,7 @@
   <div class="upcoming-event">
     <h4 v-if="empty_item()" class="event-header" >Kommande event</h4>
     <div class="flex-container-event">
+      <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
       <div @click="clickBox( item.htmlLink )" class="event-box" v-for="item in filteredItems" :key="item.id" >
         <h4 class="event-text">{{ item.summary }}</h4>
         <h4 class="event-text event-date">{{ changeDate(item.start.dateTime) }}</h4>
@@ -18,10 +19,17 @@
 
 <script>
 import axios from "axios";
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 
 export default {
+  components: {
+    SyncLoader
+  },
+
   data() {
     return {
+      loading: true,
+      color: "#eb5e43", 
       api_url: "https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo",
       lang: "sv",
       options: { month: 'short', day: 'numeric' },
@@ -71,6 +79,7 @@ export default {
             }
           }
           this.items.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1);
+          this.loading = false;
         })
         .catch(error => {
           console.log(error);

@@ -1,12 +1,11 @@
 <template>
   <div class="container--full ig-container">
-    <div class="content-wrapper">
-      <div class="ig-wrapper">
+    <div class="content-wrapper ig-wrapper">
         <vue-instagram token="37108703.1677ed0.3fbc500e19324c9184ff4875de875e84" :count="1">
           <template slot="feeds" slot-scope="props">
             <a href="https://www.instagram.com/uppsalapolitices">
               
-                <img class="ig-logo" :src="props.feed.user.profile_picture" />
+                <img class="ig-logo lazyload" :data-src="props.feed.user.profile_picture" />
               
               
                 <h3 class="ig-h3">@{{ props.feed.user.username }}</h3>
@@ -20,14 +19,13 @@
             <template slot="feeds" slot-scope="props">
               <img
                 @click="clickIgImg(props.feed.link)"
-                class="ig-img"
-                :src="props.feed.images.low_resolution.url"
+                class="ig-img lazyload"
+                :data-src="props.feed.images.low_resolution.url"
                 alt="Image"
               />
             </template>
           </vue-instagram>
         </div>
-      </div>
     </div>
   </div>
 </template>

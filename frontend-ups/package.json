@@ -21,12 +21,14 @@
     "lazysizes": "^5.1.0",
     "nuxt": "^2.4.0",
     "swiper": "^4.5.0",
-    "vue-instagram": "^2.0.1"
+    "vue-instagram": "^2.0.1",
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
+    "lqip-loader": "^2.2.0",
     "node-sass": "^4.12.0",
     "nodemon": "^1.18.9",
     "sass-loader": "^7.1.0",

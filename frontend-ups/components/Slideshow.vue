@@ -14,7 +14,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
                 <div class="swiper-slide">
@@ -26,18 +26,35 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
                 <div class="swiper-slide">
                     <nuxt-link to="/student">
-                        <!-- <picture>
+                        <!-- 
+                            We can use the following on pictures which are not a part of the slider.
+                            <picture>
+                            <source data-srcset="~assets/img/globe_new@480w.jpeg?webp"
+                            sizes="auto"  type="image/webp" media="(max-width: 480px)" alt="globe"/>
+                            <source data-srcset="~assets/img/globe_new@480w.jpeg"
+                            sizes="auto" type="image/jpeg" media="(max-width: 480px)" alt="globe"/>
+                            <source data-srcset="~assets/img/globe_new@768w.jpeg?webp"
+                            sizes="auto" type="image/webp" media="(max-width: 768px)" alt="globe"/>
+                            <source data-srcset="~assets/img/globe_new@768w.jpeg"
+                            sizes="auto" type="image/jpeg" media="(max-width: 768px)" alt="globe"/>
+                            <source data-srcset="~assets/img/globe_new@1376w.jpeg?webp"
+                            sizes="auto" type="image/webp" media="(max-width: 1376px)" alt="globe"/>
+                            <source data-srcset="~assets/img/globe_new@1376w.jpeg"
+                            sizes="auto" type="image/jpeg" media="(max-width: 1376px)" alt="globe"/>
                             <source data-srcset="~assets/img/globe_new@1920w.jpeg?webp"
-                            sizes="auto" type="image/webp" alt="globe"/>
+                            sizes="auto" type="image/webp"  alt="globe"/>
                             <source data-srcset="~assets/img/globe_new@1920w.jpeg"
                             sizes="auto" type="image/jpeg" alt="globe"/>
                             <img data-src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
-                        </picture> -->
+                        </picture>
+                        <noscript>
+                            <img src="~assets/img/globe_new@1920w.jpeg" alt="globe"/>
+                        </noscript> -->
                         <img srcset="~assets/img/globe_new@320w.jpeg 320w,
                         ~assets/img/globe_new@480w.jpeg 480w,
                         ~assets/img/globe_new@768w.jpeg 768w,
@@ -45,7 +62,7 @@
                         ~assets/img/globe_new@1376w.jpeg 1376w,
                         ~assets/img/globe_new@1920w.jpeg 1920w"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
+                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
                 </div>
             </div>
