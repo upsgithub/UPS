@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
 <div class="index-wrapper">
     <div class="content-wrapper--full">
         <Slideshow />
@@ -9,24 +8,6 @@
             <div class="post col-12">
                 <div class="post-title">
                     <h1> Vilka är vi? </h1>
-=======
-    <section class="container">
-        <Header />
-        <!-- <Slideshow /> Jag får den inte att hitta jssor.slider i assets/slider/js... osv --> 
-        <div class="content-wrapper">
-            <div class="posts container--full">
-                <div class="post col-12">
-                    <div class="post-title">
-                        <h1> Vilka är vi? </h1>
-                    </div>
-                    <div class="post-text">
-                        <p> 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ex sit amet justo feugiat viverra. Pellentesque sit amet velit tempor, euismod augue viverra, laoreet mauris. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris vel ipsum vitae mi maximus rhoncus eu nec ex. In sollicitudin ut elit semper elementum. Praesent vitae magna non arcu imperdiet tempor id quis libero. Nunc id tempus neque. Pellentesque ac leo sapien.
-                            Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
-                        </p>
-                    </div>
-                    <button>Mer om oss</button>
->>>>>>> 5bcf1f72b3bc909ef951396852eecd00dd61df6b
                 </div>
                 <div class="post-text">
                     <p> 
