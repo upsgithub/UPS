@@ -26,7 +26,7 @@
 
             <div class="logo col-4">
                 <nuxt-link to="/">
-                    <img src="../assets/img/logo_bred_placeholder.png" />
+                    <img src="~/../assets/img/logo_bred_placeholder.png" />
                 </nuxt-link>
             </div>
 

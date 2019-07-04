@@ -14,9 +14,9 @@
                     <h4>Sociala medier</h4>
                 </div>
                 <div class="img">
-                    <img src="../assets/img/facebook.png" />
-                    <img src="../assets/img/insta.png" />
-                    <img src="../assets/img/soundcloud.png" />
+                    <a class="a-button" href="https://www.facebook.com/uppsalapolitices/"><img src="../assets/img/facebook.png" /></a>
+                    <a class="a-button" href="https://www.instagram.com/uppsalapolitices/?hl=sv"><img src="../assets/img/insta.png" /></a>
+                    <a class="a-button" href="https://soundcloud.com/studentradion98-9/sets/sen-lunch-med-pk"><img src="../assets/img/soundcloud.png" /></a>
                 </div>
             </div>
             <div class="footer-item col-4">
