@@ -21,7 +21,8 @@
     "lazysizes": "^5.1.0",
     "nuxt": "^2.4.0",
     "swiper": "^4.5.0",
-    "vue-instagram": "^2.0.1"
+    "vue-instagram": "^2.0.1",
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "@bazzite/nuxt-optimized-images": "^0.2.1",
