@@ -1,18 +1,27 @@
 <template>
+
     <div v-if="loaded" class="container">
         <div class="utskott-background" v-bind:style="{ backgroundImage: 'url(' + background + ')' }">
             <h3>{{ utskottsnamn }}</h3>
         </div>
         <div class="content-wrapper">
             <div class="utskott container--full">
+            
                 <div class="utskott-text col-12">
+                
                     <div class="post-title">
+                    
                         <h1> Vad gör vi? </h1>
+                        
                     </div>
                     <div class="post-text" v-html="utskottstext">
+                        
                             {{ utskottstext }}
+                            
                     </div>
+                    
                 </div>
+                
                 <div class="utskott-kontakt col-12">
                     <div class="post-title">
                         <h1>Kontakt</h1>
@@ -97,11 +106,14 @@
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
 
 export default {
     data:function() {
         return {
+            loading: true,
+            color: "#eb5e43", 
             utskottsnamn: "",
             utskottstext: "",
             utskott_acf: [],
@@ -126,6 +138,7 @@ export default {
                 this.utskott_acf = response.data.acf;
                 //this.utskott_media = response.data.better_featured_image.media_details.thumbnail.large.source_url;
                 this.loaded = true;
+                this.loading = false;
             }).catch((error) => {
                 console.log(error)
             })
@@ -139,7 +152,8 @@ export default {
     components: {
         Sponsor,
         Instagram,
-        KommandeEvent
+        KommandeEvent,
+        SyncLoader
     }
 }
 </script>

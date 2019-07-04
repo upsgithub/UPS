@@ -1,7 +1,9 @@
 <template>
     <div class="samarbeten container--full">
         <h4>Våra samarbetspartners</h4>
+        <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-if="Sponsors_exist" class="samarbeten-wrapper">
+                  
             <div class="samarbete-logo col-6" v-for="sponsor in Samarbeten">
                 <a class="a-button" v-bind:to="sponsor.acf.lank"><img v-bind:src="sponsor.acf.bild.url" /></a>
             </div>
@@ -11,10 +13,16 @@
 
 <script>
 import axios from 'axios'
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 // Samarbeten[0].acf.bild.url
 export default {
+    components: {
+        SyncLoader
+    },
     data:function() {
         return {
+            loading: true,
+            color: "#eb5e43",
             Samarbeten: [],
             Sponsors_exist: false,
             width_of_sponsor: 0
@@ -29,6 +37,7 @@ export default {
                 this.Samarbeten = response.data;
                 this.Sponsors_exist = true;
                 this.width_of_sponsor = 100 / response.data.length;
+                this.loading = false;
             }).catch((error) => {
                 console.log(error)
             })

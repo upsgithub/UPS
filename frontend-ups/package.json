@@ -19,7 +19,8 @@
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
     "swiper": "^4.5.0",
-    "vue-instagram": "^2.0.1"
+    "vue-instagram": "^2.0.1",
+    "vue-spinner": "^1.0.3"
   },
   "devDependencies": {
     "node-sass": "^4.12.0",
