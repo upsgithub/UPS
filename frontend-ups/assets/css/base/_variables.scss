@@ -1,2 +1,3 @@
-$column: calc(100% / 12);
+$numberOfColumns: 12;
+$column: calc(100% / #{$numberOfColumns});
 $defaultTxtColor: #000;

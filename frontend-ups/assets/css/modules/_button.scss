@@ -1,3 +1,26 @@
+.btn{
+    border: none;
+    height: 35px;
+    min-width: 100px;
+    max-width: 220px;
+    font-size: 14px;
+    cursor: pointer;
+
+    &--default{
+        color: #ffffff;
+        background: #EB5E43;
+    }
+
+    &--small-h{
+        height: 30px;
+    }
+
+    &--link{
+        padding: 20px 0px;
+    }
+}
+
+
 button{
     border: none;
     height: 35px;
@@ -9,7 +32,7 @@ button{
     cursor: pointer;
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
     button{
         font-size: 13px;
     }

@@ -16,6 +16,16 @@
                         sizes="auto"
                         src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
+                    <div class="slideshow__bar">
+                        <div class="slideshow__bar--w">
+                            <h4 class="slideshow__bar-text col-8 col-8--smaller">Politices kandidatsprogram - Studierna inom programmet...</h4>
+                            <div class="slideshow__bar-btn col-4 col-4--bigger">
+                                <nuxt-link to="/kandidat" class="a-button">
+                                    <button class="btn btn--default btn--small-h">Läs mer</button>
+                                </nuxt-link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="swiper-slide">
                     <nuxt-link to="/forening">
@@ -28,6 +38,16 @@
                         sizes="auto"
                         src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
+                    <div class="slideshow__bar">
+                        <div class="slideshow__bar--w">
+                            <h4 class="slideshow__bar-text col-8 col-8--smaller">Politices kandidatsprogram - Studierna inom programmet...</h4>
+                            <div class="slideshow__bar-btn col-4 col-4--bigger">
+                                <nuxt-link to="/kandidat" class="a-button">
+                                    <button class="btn btn--default btn--small-h">Läs mer</button>
+                                </nuxt-link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="swiper-slide">
                     <nuxt-link to="/student">
@@ -64,6 +84,16 @@
                         sizes="auto"
                         src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
                     </nuxt-link>
+                    <div class="slideshow__bar">
+                        <div class="slideshow__bar--w">
+                            <h4 class="slideshow__bar-text col-8 col-8--smaller">Politices kandidatsprogram - Studierna inom programmet...</h4>
+                            <div class="slideshow__bar-btn col-4 col-4--bigger">
+                                <nuxt-link to="/kandidat" class="a-button btn--link">
+                                    <button class="btn btn--default btn--small-h">Läs mer</button>
+                                </nuxt-link>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- If we need pagination -->
@@ -122,6 +152,9 @@ export default{
     margin-left: auto;
     margin-right: auto;
 }
+.swiper-container-horizontal>.swiper-pagination-bullets{
+    bottom: 75px;
+}
 .swiper-pagination{
     &-bullet{
         width: 10px;
@@ -143,12 +176,62 @@ export default{
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center;
+      flex-direction: column;
+  flex-wrap: wrap;
+
+      img{
+          object-fit: cover;
+          overflow: hidden;
+      }
 }
-.swiper-button-prev {
-    left: 20px;
+.swiper-button-next, .swiper-button-prev{
+    display: none;
 }
-.swiper-button-next{
-    right: 20px;
+.slideshow__bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 58px;
+    background: #30242e;
+    margin: 0;
+    padding: 0;
+
+    a{
+        height: 100%;
+    }
+
+    &--w{
+        max-width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        padding: 14px 20px;
+        // margin-bottom: 40px;
+    }
+
+    &-text{
+        float: left;
+        color: #eb5e43;
+        word-wrap: break-word;
+        overflow: hidden;
+        font-size: 0.75rem;
+
+        &::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+    }
+
+    &-btn{
+        float: right;
+        text-align: right;
+
+        &::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
+    }
 }
 @media only screen and (min-width: 768px) {
     .swiper-button-prev {
@@ -157,8 +240,26 @@ export default{
     .swiper-button-next{
         right: 40px;
     }
+    .swiper-button-next, .swiper-button-prev{
+        top: 45%;
+        display: block;
+    }
     .slideshow{
         height: 380px;
+    }
+    .slideshow__bar{
+        height: 60px;
+
+        &--w{
+            padding: 15px 40px;
+        }
+        &-text{
+            font-size: 0.875rem;
+            line-height: 2;
+        }
+        .btn{
+            margin-right: 0px;
+        }
     }
 }
 </style>
