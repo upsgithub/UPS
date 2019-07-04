@@ -60,6 +60,23 @@
             </div> 
             
         </div>
+        <div class="menu item sixth">
+            <div class="menu item-img">
+                <img src="../assets/img/calendar.png" />
+            </div>
+            <div class="menu item-text">
+                <h2>Event</h2>
+            </div>
+        </div> 
+        <div class="menu item sixth">
+            <div class="menu item-img">
+                <img src="../assets/img/foreningen.png" />
+            </div>
+            <div class="menu item-text">
+                <h2>Föreningen</h2>
+            </div>
+        </div> 
+
     </div>
 </template>
 
@@ -96,34 +113,31 @@ export default {
 
 <style lang="scss">
     .menu{
+        width: 1000px;
+        height: 140px;
+        overflow: hidden;
         background: #30242e;
+        padding: 20px 30px 0px 30px;
         text-align: center;
-        position: relative;
+    }
 
-        &-item{
-            display: none;
+        .item{
+            height: 90px;
+            float: left;
+            text-align: center;
         }
-    }
 
-    .logo{
-        padding: 0;
-        width: 100%;
-        float: left;
-        &::after{
-            clear: both;
-        }
-    }
+            .item-img{
+                width: 100%;
+                height: 80%;
+                padding: 0;
+            }
 
-    .logo img{
-        margin-bottom: -5px;
-        width: 70%;
-    }
-
-    @media only screen and (min-width: 800px) {
-        
-        .menu{
-        padding: 7.5px 0px;
-        height: 100px;
+            .item-text{
+                width: 100%;
+                height: 20%;
+                padding: 0;
+            }
         
             &-item{
                 display: block;
@@ -141,6 +155,24 @@ export default {
                     height: auto;
                 }
             }
+
+    .item img{
+        max-width: 100%;
+        height: 90%;
+    }
+
+    .menu h2{
+        padding: 0;
+        margin: 0;
+        color: #eb5e43;
+        font-size: 16px;
+        font-weight: 100;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .menu{
+            height: 160px;
+            padding: 0;
         }
 
         .logo{
@@ -149,8 +181,7 @@ export default {
         }
 
         .logo img{
-            width: auto;
-            max-height: 90px;
+            height: 100%;
         }
 
         .desktop{
@@ -211,4 +242,3 @@ export default {
         }
     }
 </style>
-
