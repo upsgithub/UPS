@@ -3,9 +3,9 @@
         <div class="plain-background">
             <h3>Bloggen</h3>
         </div>
-        <div class="image-footer-holder" id="home-anchor">
-            <div class="image-footer">
-                <h4>Sensate Inlägget:</h4>
+        <div class="content-wrapper--small" id="home-anchor">
+            <div class="blog-heading">
+                <h4>Senaste</h4>
                 <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
             </div>        
         </div>    
@@ -22,9 +22,9 @@
                 </div>
             </div>
         </div>
-            <div class="image-footer-holder" id="post-anchor">
-                <div class="image-footer">
-                    <h4>Alla inlägg:</h4>
+            <div class="content-wrapper--small" id="post-anchor">
+                <div class="blog-heading">
+                    <h4>Övriga inlägg</h4>
                 </div>        
             </div>
         <div class="content-wrapper--small">
@@ -149,5 +149,11 @@ export default {
 
 .blogg_buttons{
     text-align: center;
+}
+
+.blog-heading{
+    padding: 20px 20px 10px 20px;
+
+    border-bottom: 1px solid grey;
 }
 </style>
