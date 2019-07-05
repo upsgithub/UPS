@@ -1,7 +1,13 @@
 <template>
     <div  class="container">
         <div class="utskott-background" v-bind:style="{ backgroundImage: 'url(' + utskott + ')' }">
-            <h3>{{ utskott.title.rendered }}</h3>
+            <h3 :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
+            <img v-if="utskott.better_featured_image && loaded" :srcset="utskott.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                    utskott.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                    utskott.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                    utskott.better_featured_image.source_url + ' 1920w'"
+                    sizes="auto"
+                    :src="utskott.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="utskott.better_featured_image.alt_text"/>
             
         </div>
         <!-- <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader> -->
@@ -23,9 +29,9 @@
                     <div class="utskott-picture">
                         <picture>
                             <!-- This is not completed. We need to make sure that we store images from API call locally so we can use webPloader and lazyloading properly. -->
-                            <source v-if="loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
-                            <source v-if="loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url" type="image/jpeg">
-                            <img v-if="loaded" v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
+                            <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
+                            <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url" type="image/jpeg">
+                            <img v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
                         </picture>
                     </div>
                     <h4>Ordförande</h4>
@@ -47,14 +53,25 @@
     display: inline-block;
 
     &-background{
-        height: 100px;
-        background-image: url("../../../assets/img/utbildning.png");
-        background-position: center;
-        background-size: cover;
+        height: 150px;
         text-align: center;
         font-size: 20px;
-        color: white;
-        padding-top: 40px;
+        position: relative;
+        overflow: hidden;
+
+        > h3, img{
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+        }
+        h3{
+            z-index: 2;
+        }
+
+        img{
+            width: 100%;
+        }
     }
 
     &-kontakt{
@@ -94,8 +111,8 @@
         margin: 20px 0;
 
         &-background{
-            height: 250px;
-            padding-top: 115px;
+            height: 280px;
+            padding-top: 0px;
         } 
 
         &-text{
