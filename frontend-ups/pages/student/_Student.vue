@@ -44,13 +44,14 @@ export default {
                     return pagesArr[i];
                 }
             }
-            return url;
         }
     },
     computed:{
         cur_page(){
-            // return this.$store.state.pages;
             return this.current_page(this.$store.state.pages, this.current_url());
+        },
+        loading(){
+            return this.cur_page == undefined;
         }
     },
     components: {
