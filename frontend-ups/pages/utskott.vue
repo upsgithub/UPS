@@ -25,7 +25,11 @@
                         <h1>Kontakt</h1>
                     </div>
                     <div class="utskott-picture">
-                        <img v-if="loaded" v-bind:src="utskott_acf.ordforande_bild.url" />
+                        <picture>
+                            <source v-if="loaded" v-bind:data-srcset="utskottsordforande_bild_webp" type="image/webp">
+                            <source v-if="loaded" v-bind:data-srcset="utskott_acf.ordforande_bild.url" type="image/jpeg">
+                            <img v-if="loaded" v-bind:data-src="utskott_acf.ordforande_bild.url" class="lazyload" />
+                        </picture>
                     </div>
                     <h4>Ordförande</h4>
                     <h5>{{ utskott_acf.ordforande_namn }}</h5>
@@ -116,7 +120,7 @@ export default {
             utskottstext: "",
             utskott_acf: [],
             loaded: false,
-            background: "http://api.uppsalapolitices.se//wp-content//uploads//2019//06//utbildning-1024x683.jpeg"
+            background: "http://api.uppsalapolitices.se//wp-content/uploads//2019//06//utbildning-1024x683.jpeg"
         }
     },
     created: function(){
@@ -137,9 +141,13 @@ export default {
                 //this.utskott_media = response.data.better_featured_image.media_details.thumbnail.large.source_url;
                 this.loaded = true;
                 this.loading = false;
+                this.setWebPUrl();
             }).catch((error) => {
                 console.log(error)
             })
+        },
+        setWebPUrl: function(){
+            this.utskottsordforande_bild_webp = utskott_acf.ordforande_bild.url + "?webp";
         }
     },
     watch:{
