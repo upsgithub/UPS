@@ -58,6 +58,7 @@ import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
 import {store} from '../../store/index.js'
+// import { cursorTo } from 'readline';
 // import { start } from 'repl';
 
 export default {
@@ -66,15 +67,17 @@ export default {
             loading: false,
             color: "#eb5e43",
             loaded: true,
-            starting_at: 0
+            current_start: 1
         }
     },
     methods: {
         get_newer(){
-            starting_at -= 4;
+            this.scroll_to_posts();
+            this.current_start -= 5;
         },
         get_older(){
-            starting_at += 4;
+            this.scroll_to_posts();
+            this.current_start += 5;
         },
         scroll_to_posts(){
             $([document.documentElement, document.body]).animate({
@@ -92,16 +95,16 @@ export default {
             return this.$store.state.posts.length;
         },  
         latest_post(){
-            return this.$store.state.posts.slice(this.starting_at, 1);
+            return this.$store.state.posts.slice(0, 1);
         },
         five_posts(){
-            return this.$store.state.posts;
+            return this.$store.state.posts.slice(this.current_start, this.current_start + 5);
         },
         older_exists(){
-            return !(this.nextLatestPosts > this.nr_of_posts);
+            return !(this.current_start + 5 >= this.nr_of_posts);
         },
         newer_exists(){
-            return this.nextNewerPosts >= 0;
+            return this.current_start - 5 >= 0;
         }
     },
     components: {
