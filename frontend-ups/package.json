@@ -2,7 +2,6 @@
   "name": "frontend-ups",
   "version": "1.0.0",
   "description": "My amazing Nuxt.js project",
-  "homepage": "file:///C:\\Users\\vikto\\Documents\\Ups\\UPS\\frontend-ups\\dist",
   "author": "esplito",
   "private": true,
   "scripts": {
