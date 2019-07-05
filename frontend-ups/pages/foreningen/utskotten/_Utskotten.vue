@@ -4,7 +4,7 @@
             <h3>{{ utskott.title.rendered }}</h3>
             
         </div>
-        <!-- <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader> -->
+        <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div class="content-wrapper">
             <div class="utskott container--full">
                 <div class="utskott-text col-12">
@@ -143,6 +143,9 @@ export default {
     computed:{
         utskott(){
             return this.current_utskott(this.$store.state.utskott, this.current_url());
+        },
+        loading(){
+            return this.utskott == undefined;
         }
     },
     components: {

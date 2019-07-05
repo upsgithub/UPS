@@ -7,7 +7,8 @@ export const state = () => ({
     student: [],
     forening: [],
     pages: [],
-    slides: []
+    slides: [],
+    samarbeten: []
 })
 
 export const mutations = {
@@ -43,5 +44,8 @@ export const mutations = {
     },
     slideShow(state, slides){
         state.slides = slides;
+    },
+    samarbeten(state, partners){
+        state.samarbeten = partners;
     }
 }

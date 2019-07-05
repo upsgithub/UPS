@@ -58,27 +58,21 @@ import KommandeEvent from '~/components/kommandeEvent.vue'
 import axios from 'axios'
 
 export default {
-    data:function() {
-        return {
-            loaded: false
-        }
-    },
     fetch({ store }){
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
-        ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes) => {
-            if(!this.loaded){
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/partner')
+        ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes, partnerRes) => {
                 store.commit('Posts', postRes.data),
                 store.commit('headerUtskott', utskottRes.data),
                 store.commit('allUtskott', utskottRes.data),
                 store.commit('slideShow', slidesRes.data),
                 store.commit('headerPages', pageRes.data),
                 store.commit('allPages', pageRes.data),
-                this.loaded = true
-            } 
+                store.commit('samarbeten', partnerRes.data)
         })).catch((error) =>
             console.log(error)    
         )
