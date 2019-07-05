@@ -25,7 +25,7 @@
                             <!-- This is not completed. We need to make sure that we store images from API call locally so we can use webPloader and lazyloading properly. -->
                             <source v-if="loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
                             <source v-if="loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url" type="image/jpeg">
-                            <img v-if="loaded" v-bind:data-src="utskott_acf.ordforande_bild.url" class="lazyload" />
+                            <img v-if="loaded" v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
                         </picture>
                     </div>
                     <h4>Ordförande</h4>
@@ -122,6 +122,11 @@ import axios from 'axios'
 import {store} from '../../../store/index.js'
 
 export default {
+    data:function(){
+        return {
+            loaded: true
+        }
+    },
     methods: {
         current_url:function(){
             var url = (this.$route.path.split("/"));
