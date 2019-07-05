@@ -1,14 +1,42 @@
 @for $i from 1 through 12 {
     @if $i < 11 {
-        .col-#{$i}--bigger{
+        .col-#{$i}.col-#{$i}--bigger{
             width: calc(#{$column} * (#{$i}+2));
         }
     }
     @if $i > 2 {
-        .col-#{$i}--smaller{
+        .col-#{$i}.col-#{$i}--smaller{
             width: calc(#{$column} * (#{$i}-2));
         }
     }
+}
+
+.col-2{
+    width: calc(#{$column} * 2);
+}
+.col-3{
+    width: calc(#{$column} * 3);
+}
+.col-4{
+    width: calc(#{$column} * 4);
+}
+.col-5{
+    width: calc(#{$column} * 5);
+}
+.col-6{
+    width: calc(#{$column} * 6);
+}
+.col-7{
+    width: calc(#{$column} * 7);
+}
+.col-8{
+    width: calc(#{$column} * 8);
+}
+.col-10{
+    width: calc(#{$column} * 10);
+}
+.col-12{
+    width: 100%;
 }
 
 @media only screen and (min-width: 768px) {

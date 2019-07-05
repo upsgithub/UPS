@@ -3,9 +3,9 @@
         <div class="plain-background">
             <h3>Bloggen</h3>
         </div>
-        <div class="image-footer-holder" id="home-anchor">
-            <div class="image-footer">
-                <h4>Sensate Inlägget:</h4>
+        <div class="content-wrapper--small" id="home-anchor">
+            <div class="blog-heading">
+                <h4>Senaste</h4>
                 <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
             </div>        
         </div>    
@@ -14,28 +14,28 @@
                 <div class="posts">
                     <div v-if="loaded" class="post-noimage-noborder col-12">
                         <div class="post-title">
-                        <h1>{{ currentPost[0].title.rendered }}</h1>
+                        <h1>{{ latest_post[0].title.rendered }}</h1>
                         </div>
-                        <div class="post-text" v-html="currentPost[0].content.rendered"></div>
-                        <div class="post-footer">Uppsala Politicesstudernade - {{ currentPost[0].date }}</div>
+                        <div class="post-text" v-html="latest_post[0].content.rendered"></div>
+                        <div class="post-footer">Uppsala Politicesstudernade - {{ latest_post[0].date.substring(0,10) }}</div>
                     </div>
                 </div>
             </div>
         </div>
-            <div class="image-footer-holder" id="post-anchor">
-                <div class="image-footer">
-                    <h4>Alla inlägg:</h4>
+            <div class="content-wrapper--small" id="post-anchor">
+                <div class="blog-heading">
+                    <h4>Övriga inlägg</h4>
                 </div>        
             </div>
         <div class="content-wrapper--small">
             <div v-if="loaded" class="plain container--full">
                 <div class="posts">
-                    <div class="post-noimage col-12" v-for="post in latestPosts" :key="post.id">
+                    <div class="post-noimage col-12" v-for="post in five_posts" :key="post.id">
                         <div class="post-title">
                         <h1>{{ post.title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="post.content.rendered"></div>
-                        <div class="post-footer">Uppsala Politicesstudernade - {{ post.date }}</div>
+                        <div class="post-footer">Uppsala Politicesstudernade - {{ post.date.substring(0,10) }}</div>
                     </div>
                     <hr>
                 </div>
@@ -57,40 +57,24 @@ import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
+import {store} from '../../store/index.js'
+// import { start } from 'repl';
 
 export default {
     data:function() {
         return {
-            loading: true,
+            loading: false,
             color: "#eb5e43",
-            currentPost: [],
-            currentPostPos: 0,
-            latestPosts: [],
-            loaded: false,
-            nextLatestPosts: 4,
-            nextNewerPosts: -4,
-            nrOfPosts: 0
+            loaded: true,
+            starting_at: 0
         }
     },
-    created:function() {
-        this.get_posts(0, 0);
-    },
     methods: {
-        // load_post(id){
-        //     this.get_posts(0, id);
-        //     this.scroll_to_top();
-        // },
         get_newer(){
-            this.get_posts(this.nextNewerPosts, this.currentPostPos);
-            this.nextNewerPosts -= 4;
-            this.nextLatestPosts -= 4;
-            this.scroll_to_posts();
+            starting_at -= 4;
         },
         get_older(){
-            this.get_posts(this.nextLatestPosts, this.currentPostPos);
-            this.nextLatestPosts += 4;
-            this.nextNewerPosts += 4;
-            this.scroll_to_posts();
+            starting_at += 4;
         },
         scroll_to_posts(){
             $([document.documentElement, document.body]).animate({
@@ -102,30 +86,19 @@ export default {
                 scrollTop: $("#home-anchor").offset().top
             }, 200);
         },
-        get_posts:function(start, current){
-            return axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts').then((res) => {
-                this.currentPostPos = current;
-                res.data[current].date = res.data[current].date.substring(0, 10);
-                this.currentPost.push(res.data[current]);
-                this.nrOfPosts = res.data.length;
-                this.latestPosts = [];
-                for (var i = 0; i < 4; i++){
-                    if((1 + start + i) < res.data.length){
-                        res.data[1 + start + i].date = res.data[1 + start + i].date.substring(0, 10);
-                        this.latestPosts.push(res.data[1+ start + i]);
-                    }
-                }
-                this.latestPosts.slice(current, 1);
-                this.loaded = true;
-                this.loading = false;
-            }).catch((error) => {
-                console.log(error)
-            })
-        }
     },
     computed: {
+        nr_of_posts(){
+            return this.$store.state.posts.length;
+        },  
+        latest_post(){
+            return this.$store.state.posts.slice(this.starting_at, 1);
+        },
+        five_posts(){
+            return this.$store.state.posts;
+        },
         older_exists(){
-            return !(this.nextLatestPosts > this.nrOfPosts);
+            return !(this.nextLatestPosts > this.nr_of_posts);
         },
         newer_exists(){
             return this.nextNewerPosts >= 0;
@@ -149,5 +122,11 @@ export default {
 
 .blogg_buttons{
     text-align: center;
+}
+
+.blog-heading{
+    padding: 20px 20px 10px 20px;
+
+    border-bottom: 1px solid grey;
 }
 </style>

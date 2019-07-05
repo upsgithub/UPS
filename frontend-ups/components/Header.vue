@@ -115,7 +115,7 @@ export default {
     }
 
     .logo img{
-        margin-bottom: -5px;
+        margin-bottom: -10px;
         width: 70%;
     }
 

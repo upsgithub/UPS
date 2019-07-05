@@ -60,31 +60,33 @@ import axios from 'axios'
 export default {
     data:function() {
         return {
-            //loaded: false
+            loaded: false
         }
     },
     fetch({ store }){
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
-        ]).then(axios.spread((postRes, utskottRes, pageRes) => {
-            //if(!this.loaded){
-                store.commit('frontPagePosts', postRes.data),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
+        ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes) => {
+            if(!this.loaded){
+                store.commit('Posts', postRes.data),
                 store.commit('headerUtskott', utskottRes.data),
                 store.commit('allUtskott', utskottRes.data),
+                store.commit('slideShow', slidesRes.data),
                 store.commit('headerPages', pageRes.data),
-                store.commit('allPages', pageRes.data)
-            //     this.loaded = true
-            // }
+                store.commit('allPages', pageRes.data),
+                this.loaded = true
+            } 
         })).catch((error) =>
             console.log(error)    
         )
     },
     computed: {
         posts(){
-            return this.$store.state.posts
-        }
+            return this.$store.state.posts.slice(0,3);
+        } 
     },
     components: {
         Instagram,
