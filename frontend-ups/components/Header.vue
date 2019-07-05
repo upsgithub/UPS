@@ -47,7 +47,7 @@
                     <div class="desktop-item" @click="hide('forening')" v-for="page in forening">
                         <h3><nuxt-link v-bind:to="'/foreningen/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
                     </div>
-                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="foreningen/policy">Policies</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/foreningen/policy">Policies</nuxt-link></h3></div>
                     <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3><nuxt-link to="/foreningen/utskotten">Utskotten</nuxt-link></h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
