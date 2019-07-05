@@ -15,7 +15,7 @@
                             Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
                         </p>
                     </div>
-                    <nuxt-link to="/blogg" class="a-button"><button>Blogg</button></nuxt-link>
+                    <nuxt-link to="event/blogg" class="a-button"><button>Blogg</button></nuxt-link>
                     
                     <kommandeEvent />
                     <kalender />

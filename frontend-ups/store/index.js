@@ -11,13 +11,11 @@ export const state = () => ({
 })
 
 export const mutations = {
-    frontPagePosts(state, posts){
-        for(var i = 0; i < 3; i++){
-            state.posts.push(posts[i])
-        }
+    Posts(state, posts){
+        state.posts = posts;
     },
     frontPageWelcome(state, welcomeMessage){
-        state.welcomeMessage = welcomeMessage
+        state.welcomeMessage = welcomeMessage;
     },
     headerUtskott(state, utskottData){
         for(var i = 0; i < utskottData.length; i++ ){

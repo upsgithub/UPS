@@ -71,7 +71,7 @@ export default {
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
         ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes) => {
             if(!this.loaded){
-                store.commit('frontPagePosts', postRes.data),
+                store.commit('Posts', postRes.data),
                 store.commit('headerUtskott', utskottRes.data),
                 store.commit('allUtskott', utskottRes.data),
                 store.commit('slideShow', slidesRes.data),
@@ -85,7 +85,7 @@ export default {
     },
     computed: {
         posts(){
-            return this.$store.state.posts
+            return this.$store.state.posts.slice(0,3);
         } 
     },
     components: {
