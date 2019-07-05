@@ -58,16 +58,26 @@ import KommandeEvent from '~/components/kommandeEvent.vue'
 import axios from 'axios'
 
 export default {
+    data:function() {
+        return {
+            loaded: false
+        }
+    },
     fetch({ store }){
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
-        ]).then(axios.spread((postRes, utskottRes, pageRes) => {
-            store.commit('frontPagePosts', postRes.data),
-            store.commit('headerUtskott', utskottRes.data),
-            store.commit('headerPages', pageRes.data),
-            store.commit('allPages', pagesRes.data)
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
+        ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes) => {
+            if(!this.loaded){
+                store.commit('frontPagePosts', postRes.data),
+                store.commit('headerUtskott', utskottRes.data),
+                store.commit('slideShow', slidesRes.data),
+                store.commit('headerPages', pageRes.data),
+                store.commit('allPages', pageRes.data),
+                this.loaded = true
+            } 
         })).catch((error) =>
             console.log(error)    
         )
@@ -75,7 +85,7 @@ export default {
     computed: {
         posts(){
             return this.$store.state.posts
-        }
+        } 
     },
     components: {
         Instagram,
