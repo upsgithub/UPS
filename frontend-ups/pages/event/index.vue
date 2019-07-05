@@ -1,13 +1,13 @@
 <template>
     <div class="containter">
         <div class="plain-background">
-            <h3>Fristående ämbeten</h3>
+            <h3>Event</h3>
         </div>
         <div class="content-wrapper">
             <div class="plain container--full">
                 <div class="plain-text col-12">
                     <div class="post-title">
-                        <h1>Fristående ämbeten</h1>
+                        <h1>Event</h1>
                     </div>
                     <div class="post-text">
                         <p> 
@@ -15,24 +15,31 @@
                             Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
                         </p>
                     </div>
-                    <button>Läs mer!</button>
+                    <nuxt-link to="/blogg" class="a-button"><button>Blogg</button></nuxt-link>
+                    
+                    <kommandeEvent />
+                    <kalender />
                 </div>
             </div>
-            <Sponsor />
             
+            <Sponsor />
         </div>
         <Instagram />
     </div>        
 </template>
 
 <script>
+import kalender from '~/components/kalender.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
+import kommandeEvent from '~/components/kommandeEvent.vue'
 
 export default {
     components: {
         Sponsor,
-        Instagram
+        Instagram,
+        kalender,
+        kommandeEvent
     }
 }
 </script>
@@ -40,7 +47,7 @@ export default {
 <style lang="scss">
 .plain{
     &-background{
-        background-image: url("../assets/img/plain_placeholder.jpg");
+        background-image: url("../../assets/img/plain_placeholder.jpg");
     }
 }
 </style>

@@ -15,7 +15,7 @@
                         Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
                     </p>
                 </div>
-                <nuxt-link to="/forening"><button>Mer om oss</button></nuxt-link>
+                <nuxt-link class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
             </div>
             <div class="post-picture col-5">
                 <picture>
