@@ -1,3 +1,7 @@
+body{
+    color: #{$defaultTxtColor};
+}
+
 a{
     text-decoration: none;
     border-bottom: none;
@@ -5,7 +9,6 @@ a{
 
     &:hover{
         cursor: pointer;
-        border-bottom: 1px solid #eb5e43;
     }
 }
 
@@ -35,6 +38,8 @@ h5{
     float: right;
 }
 
-body{
-    color: #{$defaultTxtColor};
+.v-centered{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
 }

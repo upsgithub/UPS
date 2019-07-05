@@ -5,91 +5,25 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">
-                    <nuxt-link to="/utskotten">
-                        <img srcset="~assets/img/globe_new@320w.jpeg 320w,
-                        ~assets/img/globe_new@480w.jpeg 480w,
-                        ~assets/img/globe_new@768w.jpeg 768w,
-                        ~assets/img/globe_new@1024w.jpeg 1024w,
-                        ~assets/img/globe_new@1376w.jpeg 1376w,
-                        ~assets/img/globe_new@1920w.jpeg 1920w"
+                <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
+                    <nuxt-link :to="slide.acf.slidelank">
+                        <img :srcset="slide.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                        slide.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                        slide.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                        slide.better_featured_image.source_url + ' 1920w'"
                         sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
+                        :src="slide.better_featured_image.source_url + '?lqip'" class="lazyload" alt="globe"/>
                     </nuxt-link>
                     <div class="slideshow__bar">
                         <div class="slideshow__bar--w">
-                            <h4 class="slideshow__bar-text col-8 col-8--smaller">Politices kandidatsprogram - Studierna inom programmet...</h4>
-                            <div class="slideshow__bar-btn col-4 col-4--bigger">
-                                <nuxt-link to="/kandidat" class="a-button">
-                                    <button class="btn btn--default btn--small-h">Läs mer</button>
-                                </nuxt-link>
+                            <div class="slideshow__bar-intro col-8 col-8--smaller">
+                                <div class="v-centered">
+                                    <h4 class="slideshow__bar-text">{{ slide.acf.slide_introtext }}</h4>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <nuxt-link to="/forening">
-                        <img srcset="~assets/img/globe_new@320w.jpeg 320w,
-                        ~assets/img/globe_new@480w.jpeg 480w,
-                        ~assets/img/globe_new@768w.jpeg 768w,
-                        ~assets/img/globe_new@1024w.jpeg 1024w,
-                        ~assets/img/globe_new@1376w.jpeg 1376w,
-                        ~assets/img/globe_new@1920w.jpeg 1920w"
-                        sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
-                    </nuxt-link>
-                    <div class="slideshow__bar">
-                        <div class="slideshow__bar--w">
-                            <h4 class="slideshow__bar-text col-8 col-8--smaller">Politices kandidatsprogram - Studierna inom programmet...</h4>
                             <div class="slideshow__bar-btn col-4 col-4--bigger">
-                                <nuxt-link to="/kandidat" class="a-button">
-                                    <button class="btn btn--default btn--small-h">Läs mer</button>
-                                </nuxt-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <nuxt-link to="/student">
-                        <!-- 
-                            We can use the following on pictures which are not a part of the slider.
-                            <picture>
-                            <source data-srcset="~assets/img/globe_new@480w.jpeg?webp"
-                            sizes="auto"  type="image/webp" media="(max-width: 480px)" alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@480w.jpeg"
-                            sizes="auto" type="image/jpeg" media="(max-width: 480px)" alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@768w.jpeg?webp"
-                            sizes="auto" type="image/webp" media="(max-width: 768px)" alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@768w.jpeg"
-                            sizes="auto" type="image/jpeg" media="(max-width: 768px)" alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@1376w.jpeg?webp"
-                            sizes="auto" type="image/webp" media="(max-width: 1376px)" alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@1376w.jpeg"
-                            sizes="auto" type="image/jpeg" media="(max-width: 1376px)" alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@1920w.jpeg?webp"
-                            sizes="auto" type="image/webp"  alt="globe"/>
-                            <source data-srcset="~assets/img/globe_new@1920w.jpeg"
-                            sizes="auto" type="image/jpeg" alt="globe"/>
-                            <img data-src="~assets/img/globe_new@1920w.jpeg" class="lazyload" alt="globe"/>
-                        </picture>
-                        <noscript>
-                            <img src="~assets/img/globe_new@1920w.jpeg" alt="globe"/>
-                        </noscript> -->
-                        <img srcset="~assets/img/globe_new@320w.jpeg 320w,
-                        ~assets/img/globe_new@480w.jpeg 480w,
-                        ~assets/img/globe_new@768w.jpeg 768w,
-                        ~assets/img/globe_new@1024w.jpeg 1024w,
-                        ~assets/img/globe_new@1376w.jpeg 1376w,
-                        ~assets/img/globe_new@1920w.jpeg 1920w"
-                        sizes="auto"
-                        src="~assets/img/globe_new@1920w.jpeg?lqip" class="lazyload" alt="globe"/>
-                    </nuxt-link>
-                    <div class="slideshow__bar">
-                        <div class="slideshow__bar--w">
-                            <h4 class="slideshow__bar-text col-8 col-8--smaller">Politices kandidatsprogram - Studierna inom programmet...</h4>
-                            <div class="slideshow__bar-btn col-4 col-4--bigger">
-                                <nuxt-link to="/kandidat" class="a-button btn--link">
-                                    <button class="btn btn--default btn--small-h">Läs mer</button>
+                                <nuxt-link :to="slide.acf.slidelank" class="a-button">
+                                    <button class="btn btn--default btn--small-h">{{ slide.acf.knapptext }}</button>
                                 </nuxt-link>
                             </div>
                         </div>
@@ -111,8 +45,13 @@
 
 <script>
 import Swiper from 'swiper';
-    
+
 export default{
+    computed: {
+        slides () {
+            return this.$store.state.slides? this.$store.state.slides.slice(0, 5) : []
+        }
+    },
     mounted(){
         var mySwiper = new Swiper ('.swiper-container', {
             // Optional parameters
@@ -182,6 +121,11 @@ export default{
       img{
           object-fit: cover;
           overflow: hidden;
+          width: 100%;
+      }
+
+      > a{
+          min-width: 100%;
       }
 }
 .swiper-button-next, .swiper-button-prev{
@@ -208,18 +152,28 @@ export default{
         // margin-bottom: 40px;
     }
 
-    &-text{
+    &-intro{
+        position: relative;
+        height: 100%;
         float: left;
-        color: #eb5e43;
-        word-wrap: break-word;
-        overflow: hidden;
-        font-size: 0.75rem;
+
+        > .v-centered {
+            width: 100%;
+        }
 
         &::after{
             content: "";
             clear: both;
             display: table;
         }
+    }
+
+    &-text{
+        color: #eb5e43;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     &-btn{
@@ -234,6 +188,11 @@ export default{
     }
 }
 @media only screen and (min-width: 768px) {
+    .swiper-slide {
+        img{
+            margin-top: calc(380px / 3);
+        }
+    }
     .swiper-button-prev {
         left: 40px;
     }
