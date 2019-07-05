@@ -1,7 +1,15 @@
 <template>
     <div  class="container">
-        <div class="utskott-background" v-bind:style="{ backgroundImage: 'url(' + utskott + ')' }">
+        <div class="utskott-background">
             <h3 :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
+            <img v-if="!utskott.better_featured_image && loaded" data-srcset="~assets/img/people_books@320w.jpg 320w,
+            ~assets/img/people_books@480w.jpg  480w, 
+            ~assets/img/people_books@768w.jpg 768w,
+            ~assets/img/people_books@1024w.jpg  1024w, 
+            ~assets/img/people_books@1376w.jpg  1376w, 
+            ~assets/img/people_books@1920w.jpg  1920w"
+                    sizes="auto"
+                    data-src="~assets/img/people_books@1920w.jpg" class="lazyload" alt="people"/>
             <img v-if="utskott.better_featured_image && loaded" :srcset="utskott.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
                     utskott.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
                     utskott.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
@@ -28,7 +36,6 @@
                     </div>
                     <div class="utskott-picture">
                         <picture>
-                            <!-- This is not completed. We need to make sure that we store images from API call locally so we can use webPloader and lazyloading properly. -->
                             <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
                             <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url" type="image/jpeg">
                             <img v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
@@ -66,6 +73,7 @@
             left: 50%;
         }
         h3{
+            color: #fff;
             z-index: 2;
         }
 
