@@ -26,7 +26,8 @@
                     </div>
                     <div class="utskott-picture">
                         <picture>
-                            <source v-if="loaded" v-bind:data-srcset="utskottsordforande_bild_webp" type="image/webp">
+                            <!-- This is not completed. We need to make sure that we store images from API call locally so we can use webPloader and lazyloading properly. -->
+                            <source v-if="loaded" v-bind:data-srcset="utskott_acf.ordforande_bild.url + '?webp'" type="image/webp">
                             <source v-if="loaded" v-bind:data-srcset="utskott_acf.ordforande_bild.url" type="image/jpeg">
                             <img v-if="loaded" v-bind:data-src="utskott_acf.ordforande_bild.url" class="lazyload" />
                         </picture>
@@ -153,13 +154,9 @@ export default {
                 //this.utskott_media = response.data.better_featured_image.media_details.thumbnail.large.source_url;
                 this.loaded = true;
                 this.loading = false;
-                this.setWebPUrl();
             }).catch((error) => {
                 console.log(error)
             })
-        },
-        setWebPUrl: function(){
-            this.utskottsordforande_bild_webp = utskott_acf.ordforande_bild.url + "?webp";
         }
     },
     watch:{
