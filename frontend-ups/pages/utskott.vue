@@ -72,10 +72,22 @@
     }
 
     &-picture{
+        border-radius: 50%;
+		overflow: hidden;
+		width: 160px;
+		height: 160px;
+        position: relative;
+        margin: 5px auto 20px auto;
+
         img{
-            width:60%;
-            max-width: 230px;
-            border-radius: 100px;
+            max-width: 100%;
+            height: auto;
+
+            &::after{
+                content: "";
+                clear: both;
+                display: table;
+            }
         }
     }
 }
