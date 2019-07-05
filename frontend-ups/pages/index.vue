@@ -72,7 +72,7 @@ export default {
             store.commit('frontPagePosts', postRes.data),
             store.commit('headerUtskott', utskottRes.data),
             store.commit('headerPages', pageRes.data),
-            store.commit('allPages', pagesRes.data)
+            store.commit('allPages', pageRes.data)
         })).catch((error) =>
             console.log(error)    
         )

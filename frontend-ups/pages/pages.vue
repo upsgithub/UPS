@@ -1,10 +1,9 @@
 <template>
     <div class="containter">
         <div class="plain-background">
-            <h3>{{ sida_namn }}</h3>
-           
+            <h3>{{ cur_page.title.rendered }}</h3>
         </div>
-        
+
         <div class="content-wrapper">
             
             <div class="plain container--full">     
@@ -12,12 +11,12 @@
                 <sync-loader v-if="loading" class="vue-spinner" :loading="true" :color="color"></sync-loader>
                     <div v-else class="post-title">
                     
-                        <h1> {{ sida_title }} </h1>
+                        <h1> {{ cur_page.title.rendered }} </h1>
                         
                     </div>
-                    <div class="post-text" v-html="sida_text">
+                    <div class="post-text" v-html="cur_page.content.rendered">
                         
-                     {{ sida_text }}
+                     {{ cur_page.content.rendered }}
                         
                     </div>
                 </div>
@@ -35,55 +34,31 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import axios from 'axios'
+import {store} from '../store/index.js'
 
 export default {
-    data:function() {
-        return {
-            loading: true,
-            color: "#eb5e43", 
-            sida_namn: "",
-            sida_title: "",
-            sida_text: "",
-            sida_lank: ""
-        }
-    },
-    created: function(){
-        this.get_sida();
-        
-
-    },
-    methods: {
-        get_sida: function() {
-
-            this.sida_namn = "";
-            this.sida_title = "";
-            this.sida_text = "";
-            this.sida_lank = "";
-
-            var currentUrl = this.$route.path;
-
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2' + currentUrl).then((response) => {
-                this.sida_namn = response.data.title.rendered;
-                this.sida_title = response.data.title.rendered;
-                this.sida_text = response.data.content.rendered;
-                this.sida_lank = currentUrl;
-                this.loading = false;
-            }).catch((error) => {
-                console.log(error)
-            })
-        }
-    },
-    watch:{
-        $route(to, from){
-            this.get_sida();
-        }
-    },
     components: {
         Sponsor,
         Instagram,
         KommandeEvent,
         SyncLoader
+    },
+    methods:{
+        get_current_page(pageArr, id){
+            for(var i = 0; i < pageArr.length; i++){
+                if(pageArr[i][0] == id){
+                    return pageArr[i][1];
+                }
+            }
+        },
+        get_url(){
+            return (this.$route.path.match(/\d+$/))[0];
+        }
+    },
+    computed: {
+        cur_page(){
+            return this.get_current_page(this.$store.state.allPages, this.get_url());
+        }
     }
 }
 </script>

@@ -5,7 +5,7 @@ export const state = () => ({
     utbildning: [],
     student: [],
     forening: [],
-    pages: []
+    allPages: []
 })
 
 export const mutations = {
@@ -37,8 +37,7 @@ export const mutations = {
     },
     allPages(state, pages){
         for(var i = 0; i < pages.length; i++){
-            state.pages.push([pages[i].id, pages[i]]);
+            state.allPages.push([pages[i].id, pages[i]]);
         }
-        
     }
 }
