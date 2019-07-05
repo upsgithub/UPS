@@ -14,11 +14,7 @@
                         <h1> {{ cur_page.title.rendered }} </h1>
                         
                     </div>
-                    <div class="post-text" v-html="cur_page.content.rendered">
-                        
-                     {{ cur_page.content.rendered }}
-                        
-                    </div>
+                    <div class="post-text" v-html="cur_page.content.rendered"></div>
                 </div>
             </div>
             
@@ -34,31 +30,34 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import {store} from '../store/index.js'
+import {store} from '../../store/index.js'
 
 export default {
+    methods: {
+        current_url:function(){
+            var url = (this.$route.path.split("/"));
+            return url[url.length - 1];
+        },
+        current_page:function(pagesArr, url){
+            for(var i = 0; i < pagesArr.length; i++){
+                if(pagesArr[i].title.rendered.toLowerCase() == url){
+                    return pagesArr[i];
+                }
+            }
+            return url;
+        }
+    },
+    computed:{
+        cur_page(){
+            // return this.$store.state.pages;
+            return this.current_page(this.$store.state.pages, this.current_url());
+        }
+    },
     components: {
         Sponsor,
         Instagram,
         KommandeEvent,
         SyncLoader
-    },
-    methods:{
-        get_current_page(pageArr, id){
-            for(var i = 0; i < pageArr.length; i++){
-                if(pageArr[i][0] == id){
-                    return pageArr[i][1];
-                }
-            }
-        },
-        get_url(){
-            return (this.$route.path.match(/\d+$/))[0];
-        }
-    },
-    computed: {
-        cur_page(){
-            return this.get_current_page(this.$store.state.allPages, this.get_url());
-        }
     }
 }
 </script>
@@ -66,7 +65,7 @@ export default {
 <style lang="scss">
 .plain{
     &-background{
-        background-image: url("../assets/img/plain_placeholder.jpg");
+        background-image: url("../../assets/img/plain_placeholder.jpg");
     }
 }
 </style>

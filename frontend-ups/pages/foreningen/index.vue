@@ -5,22 +5,22 @@
             <h3>Ordföranderiet</h3>
             <div class="ordfaranderiet-pictures">
                 <div class="ordfaranderiet-picture col-6">
-                    <img src="../assets/img/profile.png" />
+                    <img src="../../assets/img/profile.png" />
                     <h4>Ordförande</h4>
                     <h5>Viktoria Pirainen</h5>
                 </div>  
                 <div class="ordfaranderiet-picture col-6">
-                    <img src="../assets/img/profile.png" />
+                    <img src="../../assets/img/profile.png" />
                     <h4>Ordförande</h4>
                     <h5>Viktoria Pirainen</h5>
                 </div>      
                 <div class="ordfaranderiet-picture col-6">
-                    <img src="../assets/img/profile.png" />
+                    <img src="../../assets/img/profile.png" />
                     <h4>Ordförande</h4>
                     <h5>Viktoria Pirainen</h5>
                 </div>      
                 <div class="ordfaranderiet-picture col-6">
-                    <img src="../assets/img/profile.png" />
+                    <img src="../../assets/img/profile.png" />
                     <h4>Ordförande</h4>
                     <h5>Viktoria Pirainen</h5>
                 </div>
@@ -33,10 +33,10 @@
                 Curabitur gravida vulputate sapien, et semper odio sagittis eu. </p>
             </div>
             <div class="utskotten-pictures">
-                <div class="utskotten-picture col-12"><img src="../assets/img/placeholder_img.png" /><h3>Kommunikationsutskottet</h3></div>  
-                <div class="utskotten-picture col-12"><img src="../assets/img/placeholder_img.png" /><h3>Sportutskottet</h3></div>      
-                <div class="utskotten-picture col-12"><img src="../assets/img/placeholder_img.png" /><h3>Kulturutskottet</h3></div>      
-                <div class="utskotten-picture col-12"><img src="../assets/img/placeholder_img.png" /><h3>Utbildningsutskottet</h3></div>
+                <div class="utskotten-picture col-12"><img src="../../assets/img/placeholder_img.png" /><h3>Kommunikationsutskottet</h3></div>  
+                <div class="utskotten-picture col-12"><img src="../../assets/img/placeholder_img.png" /><h3>Sportutskottet</h3></div>      
+                <div class="utskotten-picture col-12"><img src="../../assets/img/placeholder_img.png" /><h3>Kulturutskottet</h3></div>      
+                <div class="utskotten-picture col-12"><img src="../../assets/img/placeholder_img.png" /><h3>Utbildningsutskottet</h3></div>
             </div>
         </div>
         <Sponsor />

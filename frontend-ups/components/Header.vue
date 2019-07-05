@@ -4,22 +4,22 @@
 
             <div class="menu-item col-2" @mouseleave="hide('utbildning')">
                 <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
-                    <h2><nuxt-link to="/pages/78">Utbildning</nuxt-link></h2>
+                    <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
                     <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning">
-                        <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/utbildning/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
                     </div>
                 </div>
             </div> 
 
             <div class="menu-item col-2" @mouseleave="hide('student')">
                 <div class="text" @mouseover="show('student')" @click="hide('student')">
-                    <h2><nuxt-link to="/pages/97">Student</nuxt-link></h2>
+                    <h2><nuxt-link to="/student">Student</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="student">
                     <div class="desktop-item" @click="hide('student')" v-for="page in student">
-                        <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/student/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
                     </div>
                 </div>
             </div> 
@@ -35,24 +35,24 @@
                     <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="event">
-                    <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/blogg">Blogg</nuxt-link></h3></div>
-                    <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event">Kalender</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event/blogg">Blogg</nuxt-link></h3></div>
                 </div>
             </div> 
 
             <div class="menu-item col-2" @mouseleave="hide('forening')">
                 <div class="text" @mouseover="show('forening')" @click="hide('forening')">
-                    <h2><nuxt-link to="/forening">Föreningen</nuxt-link></h2>
+                    <h2><nuxt-link to="/foreningen">Föreningen</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
                     <div class="desktop-item" @click="hide('forening')" v-for="page in forening">
-                        <h3><nuxt-link v-bind:to="'/pages/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/foreningen/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
                     </div>
+                    <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="foreningen/policy">Policies</nuxt-link></h3></div>
                     <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
-                    <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3>Utskotten</h3>
+                    <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3><nuxt-link to="/foreningen/utskotten">Utskotten</nuxt-link></h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item wide" @click="hide('utskotten')" v-for="page in utskott">
-                                <h3><nuxt-link v-bind:to="'/utskott/'+ page[0] ">{{ page[1] }}</nuxt-link></h3>
+                                <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@ export default {
     },
     computed: {
         utskott(){
-            return this.$store.state.utskott
+            return this.$store.state.utskottHeader
         },
         utbildning(){
             return this.$store.state.utbildning

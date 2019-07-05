@@ -1,13 +1,13 @@
 <template>
     <div class="containter">
         <div class="plain-background">
-            <h3>Master</h3>
+            <h3>Policies</h3>
         </div>
         <div class="content-wrapper">
             <div class="plain container--full">
                 <div class="plain-text col-12">
                     <div class="post-title">
-                        <h1> Master </h1>
+                        <h1> Policies </h1>
                     </div>
                     <div class="post-text">
                         <p> 
@@ -18,7 +18,6 @@
                     <button>Läs mer!</button>
                 </div>
             </div>
-            <kommandeEvent />
             <Sponsor />
             
         </div>
@@ -29,13 +28,11 @@
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
-import KommandeEvent from '~/components/kommandeEvent.vue'
 
 export default {
     components: {
         Sponsor,
-        Instagram,
-        kommandeEvent
+        Instagram
     }
 }
 </script>
@@ -43,7 +40,7 @@ export default {
 <style lang="scss">
 .plain{
     &-background{
-        background-image: url("../assets/img/plain_placeholder.jpg");
+        background-image: url("../../assets/img/plain_placeholder.jpg");
     }
 }
 </style>

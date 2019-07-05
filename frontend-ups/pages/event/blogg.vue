@@ -143,7 +143,7 @@ export default {
 <style lang="scss">
 .plain{
     &-background{
-        background-image: url("../assets/img/plain_placeholder.jpg");
+        background-image: url("../../assets/img/plain_placeholder.jpg");
     }
 }
 

@@ -15,7 +15,7 @@
                         Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
                     </p>
                 </div>
-                <nuxt-link to="/forening"><button>Mer om oss</button></nuxt-link>
+                <nuxt-link class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
             </div>
             <div class="post-picture col-5">
                 <picture>
@@ -58,16 +58,25 @@ import KommandeEvent from '~/components/kommandeEvent.vue'
 import axios from 'axios'
 
 export default {
+    data:function() {
+        return {
+            //loaded: false
+        }
+    },
     fetch({ store }){
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
         ]).then(axios.spread((postRes, utskottRes, pageRes) => {
-            store.commit('frontPagePosts', postRes.data),
-            store.commit('headerUtskott', utskottRes.data),
-            store.commit('headerPages', pageRes.data),
-            store.commit('allPages', pageRes.data)
+            //if(!this.loaded){
+                store.commit('frontPagePosts', postRes.data),
+                store.commit('headerUtskott', utskottRes.data),
+                store.commit('allUtskott', utskottRes.data),
+                store.commit('headerPages', pageRes.data),
+                store.commit('allPages', pageRes.data)
+            //     this.loaded = true
+            // }
         })).catch((error) =>
             console.log(error)    
         )
