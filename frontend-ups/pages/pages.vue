@@ -8,7 +8,7 @@
             
             <div class="plain container--full">     
                 <div class="plain-text col-12">
-                <sync-loader v-if="loading" class="vue-spinner" :loading="true" :color="color"></sync-loader>
+                <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                     <div v-else class="post-title">
                     
                         <h1> {{ cur_page.title.rendered }} </h1>
