@@ -42,20 +42,22 @@ export default {
             var url = (this.$route.path.split("/"));
             return url[url.length - 1];
         },
-        current_utskott:function(utskottArr, url){
-            for(var i = 0; i < utskottArr.length; i++){
-                if(utskottArr[i].slug == url){
-                    return utskottArr[i];
+        current_page:function(pagesArr, url){
+            for(var i = 0; i < pagesArr.length; i++){
+                if(pagesArr[i].slug == url){
+                    return pagesArr[i];
                 }
             }
+            return url;
         }
     },
     computed:{
-        utskott(){
-            return this.current_utskott(this.$store.state.utskott, this.current_url());
+        cur_page(){
+            // return this.$store.state.pages;
+            return this.current_page(this.$store.state.pages, this.current_url());
         },
         loading(){
-            return this.utskott == undefined;
+            return this.cur_page == undefined;
         }
     },
     components: {

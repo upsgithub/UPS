@@ -10,12 +10,12 @@
             ~assets/img/people_books@1920w.jpg  1920w"
                     sizes="auto"
                     data-src="~assets/img/people_books@1920w.jpg" class="lazyload" alt="people"/>
-            <img v-if="utskott.better_featured_image && loaded" :srcset="utskott.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+            <img v-if="utskott.better_featured_image && loaded" :data-srcset="utskott.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
                     utskott.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
                     utskott.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
                     utskott.better_featured_image.source_url + ' 1920w'"
-                    sizes="auto"
-                    :src="utskott.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="utskott.better_featured_image.alt_text"/>
+                    data-sizes="auto"
+                    :data-src="utskott.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="utskott.better_featured_image.alt_text"/>
             
         </div>
         <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
