@@ -23,14 +23,6 @@ export default{
             display: "display: none"
         }
     },
-    head: {
-        script: [
-            { 
-                src: 'https://code.jquery.com/jquery-1.12.4.js',
-                type: 'text/javascript'
-            }
-        ]
-    },
     methods: {
        showMenu() {
            if(this.display === "display: none") {
