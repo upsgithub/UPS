@@ -37,7 +37,7 @@ import axios from 'axios'
 export default {
     fetch({ store }){
         return axios.get(
-            'http://api.uppsalapolitices.se/wp-json/wp/v2/pages'
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'
         ).then((response) => {
             store.commit('allPages', response.data)
         }).catch((error) => {
@@ -46,7 +46,7 @@ export default {
     },
     methods: {
         current_url:function(){
-            return "student"
+            return "utbildning"
         },
         current_page:function(pagesArr, url){
             for(var i = 0; i < pagesArr.length; i++){
