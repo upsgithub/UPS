@@ -187,6 +187,13 @@ export default{
         }
     }
 }
+@media only screen and (min-width: 480px) {
+    .swiper-slide {
+        img{
+            margin-top: calc(380px / 5);
+        }
+    }
+}
 @media only screen and (min-width: 768px) {
     .swiper-slide {
         img{
@@ -218,6 +225,13 @@ export default{
         }
         .btn{
             margin-right: 0px;
+        }
+    }
+}
+@media only screen and (min-width: 1376px) {
+    .swiper-slide {
+        img{
+            margin-top: calc(380px / 2);
         }
     }
 }
