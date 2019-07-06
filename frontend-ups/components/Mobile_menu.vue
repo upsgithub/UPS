@@ -10,7 +10,12 @@
             </div>
         </div>
         <div class="burger" @click="showMenu()">
-            <img src="../assets/img/menu-button.png" />
+            <!-- <img src="../assets/img/menu-button.png" /> -->
+            <div class="burger-h">
+                <div class="burger__menu-icon" @click="toggleClose()" v-bind:class="menuClose">
+                    <div class="burger__menu-icon__middle"></div>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -20,7 +25,8 @@
 export default{
     data: function() {
         return {
-            display: "display: none"
+            display: "display: none",
+            menuClose: ""
         }
     },
     methods: {
@@ -31,6 +37,14 @@ export default{
                this.display = "display: none";
            }
            
+       },
+       toggleClose(){
+           if(this.menuClose){
+               this.menuClose = "";
+            }
+            else{
+                this.menuClose = "burger__menu-icon--close-x";
+            }
        }
     }
 }
@@ -40,21 +54,15 @@ export default{
 
     .item {
         width: 100%;
-        bottom: 100px;
-
+        padding: 12px 0;
     }
 
     .flex-mobile {
         width: 100%;
-        display: flex;
-        flex-flow:row wrap;
-        justify-content: center;
-        height: 50%;
-        margin-top: 70%;
-        position: fixed;
-
-
-   
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
     }
 
     .mobile{
@@ -63,30 +71,92 @@ export default{
         position: fixed;
         height: 100%;
         bottom: 0;
+        opacity: 0.95;
 
         h2 {
             color: #eb5e43;
         }
     }
 
-.burger {
-    background-color: #30242e;
-    z-index: 999;
-    text-align: right;
-    position: fixed;
-    
-    bottom: 0;
-    width: 100%;
+    .burger {
+        background-color: #30242e;
+        z-index: 5;
+        text-align: right;
+        position: fixed;
+        height: 60px;
+        bottom: 0;
+        width: 100%;
 
-    img{
-        margin: 5px 15px;
-        width: 50px;
+        &-h{
+            position: absolute;
+            width: 20px;
+            height: 100%;
+            right: 20px;
+        }
+
+        &__menu-icon {
+            width: 25px;
+            height: 19px;
+            position: absolute;
+            z-index: 6;
+            top: 50%;
+            transform: translateY(-50%);
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 25px;
+                height: 3px;
+                background-color: #eb5e43;
+                transform-origin: 0 0;
+                transition: transform .3s ease-out;
+            }
+            &__middle {
+                position: absolute;
+                top: 8px;
+                left: 0;
+                width: 25px;
+                height: 3px;
+                background-color: #eb5e43;
+                transition: all .3s ease-out;
+                transform-origin: 0 50%;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 25px;
+                height: 3px;
+                background-color: #eb5e43;
+                transform-origin: 0 100%;
+                transition: transform .3s ease-out;
+            }
+
+            &--close-x{
+                &::before {
+                    transform: rotate(45deg) scaleX(1.25);
+                }
+                
+                .burger__menu-icon__middle {
+                    opacity: 0;
+                    transform: scaleX(0);
+                }
+
+                &::after {
+                    transform: rotate(-45deg) scaleX(1.25) translateY(5px);
+                }
+            }
+        }
+
+        img{
+            margin: 5px 15px;
+            width: 50px;
+        }
     }
-}
 
-    .noShow-mobile {
-
- }
     @media only screen and (min-width: 800px) {
         .noShow-mobile{
             display: none;
