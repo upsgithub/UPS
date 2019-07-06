@@ -65,7 +65,7 @@
 
 <script>
 import axios from 'axios'
-import {store} from '../store/index.js'
+//import {store} from '../store/index.js'
 import $ from 'jquery';
 
 export default {
@@ -113,14 +113,19 @@ export default {
         &::after{
             clear: both;
         }
+
+        a{
+            display: block;
+            margin-top: 10px;
+        }
     }
 
     .logo img{
-        margin-bottom: -10px;
-        width: 70%;
+        width: auto;
+        max-height: 90px;
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 768px) {
         
         .menu{
         padding: 7.5px 0px;
@@ -147,11 +152,10 @@ export default {
         .logo{
             width: 33.3%;
             min-width: 250px;
-        }
 
-        .logo img{
-            width: auto;
-            max-height: 90px;
+            a{
+                margin-top: -2.5px;
+            }
         }
 
         .desktop{
