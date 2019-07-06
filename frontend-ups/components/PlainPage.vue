@@ -40,7 +40,7 @@ export default {
         },
         current_page:function(pagesArr, url){
             for(var i = 0; i < pagesArr.length; i++){
-                if(pagesArr[i].title.rendered.toLowerCase() == url){
+                if(pagesArr[i].slug == url){
                     return pagesArr[i];
                 }
             }
