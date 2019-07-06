@@ -11,8 +11,9 @@
                         slide.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
                         slide.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
                         slide.better_featured_image.source_url + ' 1920w'"
-                        sizes="auto"
-                        :data-src="slide.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="slide.better_featured_image.alt_text"/>
+                        data-sizes="auto"
+                        :data-loading="slide.better_featured_image.source_url + '?lqip'"
+                        :data-src="slide.better_featured_image.source_url" class="lazyload" :alt="slide.better_featured_image.alt_text"/>
                     </nuxt-link>
                     <div class="slideshow__bar">
                         <div class="slideshow__bar--w">

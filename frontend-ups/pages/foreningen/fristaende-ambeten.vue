@@ -30,28 +30,32 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import {store} from '../../store/index.js'
 
 export default {
+    data:function(){
+        return {
+            loaded: true
+        }
+    },
     methods: {
         current_url:function(){
             var url = (this.$route.path.split("/"));
             return url[url.length - 1];
         },
-        current_page:function(pagesArr, url){
-            for(var i = 0; i < pagesArr.length; i++){
-                if(pagesArr[i].title.rendered.toLowerCase() == url){
-                    return pagesArr[i];
+        current_utskott:function(utskottArr, url){
+            for(var i = 0; i < utskottArr.length; i++){
+                if(utskottArr[i].slug == url){
+                    return utskottArr[i];
                 }
             }
         }
     },
     computed:{
-        cur_page(){
-            return this.current_page(this.$store.state.pages, this.current_url());
+        utskott(){
+            return this.current_utskott(this.$store.state.utskott, this.current_url());
         },
         loading(){
-            return this.cur_page == undefined;
+            return this.utskott == undefined;
         }
     },
     components: {
