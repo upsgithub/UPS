@@ -70,7 +70,6 @@ export default {
                 store.commit('headerUtskott', utskottRes.data),
                 store.commit('slideShow', slidesRes.data),
                 store.commit('headerPages', pageRes.data),
-                store.commit('allPages', pageRes.data),
                 store.commit('samarbeten', partnerRes.data)
         })).catch((error) =>
             console.log(error)    

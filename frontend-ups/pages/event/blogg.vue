@@ -71,6 +71,15 @@ export default {
             current_start: 1
         }
     },
+    fetch({ store }){
+        return axios.get(
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/posts'
+        ).then((response) => {
+            store.commit('Posts', response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
     methods: {
         get_newer(){
             this.scroll_to_posts();
