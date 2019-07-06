@@ -8,7 +8,7 @@
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
                     <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning">
-                        <h3><nuxt-link v-bind:to="'/utbildning/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
                 </div>
             </div> 
@@ -19,7 +19,7 @@
                 </div>
                 <div class="desktop-dropdown" ref="student">
                     <div class="desktop-item" @click="hide('student')" v-for="page in student">
-                        <h3><nuxt-link v-bind:to="'/student/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
                 </div>
             </div> 
@@ -45,14 +45,14 @@
                 </div>
                 <div class="desktop-dropdown" ref="forening">
                     <div class="desktop-item" @click="hide('forening')" v-for="page in forening">
-                        <h3><nuxt-link v-bind:to="'/foreningen/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
+                        <h3><nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
                     <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/foreningen/policy">Policies</nuxt-link></h3></div>
                     <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3><nuxt-link to="/foreningen/utskotten">Utskotten</nuxt-link></h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item wide" @click="hide('utskotten')" v-for="page in utskott">
-                                <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.toLowerCase() ">{{ page }}</nuxt-link></h3>
+                                <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,8 @@
 
 <script>
 import axios from 'axios'
-import {store} from '../store/index.js'
+//import {store} from '../store/index.js'
+import $ from 'jquery';
 
 export default {
     methods: {
@@ -112,14 +113,19 @@ export default {
         &::after{
             clear: both;
         }
+
+        a{
+            display: block;
+            margin-top: 10px;
+        }
     }
 
     .logo img{
-        margin-bottom: -10px;
-        width: 70%;
+        width: auto;
+        max-height: 90px;
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 768px) {
         
         .menu{
         padding: 7.5px 0px;
@@ -146,11 +152,10 @@ export default {
         .logo{
             width: 33.3%;
             min-width: 250px;
-        }
 
-        .logo img{
-            width: auto;
-            max-height: 90px;
+            a{
+                margin-top: -2.5px;
+            }
         }
 
         .desktop{

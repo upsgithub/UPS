@@ -5,6 +5,16 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
+                <div v-if="!slide" class="swiper-slide">
+                    <img data-srcset="~assets/img/people_books@320w.jpg 320w,
+            ~assets/img/people_books@480w.jpg  480w, 
+            ~assets/img/people_books@768w.jpg 768w,
+            ~assets/img/people_books@1024w.jpg  1024w, 
+            ~assets/img/people_books@1376w.jpg  1376w, 
+            ~assets/img/people_books@1920w.jpg  1920w"
+                    sizes="auto"
+                    src="~assets/img/people_books@1920w.jpg" class="lazyload" alt="people books"/>
+                </div>
                 <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
                     <nuxt-link :to="slide.acf.slidelank">
                         <img :data-srcset="slide.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
@@ -12,7 +22,8 @@
                         slide.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
                         slide.better_featured_image.source_url + ' 1920w'"
                         sizes="auto"
-                        :data-src="slide.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="slide.better_featured_image.alt_text"/>
+                        :data-loading="slide.better_featured_image.source_url + '?lqip'"
+                        :data-src="slide.better_featured_image.source_url" class="lazyload" :alt="slide.better_featured_image.alt_text"/>
                     </nuxt-link>
                     <div class="slideshow__bar">
                         <div class="slideshow__bar--w">
@@ -49,7 +60,7 @@ import Swiper from 'swiper';
 export default{
     computed: {
         slides () {
-            return this.$store.state.slides? this.$store.state.slides.slice(0, 5) : []
+            //return this.$store.state.slides? this.$store.state.slides.slice(0, 5) : []
         }
     },
     mounted(){
