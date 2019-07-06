@@ -30,7 +30,6 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import {store} from '../../store/index.js'
 
 export default {
     methods: {
@@ -40,7 +39,7 @@ export default {
         },
         current_page:function(pagesArr, url){
             for(var i = 0; i < pagesArr.length; i++){
-                if(pagesArr[i].title.rendered.toLowerCase() == url){
+                if(pagesArr[i].slug == url){
                     return pagesArr[i];
                 }
             }

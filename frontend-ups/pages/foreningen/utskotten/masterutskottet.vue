@@ -144,7 +144,6 @@ import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
-import {store} from '../../../store/index.js'
 
 export default {
     data:function(){
@@ -159,7 +158,7 @@ export default {
         },
         current_utskott:function(utskottArr, url){
             for(var i = 0; i < utskottArr.length; i++){
-                if(utskottArr[i].title.rendered.toLowerCase() == url){
+                if(utskottArr[i].slug == url){
                     return utskottArr[i];
                 }
             }
