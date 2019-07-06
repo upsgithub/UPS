@@ -89,8 +89,10 @@ export default{
 
         &-h{
             position: absolute;
-            width: 20px;
-            height: 100%;
+            width: 25px;
+            height: 19px;
+            top: 50%;
+            transform: translateY(-50%);
             right: 20px;
         }
 
@@ -99,8 +101,7 @@ export default{
             height: 19px;
             position: absolute;
             z-index: 6;
-            top: 50%;
-            transform: translateY(-50%);
+            
 
             &::before {
                 content: "";
@@ -137,7 +138,7 @@ export default{
 
             &--close-x{
                 &::before {
-                    transform: rotate(45deg) scaleX(1.25);
+                    transform: rotate(45deg) scaleX(1.15) translateY(-1.5px);
                 }
                 
                 .burger__menu-icon__middle {
@@ -146,7 +147,7 @@ export default{
                 }
 
                 &::after {
-                    transform: rotate(-45deg) scaleX(1.25) translateY(5px);
+                    transform: rotate(-45deg) scaleX(1.15) translateY(3px);
                 }
             }
         }
