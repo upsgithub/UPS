@@ -68,10 +68,8 @@ export default {
         ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes, partnerRes) => {
                 store.commit('Posts', postRes.data),
                 store.commit('headerUtskott', utskottRes.data),
-                store.commit('allUtskott', utskottRes.data),
                 store.commit('slideShow', slidesRes.data),
                 store.commit('headerPages', pageRes.data),
-                store.commit('allPages', pageRes.data),
                 store.commit('samarbeten', partnerRes.data)
         })).catch((error) =>
             console.log(error)    
