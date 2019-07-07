@@ -1,6 +1,7 @@
 <template>
-    <div  class="container">
-        <div class="utskott-background">
+    <div class="container">
+        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        <div v-else class="utskott-background">
             <h3 :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
             <img v-if="!utskott.better_featured_image && loaded" data-srcset="~assets/img/people_books@320w.jpg 320w,
             ~assets/img/people_books@480w.jpg  480w, 
@@ -18,22 +19,25 @@
                     :src="utskott.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="utskott.better_featured_image.alt_text"/>
             
         </div>
-        <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        
         <div class="content-wrapper">
             <div class="utskott container--full">
                 <div class="utskott-text col-12">
-                
                     <div class="post-title">
                         <h1> Vad gör vi? </h1>
                     </div>
-                    <div class="post-text" v-html="utskott.content.rendered"></div>
-                    
+
+                    <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+                    <div v-else class="post-text" v-if="loaded" v-html="utskott.content.rendered"></div>
+
                 </div>
-                
-                <div class="utskott-kontakt col-12">
+
+                <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+                <div v-else class="utskott-kontakt col-12">
                     <div class="post-title">
                         <h1>Kontakt</h1>
                     </div>
+                    
                     <div class="utskott-picture">
                         <picture>
                             <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
@@ -144,12 +148,22 @@ import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
+import {store} from '../store/index.js'
 
 export default {
     data:function(){
         return {
-            loaded: true
+            color: "#eb5e43"
         }
+    },
+    created() {
+        return axios.get(
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'
+        ).then((response) => {
+            this.$store.commit('allUtskott', response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
     },
     methods: {
         current_url:function(){
@@ -170,6 +184,9 @@ export default {
         },
         loading(){
             return this.utskott == undefined;
+        },
+        loaded(){
+            return this.utskott != undefined;
         }
     },
     components: {

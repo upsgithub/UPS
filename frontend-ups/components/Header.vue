@@ -69,6 +69,17 @@ import {store} from '../store/index.js'
 import $ from 'jquery'
 
 export default {
+    created() {
+        return axios.all([
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott')
+        ]).then(axios.spread((pages, utskott) => {
+            this.$store.commit('headerPages', pages.data),
+            this.$store.commit('headerUtskott', utskott.data)    
+        })).catch((error) => {
+            console.log(error)
+        })
+    },
     methods: {
         show : function(menu){
             $(this.$refs[menu]).fadeIn(150);

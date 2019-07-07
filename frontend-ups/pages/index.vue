@@ -62,14 +62,10 @@ export default {
     fetch({ store }){
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides')
-        ]).then(axios.spread((postRes, utskottRes, pageRes, slidesRes) => {
+        ]).then(axios.spread((postRes, slidesRes) => {
                 store.commit('Posts', postRes.data),
-                store.commit('headerUtskott', utskottRes.data),
-                store.commit('slideShow', slidesRes.data),
-                store.commit('headerPages', pageRes.data)
+                store.commit('slideShow', slidesRes.data)
         })).catch((error) =>
             console.log(error)    
         )
