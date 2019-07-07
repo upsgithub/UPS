@@ -16,8 +16,12 @@
         />
 </template>
 
-<style lang="sass" scoped>
-
+<style lang="scss">
+@media only screen and (min-width: 768px) {
+    .fc{
+        margin: 0 20px;
+    }
+}
 </style>
 
 

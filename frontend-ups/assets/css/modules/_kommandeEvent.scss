@@ -7,6 +7,7 @@
     width: 125px;
     //flex: 1 0 calc(50% - 40px);
     cursor: pointer;
+    position: relative;
 }
 
 .flex-container-event {
@@ -18,9 +19,13 @@
 }
 
 .event-text {
-    margin-top: 25px;
-    margin-bottom:50px;
+    margin-top: 20px;
     text-align: center;
+    padding: 0 10px;
+    
+    &--name{
+        max-height: 60px;
+    }
 }
 
 .event-header {
@@ -30,6 +35,11 @@
     color: white;
     background-color: #30242E;
     padding: 3px;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 @media only screen and (min-width: 400px) {
@@ -54,11 +64,14 @@
     
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
     .event-box{
         margin: 20px;
         max-width: 230px;
         flex: 1 0 calc(25% - 40px);
+    }
+    .event-date{
+        line-height: 1.4;
     }
     
 }

@@ -4,7 +4,7 @@
     <div class="flex-container-event">
       <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
       <div @click="clickBox( item.htmlLink )" class="event-box" v-for="item in filteredItems" :key="item.id" >
-        <h4 class="event-text">{{ item.summary }}</h4>
+        <h4 class="event-text event-text--name">{{ item.summary }}</h4>
         <h4 class="event-text event-date">{{ changeDate(item.start.dateTime) }}</h4>
       </div>
     </div>
