@@ -16,10 +16,12 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import {store} from '../store/index.js'
 
 export default {
-    components: {
-        SyncLoader
+    data:function() {
+        return {
+            color: "#eb5e43"
+        }
     },
-    createad() {
+    created() {
         return axios.get(
             'http://api.uppsalapolitices.se/wp-json/wp/v2/partner'
         ).then((response) => {
@@ -28,17 +30,15 @@ export default {
             console.log(error)
         })
     },
-    data:function() {
-        return {
-            color: "#eb5e43",
-        }
+    components: {
+        SyncLoader
     },
     computed: {
         samarbeten(){
             return this.$store.state.samarbeten;
         },
         loading(){
-            return this.samarbeten == undefined;
+            return this.samarbeten == [];
         }
     }
 }
