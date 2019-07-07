@@ -19,6 +19,15 @@ export default {
     components: {
         SyncLoader
     },
+    createad() {
+        return axios.get(
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/partner'
+        ).then((response) => {
+            this.$store.commit('samarbeten', response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
     data:function() {
         return {
             color: "#eb5e43",
