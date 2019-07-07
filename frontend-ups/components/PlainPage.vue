@@ -1,16 +1,17 @@
 <template>
     <div class="containter">
-        <div class="plain-background">
+        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        <div v-else class="plain-background">
             <h3>{{ cur_page.title.rendered }}</h3>
         </div>
 
         <div class="content-wrapper">
             
-            <div class="plain container--full">     
-                <div class="plain-text col-12">
-                <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                    <div v-else class="post-title">
-                    
+            <div class="plain container--full">
+                <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>     
+                <div v-else class="plain-text col-12">
+                    <div  class="post-title">
+
                         <h1> {{ cur_page.title.rendered }} </h1>
                         
                     </div>
@@ -30,9 +31,24 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import axios from 'axios'
 import {store} from '../store/index.js'
 
 export default {
+    data:function(){
+        return {
+            color: "#eb5e43"
+        }
+    },
+    created() {
+        return axios.get(
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'
+        ).then((response) => {
+            this.$store.commit('allPages', response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
     methods: {
         current_url:function(){
             var url = (this.$route.path.split("/"));
