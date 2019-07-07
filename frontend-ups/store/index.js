@@ -8,10 +8,14 @@ export const state = () => ({
     forening: [],
     pages: [],
     slides: [],
-    samarbeten: []
+    samarbeten: [],
+    produkter: []
 })
 
 export const mutations = {
+    produkter(state, produkter){
+        state.produkter = produkter;
+    },
     Posts(state, posts){
         state.posts = posts;
     },

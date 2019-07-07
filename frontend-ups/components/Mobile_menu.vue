@@ -23,6 +23,14 @@ export default{
             display: "display: none"
         }
     },
+    head: {
+        script: [
+            { 
+                src: 'https://code.jquery.com/jquery-1.12.4.js',
+                type: 'text/javascript'
+            }
+        ]
+    },
     methods: {
        showMenu() {
            if(this.display === "display: none") {
@@ -58,7 +66,7 @@ export default{
     }
 
     .mobile{
-        z-index: 3;
+        z-index: 1;
         //display: block;
         position: fixed;
         height: 100%;
@@ -71,7 +79,7 @@ export default{
 
 .burger {
     background-color: #30242e;
-    z-index: 999;
+    z-index: 2;
     text-align: right;
     position: fixed;
     
