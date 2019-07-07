@@ -10,7 +10,6 @@
 
 <script>
 import utskott from '~/components/Utskott.vue'
-import axios from 'axios'
 
 export default {
     components: {

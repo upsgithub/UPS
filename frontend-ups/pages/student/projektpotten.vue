@@ -6,7 +6,6 @@
 
 <script>
 import page from '~/components/PlainPage.vue'
-import axios from 'axios'
 
 export default {
     components: {

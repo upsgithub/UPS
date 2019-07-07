@@ -65,7 +65,6 @@
 
 <script>
 import axios from 'axios'
-import {store} from '../store/index.js'
 import $ from 'jquery'
 
 export default {

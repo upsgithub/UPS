@@ -57,7 +57,6 @@ import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
-import {store} from '../../store/index.js'
 import $ from 'jquery'
 // import { cursorTo } from 'readline';
 // import { start } from 'repl';
