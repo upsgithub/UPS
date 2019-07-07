@@ -35,10 +35,10 @@
                         <h1>Kontakt</h1>
                     </div>
                     <div class="utskott-picture">
-                        <picture>
-                            <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
-                            <source v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-srcset="utskott.acf.ordforande_bild.url" type="image/jpeg">
-                            <img v-if="utskott.acf.ordforande_bild.url && loaded" v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
+                        <picture v-if="utskott.acf.ordforande_bild.url && loaded">
+                            <source v-bind:data-srcset="utskott.acf.ordforande_bild.url + '?webp'" type="image/webp">
+                            <source v-bind:data-srcset="utskott.acf.ordforande_bild.url" type="image/jpeg">
+                            <img v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
                         </picture>
                     </div>
                     <h4>Ordförande</h4>
@@ -148,7 +148,8 @@ import axios from 'axios'
 export default {
     data:function(){
         return {
-            loaded: true
+            loaded: true,
+            color: "#eb5e43"
         }
     },
     methods: {
