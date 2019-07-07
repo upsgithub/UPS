@@ -16,20 +16,29 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import {store} from '../store/index.js'
 
 export default {
-    components: {
-        SyncLoader
-    },
     data:function() {
         return {
-            color: "#eb5e43",
+            color: "#eb5e43"
         }
+    },
+    created() {
+        return axios.get(
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/partner'
+        ).then((response) => {
+            this.$store.commit('samarbeten', response.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
+    components: {
+        SyncLoader
     },
     computed: {
         samarbeten(){
             return this.$store.state.samarbeten;
         },
         loading(){
-            return this.samarbeten == undefined;
+            return this.samarbeten == [];
         }
     }
 }
