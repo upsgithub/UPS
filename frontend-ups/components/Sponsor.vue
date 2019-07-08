@@ -3,7 +3,7 @@
         <h4>Våra samarbetspartners</h4>
         <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div class="samarbeten-wrapper">  
-            <div class="samarbete-logo col-6" v-for="sponsor in samarbeten">
+            <div class="samarbete-logo col-6" v-for="sponsor in samarbeten" :key="sponsor.id">
                 <a class="a-button" v-bind:href="sponsor.acf.lank"><img v-bind:src="sponsor.acf.bild.url" /></a>
             </div>
         </div>
@@ -17,7 +17,8 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 export default {
     data:function() {
         return {
-            color: "#eb5e43"
+            color: "#eb5e43",
+            loading: true
         }
     },
     created() {
@@ -25,6 +26,7 @@ export default {
             'http://api.uppsalapolitices.se/wp-json/wp/v2/partner'
         ).then((response) => {
             this.$store.commit('samarbeten', response.data)
+            this.loading = false
         }).catch((error) => {
             console.log(error)
         })
@@ -35,9 +37,6 @@ export default {
     computed: {
         samarbeten(){
             return this.$store.state.samarbeten;
-        },
-        loading(){
-            return this.samarbeten == [];
         }
     }
 }
