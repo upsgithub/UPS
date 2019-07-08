@@ -26,7 +26,7 @@
         <div v-else class="utskotten-pictures">
             <div class="utskotten-picture col-12" v-for="utskott in utskotten" >
                 <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
-                    <img class="img-banner" :src="utskott.better_featured_image.source_url" />
+                    <img class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
                     <h3>{{ utskott.title.rendered }}</h3>
                 </nuxt-link>
             </div> 
@@ -77,11 +77,8 @@ export default {
 }                
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
-    h3 {
-        color: black;
-    }
 
 .picture-holder{
     width: 50%;
@@ -142,6 +139,7 @@ export default {
 
         h3 {
             margin: 10px;
+            color: black;
         }
         img{
             width: 100%;

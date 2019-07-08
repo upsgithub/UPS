@@ -5,6 +5,7 @@
                 <div class="text">
                     <h4>Kontakt oss</h4>
                 </div>
+                <button @click="change_language">HSH</button>
                 <div class="img">
                     <img src="../assets/img/mail.png" />
                 </div>

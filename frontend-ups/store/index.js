@@ -10,7 +10,8 @@ export const state = () => ({
     slides: [],
     samarbeten: [],
     produkter: [],
-    ordforande: []
+    ordforande: [],
+    english: false
 })
 
 export const mutations = {
