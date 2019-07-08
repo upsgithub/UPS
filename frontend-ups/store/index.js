@@ -9,10 +9,14 @@ export const state = () => ({
     pages: [],
     slides: [],
     samarbeten: [],
-    produkter: []
+    produkter: [],
+    ordforande: []
 })
 
 export const mutations = {
+    ordforande(state, ordforande){
+        state.ordforande = ordforande;
+    },
     produkter(state, produkter){
         state.produkter = produkter;
     },

@@ -69,6 +69,7 @@
         font-size: 20px;
         position: relative;
         overflow: hidden;
+        
 
         > h3, img{
             position: absolute;
