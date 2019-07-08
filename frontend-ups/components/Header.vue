@@ -135,7 +135,7 @@ export default {
         max-height: 90px;
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 769px) {
         
         .menu{
         padding: 7.5px 0px;

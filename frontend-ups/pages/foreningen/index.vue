@@ -1,7 +1,7 @@
 <template>
 <div class="container--full">
     <div class="content-wrapper">
-                <utskottIndex />
+            <utskottIndex />
         <Sponsor />
     </div>
     <Instagram />

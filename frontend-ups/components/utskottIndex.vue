@@ -2,30 +2,91 @@
     <div>
         <div class="ordfaranderiet">
             <h3>Ordföranderiet</h3>
-            <div class="ordfaranderiet-pictures">
-                <div v-for="ordforande in ordforanden" class="ordfaranderiet-picture col-6">
-                    <img :src="ordforande.better_featured_image.source_url" />
-                    <h4>{{ ordforande.acf.titel }}</h4>
-                    <h5>{{ ordforande.acf.namn }}</h5>
-                </div>  
-            </div>        
+            <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+            <div v-else class="ordfaranderiet-pictures">
+                <template v-for="ordforande in ordforanden">
+                <div class="picture-holder">
+                    <div class="ordfaranderiet-picture col-6">
+                        <img :src="ordforande.better_featured_image.source_url" />
+                    </div> 
+                    <div class="ordfaranderiet-title">
+                        <h4>{{ ordforande.acf.titel }}</h4>
+                        <h5>{{ ordforande.acf.namn }}</h5>
+                    </div> 
+                </div>
+                </template>
+            </div>
         </div>
-        <div class="utskotten" >
+        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        <div v-else class="utskotten" >
             <h3>{{ content[0].title.rendered }}</h3>
             <div class="utskotten-text" v-html="content[0].content.rendered">
-            </div>
-        <div class="utskotten-pictures">
-            <div class="utskotten-picture col-12" v-for="utskott in utskotten" ><nuxt-link :to="'/foreningen/utskotten/' + utskott.slug"><img class="img-banner" :src="utskott.better_featured_image.source_url" /><h3>{{ utskott.title.rendered }}</h3></nuxt-link></div> 
+        </div>
+        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        <div v-else class="utskotten-pictures">
+            <div class="utskotten-picture col-12" v-for="utskott in utskotten" >
+                <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
+                    <img class="img-banner" :src="utskott.better_featured_image.source_url" />
+                    <h3>{{ utskott.title.rendered }}</h3>
+                </nuxt-link>
+            </div> 
         </div>
     </div>
 </div>
 </template>
+
+<script>
+import axios from 'axios'
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+
+export default {
+    data() {
+        return {
+            content: [],
+            color: "#eb5e43",
+            fallback: "../assets/img/people_books@1024w.jpg"
+        }
+    },
+    created() {
+        this.get_content();
+    },
+    methods: {
+        get_content() {
+            for(let i = 0; i < this.$store.state.pages.length; i++) {
+                if(this.$store.state.pages[i].slug === 'foreningen') {
+                    this.content.push(this.$store.state.pages[i]);
+                }
+                
+            }
+        }
+    },
+    computed: {
+        utskotten(){
+            return this.$store.state.utskott;
+        },
+        ordforanden(){
+            return this.$store.state.ordforande;
+        },
+        loading(){
+            return (this.utskott || this.ordforanden || this.content) == undefined;
+        },
+        loaded(){
+            return (this.utskott || this.ordforanden || this.content) != undefined;
+        }
+    }
+}                
+</script>
 
 <style lang="scss" scoped>
 
     h3 {
         color: black;
     }
+
+.picture-holder{
+    width: 50%;
+    margin-bottom: -40px;
+}
 
 .ordfaranderiet{
     text-align: center;
@@ -35,22 +96,30 @@
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        margin-top: 20px;
     }
 
     &-picture{
-        
-        width: 50%;
-        padding: 20px;
-        
-        img {
-            border-radius: 50%;
-            //max-width: 100%;
-            height: 125px;
-            width: 125px;
-            object-fit: cover;
-            
+        border-radius: 50%;
+		overflow: hidden;
+		width: 80%;
+		height: 50%;
+        position: relative;
+        margin: 5px auto 20px auto;
+
+        img{
+            max-width: 100%;
+            height: auto;
+
+            &::after{
+                content: "";
+                clear: both;
+                display: table;
+            }
         }
     }
+
+    
 }
 
 .utskotten{
@@ -93,65 +162,33 @@
         height: 280px;
         }
 
-        .ordfaranderiet{
-        margin: 10px 0 40px 0;
-
-        &-picture{
-            margin-top: 10px;
+        .picture-holder{
             width: 25%;
-            max-width: 167px;
+            margin-bottom: -40px;
+        }
 
-            img {
-            height: 200px;
-            width: 200px;
+
+        .ordfaranderiet{
+        margin: 10px 0 -40px 0;
+
+            &-picture{
+                margin-top: 10px;
+
+                img {
+                }
+            }
+
+            &-title{
+                width: 100%;
+                text-align: center;
             }
         }
-    }
     
-    .utskotten{
-        &-picture{
-            width: 50%;
+        .utskotten{
+            &-picture{
+                width: 50%;
+            }
         }
-    }
    }
     
 </style>
-
-<script>
-import axios from 'axios'
-
-export default {
-    data() {
-        return {
-            utskotten: [],
-            ordforanden: [],
-            content: []
-        }
-    },
-    created() {
-        this.get_utskotten();
-        this.get_ordforande();
-        this.get_content();
-    },
-    methods: {
-        get_utskotten() {
-            for(let i = 0; i < this.$store.state.utskott.length; i++) {
-                this.utskotten.push(this.$store.state.utskott[i]);
-            }
-        },
-        get_ordforande() {
-            for(let i = 0; i < this.$store.state.ordforande.length; i++) {
-                this.ordforanden.push(this.$store.state.ordforande[i]);
-            }
-        },
-        get_content() {
-            for(let i = 0; i < this.$store.state.pages.length; i++) {
-                if(this.$store.state.pages[i].slug === 'foreningen') {
-                    this.content.push(this.$store.state.pages[i]);
-                }
-                
-            }
-        }
-    }
-}                
-</script>
