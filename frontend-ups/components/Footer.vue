@@ -5,7 +5,7 @@
                 <div class="text">
                     <h4>Kontakt oss</h4>
                 </div>
-                <button @click="change_language()">HSH</button>
+                <button @click="change_language()">{{ current }}</button>
                 <div class="img">
                     <img src="../assets/img/mail.png" />
                 </div>
@@ -85,8 +85,21 @@
 <script>
     export default{
         methods: {
-            change_language(){
-                
+            change_language:function() {
+                var current = this.$store.state.english;
+                this.$store.commit('change_language', !current);
+            }
+        },
+        computed: {
+            english(){
+                return this.$store.state.english;
+            },
+            current(){
+                if(this.english){
+                    return "This is english";
+                } else {
+                    return "Det här är svenska";
+                }
             }
         }
     }

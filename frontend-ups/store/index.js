@@ -11,6 +11,8 @@ export const state = () => ({
     samarbeten: [],
     produkter: [],
     ordforande: [],
+    postsEN: [],
+    postsSV: [],
     english: false
 })
 
@@ -22,7 +24,16 @@ export const mutations = {
         state.produkter = produkter;
     },
     Posts(state, posts){
-        state.posts = posts;
+        state.postsSV = [];
+        state.postsEN = [];
+        for(var i = 0; i < posts.length; i++){
+            if(posts[i].categories[0] == 1){
+                state.postsEN.push(posts[i]);
+            } else {
+                state.postsSV.push(posts[i]);
+            }
+        }
+
     },
     frontPageWelcome(state, welcomeMessage){
         state.welcomeMessage = welcomeMessage;
@@ -57,5 +68,8 @@ export const mutations = {
     },
     samarbeten(state, partners){
         state.samarbeten = partners;
+    },
+    change_language(state, new_setting){
+        state.english = new_setting;
     }
 }

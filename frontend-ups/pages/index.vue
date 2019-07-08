@@ -71,9 +71,16 @@ export default {
         )
     },
     computed: {
+        english(){
+            return this.$store.state.english;
+        },
         posts(){
-            return this.$store.state.posts.slice(0,3);
-        } 
+            if(this.english){
+                return this.$store.state.postsEN.slice(0,3);
+            } else {
+                return this.$store.state.postsSV.slice(0,3);
+            }
+        }
     },
     components: {
         Instagram,
