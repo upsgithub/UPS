@@ -2,11 +2,31 @@
 <div class="noShow-mobile">
         <div :style="display" class="menu mobile container--full" >
             <div  class="flex-mobile">
-                <div class="item" ><h2 @click="showMenu(), toggleClose()"><nuxt-link  to="/">Start</nuxt-link></h2></div>
-                <div class="item" ><h2 @click="showMenu(), toggleClose()"><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2></div>
-                <div class="item" ><h2 @click="showMenu(), toggleClose()"><nuxt-link to="/student">Student</nuxt-link></h2></div>
-                <div class="item" ><h2 @click="showMenu(), toggleClose()"><nuxt-link  to="/event">Event</nuxt-link></h2></div>
-                <div class="item" ><h2 @click="showMenu(), toggleClose()"><nuxt-link  to="/foreningen">Föreningen</nuxt-link></h2></div>
+                <div class="item">
+                    <h2 @click="showMenu(), toggleClose()">
+                        <nuxt-link  to="/">Start</nuxt-link>
+                    </h2>
+                </div>
+                <div class="item">
+                    <h2 @click="showMenu(), toggleClose()">
+                        <nuxt-link to="/utbildning">Utbildning</nuxt-link>
+                    </h2>
+                </div>
+                <div class="item">
+                    <h2 @click="showMenu(), toggleClose()">
+                        <nuxt-link to="/student">Student</nuxt-link>
+                    </h2>
+                </div>
+                <div class="item">
+                    <h2 @click="showMenu(), toggleClose()">
+                        <nuxt-link  to="/event">Event</nuxt-link>
+                    </h2>
+                </div>
+                <div class="item">
+                    <h2 @click="showMenu(), toggleClose()">
+                        <nuxt-link  to="/foreningen">Föreningen</nuxt-link>
+                    </h2>
+                </div>
             </div>
         </div>
         <div class="burger" @click="showMenu()">
