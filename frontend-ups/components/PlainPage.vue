@@ -54,11 +54,12 @@ export default {
             return url[url.length - 1];
         },
         current_page:function(pagesArr, url){
+            if(this.english) { url += "-en" }
             for(var i = 0; i < pagesArr.length; i++){
                 if(pagesArr[i].slug == url){
                     return pagesArr[i];
                 }
-            }
+            }   
         }
     },
     computed:{
@@ -67,6 +68,9 @@ export default {
         },
         loading(){
             return this.cur_page == undefined;
+        },
+        english(){
+            return this.$store.state.english;
         }
     },
     components: {

@@ -41,8 +41,8 @@
                 </div>
             </div>
             <div class="blogg_buttons">
-                <button v-if="older_exists" @click="get_older()">Äldre inlägg</button>
                 <button v-if="newer_exists" @click="get_newer()">Nyare inlägg</button>
+                <button v-if="older_exists" @click="get_older()">Äldre inlägg</button>
             </div>
             <KommandeEvent />
             <Sponsor />
