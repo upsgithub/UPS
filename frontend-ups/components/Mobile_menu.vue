@@ -29,14 +29,6 @@ export default{
             menuClose: ""
         }
     },
-    head: {
-        script: [
-            { 
-                src: 'https://code.jquery.com/jquery-1.12.4.js',
-                type: 'text/javascript'
-            }
-        ]
-    },
     methods: {
        toggleClose(){
            if(this.menuClose){
