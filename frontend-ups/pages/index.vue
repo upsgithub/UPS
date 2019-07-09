@@ -27,8 +27,8 @@
         </div>
         <kommandeEvent />
         <Sponsor />
-        <div class="posts container--full">
-            <div class="posts" v-for="post in posts" :key="post.id">
+        <div class="container--full">
+            <div class="posts col-12" v-for="post in posts" :key="post.id">
                 <div class="post-picture col-5">
                     <picture>
                         <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
@@ -36,7 +36,7 @@
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                     </picture>
                 </div>
-                <div class="post col-12">
+                <div class="post col-7">
                     <div class="post-title">
                     <h1>{{ post.title.rendered }}</h1>
                     </div>
@@ -85,5 +85,15 @@ export default {
 </script>
 
 <style lang="scss">
-
+    .post-picture{
+        img{
+            width: 100%;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .post{
+            width: 100%;
+        }
+    }
+    
 </style>
