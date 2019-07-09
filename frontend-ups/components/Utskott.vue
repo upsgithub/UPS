@@ -118,6 +118,9 @@
         }
     }
 }
+.wp-block-image{
+    margin: 20px 0;
+}
 
 @media only screen and (min-width: 800px) {
     .utskott{

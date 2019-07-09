@@ -24,11 +24,13 @@
         </div>
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskotten-pictures">
-            <div class="utskotten-picture col-6" v-for="utskott in utskotten" :key="utskott.id">
-                <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
-                    <img class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
-                    <h3>{{ utskott.title.rendered }}</h3>
-                </nuxt-link>
+            <div class="utskotten-picture" v-for="utskott in utskotten" :key="utskott.id">
+                <div class="utskotten-picture__inner">
+                    <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
+                        <img class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
+                        <h3>{{ utskott.title.rendered }}</h3>
+                    </nuxt-link>
+                </div>
             </div> 
         </div>
     </div>
@@ -121,7 +123,7 @@ export default {
 
 .utskotten{
     text-align: center;
-    display: inline-block;
+    display: block;
     margin-top: 10px;
 
     &-text{
@@ -130,20 +132,34 @@ export default {
     }
 
     &-pictures{
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     &-picture{
         float: left;
-        padding: 10px;
+        padding: 0px;
         width: 100%;
+
+        &__inner{
+            
+        }
+
+        a{
+            display: block;
+            padding: 10px;
+        }
+
+        &::after{
+            content: "";
+            clear: both;
+            display: table;
+        }
 
         h3 {
             margin: 10px;
             color: black;
-        }
-        img{
-            width: 100%;
         }
     }
 }
