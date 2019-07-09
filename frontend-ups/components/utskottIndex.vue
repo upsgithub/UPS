@@ -6,8 +6,9 @@
             <div v-else class="ordfaranderiet-pictures">
                 <template v-for="ordforande in ordforanden">
                 <div class="picture-holder">
-                    <div class="ordfaranderiet-picture col-6">
-                        <img :src="ordforande.better_featured_image.source_url" />
+                    <div class="ordfaranderiet-picture col-6"> 
+                        <img v-if="ordforande.better_featured_image" :src="ordforande.better_featured_image.source_url" />
+                        <img v-else src="../assets/img/profile.png" />
                     </div> 
                     <div class="ordfaranderiet-title">
                         <h4>{{ ordforande.acf.titel }}</h4>
@@ -26,7 +27,8 @@
         <div v-else class="utskotten-pictures">
             <div class="utskotten-picture col-12" v-for="utskott in utskotten" >
                 <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
-                    <img class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
+                    <img v-if="utskott.acf.foreningssida_utskottsbild.url" class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
+                    <img v-else class="img-banner" src="../assets/img/logo_placeholder.png" />
                     <h3>{{ utskott.title.rendered }}</h3>
                 </nuxt-link>
             </div> 
@@ -44,7 +46,7 @@ export default {
         return {
             content: [],
             color: "#eb5e43",
-            fallback: "../assets/img/people_books@1024w.jpg"
+            fallback: "../assets/img/logo_bred_placeholder.png"
         }
     },
     created() {
@@ -150,8 +152,16 @@ export default {
     .img-banner {
         object-fit: cover;
         width: 100%;
-        height: 160px;
+        height: 140px;
         }
+
+    @media only screen and (min-width: 470px) {
+        .img-banner {
+        object-fit: cover;
+        width: 100%;
+        height: 280px;
+        }
+    }
 
    @media only screen and (min-width: 800px) {
         .img-banner {
