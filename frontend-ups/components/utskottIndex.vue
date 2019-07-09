@@ -1,40 +1,42 @@
 <template>
     <div>
-        <div class="ordfaranderiet">
-            <h3>Ordföranderiet</h3>
-            <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-            <div v-else class="ordfaranderiet-pictures">
-                <template v-for="ordforande in ordforanden">
-                <div class="picture-holder">
-                    <div class="ordfaranderiet-picture col-6"> 
-                        <img v-if="ordforande.better_featured_image" :src="ordforande.better_featured_image.source_url" />
-                        <img v-else src="../assets/img/profile.png" />
-                    </div> 
-                    <div class="ordfaranderiet-title">
-                        <h4>{{ ordforande.acf.titel }}</h4>
-                        <h5>{{ ordforande.acf.namn }}</h5>
-                    </div> 
+        <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
+        <div v-else>
+            <div class="ordfaranderiet">
+                <h3>Ordföranderiet</h3>
+                <div class="ordfaranderiet-pictures">
+                    <template v-for="ordforande in ordforanden">
+                    <div class="picture-holder">
+                        <div class="ordfaranderiet-picture col-6"> 
+                            <img v-if="ordforande.better_featured_image" :src="ordforande.better_featured_image.source_url" />
+                            <img v-else src="../assets/img/profile.png" />
+                        </div> 
+                        <div class="ordfaranderiet-title">
+                            <h4 v-if="ordforande">{{ ordforande.acf.titel }}</h4>
+                            <h5 v-if="ordforande">{{ ordforande.acf.namn }}</h5>
+                        </div> 
+                    </div>
+                    </template>
                 </div>
-                </template>
+            </div>
+            <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+            <div v-else class="utskotten" >
+                <h3 v-if="content[0]">{{ content[0].title.rendered }}</h3>
+                <div v-if="content[0]" class="utskotten-text" v-html="content[0].content.rendered">
+            </div>
+            <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+            <div v-else class="utskotten-pictures">
+                <div class="utskotten-picture col-12" v-for="utskott in utskotten" >
+                    <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
+                        <img v-if="utskott.acf.foreningssida_utskottsbild.url" class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
+                        <img v-else class="img-banner" src="../assets/img/logo_placeholder.png" />
+                        <h3 >{{ utskott.title.rendered }}</h3>
+                    </nuxt-link>
+                </div> 
             </div>
         </div>
-        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else class="utskotten" >
-            <h3>{{ content[0].title.rendered }}</h3>
-            <div class="utskotten-text" v-html="content[0].content.rendered">
-        </div>
-        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else class="utskotten-pictures">
-            <div class="utskotten-picture col-12" v-for="utskott in utskotten" >
-                <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
-                    <img v-if="utskott.acf.foreningssida_utskottsbild.url" class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
-                    <img v-else class="img-banner" src="../assets/img/logo_placeholder.png" />
-                    <h3>{{ utskott.title.rendered }}</h3>
-                </nuxt-link>
-            </div> 
-        </div>
     </div>
-</div>
+    </div>
 </template>
 
 <script>
@@ -44,25 +46,24 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 export default {
     data() {
         return {
-            content: [],
-            color: "#eb5e43",
-            fallback: "../assets/img/logo_bred_placeholder.png"
+            color: "#eb5e43"
         }
     },
     created() {
-        this.get_content();
+        this.$store.dispatch('get_ordforande');
+        this.$store.dispatch('get_allUtskott');
+        this.$store.dispatch('get_allPages');
+    },
+    components: {
+        SyncLoader
     },
     methods: {
-        get_content() {
-            for(let i = 0; i < this.$store.state.pages.length; i++) {
-                if(this.$store.state.pages[i].slug === 'foreningen') {
-                    this.content.push(this.$store.state.pages[i]);
-                }
-                
-            }
-        }
+
     },
     computed: {
+        content() {
+            return this.$store.getters.foreningPage
+        },
         utskotten(){
             return this.$store.state.utskott;
         },
@@ -122,8 +123,12 @@ export default {
 }
 
 .utskotten{
-    text-align: center;
+    text-align: left;
     display: inline-block;
+
+    h3{
+        text-align: center;
+    }
 
     &-text{
         padding: 10px;
@@ -140,6 +145,7 @@ export default {
         width: 100%;
 
         h3 {
+            text-align: center;
             margin: 10px;
             color: black;
         }

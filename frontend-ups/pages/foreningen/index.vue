@@ -24,20 +24,6 @@ export default {
         Sponsor,
         Instagram,
         utskottIndex
-    },
-    fetch({ store }){
-        return axios.all([
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'), 
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/ordforande'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages')
-        ]).then(axios.spread((utskottRes, ordforandeRes, pagesRes) => {
-            store.commit('allUtskott', utskottRes.data),
-            store.commit('ordforande', ordforandeRes.data),
-            store.commit('allPages', pagesRes.data),
-            this.loading = false;
-        })).catch((error) => {
-            console.log(error)
-        })
     }
 }
 </script>
