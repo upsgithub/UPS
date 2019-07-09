@@ -169,6 +169,8 @@ export const actions = {
 export const getters = {
     foreningPage: state => {
         return state.pages.filter(pages => pages.slug === 'foreningen')
+    },
+    foreningPage_eng: state => {
+        return state.pages.filter(pages => pages.slug === 'association')
     }
-    
 }

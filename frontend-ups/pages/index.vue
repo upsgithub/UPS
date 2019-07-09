@@ -6,16 +6,18 @@
     <div class="content-wrapper"> 
         <div class="posts container--full">
             <div class="post col-12">
-                <div class="post-title">
+                <div v-if="english" class="post-title">
+                    <h1> Who are we? </h1>
+                </div>
+                <div v-else class="post-title">
                     <h1> Vilka är vi? </h1>
                 </div>
                 <div class="post-text">
-                    <p> 
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum ex sit amet justo feugiat viverra. Pellentesque sit amet velit tempor, euismod augue viverra, laoreet mauris. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris vel ipsum vitae mi maximus rhoncus eu nec ex. In sollicitudin ut elit semper elementum. Praesent vitae magna non arcu imperdiet tempor id quis libero. Nunc id tempus neque. Pellentesque ac leo sapien.
-                        Curabitur gravida vulputate sapien, et semper odio sagittis eu. 
-                    </p>
+                    <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
+                    <div v-else class="post-text" v-html="forening_page[0].excerpt.rendered"></div>
                 </div>
-                <nuxt-link class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
+                <nuxt-link v-if="english" class="a-button" to="/foreningen"><button>More about us</button></nuxt-link>
+                <nuxt-link v-else class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
             </div>
             <div class="post-picture col-5">
                 <picture>
@@ -62,10 +64,12 @@ export default {
     fetch({ store }){
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides')
-        ]).then(axios.spread((postRes, slidesRes) => {
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
+            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
+        ]).then(axios.spread((postRes, slidesRes, pagesRes) => {
                 store.commit('Posts', postRes.data),
-                store.commit('slideShow', slidesRes.data)
+                store.commit('slideShow', slidesRes.data),
+                store.commit('allPages', pagesRes.data)
         })).catch((error) =>
             console.log(error)    
         )
@@ -75,10 +79,17 @@ export default {
             return this.$store.state.english;
         },
         posts(){
-            if(this.english){
+            if(this.english) {
                 return this.$store.state.postsEN.slice(0,3);
             } else {
                 return this.$store.state.postsSV.slice(0,3);
+            }
+        },
+        forening_page() {
+            if(this.english) {
+                return this.$store.getters.foreningPage_eng;
+            } else {
+                return this.$store.getters.foreningPage;
             }
         }
     },
