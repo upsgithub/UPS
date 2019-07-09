@@ -5,15 +5,15 @@
             <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
             <div v-else class="ordfaranderiet-pictures">
                 <template v-for="ordforande in ordforanden">
-                <div class="picture-holder">
-                    <div class="ordfaranderiet-picture col-6">
-                        <img :src="ordforande.better_featured_image.source_url" />
-                    </div> 
-                    <div class="ordfaranderiet-title">
-                        <h4>{{ ordforande.acf.titel }}</h4>
-                        <h5>{{ ordforande.acf.namn }}</h5>
-                    </div> 
-                </div>
+                    <div class="picture-holder" :key="ordforande.id">
+                        <div class="ordfaranderiet-picture col-6">
+                            <img :src="ordforande.better_featured_image.source_url" />
+                        </div> 
+                        <div class="ordfaranderiet-title">
+                            <h4>{{ ordforande.acf.titel }}</h4>
+                            <h5>{{ ordforande.acf.namn }}</h5>
+                        </div> 
+                    </div>
                 </template>
             </div>
         </div>
@@ -24,7 +24,7 @@
         </div>
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskotten-pictures">
-            <div class="utskotten-picture col-12" v-for="utskott in utskotten" >
+            <div class="utskotten-picture col-6" v-for="utskott in utskotten" :key="utskott.id">
                 <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
                     <img class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
                     <h3>{{ utskott.title.rendered }}</h3>
@@ -82,7 +82,7 @@ export default {
 
 .picture-holder{
     width: 50%;
-    margin-bottom: -40px;
+    margin-bottom: 20px;
 }
 
 .ordfaranderiet{
@@ -99,8 +99,8 @@ export default {
     &-picture{
         border-radius: 50%;
 		overflow: hidden;
-		width: 80%;
-		height: 50%;
+		width: 120px;
+		height: 120px;
         position: relative;
         margin: 5px auto 20px auto;
 
@@ -122,6 +122,7 @@ export default {
 .utskotten{
     text-align: center;
     display: inline-block;
+    margin-top: 10px;
 
     &-text{
         padding: 10px;
@@ -147,46 +148,55 @@ export default {
     }
 }
 
+.img-banner {
+    object-fit: cover;
+    width: 100%;
+    height: 160px;
+}
+
+@media only screen and (min-width: 480px) {
+    .ordfaranderiet{
+        &-picture{
+            width: 160px;
+		    height: 160px;
+        }
+    }
+}
+
+
+
+@media only screen and (min-width: 768px) {
     .img-banner {
         object-fit: cover;
         width: 100%;
-        height: 160px;
-        }
-
-   @media only screen and (min-width: 800px) {
-        .img-banner {
-        object-fit: cover;
-        width: 100%;
         height: 280px;
+    }
+
+    .picture-holder{
+        width: 25%;
+        margin-bottom: 0px;
+    }
+
+
+    .ordfaranderiet{
+    margin: 10px 0 0px 0;
+
+        &-picture{
+            margin-top: 10px;
         }
 
-        .picture-holder{
-            width: 25%;
-            margin-bottom: -40px;
+        &-title{
+            width: 100%;
+            text-align: center;
         }
+    }
 
-
-        .ordfaranderiet{
-        margin: 10px 0 -40px 0;
-
-            &-picture{
-                margin-top: 10px;
-
-                img {
-                }
-            }
-
-            &-title{
-                width: 100%;
-                text-align: center;
-            }
+    .utskotten{
+        margin-top: 30px;
+        &-picture{
+            width: 50%;
         }
-    
-        .utskotten{
-            &-picture{
-                width: 50%;
-            }
-        }
-   }
+    }
+}
     
 </style>
