@@ -141,11 +141,6 @@ export default {
         float: left;
         padding: 0px;
         width: 100%;
-
-        &__inner{
-            
-        }
-
         a{
             display: block;
             padding: 10px;

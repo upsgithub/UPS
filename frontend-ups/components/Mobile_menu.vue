@@ -11,12 +11,12 @@
                     <h2 @click="showMenu(), toggleClose()" class="item__main">
                         <nuxt-link to="/utbildning">Utbildning</nuxt-link>
                     </h2>
-                    <i class="arrow down"></i>
                 </div>
                 <div class="item">
                     <h2 @click="showMenu(), toggleClose()" class="item__main">
                         <nuxt-link to="/student">Student</nuxt-link>
                     </h2>
+                    
                 </div>
                 <div class="item">
                     <h2 @click="showMenu(), toggleClose()" class="item__main">
@@ -24,9 +24,16 @@
                     </h2>
                 </div>
                 <div class="item">
-                    <h2 @click="showMenu(), toggleClose()" class="item__main">
-                        <nuxt-link  to="/foreningen">Föreningen</nuxt-link>
-                    </h2>
+                    <div class="item__main">
+                        <span @click="showMenu(), toggleClose()" >
+                            <h2>
+                                <nuxt-link to="/foreningen">Föreningen</nuxt-link>
+                            </h2>
+                        </span>
+                        <div class="arrow-holder">
+                            <div class="arrow down"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,8 +82,13 @@ export default{
 
     .item {
         width: 100%;
-        padding: 12px 0;   
+        padding: 12px 0;
+
+        &__main{
+            width: 100%;
+        }
     }
+
     
     .flex-mobile {
         width: 100%;
