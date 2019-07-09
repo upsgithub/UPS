@@ -10,7 +10,7 @@
                     <h4>Kontakt oss</h4>
                 </div>
                 <div class="img">
-                    <img src="../assets/img/mail.png" />
+                    <a class="a-button" href="mailto:sekreterare@uppsalapolitices.se"><img src="../assets/img/mail.png" /></a>
                 </div>
             </div>
             <div class="footer-item col-4">
