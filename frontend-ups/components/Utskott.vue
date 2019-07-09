@@ -28,7 +28,7 @@
                     </div>
 
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                    <div v-else class="post-text" v-if="loaded" v-html="utskott.content.rendered"></div>
+                    <div v-elseif="loaded" class="post-text" v-html="utskott.content.rendered"></div>
 
                 </div>
 
