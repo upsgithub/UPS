@@ -1,6 +1,7 @@
 <template>
   <div class="upcoming-event">
-    <h4 v-if="empty_item()" class="event-header" >Kommande event</h4>
+    <h4 v-if="english" class="event-header" >Upcoming events</h4>
+        <h4 v-else class="event-header" >Kommande event</h4>
     <div class="flex-container-event">
       <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
       <div @click="clickBox( item.htmlLink )" class="event-box" v-for="item in filteredItems" :key="item.id" >
@@ -31,7 +32,6 @@ export default {
       loading: true,
       color: "#eb5e43", 
       api_url: "https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo",
-      lang: "sv",
       options: { month: 'short', day: 'numeric' },
       items: [],
       date: "",
@@ -95,7 +95,16 @@ export default {
       filteredItems: function () {
         return this.items.slice(0, 4)
      },
-
+     english(){
+         return this.$store.state.english;
+     },
+     lang(){
+         if(this.english){
+             return "en";
+         } else {
+             return "sv";
+         }
+     }
       
   }
 };

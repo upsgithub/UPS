@@ -1,6 +1,7 @@
 <template>
     <div class="samarbeten container--full">
-        <h4>Våra samarbetspartners</h4>
+        <h4 v-if="english">Our partners</h4>
+        <h4 v-else>Våra samarbetspartners</h4>
         <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div class="samarbeten-wrapper">  
             <div class="samarbete-logo col-6" v-for="sponsor in samarbeten" :key="sponsor.id">
@@ -37,6 +38,12 @@ export default {
     computed: {
         samarbeten(){
             return this.$store.state.samarbeten;
+        },
+        loading(){
+            return this.samarbeten == [];
+        },
+        english(){
+            return this.$store.state.english;
         }
     }
 }

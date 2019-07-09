@@ -6,15 +6,15 @@
         <div class="content-wrapper--small" id="home-anchor">
             <div class="blog-heading">
                 <h4>Senaste</h4>
-                <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
             </div>        
         </div>    
         <div class="content-wrapper--small">
             <div class="plain container--full">
                 <div class="posts">
-                    <div v-if="loaded" class="post-noimage-noborder col-12">
+                    <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+                    <div v-else class="post-noimage-noborder col-12">
                         <div class="post-title">
-                        <h1>{{ latest_post[0].title.rendered }}</h1>
+                            <h1>{{ latest_post[0].title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="latest_post[0].content.rendered"></div>
                         <div class="post-footer">Uppsala Politicesstudernade - {{ latest_post[0].date.substring(0,10) }}</div>
@@ -28,8 +28,9 @@
                 </div>        
             </div>
         <div class="content-wrapper--small">
-            <div v-if="loaded" class="plain container--full">
-                <div class="posts">
+            <div class="plain container--full">
+                <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+                <div v-else class="posts">
                     <div class="post-noimage col-12" v-for="post in five_posts" :key="post.id">
                         <div class="post-title">
                         <h1>{{ post.title.rendered }}</h1>
@@ -64,15 +65,13 @@ import $ from 'jquery'
 export default {
     data:function() {
         return {
-            loading: false,
             color: "#eb5e43",
-            loaded: true,
             current_start: 1
         }
     },
     fetch({ store }){
         return axios.get(
-            'http://api.uppsalapolitices.se/wp-json/wp/v2/posts'
+            'http://api.uppsalapolitices.se/wp-json/wp/v2/posts?per_page=100'
         ).then((response) => {
             store.commit('Posts', response.data)
         }).catch((error) => {
@@ -100,20 +99,35 @@ export default {
         },
     },
     computed: {
-        nr_of_posts(){
-            return this.$store.state.posts.length;
+        english(){
+            return this.$store.state.english;
+        },
+        posts(){
+            if(this.english){
+                return this.$store.state.postsEN;
+            } else {
+                return this.$store.state.postsSV;
+            }
         },  
         latest_post(){
-            return this.$store.state.posts.slice(0, 1);
+            return this.posts.slice(0, 1);
         },
         five_posts(){
-            return this.$store.state.posts.slice(this.current_start, this.current_start + 5);
+            return this.posts.slice(this.current_start, this.current_start + 5);
         },
         older_exists(){
-            return !(this.current_start + 5 >= this.nr_of_posts);
+            return !(this.current_start + 5 >= this.posts.length);
         },
         newer_exists(){
             return this.current_start - 5 >= 0;
+        },
+        loading(){
+            return (this.latest_post || this.five_posts) == undefined;
+        }
+    },
+    watch:{
+        english(){
+            this.current_start = 1;
         }
     },
     components: {
