@@ -1,6 +1,6 @@
 <template>
 <div class="mobile-menu">
-        <div :style="display" class="menu mobile container--full" >
+        <div class="menu mobile container--full" :style="display">
             <div class="flex-mobile">
                 <div class="item">
                     <h2 @click="showMenu(), toggleClose()">
@@ -364,7 +364,7 @@ export default{
     }
 
     @media only screen and (min-width: 900px) {
-        .noShow-mobile{
+        .mobile-menu{
             display: none;
         }
     }
