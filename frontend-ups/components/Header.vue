@@ -64,7 +64,12 @@
                         <h3 v-else><nuxt-link to="/foreningen">Utskotten</nuxt-link></h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item wide" @click="hide('utskotten')" v-for="page in utskott">
-                                <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
+                                <template v-if="english">
+                                    <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.slug ">{{ page.acf.english_title }}</nuxt-link></h3>
+                                </template>
+                                <template v-else>
+                                    <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
+                                </template>
                             </div>
                         </div>
                     </div>
