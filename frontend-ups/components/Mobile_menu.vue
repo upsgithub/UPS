@@ -259,32 +259,33 @@ export default{
     
     .flex-mobile {
         width: 100%;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        left: 50%;
         display: flex;
         flex-direction: column;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        max-height: 100vh;
+        padding-bottom: 60px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &::-webkit-scrollbar { 
+            display: none; 
+        }
     }
 
     .mobile{
         z-index: 5;
         position: fixed;
-        min-height: 260px;
-        height: 100%;
-        bottom: 0;
+        top: 0%;
+        bottom: 0%;
         opacity: 0.95;
-        overflow: auto;
         width: 100%;
         flex: 1;
         display: flex;
 
         h2 {
             color: #eb5e43;
-        }
-
-        &::-webkit-scrollbar { 
-            display: none; 
         }
     }
 
