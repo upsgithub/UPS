@@ -57,7 +57,7 @@
                     <template v-if="english">
                         <h4>President</h4>
                         <h5>{{ utskott.acf.ordforande_namn }}</h5>
-                        <button>Contact {{ utskott.title.rendered }}</button>
+                        <button>Contact {{ utskott.acf.english_title }}</button>
                     </template>
                     <template v-else>
                         <h4>Ordförande</h4>
