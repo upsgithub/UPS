@@ -23,7 +23,10 @@
         <div class="content-wrapper">
             <div class="utskott container--full">
                 <div class="utskott-text col-12">
-                    <div class="post-title">
+                    <div v-if="english" class="post-title">
+                        <h1> What do we do? </h1>
+                    </div>
+                    <div v-else class="post-title">
                         <h1> Vad gör vi? </h1>
                     </div>
 
@@ -34,7 +37,10 @@
 
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                 <div v-else class="utskott-kontakt col-12">
-                    <div class="post-title">
+                    <div v-if="english" class="post-title">
+                        <h1>Contact</h1>
+                    </div>
+                    <div v-else class="post-title">
                         <h1>Kontakt</h1>
                     </div>
                     
@@ -45,9 +51,16 @@
                             <img v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
                         </picture>
                     </div>
-                    <h4>Ordförande</h4>
-                    <h5>{{ utskott.acf.ordforande_namn }}</h5>
-                    <button>Kontakta {{ utskott.title.rendered }}</button>
+                    <template v-if="english">
+                        <h4>President</h4>
+                        <h5>{{ utskott.acf.ordforande_namn }}</h5>
+                        <button>Contact {{ utskott.title.rendered }}</button>
+                    </template>
+                    <template v-else>
+                        <h4>Ordförande</h4>
+                        <h5>{{ utskott.acf.ordforande_namn }}</h5>
+                        <button else>Kontakta {{ utskott.title.rendered }}</button>
+                    </template>
                 </div>
                 
             </div>
@@ -190,6 +203,9 @@ export default {
         },
         loaded(){
             return this.utskott != undefined;
+        },
+        english(){
+            return this.$store.state.english;
         }
     },
     components: {

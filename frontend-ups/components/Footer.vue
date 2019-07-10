@@ -1,16 +1,23 @@
 <template>
     <div class="footer">
         <div class="content-wrapper">
+            
             <div class="footer-item col-4">
-                <div class="text">
+                <div v-if="this.english" class="text">
+                    <h4>Contact us</h4>
+                </div>
+                <div v-else class="text">
                     <h4>Kontakt oss</h4>
                 </div>
                 <div class="img">
-                    <img src="../assets/img/mail.png" />
+                    <a class="a-button" href="mailto:sekreterare@uppsalapolitices.se"><img src="../assets/img/mail.png" /></a>
                 </div>
             </div>
             <div class="footer-item col-4">
-                <div class="text">
+                <div v-if="this.english" class="text">
+                    <h4>Social medias</h4>
+                </div>
+                <div v-else class="text">
                     <h4>Sociala medier</h4>
                 </div>
                 <div class="img">
@@ -20,7 +27,10 @@
                 </div>
             </div>
             <div class="footer-item col-4">
-                <div class="text">
+                <div v-if="this.english" class="text">
+                    <h4>Address</h4>
+                </div>
+                <div v-else class="text">
                     <h4>Adress</h4>
                 </div>
                 <div class="img">
@@ -32,10 +42,9 @@
 </template>
 
 <style lang="scss">
-
-    .footer{
-        display:none;
-    }
+.footer{
+    display:none;
+}
 
     @media only screen and (min-width: 800px) {
         .footer{
@@ -82,11 +91,11 @@
 </style>
 
 <script>
-    export default{
-        methods: {
-            change_language(){
-                
-            }
+export default{
+    computed: {
+        english(){
+            return this.$store.state.english;
         }
     }
+}
 </script>

@@ -1,4 +1,5 @@
 <template>
+    <div>
         <FullCalendar
           :fixedWeekCount="fixedWeekCount"
           :showNonCurrentDates="showNonCurrentDates"
@@ -14,6 +15,7 @@
           :defaultView="defaultView"
           :plugins="calendarPlugins"
         />
+    </div>
 </template>
 
 <style lang="scss">
@@ -39,10 +41,10 @@ export default {
         return {
             fixedWeekCount: false,
             showNonCurrentDates: false,
-            buttonText: {
-                today: "Idag"
-            },
-            locale: "sv",
+            // buttonText: {
+            //     today: "Idag"  <----- IS COMPUTED
+            // },
+            // locale: "sv",  <----- ALSO COMPUTED
             defaultView: "dayGridMonth",
             firstDay: 1,
             calendarPlugins: [dayGridPlugin, googleCalendarPlugin],
@@ -59,6 +61,25 @@ export default {
                 //meridiem: "short"
             }
         };
+    },
+    computed:{
+        english(){
+            return this.$store.state.english;
+        },
+        buttonText(){
+            if(this.english){
+                return {today: "Today"};
+            } else {
+                return {today: "Idag"};
+            }
+        },
+        locale(){
+            if(this.english){
+                return "en";
+            } else {
+                return "sv";
+            }
+        }
     }
 };
 </script>

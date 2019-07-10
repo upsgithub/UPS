@@ -34,7 +34,7 @@
             </div> 
         </div>
     </div>
-</div>
+    </div>
 </template>
 
 <script>
@@ -44,25 +44,24 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 export default {
     data() {
         return {
-            content: [],
-            color: "#eb5e43",
-            fallback: "../assets/img/people_books@1024w.jpg"
+            color: "#eb5e43"
         }
     },
     created() {
-        this.get_content();
+        this.$store.dispatch('get_ordforande');
+        this.$store.dispatch('get_allUtskott');
+        this.$store.dispatch('get_allPages');
+    },
+    components: {
+        SyncLoader
     },
     methods: {
-        get_content() {
-            for(let i = 0; i < this.$store.state.pages.length; i++) {
-                if(this.$store.state.pages[i].slug === 'foreningen') {
-                    this.content.push(this.$store.state.pages[i]);
-                }
-                
-            }
-        }
+
     },
     computed: {
+        content() {
+            return this.$store.getters.foreningPage
+        },
         utskotten(){
             return this.$store.state.utskott;
         },
@@ -125,6 +124,12 @@ export default {
     text-align: center;
     display: block;
     margin-top: 10px;
+    // text-align: left;
+    // display: inline-block;
+
+    h3{
+        text-align: center;
+    }
 
     &-text{
         padding: 10px;
@@ -153,6 +158,7 @@ export default {
         }
 
         h3 {
+            text-align: center;
             margin: 10px;
             color: black;
         }

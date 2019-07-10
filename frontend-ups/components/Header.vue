@@ -58,8 +58,14 @@
                     </div>
                 </div>
             </div> 
-            
+
         </div>
+
+        <div v-if="showLangButton" class="lang_fixed">
+            <img v-if="english" src="../assets/img/SV.png" @click="change_language()" />
+            <img v-else src="../assets/img/UK.png" @click="change_language()" />
+        </div>
+
     </div>
 </template>
 
@@ -68,6 +74,12 @@ import axios from 'axios'
 import $ from 'jquery'
 
 export default {
+    data:function() {
+        return {
+            showLangButton: true,
+            lastScrollPosition: 0
+        }
+    },
     created() {
         return axios.all([
             axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
@@ -85,6 +97,15 @@ export default {
         },
         hide : function(menu){
             $(this.$refs[menu]).fadeOut(50);
+        },
+        change_language:function() {
+            var current = this.$store.state.english;
+            this.$store.commit('change_language', !current);
+        },
+        onScroll() {
+            const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScrollPosition < 0) { return }
+            this.showLangButton = currentScrollPosition == 0
         }
     },
     computed: {
@@ -99,13 +120,33 @@ export default {
         },
         forening(){
             return this.$store.state.forening
+        },
+        english(){
+            return this.$store.state.english;
+        },
+        current_width(){
+            return window.innerWidth;
         }
+    },
+    mounted () {
+        window.addEventListener('scroll', 
+        this.onScroll);
+        
+    },
+    beforeDestroy () {
+        window.removeEventListener('scroll', 
+        this.onScroll);
     }
 }
 </script>
 
 
 <style lang="scss">
+
+    .lang_fixed{
+        display: none;
+    }
+
     .menu{
         background: #30242e;
         text-align: center;
@@ -135,8 +176,26 @@ export default {
         max-height: 90px;
     }
 
-    @media only screen and (min-width: 769px) {
+    @media only screen and (min-width: 426px) {
         
+        .lang_fixed{
+            display: block;
+            position: fixed;
+            right: 0;
+            top: 0;
+            margin-top: 37px;
+            margin-right: 30px;
+            width: 30px;
+            cursor: pointer;
+
+            img{
+                width: 100%;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 900px) {
+
         .menu{
         padding: 7.5px 0px;
         height: 100px;
