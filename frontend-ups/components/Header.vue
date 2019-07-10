@@ -176,25 +176,22 @@ export default {
         max-height: 90px;
     }
 
-    @media only screen and (min-width: 426px) {
-        
+    @media only screen and (min-width: 900px) {
+
         .lang_fixed{
             display: block;
-            position: fixed;
-            right: 0;
-            top: 0;
-            margin-top: 37px;
-            margin-right: 30px;
             width: 30px;
             cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 40px;
 
             img{
-                width: 100%;
+                width: 30px;
+                height: 30px;
             }
         }
-    }
-
-    @media only screen and (min-width: 900px) {
 
         .menu{
         padding: 7.5px 0px;
@@ -282,6 +279,11 @@ export default {
             width: 150px;
             word-break: break-word;
             padding-left: 0 5px;   
+        }
+    }
+    @media only screen and (min-width: 1200px) {
+        .lang_fixed{
+            right: 10%;
         }
     }
 </style>

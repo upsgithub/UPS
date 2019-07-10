@@ -46,7 +46,7 @@
     display:none;
 }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 900px) {
         .footer{
             display:block;
             width: 100%;

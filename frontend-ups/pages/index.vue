@@ -14,7 +14,7 @@
                 </div>
                 <div class="post-text">
                     <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
-                    <div v-else class="post-text" v-html="forening_page[0].excerpt.rendered"></div>
+                    <div v-else v-html="forening_page[0].excerpt.rendered"></div>
                 </div>
                 <nuxt-link v-if="english" class="a-button" to="/foreningen"><button>More about us</button></nuxt-link>
                 <nuxt-link v-else class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>

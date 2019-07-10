@@ -5,6 +5,7 @@
 
 .ig-flex {
     display: flex;
+    margin-bottom: 0;
 }
 .ig-container {
     background-color:  #EFEFEF;
@@ -46,7 +47,14 @@
     }
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 768px) {
+    .ig-flex{
+        margin-bottom: 40px;
+    }
+}
+
+
+@media only screen and (min-width: 900px) {
     .ig-img {
         cursor: pointer;
         margin-bottom: 5%;
@@ -57,5 +65,8 @@
             margin-right: 0;
         }
         
+    }
+    .ig-flex{
+        margin-bottom: 0;
     }
 }

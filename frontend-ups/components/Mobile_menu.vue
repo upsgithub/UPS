@@ -1,7 +1,7 @@
 <template>
 <div class="noShow-mobile">
         <div :style="display" class="menu mobile container--full" >
-            <div  class="flex-mobile">
+            <div class="flex-mobile">
                 <div class="item">
                     <h2 @click="showMenu(), toggleClose()">
                         <nuxt-link  to="/">Start</nuxt-link>
@@ -37,10 +37,13 @@
                 </div>
             </div>
         </div>
-        <div class="burger" @click="showMenu()">
-            <!-- <img src="../assets/img/menu-button.png" /> -->
+        <div class="burger">
+            <div v-if="showLangButton" class="lang lang--bottom-l">
+                <img v-if="english" src="../assets/img/SV.png" @click="change_language()" />
+                <img v-else src="../assets/img/UK.png" @click="change_language()" />
+            </div>
             <div class="burger-h">
-                <div class="burger__menu-icon" @click="toggleClose()" v-bind:class="menuClose">
+                <div class="burger__menu-icon" @click="showMenu(), toggleClose()" v-bind:class="menuClose">
                     <div class="burger__menu-icon__middle"></div>
                 </div>
             </div>
@@ -54,7 +57,8 @@ export default{
     data: function() {
         return {
             display: "display: none",
-            menuClose: ""
+            menuClose: "",
+            showLangButton: true
         }
     },
     methods: {
@@ -73,12 +77,40 @@ export default{
                this.display = "display: none";
            }
            
-       }
+       },
+       change_language:function() {
+            var current = this.$store.state.english;
+            this.$store.commit('change_language', !current);
+        }
+    },
+    computed: {
+        english(){
+            return this.$store.state.english;
+        }
     }
 }
 </script>
         
 <style lang="scss">
+
+    .lang{
+        display: block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+
+        &--bottom-l{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 20px;
+        }
+
+        img{
+            height: 35px;
+            width: 35px;
+        }
+    }
 
     .item {
         width: 100%;
@@ -99,7 +131,7 @@ export default{
     }
 
     .mobile{
-        z-index: 1;
+        z-index: 5;
         //display: block;
         position: fixed;
         height: 100%;
@@ -113,7 +145,7 @@ export default{
 
     .burger {
         background-color: #30242e;
-        z-index: 5;
+        z-index: 6;
         text-align: right;
         position: fixed;
         height: 60px;
@@ -184,14 +216,9 @@ export default{
                 }
             }
         }
-
-        img{
-            margin: 5px 15px;
-            width: 50px;
-        }
     }
 
-    @media only screen and (min-width: 800px) {
+    @media only screen and (min-width: 900px) {
         .noShow-mobile{
             display: none;
         }
