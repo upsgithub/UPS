@@ -1,5 +1,5 @@
 <template>
-<div class="noShow-mobile">
+<div class="mobile-menu">
         <div :style="display" class="menu mobile container--full" >
             <div class="flex-mobile">
                 <div class="item">
@@ -231,7 +231,13 @@ export default{
             width: 35px;
         }
     }
-
+    .mobile-menu{
+        position: fixed;
+        max-height: 100%;
+        bottom: 0;
+        overflow: hidden;
+        width: 100%;
+    }
     .item {
         width: 100%;
         padding: 12px 0;
@@ -266,17 +272,19 @@ export default{
         left: 50%;
         display: flex;
         flex-direction: column;
-        overflow: auto;
     }
 
     .mobile{
         z-index: 5;
         position: fixed;
+        min-height: 260px;
         height: 100%;
         bottom: 0;
         opacity: 0.95;
-        overflow: hidden;
+        overflow: auto;
         width: 100%;
+        flex: 1;
+        display: flex;
 
         h2 {
             color: #eb5e43;
