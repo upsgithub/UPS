@@ -59,7 +59,6 @@ export default {
                     return pagesArr[i].slug;
                 }
             }
-            // return 'freestanding-positions'
         },
         current_page:function(pagesArr, url){
             for(var i = 0; i < pagesArr.length; i++){
