@@ -12,7 +12,8 @@
                             <img v-else src="../assets/img/profile.png" />
                         </div> 
                         <div class="ordfaranderiet-title">
-                            <h4 v-if="ordforande">{{ ordforande.acf.titel }}</h4>
+                            <h4 v-if="ordforande && english">{{ ordforande.acf.titelengit }}</h4>
+                            <h4 v-else> {{ ordforande.acf.titel }} </h4>
                             <h5 v-if="ordforande">{{ ordforande.acf.namn }}</h5>
                         </div> 
                     </div>
