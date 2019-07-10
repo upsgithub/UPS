@@ -8,32 +8,99 @@
                     </h2>
                 </div>
                 <div class="item">
-                    <h2 @click="showMenu(), toggleClose()" class="item__main">
-                        <nuxt-link to="/utbildning">Utbildning</nuxt-link>
-                    </h2>
-                </div>
-                <div class="item">
-                    <h2 @click="showMenu(), toggleClose()" class="item__main">
-                        <nuxt-link to="/student">Student</nuxt-link>
-                    </h2>
-                    
-                </div>
-                <div class="item">
-                    <h2 @click="showMenu(), toggleClose()" class="item__main">
-                        <nuxt-link  to="/event">Event</nuxt-link>
-                    </h2>
+                    <div class="item__main">
+                        <h2>
+                            <span @click="showMenu(), toggleClose()" class="item__main">
+                                <nuxt-link to="/utbildning">Utbildning</nuxt-link>
+                            </span>
+                        </h2>
+                        <div class="arrow-holder" id="utblidning" ref="utblidning" @click="toggleDropMenu('utbildning')" :class="dropDownClose1">
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                    <ul id="utbildning-links" class="item item__sublinks" :class="subMenu1">
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')">
+                            <nuxt-link to="/utbildning/master">Master</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')">
+                            <nuxt-link to="/utbildning/kandidat">Kandidat</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')">
+                            <nuxt-link to="/utbildning/skugga-en-student">Skugga en student</nuxt-link>
+                        </li>
+                    </ul>
                 </div>
                 <div class="item">
                     <div class="item__main">
-                        <span @click="showMenu(), toggleClose()" >
-                            <h2>
-                                <nuxt-link to="/foreningen">Föreningen</nuxt-link>
-                            </h2>
-                        </span>
-                        <div class="arrow-holder">
-                            <div class="arrow down"></div>
+                        <h2>
+                            <span @click="showMenu(), toggleClose()">
+                                <nuxt-link to="/student">Student</nuxt-link>
+                            </span>
+                         </h2>
+                         <div class="arrow-holder" @click="toggleDropMenu('student')" :class="dropDownClose2">
+                            <div class="arrow"></div>
                         </div>
                     </div>
+                    <ul id="student-links" class="item item__sublinks" :class="subMenu2">
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
+                            <nuxt-link to="/student/alumn">Alumn</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
+                            <nuxt-link to="/student/projektpotten">Projektpotten</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
+                            <nuxt-link to="/student/stipendier">Stipendier</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
+                            <nuxt-link to="/student/produkter">Produkter</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
+                            <nuxt-link to="/student/medlemskap">Medlemskap</nuxt-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="item__main">
+                        <h2>
+                            <span @click="showMenu(), toggleClose()" >
+                                <nuxt-link  to="/event">Event</nuxt-link>
+                            </span>
+                        </h2>
+                        <div class="arrow-holder" @click="toggleDropMenu('event')" :class="dropDownClose3">
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                    <ul id="event-links" class="item item__sublinks" :class="subMenu3">
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('event')">
+                            <nuxt-link to="/event/blogg">Blogg</nuxt-link>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="item__main">
+                        <h2>
+                            <span @click="showMenu(), toggleClose()" >
+                                <nuxt-link to="/foreningen">Föreningen</nuxt-link>
+                            </span>
+                        </h2>
+                        <div class="arrow-holder" @click="toggleDropMenu('foreningen')" :class="dropDownClose4">
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                    <ul id="foreningen-links" class="item item__sublinks" :class="subMenu4">
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
+                            <nuxt-link to="/foreningen/fristaende-ambeten">Fristående ämbeten</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
+                            <nuxt-link to="/foreningen/policy">Policies</nuxt-link>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
+                            <a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
+                            <nuxt-link to="/foreningen">Utskotten</nuxt-link>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -58,6 +125,14 @@ export default{
         return {
             display: "display: none",
             menuClose: "",
+            dropDownClose1: "down",
+            subMenu1: "",
+            subMenu2: "",
+            subMenu3: "",
+            subMenu4: "",
+            dropDownClose2: "down",
+            dropDownClose3: "down",
+            dropDownClose4: "down",
             showLangButton: true
         }
     },
@@ -78,6 +153,52 @@ export default{
            }
            
        },
+       toggleDropMenu(id) {
+           switch (id){
+               case 'utbildning':
+                   if(this.dropDownClose1 === "down"){
+                       this.dropDownClose1 = "up";
+                       this.subMenu1 = "opened";
+                   }
+                   else{
+                       this.dropDownClose1 = "down";
+                       this.subMenu1 = "";
+                   }
+                   break;
+                case 'student':
+                   if(this.dropDownClose2 === "down"){
+                       this.dropDownClose2 = "up";
+                       this.subMenu2 = "opened";
+                   }
+                   else{
+                       this.dropDownClose2 = "down";
+                       this.subMenu2 = "";
+                   }
+                   break;
+                case 'event':
+                   if(this.dropDownClose3 === "down"){
+                       this.dropDownClose3 = "up";
+                       this.subMenu3 = "opened";
+                   }
+                   else{
+                       this.dropDownClose3 = "down";
+                       this.subMenu3 = "";
+                   }
+                   break;
+                case 'foreningen':
+                    if(this.dropDownClose4 === "down"){
+                        this.dropDownClose4 = "up";
+                        this.subMenu4 = "opened";
+                    }
+                    else{
+                        this.dropDownClose4 = "down";
+                        this.subMenu4 = "";
+                    }
+                    break;
+                default:
+                    return id;
+           }
+       },
        change_language:function() {
             var current = this.$store.state.english;
             this.$store.commit('change_language', !current);
@@ -92,7 +213,6 @@ export default{
 </script>
         
 <style lang="scss">
-
     .lang{
         display: block;
         width: 35px;
@@ -118,9 +238,25 @@ export default{
 
         &__main{
             width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        &__sublinks{
+            list-style: none;
+            display: none;
+
+            &__link{
+                font-size: 1rem;
+                padding: 15px 0px;
+            }
         }
     }
 
+    .item__sublinks.opened{
+        display: block;
+    }
     
     .flex-mobile {
         width: 100%;
@@ -128,18 +264,26 @@ export default{
         top: 50%;
         transform: translate(-50%, -50%);
         left: 50%;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
     }
 
     .mobile{
         z-index: 5;
-        //display: block;
         position: fixed;
         height: 100%;
         bottom: 0;
         opacity: 0.95;
+        overflow: hidden;
+        width: 100%;
 
         h2 {
             color: #eb5e43;
+        }
+
+        &::-webkit-scrollbar { 
+            display: none; 
         }
     }
 

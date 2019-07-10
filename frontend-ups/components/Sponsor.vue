@@ -39,9 +39,6 @@ export default {
         samarbeten(){
             return this.$store.state.samarbeten;
         },
-        loading(){
-            return this.samarbeten == [];
-        },
         english(){
             return this.$store.state.english;
         }

@@ -110,5 +110,19 @@ export default {
     &-background{
         background-image: url("../assets/img/plain_placeholder.jpg");
     }
+    figure{
+        overflow: hidden;
+        padding-top: 100%;
+        position: relative;
+
+        iframe{
+            border: 0;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+    }
 }
 </style>
