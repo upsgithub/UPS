@@ -53,13 +53,6 @@ export default {
             var url = (this.$route.path.split("/"));
             return url[url.length - 1];
         },
-        getslug(pagesArr, title){
-            for(var i = 0; i < pagesArr.length; i++){
-                if(pagesArr[i].title.rendered == title){
-                    return pagesArr[i].slug;
-                }
-            }
-        },
         current_page:function(pagesArr, url){
             for(var i = 0; i < pagesArr.length; i++){
                 if(pagesArr[i].slug == url){
@@ -73,19 +66,20 @@ export default {
             
             var cur_page = this.current_page(this.$store.state.pages, this.current_url());
 
-            // om man går från svensk sida till englesk översättning
-            if(this.english && cur_page.acf.lang[0] == "Svenska"){
-                return this.current_page(this.$store.state.pages, cur_page.acf.translates);
+            if(cur_page != undefined){
+                // om man går från svensk sida till englesk översättning
+                if(this.english && cur_page.acf.lang[0] == "Svenska"){
+                    return this.current_page(this.$store.state.pages, cur_page.acf.translates);
 
-            // om man går från engelsk sida till svensk översättning 
-            } else if(!(this.english) && cur_page.acf.lang[0] == "Engelska") 
-                return this.current_page(this.$store.state.pages, cur_page.acf.translates);
+                // om man går från engelsk sida till svensk översättning 
+                } else if(!(this.english) && cur_page.acf.lang[0] == "Engelska") 
+                    return this.current_page(this.$store.state.pages, cur_page.acf.translates);
 
-            // om man navigerar normalt
-            else {
-                return cur_page;
+                // om man navigerar normalt
+                else {
+                    return cur_page;
+                }
             }
-
         },
         loading(){
             return this.cur_page == undefined;

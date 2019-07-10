@@ -2,7 +2,8 @@
     <div class="container">
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskott-background">
-            <h3 :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
+            <h3 v-if="english" :style="utskott.acf.bannertext">{{ utskott.acf.english_title }}</h3>
+            <h3 v-else :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
             <img v-if="!utskott.better_featured_image && loaded" data-srcset="~assets/img/people_books@320w.jpg 320w,
             ~assets/img/people_books@480w.jpg  480w, 
             ~assets/img/people_books@768w.jpg 768w,
@@ -28,8 +29,10 @@
                     </div>
 
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                    <div v-else class="post-text" v-if="loaded" v-html="utskott.content.rendered"></div>
-
+                    <template v-else>
+                        <div v-if="english" class="post-text" v-html="utskott.acf.engelsk_text"></div>
+                        <div v-else class="post-text" v-html="utskott.content.rendered"></div>
+                    </template>     
                 </div>
 
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
@@ -187,6 +190,9 @@ export default {
         },
         loaded(){
             return this.utskott != undefined;
+        },
+        english(){
+            return this.$store.state.english;
         }
     },
     components: {
