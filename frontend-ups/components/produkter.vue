@@ -3,7 +3,8 @@
         <div class="produkt-flex">
             <div class="item" v-for="produkt in produkter">
                 <img :src="produkt.better_featured_image.source_url" />
-                <div> {{ produkt.acf.namn }} </div>
+                <div v-if="english && produkt.acf.namnen"> {{ produkt.acf.namnen }} </div>
+                <div v-else> {{ produkt.acf.namn }} </div>
                 <div> {{ produkt.acf.pris }} </div>
             </div>
         </div>
@@ -53,19 +54,24 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            produkter: []
+
         }
     },
     created() {
-        this.get_produkter();
+
     },
     methods: {
-        get_produkter() {
-            for(let i = 0; i < this.$store.state.produkter.length; i++) {
-                this.produkter.push(this.$store.state.produkter[i]);
-            }
+
+    },
+    computed: {
+        english() {
+            return this.$store.state.english;
+        },
+        produkter() {
+            return this.$store.state.produkter;
         }
-    }
-}                
+}         
+}
+           
 </script>
 
