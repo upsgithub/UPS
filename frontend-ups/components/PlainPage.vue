@@ -69,7 +69,13 @@ export default {
             if(cur_page_new != undefined){
                 // om man går från svensk sida till englesk översättning
                 if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
-                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    var page = this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+
+                    if(page == undefined){
+                        return this.$store.state.english_error_page;
+                    } else {
+                        return page;
+                    }
 
                 // om man går från engelsk sida till svensk översättning 
                 } else if(!(this.english) &&  cur_page_new.acf.lang[0] == "Engelska") 

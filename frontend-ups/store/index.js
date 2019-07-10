@@ -190,5 +190,8 @@ export const getters = {
     },
     headerPagesForening_eng: state => {
         return state.forening.filter(forening => forening.acf.lang[0] === 'Engelska')
+    },
+    english_error_page: state => {
+        return state.pages.filter(pages => pages.slug === 'not-in-english')
     }
 }
