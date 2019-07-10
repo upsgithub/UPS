@@ -231,13 +231,6 @@ export default{
             width: 35px;
         }
     }
-    .mobile-menu{
-        position: fixed;
-        max-height: 100%;
-        bottom: 0;
-        overflow: hidden;
-        width: 100%;
-    }
     .item {
         width: 100%;
         padding: 12px 0;
