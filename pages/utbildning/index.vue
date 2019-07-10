@@ -4,9 +4,7 @@
         <div v-else class="plain-background">
             <h3>{{ cur_page.title.rendered }}</h3>
         </div>
-
-        <div class="content-wrapper">
-            
+        <div class="content-wrapper"> 
             <div class="plain container--full">     
                 <div class="plain-text col-12">
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
@@ -18,7 +16,6 @@
                     <div class="post-text" v-html="cur_page.content.rendered"></div>
                 </div>
             </div>
-            
             <KommandeEvent />
             <Sponsor />
         </div>
