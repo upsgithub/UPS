@@ -36,7 +36,7 @@ import axios from 'axios'
 export default {
     data:function(){
         return {
-            color: "#eb5e43"
+            color: "#eb5e43",
         }
     },
     created() {
@@ -71,19 +71,21 @@ export default {
     computed:{
         cur_page(){
             
-            var cur_page = this.current_page(this.$store.state.pages, this.current_url());
+            var cur_page_new = this.current_page(this.$store.state.pages, this.current_url());
+            
+            if(cur_page_new != undefined){
+                // om man går från svensk sida till englesk översättning
+                if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
+                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
 
-            // om man går från svensk sida till englesk översättning
-            if(this.english && cur_page.acf.lang[0] == "Svenska"){
-                return this.current_page(this.$store.state.pages, cur_page.acf.translates);
+                // om man går från engelsk sida till svensk översättning 
+                } else if(!(this.english) &&  cur_page_new.acf.lang[0] == "Engelska") 
+                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
 
-            // om man går från engelsk sida till svensk översättning 
-            } else if(!(this.english) && cur_page.acf.lang[0] == "Engelska") 
-                return this.current_page(this.$store.state.pages, cur_page.acf.translates);
-
-            // om man navigerar normalt
-            else {
-                return cur_page;
+                // om man navigerar normalt
+                else {
+                    return  cur_page_new;
+                }
             }
 
         },
