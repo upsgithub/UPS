@@ -2,13 +2,14 @@
     <div>
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskott-background">
-            <h3 :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
-            <img v-if="!utskott.better_featured_image && loaded" data-srcset="/img/people_books@320w.jpg 320w,
-            /img/people_books@480w.jpg  480w, 
-            /img/people_books@768w.jpg 768w,
-            /img/people_books@1024w.jpg  1024w, 
-            /img/people_books@1376w.jpg  1376w, 
-            /img/people_books@1920w.jpg  1920w"
+            <h3 v-if="english" :style="utskott.acf.bannertext">{{ utskott.acf.english_title }}</h3>
+            <h3 v-else :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
+            <img v-if="!utskott.better_featured_image && loaded" data-srcset="~assets/img/people_books@320w.jpg 320w,
+            ~assets/img/people_books@480w.jpg  480w, 
+            ~assets/img/people_books@768w.jpg 768w,
+            ~assets/img/people_books@1024w.jpg  1024w, 
+            ~assets/img/people_books@1376w.jpg  1376w, 
+            ~assets/img/people_books@1920w.jpg  1920w"
                     sizes="auto"
                     data-src="/img/people_books@1920w.jpg" class="lazyload" alt="people"/>
             <img v-if="utskott.better_featured_image && loaded" :srcset="utskott.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
@@ -31,8 +32,10 @@
                     </div>
 
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                    <div v-elseif="loaded" class="post-text" v-html="utskott.content.rendered"></div>
-
+                    <template v-else>
+                        <div v-if="english" class="post-text" v-html="utskott.acf.engelsk_text"></div>
+                        <div v-else class="post-text" v-html="utskott.content.rendered"></div>
+                    </template>     
                 </div>
 
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>

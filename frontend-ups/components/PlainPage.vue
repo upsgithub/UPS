@@ -53,13 +53,6 @@ export default {
             var url = (this.$route.path.split("/"));
             return url[url.length - 1];
         },
-        getslug(pagesArr, title){
-            for(var i = 0; i < pagesArr.length; i++){
-                if(pagesArr[i].title.rendered == title){
-                    return pagesArr[i].slug;
-                }
-            }
-        },
         current_page:function(pagesArr, url){
             for(var i = 0; i < pagesArr.length; i++){
                 if(pagesArr[i].slug == url){
@@ -87,7 +80,6 @@ export default {
                     return  cur_page_new;
                 }
             }
-
         },
         loading(){
             return this.cur_page == undefined;
