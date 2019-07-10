@@ -4,7 +4,12 @@
 
             <div class="menu-item col-2" @mouseleave="hide('utbildning')">
                 <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
-                    <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
+                    <template v-if="english">
+                        <h2><nuxt-link to="/utbildning">Education</nuxt-link></h2>
+                    </template>
+                    <template v-else>
+                        <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
+                    </template>
                 </div>
                 <div class="desktop-dropdown" ref="utbildning">
                     <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning">
@@ -41,7 +46,12 @@
 
             <div class="menu-item col-2" @mouseleave="hide('forening')">
                 <div class="text" @mouseover="show('forening')" @click="hide('forening')">
-                    <h2><nuxt-link to="/foreningen">Föreningen</nuxt-link></h2>
+                    <template v-if="english">
+                        <h2><nuxt-link to="/foreningen">Association</nuxt-link></h2>
+                    </template>
+                    <template v-else>
+                        <h2><nuxt-link to="/foreningen">Föreningen</nuxt-link></h2>
+                    </template>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
                     <div class="desktop-item" @click="hide('forening')" v-for="page in forening">
@@ -49,7 +59,9 @@
                     </div>
                     <div class="desktop-item" @click="hide('forening')"><h3><nuxt-link to="/foreningen/policy">Policies</nuxt-link></h3></div>
                     <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
-                    <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')"><h3><nuxt-link to="/foreningen">Utskotten</nuxt-link></h3>
+                    <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')">
+                        <h3 v-if="english"><nuxt-link to="/foreningen">Committees</nuxt-link></h3>
+                        <h3 v-else><nuxt-link to="/foreningen">Utskotten</nuxt-link></h3>
                         <div class="desktop-dropdown-inner" ref="utskotten">
                             <div class="desktop-item wide" @click="hide('utskotten')" v-for="page in utskott">
                                 <h3><nuxt-link v-bind:to="'/foreningen/utskotten/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
@@ -113,13 +125,25 @@ export default {
             return this.$store.state.utskottHeader
         },
         utbildning(){
-            return this.$store.state.utbildning
+            if(this.english){
+                return this.$store.getters.headerPagesUtbildning_eng
+            } else {
+                return this.$store.getters.headerPagesUtbildning_swe
+            }
         },
         student(){
-            return this.$store.state.student
+            if(this.english){
+                return this.$store.getters.headerPagesStudent_eng
+            } else {
+                return this.$store.getters.headerPagesStudent_swe
+            }
         },
         forening(){
-            return this.$store.state.forening
+            if(this.english){
+                return this.$store.getters.headerPagesForening_eng
+            } else {
+                return this.$store.getters.headerPagesForening_swe
+            }
         },
         english(){
             return this.$store.state.english;

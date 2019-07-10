@@ -59,8 +59,15 @@ export default {
 
     },
     computed: {
+        english() {
+            return this.$store.state.english;
+        },
         content() {
-            return this.$store.getters.foreningPage
+            if(this.english) {
+                return this.$store.getters.foreningPage_eng;
+            } else {
+                return this.$store.getters.foreningPage;
+            }
         },
         utskotten(){
             return this.$store.state.utskott;
