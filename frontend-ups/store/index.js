@@ -172,5 +172,23 @@ export const getters = {
     },
     foreningPage_eng: state => {
         return state.pages.filter(pages => pages.slug === 'association')
+    },
+    headerPagesUtbildning_swe: state => {
+        return state.utbildning.filter(utbildning => utbildning.acf.lang[0] === 'Svenska')
+    },
+    headerPagesUtbildning_eng: state => {
+        return state.utbildning.filter(utbildning => utbildning.acf.lang[0] === 'Engelska')
+    },
+    headerPagesStudent_swe: state => {
+        return state.student.filter(student => student.acf.lang[0] === 'Svenska')
+    },
+    headerPagesStudent_eng: state => {
+        return state.student.filter(student => student.acf.lang[0] === 'Engelska')
+    },
+    headerPagesForening_swe: state => {
+        return state.forening.filter(forening => forening.acf.lang[0] === 'Svenska')
+    },
+    headerPagesForening_eng: state => {
+        return state.forening.filter(forening => forening.acf.lang[0] === 'Engelska')
     }
 }
