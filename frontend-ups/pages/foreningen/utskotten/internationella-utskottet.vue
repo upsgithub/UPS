@@ -1,7 +1,5 @@
-<template>
-    <div>
+<template>   
         <utskott />
-    </div>
 </template>
 
 <style lang="scss">

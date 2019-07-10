@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskott-background">
             <h3 :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
