@@ -1,7 +1,8 @@
 <template>
     <div class="slideshow">
         <!-- Slider main container -->
-        <div v-if="slides" class="swiper-container">
+        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
+        <div v-else-if="slides" class="swiper-container">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -50,6 +51,11 @@ import Swiper from 'swiper';
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
 
 export default{
+    data:function(){
+        return {
+            color: "#eb5e43"
+        }
+    },
     computed: {
         slides () {
             return this.$store.state.slides? this.$store.state.slides.slice(0, 5) : []
@@ -58,11 +64,15 @@ export default{
             return this.$store.state.english;
         },
         loading(){
-            return this.$store.state.slides == undefined;
+            return this.$store.state.slides == [];
         }
     },
     mounted(){
-       var mySwiper = new Swiper ('.swiper-container', {
+      this.initSwiper()
+    },
+    methods: {
+        initSwiper(){
+            var mySwiper = new Swiper ('.swiper-container', {
                 // Optional parameters
                 speed: 800,
                 slidesPerView: 1,
@@ -84,6 +94,7 @@ export default{
                 prevEl: '.swiper-button-prev',
                 },
             }) 
+        }
     }
 }
 
