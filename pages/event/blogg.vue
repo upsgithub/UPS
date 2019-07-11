@@ -12,7 +12,7 @@
             <div class="plain container--full">
                 <div class="posts">
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                    <div v-else class="post-noimage-noborder col-12">
+                    <div v-else-if="latest_post[0]" class="post-noimage-noborder col-12">
                         <div class="post-title">
                             <h1>{{ latest_post[0].title.rendered }}</h1>
                         </div>

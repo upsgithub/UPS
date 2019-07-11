@@ -1,21 +1,25 @@
 <template>
     <div class="containter">
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else class="plain-background">
-            <h3>{{ cur_page.title.rendered }}</h3>
+        <div v-else-if="cur_page" class="plain-background">
+            <h3 v-if="cur_page.title">{{ cur_page.title.rendered }}</h3>
         </div>
 
         <div class="content-wrapper">
             
             <div class="plain container--full">
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>     
-                <div v-else class="plain-text col-12">
-                    <div  class="post-title">
+                <div v-else-if="cur_page" class="plain-text col-12">
+                    <div class="post-title">
 
                         <h1> {{ cur_page.title.rendered }} </h1>
                         
                     </div>
-                    <div class="post-text" v-html="cur_page.content.rendered"></div>
+                    <div>
+                        <div class="post-text" v-html="cur_page.content.rendered">
+
+                        </div>
+                    </div>
                 </div>
             </div>
             

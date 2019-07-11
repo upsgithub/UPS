@@ -59,7 +59,7 @@ export default {
     created() {
         this.$store.dispatch('get_ordforande');
         this.$store.dispatch('get_allUtskott');
-        this.$store.dispatch('get_allPages');
+        //this.$store.dispatch('get_allPages');
     },
     components: {
         SyncLoader

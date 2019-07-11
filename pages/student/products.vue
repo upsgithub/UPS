@@ -1,5 +1,5 @@
 <template>
-        <div class="containter">
+        <div v-if="cur_page" class="container">
         <div class="plain-background">
             <h3>{{ cur_page.title.rendered }}</h3>
         </div>

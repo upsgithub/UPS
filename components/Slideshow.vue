@@ -26,13 +26,13 @@
                             <div class="slideshow__bar-intro col-8 col-8--smaller">
                                 <div class="v-centered">
                                     <h4 v-if="slide && english" class="slideshow__bar-text">{{ slide.acf.slide_introtexten }}</h4>
-                                    <h4 v-elseif="slide" class="slideshow__bar-text">{{ slide.acf.slide_introtext }}</h4>
+                                    <h4 v-else-if="slide" class="slideshow__bar-text">{{ slide.acf.slide_introtext }}</h4>
                                 </div>
                             </div>
                             <div class="slideshow__bar-btn col-4 col-4--bigger">
                                 <nuxt-link :to="slide.acf.slidelank" class="a-button">
                                     <button v-if="slide && english" class="btn btn--default btn--small-h">{{ slide.acf.knapptexten }}</button>
-                                    <button v-elseif="slide" class="btn btn--default btn--small-h">{{ slide.acf.knapptext }}</button>
+                                    <button v-else-if="slide" class="btn btn--default btn--small-h">{{ slide.acf.knapptext }}</button>
                                 </nuxt-link>
                             </div>
                         </div>

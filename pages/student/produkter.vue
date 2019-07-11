@@ -1,19 +1,19 @@
 <template>
-        <div class="containter">
+        <div class="container">
         <div v-if="cur_page" class="plain-background">
             <h3>{{ cur_page.title.rendered }}</h3>
         </div>
         <div class="content-wrapper">
             
             <div class="plain container--full">     
-                <div class="plain-text col-12">
+                <div v-if="cur_page" class="plain-text col-12">
                 
-                    <div v-if="cur_page" class="post-title">
+                    <div v-if="cur_page.title" class="post-title">
                     
                         <h1> {{ cur_page.title.rendered }} </h1>
                         
                     </div>
-                    <div v-if="cur_page" class="post-text" v-html="cur_page.content.rendered"></div>
+                    <div v-if="cur_page.content" class="post-text" v-html="cur_page.content.rendered"></div>
                     
                 </div>
             </div>

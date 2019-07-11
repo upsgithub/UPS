@@ -14,7 +14,7 @@
                 </div>
                 <div class="post-text">
                     <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
-                    <div v-else v-html="forening_page[0].excerpt.rendered"></div>
+                    <div v-else-if="forening_page[0]" v-html="forening_page[0].excerpt.rendered"></div>
                 </div>
                 <nuxt-link v-if="english" class="a-button" to="/foreningen"><button>More about us</button></nuxt-link>
                 <nuxt-link v-else class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
@@ -38,11 +38,11 @@
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                     </picture>
                 </div>
-                <div class="post col-7">
-                    <div v-if="post" class="post-title">
+                <div v-if="post"  class="post col-7">
+                    <div class="post-title">
                         <h1>{{ post.title.rendered }}</h1>
                     </div>
-                    <div v-if="post" class="post-text" v-html="post.excerpt.rendered"></div>
+                    <div class="post-text" v-html="post.excerpt.rendered"></div>
                 </div>
             </div>
         </div>

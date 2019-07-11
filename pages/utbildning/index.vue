@@ -1,19 +1,19 @@
 <template>
     <div class="containter">
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else class="plain-background">
+        <div v-else-if="cur_page" class="plain-background">
             <h3>{{ cur_page.title.rendered }}</h3>
         </div>
         <div class="content-wrapper"> 
             <div class="plain container--full">     
                 <div class="plain-text col-12">
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-                    <div v-else class="post-title">
+                    <div v-else-if="cur_page" class="post-title">
                     
                         <h1> {{ cur_page.title.rendered }} </h1>
                         
                     </div>
-                    <div class="post-text" v-html="cur_page.content.rendered"></div>
+                    <div v-if="cur_page" class="post-text" v-html="cur_page.content.rendered"></div>
                 </div>
             </div>
             <KommandeEvent />
