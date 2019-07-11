@@ -7,7 +7,11 @@
                 <template v-for="ordforande in ordforanden">
                     <div class="picture-holder" :key="ordforande.id">
                         <div class="ordfaranderiet-picture col-6">
-                            <img :src="ordforande.better_featured_image.source_url" />
+                            <picture v-if="ordforande.better_featured_image.source_url && !loading">
+                                <source v-bind:data-srcset="ordforande.better_featured_image.source_url + '?webp'" type="image/webp">
+                                <source v-bind:data-srcset="ordforande.better_featured_image.source_url" type="image/jpeg">
+                                <img v-bind:data-src="ordforande.better_featured_image.source_url" class="lazyload" />
+                            </picture>
                         </div> 
                         <div class="ordfaranderiet-title">
                             <h4 v-if="ordforande && english">{{ ordforande.acf.titelen }}</h4>
@@ -28,7 +32,11 @@
             <div class="utskotten-picture" v-for="utskott in utskotten" :key="utskott.id">
                 <div class="utskotten-picture__inner">
                     <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
-                        <img class="img-banner" :src="utskott.acf.foreningssida_utskottsbild.url" />
+                        <picture v-if="utskott.acf.foreningssida_utskottsbild.url && !loading">
+                            <source v-bind:data-srcset="utskott.acf.foreningssida_utskottsbild.url + '?webp'" type="image/webp">
+                            <source v-bind:data-srcset="utskott.acf.foreningssida_utskottsbild.url" type="image/jpeg">
+                            <img v-bind:data-src="utskott.acf.foreningssida_utskottsbild.url" class="lazyload" />
+                        </picture>
                         <h3>{{ utskott.title.rendered }}</h3>
                     </nuxt-link>
                 </div>
