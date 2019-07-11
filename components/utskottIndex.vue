@@ -24,8 +24,8 @@
         </div>
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskotten" >
-            <h3>{{ content[0].title.rendered }}</h3>
-            <div class="utskotten-text" v-html="content[0].content.rendered">
+            <h3 v-if="content[0]">{{ content[0].title.rendered }}</h3>
+            <div v-if="content[0]" class="utskotten-text" v-html="content[0].content.rendered">
         </div>
         <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
         <div v-else class="utskotten-pictures">
