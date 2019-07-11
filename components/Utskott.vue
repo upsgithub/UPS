@@ -33,8 +33,8 @@
 
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                     <template v-else>
-                        <div v-if="english" class="post-text" v-html="utskott.acf.engelsk_text"></div>
-                        <div v-else class="post-text" v-html="utskott.content.rendered"></div>
+                        <div v-if="utskott && english" class="post-text" v-html="utskott.acf.engelsk_text"></div>
+                        <div v-elseif="utskott" class="post-text" v-html="utskott.content.rendered"></div>
                     </template>     
                 </div>
 
@@ -54,12 +54,12 @@
                             <img v-bind:data-src="utskott.acf.ordforande_bild.url" class="lazyload" />
                         </picture>
                     </div>
-                    <template v-if="english">
+                    <template v-if="utskott && english">
                         <h4>President</h4>
                         <h5>{{ utskott.acf.ordforande_namn }}</h5>
                         <button>Contact {{ utskott.acf.english_title }}</button>
                     </template>
-                    <template v-else>
+                    <template v-elseif="utskott">
                         <h4>Ordförande</h4>
                         <h5>{{ utskott.acf.ordforande_namn }}</h5>
                         <button else>Kontakta {{ utskott.title.rendered }}</button>
