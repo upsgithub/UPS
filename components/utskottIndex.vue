@@ -35,7 +35,7 @@
                         <picture v-if="utskott.acf.foreningssida_utskottsbild.url && !loading">
                             <source v-bind:data-srcset="utskott.acf.foreningssida_utskottsbild.url + '?webp'" type="image/webp">
                             <source v-bind:data-srcset="utskott.acf.foreningssida_utskottsbild.url" type="image/jpeg">
-                            <img v-bind:data-src="utskott.acf.foreningssida_utskottsbild.url" class="lazyload" />
+                            <img v-bind:data-src="utskott.acf.foreningssida_utskottsbild.url" class="lazyload img-banner" />
                         </picture>
                         <h3>{{ utskott.title.rendered }}</h3>
                     </nuxt-link>
