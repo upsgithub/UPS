@@ -1,7 +1,7 @@
 <template>
     <div class="slideshow">
         <!-- Slider main container -->
-        <div class="swiper-container">
+        <div v-if="slides" class="swiper-container">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
@@ -47,6 +47,7 @@
 
 <script>
 import Swiper from 'swiper';
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
 
 export default{
     computed: {
@@ -55,31 +56,34 @@ export default{
         },
         english() {
             return this.$store.state.english;
+        },
+        loading(){
+            return this.$store.state.slides == undefined;
         }
     },
     mounted(){
-        var mySwiper = new Swiper ('.swiper-container', {
-            // Optional parameters
-            speed: 800,
-            slidesPerView: 1,
-            centeredSlides: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: true,
-            },
-            loop: true,
-            // If we need pagination
-            pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-            },
+       var mySwiper = new Swiper ('.swiper-container', {
+                // Optional parameters
+                speed: 800,
+                slidesPerView: 1,
+                centeredSlides: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: true,
+                },
+                loop: true,
+                // If we need pagination
+                pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+                },
 
-            // Navigation arrows
-            navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-            },
-        })
+                // Navigation arrows
+                navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+                },
+            }) 
     }
 }
 
