@@ -100,7 +100,7 @@ export const actions = {
     },
     async get_headerPages (context) {
         context.commit('loading', true)
-        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=50').then((response) => {
             context.commit('headerPages', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -136,7 +136,7 @@ export const actions = {
     },
     async get_allPages (context) {
         context.commit('loading', true)
-        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=50').then((response) => {
             context.commit('allPages', response.data)
             context.commit('loading', false)
         }).catch((error) => {

@@ -1,8 +1,5 @@
 <template>
     <div class="containter-content">
-        <div class="plain-background">
-            <h3>Bloggen</h3>
-        </div>
         <div class="content-wrapper--small" id="home-anchor">
             <div class="blog-heading">
                 <h4>Senaste</h4>
