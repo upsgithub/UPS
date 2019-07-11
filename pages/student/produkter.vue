@@ -1,7 +1,10 @@
 <template>
         <div class="container">
-        <div v-if="cur_page" class="plain-background">
-            <h3>{{ cur_page.title.rendered }}</h3>
+        <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
+        <div v-else-if="cur_page"  class="banner-background">
+            <img v-if="cur_page.acf.banner_bild" :srcset="cur_page.acf.banner_bild.url "/>
+            <img v-else src="../../assets/img/plain_placeholder.jpg"/>
+            <h3 v-if="cur_page.title" :style="cur_page.acf.bannertext">{{ cur_page.title.rendered }}</h3>
         </div>
         <div class="content-wrapper">
             
@@ -75,17 +78,10 @@ export default {
         KommandeEvent,
         SyncLoader
     },
-    fetch({ store }){
-        return axios.all([
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/produkter')    
-        ]).then(axios.spread((pageRes, produktRes) => {
-            store.commit('allPages', pageRes.data),
-            store.commit('produkter', produktRes.data)
-            this.loading = false;
-        })).catch((error) => {
-            console.log(error)
-        })
+    created() {
+        this.$store.dispatch('get_allPages')
+        this.$store.dispatch('get_produkter')
+
     }
 }                
 </script>

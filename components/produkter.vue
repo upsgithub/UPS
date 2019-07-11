@@ -1,8 +1,8 @@
 <template>
     <div class="content-wrapper">
         <div class="produkt-flex">
-            <div class="item" v-for="produkt in produkter">
-                <img :src="produkt.better_featured_image.source_url" />
+            <div class="item" v-for="produkt in produkter" :key="produkt.id">
+                <img :src="produkt.better_featured_image.source_url" /> 
                 <div v-if="english && produkt.acf.namnen"> {{ produkt.acf.namnen }} </div>
                 <div v-else> {{ produkt.acf.namn }} </div>
                 <div> {{ produkt.acf.pris }} </div>
