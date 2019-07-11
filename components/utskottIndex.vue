@@ -1,9 +1,12 @@
 <template>
     <div>
+    <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
+    <div v-else >
         <div class="ordfaranderiet">
-            <h3>Ordföranderiet</h3>
-            <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-            <div v-else class="ordfaranderiet-pictures">
+            <h3 v-if="english">The Presidium</h3>
+            <h3 v-else>Ordföranderiet</h3>
+            
+            <div class="ordfaranderiet-pictures">
                 <template v-for="ordforande in ordforanden">
                     <div class="picture-holder" :key="ordforande.id">
                         <div class="ordfaranderiet-picture col-6">
@@ -22,13 +25,13 @@
                 </template>
             </div>
         </div>
-        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else class="utskotten" >
+        
+        <div class="utskotten" >
             <h3 v-if="content[0]">{{ content[0].title.rendered }}</h3>
             <div v-if="content[0]" class="utskotten-text" v-html="content[0].content.rendered">
         </div>
-        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else class="utskotten-pictures">
+        
+        <div class="utskotten-pictures">
             <div class="utskotten-picture" v-for="utskott in utskotten" :key="utskott.id">
                 <div class="utskotten-picture__inner">
                     <nuxt-link :to="'/foreningen/utskotten/' + utskott.slug">
@@ -37,11 +40,13 @@
                             <source v-bind:data-srcset="utskott.acf.foreningssida_utskottsbild.url" type="image/jpeg">
                             <img v-bind:data-src="utskott.acf.foreningssida_utskottsbild.url" class="lazyload img-banner" />
                         </picture>
-                        <h3>{{ utskott.title.rendered }}</h3>
+                        <h3 v-if="english">{{ utskott.acf.english_title }}</h3>
+                        <h3 v-else>{{ utskott.title.rendered }}</h3>
                     </nuxt-link>
                 </div>
             </div> 
         </div>
+    </div>
     </div>
     </div>
 </template>

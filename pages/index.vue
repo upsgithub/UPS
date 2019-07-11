@@ -19,8 +19,19 @@
                 <nuxt-link v-if="english" class="a-button" to="/foreningen"><button>More about us</button></nuxt-link>
                 <nuxt-link v-else class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
             </div>
-            <div class="post-picture col-5">
-                <picture>
+            <div v-if="forening_page[0]" class="post-picture col-5">
+                <picture v-if="forening_page[0].better_featured_image">
+                        <img v-if="forening_page[0].better_featured_image" 
+                        :srcset="forening_page[0].better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                        forening_page[0].better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                        forening_page[0].better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                        forening_page[0].better_featured_image.source_url + ' 1920w'"
+                        sizes="auto"
+                        :src="forening_page[0].better_featured_image.source_url + '?lqip'"  
+                        :alt="forening_page[0].better_featured_image.alt_text" 
+                        class="lazyload" >
+                    </picture>
+                <picture v-else>
                     <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
                     <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
                     <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
@@ -32,7 +43,18 @@
         <div class="container--full">
             <div class="posts col-12" v-for="post in posts" :key="post.id">
                 <div class="post-picture col-5">
-                    <picture>
+                     <picture v-if="post.better_featured_image">
+                        <img v-if="post.better_featured_image" 
+                        :srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                        post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                        post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                        post.better_featured_image.source_url + ' 1920w'"
+                        sizes="auto"
+                        :src="post.better_featured_image.source_url + '?lqip'"  
+                        :alt="post.better_featured_image.alt_text" 
+                        class="lazyload" >
+                    </picture>
+                    <picture v-else>
                         <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
                         <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
@@ -61,18 +83,10 @@ import axios from 'axios'
 import $ from 'jquery'
 
 export default {
-    fetch({ store }){
-        return axios.all([
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
-        ]).then(axios.spread((postRes, slidesRes, pagesRes) => {
-                store.commit('Posts', postRes.data),
-                store.commit('slideShow', slidesRes.data),
-                store.commit('allPages', pagesRes.data)
-        })).catch((error) =>
-            console.log(error)    
-        )
+    created() {
+        this.$store.dispatch('get_Posts')
+        this.$store.dispatch('get_slideShow')
+        this.$store.dispatch('get_allPages')
     },
     computed: {
         english(){
