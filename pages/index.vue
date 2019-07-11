@@ -39,10 +39,10 @@
                     </picture>
                 </div>
                 <div class="post col-7">
-                    <div class="post-title">
-                    <h1>{{ post.title.rendered }}</h1>
+                    <div v-if="post" class="post-title">
+                        <h1>{{ post.title.rendered }}</h1>
                     </div>
-                    <div class="post-text" v-html="post.excerpt.rendered"></div>
+                    <div v-if="post" class="post-text" v-html="post.excerpt.rendered"></div>
                 </div>
             </div>
         </div>

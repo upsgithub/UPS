@@ -7,12 +7,19 @@
                 <!-- Slides -->
                 <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
                     <nuxt-link :to="slide.acf.slidelank">
-                        <img :srcset="slide.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                        <!-- <img :data-srcset="slide.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
                         slide.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
                         slide.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
                         slide.better_featured_image.source_url + ' 1920w'"
                         sizes="auto"
-                        :src="slide.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="slide.better_featured_image.alt_text"/>
+                        :data-src="slide.better_featured_image.source_url + '?lqip'" class="lazyload" :alt="slide.better_featured_image.alt_text"/> -->
+                        <picture>
+                            <source :data-srcset="slide.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                        slide.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                        slide.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                        slide.better_featured_image.source_url + ' 1920w'" type="image/jpeg">
+                            <img :data-src="slide.better_featured_image.source_url" class="lazyload" :alt="slide.better_featured_image.alt_text"/>
+                        </picture>
                     </nuxt-link>
                     <div class="slideshow__bar">
                         <div class="slideshow__bar--w">
@@ -109,19 +116,20 @@ export default{
 }
 .swiper-slide {
     display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      flex-direction: column;
-  flex-wrap: wrap;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 100%;
 
       img{
           object-fit: cover;
