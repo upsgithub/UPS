@@ -19,7 +19,7 @@
 </style>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 
 export default {

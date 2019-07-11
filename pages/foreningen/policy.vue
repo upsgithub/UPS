@@ -1,5 +1,5 @@
 <template>
-    <div class="containter">
+    <div>
         <div class="plain-background">
             <h3>Policies</h3>
         </div>

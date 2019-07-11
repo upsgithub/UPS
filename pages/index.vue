@@ -20,17 +20,15 @@
                 <nuxt-link v-else class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link>
             </div>
             <div v-if="forening_page[0]" class="post-picture col-5">
-                <picture v-if="forening_page[0].better_featured_image">
-                        <img v-if="forening_page[0].better_featured_image" 
-                        :srcset="forening_page[0].better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
-                        forening_page[0].better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
-                        forening_page[0].better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
-                        forening_page[0].better_featured_image.source_url + ' 1920w'"
-                        sizes="auto"
-                        :src="forening_page[0].better_featured_image.source_url + '?lqip'"  
-                        :alt="forening_page[0].better_featured_image.alt_text" 
-                        class="lazyload" >
-                    </picture>
+                <img v-if="forening_page[0].better_featured_image" 
+                :data-srcset="forening_page[0].better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                forening_page[0].better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                forening_page[0].better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                forening_page[0].better_featured_image.source_url + ' 1920w'"
+                data-sizes="auto"
+                :data-src="forening_page[0].better_featured_image.source_url + '?lqip'"  
+                :alt="forening_page[0].better_featured_image.alt_text" 
+                class="lazyload" >
                 <picture v-else>
                     <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
                     <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
@@ -45,12 +43,12 @@
                 <div class="post-picture col-5">
                      <picture v-if="post.better_featured_image">
                         <img v-if="post.better_featured_image" 
-                        :srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                        :data-srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
                         post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
                         post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
                         post.better_featured_image.source_url + ' 1920w'"
-                        sizes="auto"
-                        :src="post.better_featured_image.source_url + '?lqip'"  
+                        data-sizes="auto"
+                        :data-src="post.better_featured_image.source_url + '?lqip'"  
                         :alt="post.better_featured_image.alt_text" 
                         class="lazyload" >
                     </picture>
@@ -79,10 +77,16 @@ import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
+import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
 import $ from 'jquery'
 
 export default {
+    data:function(){
+        return {
+            color: "#eb5e43"
+        }
+    },
     created() {
         this.$store.dispatch('get_Posts')
         this.$store.dispatch('get_slideShow')
@@ -111,7 +115,8 @@ export default {
         Instagram,
         Sponsor,
         Slideshow,
-        KommandeEvent
+        KommandeEvent,
+        SyncLoader
     }
 }
 </script>

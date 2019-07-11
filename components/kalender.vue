@@ -1,5 +1,4 @@
 <template>
-    <div>
         <FullCalendar
           :fixedWeekCount="fixedWeekCount"
           :showNonCurrentDates="showNonCurrentDates"
@@ -15,7 +14,6 @@
           :defaultView="defaultView"
           :plugins="calendarPlugins"
         />
-    </div>
 </template>
 
 <style lang="scss">
@@ -37,7 +35,7 @@ export default {
     components: {
         FullCalendar
     },
-    data() {
+    data:function(){
         return {
             fixedWeekCount: false,
             showNonCurrentDates: false,

@@ -1,9 +1,21 @@
 <template>
-    <div class="containter">
+    <div>
         <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
         <div v-else-if="cur_page"  class="banner-background">
-            <img v-if="cur_page.acf.banner_bild" :srcset="cur_page.acf.banner_bild.url "/>
-            <img v-else src="../../assets/img/plain_placeholder.jpg"/>
+            <img v-if="!cur_page.acf.banner_bild" data-srcset="/img/people_books@320w.jpg 320w,
+           /img/people_books@480w.jpg  480w, 
+            /img/people_books@768w.jpg 768w,
+            /img/people_books@1024w.jpg  1024w, 
+            /img/people_books@1376w.jpg  1376w, 
+            /img/people_books@1920w.jpg  1920w"
+                    data-sizes="auto"
+                    data-src="/img/people_books@1920w.jpg" class="lazyload" alt="people"/>
+            <img v-if="cur_page.acf.banner_bild" :data-srcset="cur_page.acf.banner_bild.sizes.medium + ' 320w,' +
+                    cur_page.acf.banner_bild.sizes.medium_large + ' 768w,' +
+                    cur_page.acf.banner_bild.sizes.large + ' 1024w,' +
+                    cur_page.acf.banner_bild.url + ' 1920w'"
+                    data-sizes="auto"
+                    :data-src="cur_page.acf.banner_bild.url + '?lqip'" class="lazyload" :alt="cur_page.acf.banner_bild.alt"/>
             <h3 v-if="cur_page.title" :style="cur_page.acf.bannertext">{{ cur_page.title.rendered }}</h3>
         </div>
 

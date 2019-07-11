@@ -1,11 +1,12 @@
 <template>
     <div class="slideshow">
         <!-- Slider main container -->
-        <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div v-else-if="slides" class="swiper-container">
+        
+        <div v-if="slides" class="swiper-container">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
+                <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
                 <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
                     <nuxt-link :to="slide.acf.slidelank">
                         <img :srcset="slide.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
@@ -97,6 +98,9 @@ export default{
                 },
             }) 
         }
+    },
+    components: {
+        SyncLoader
     }
 }
 
