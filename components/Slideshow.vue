@@ -37,9 +37,10 @@
             <div class="swiper-pagination"></div>
 
             <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev--shadow"></div>
             <div class="swiper-button-prev swiper-button-white"></div>
             <div class="swiper-button-next swiper-button-white"></div>
-
+            <div class="swiper-button-next--shadow"></div>
             <!-- If we need scrollbar -->
             <div class="swiper-scrollbar"></div>
         </div>
@@ -81,7 +82,8 @@ export default{
                     delay: 4000,
                     disableOnInteraction: true,
                 },
-                loop: true,
+                loop: false,
+                preloadImages: false,
                 // If we need pagination
                 pagination: {
                 el: '.swiper-pagination',
@@ -230,6 +232,28 @@ export default{
     .swiper-button-next, .swiper-button-prev{
         top: 45%;
         display: block;
+    }
+    .swiper-button-prev--shadow{
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 60px;
+        width: 250px;
+        z-index: 9;
+        -webkit-box-shadow: inset 170px 0px 100px -80px rgba(0,0,0,0.7);
+        -moz-box-shadow: inset 170px 0px 100px -80px rgba(0,0,0,0.7);
+        box-shadow: inset 170px 0px 100px -80px rgba(0,0,0,0.7);
+    }
+    .swiper-button-next--shadow{
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 60px;
+        width: 250px;
+        z-index: 9;
+        -webkit-box-shadow: inset -170px 0px 100px -80px rgba(0,0,0,0.7);
+        -moz-box-shadow: inset -170px 0px 100px -80px rgba(0,0,0,0.7);
+        box-shadow: inset -170px 0px 100px -80px rgba(0,0,0,0.7);
     }
     .slideshow{
         height: 380px;
