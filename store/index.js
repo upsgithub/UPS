@@ -82,7 +82,7 @@ import axios from 'axios'
 export const actions = {
     async get_produkter (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/produkter').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/produkter').then((response) => {
             context.commit('produkter', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -91,7 +91,7 @@ export const actions = {
     },
     async get_headerUtskott (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
             context.commit('headerUtskott', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -100,7 +100,7 @@ export const actions = {
     },
     async get_headerPages (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
             context.commit('headerPages', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -109,7 +109,7 @@ export const actions = {
     },
     async get_slideShow (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/slides').then((response) => {
             context.commit('slideShow', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -118,7 +118,7 @@ export const actions = {
     },
     async get_samarbeten (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/partner').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/partner').then((response) => {
             context.commit('samarbeten', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -127,7 +127,7 @@ export const actions = {
     },
     async get_Posts (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts?per_page=50').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/posts?per_page=50').then((response) => {
             context.commit('Posts', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -136,7 +136,7 @@ export const actions = {
     },
     async get_allPages (context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30').then((response) => {
             context.commit('allPages', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -145,7 +145,7 @@ export const actions = {
     },
     async get_ordforande(context) {
         context.commit('loading', true)
-            await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/ordforande').then((response) => {
+            await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/ordforande').then((response) => {
             context.commit('ordforande', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -154,7 +154,7 @@ export const actions = {
     },
     async get_allUtskott(context) {
         context.commit('loading', true)
-        await axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
+        await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/utskott').then((response) => {
             context.commit('allUtskott', response.data)
             context.commit('loading', false)
         }).catch((error) => {

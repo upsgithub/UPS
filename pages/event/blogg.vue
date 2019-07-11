@@ -71,7 +71,7 @@ export default {
     },
     fetch({ store }){
         return axios.get(
-            'http://api.uppsalapolitices.se/wp-json/wp/v2/posts?per_page=100'
+            'https://api.uppsalapolitices.se/wp-json/wp/v2/posts?per_page=100'
         ).then((response) => {
             store.commit('Posts', response.data)
         }).catch((error) => {

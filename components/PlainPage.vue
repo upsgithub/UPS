@@ -41,7 +41,7 @@ export default {
     },
     created() {
         return axios.get(
-            'http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'
+            'https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'
         ).then((response) => {
             this.$store.commit('allPages', response.data)
         }).catch((error) => {

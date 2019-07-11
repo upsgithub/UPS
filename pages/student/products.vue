@@ -77,8 +77,8 @@ export default {
     },
     fetch({ store }){
         return axios.all([
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/produkter')    
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/produkter')    
         ]).then(axios.spread((pageRes, produktRes) => {
             store.commit('allPages', pageRes.data),
             store.commit('produkter', produktRes.data)

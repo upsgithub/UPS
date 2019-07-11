@@ -24,7 +24,7 @@ export default {
     },
     created() {
         return axios.get(
-            'http://api.uppsalapolitices.se/wp-json/wp/v2/partner'
+            'https://api.uppsalapolitices.se/wp-json/wp/v2/partner'
         ).then((response) => {
             this.$store.commit('samarbeten', response.data)
             this.loading = false

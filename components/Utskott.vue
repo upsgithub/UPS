@@ -4,12 +4,12 @@
         <div v-else class="utskott-background">
             <h3 v-if="english" :style="utskott.acf.bannertext">{{ utskott.acf.english_title }}</h3>
             <h3 v-else :style="utskott.acf.bannertext">{{ utskott.title.rendered }}</h3>
-            <img v-if="!utskott.better_featured_image && loaded" data-srcset="~assets/img/people_books@320w.jpg 320w,
-            ~assets/img/people_books@480w.jpg  480w, 
-            ~assets/img/people_books@768w.jpg 768w,
-            ~assets/img/people_books@1024w.jpg  1024w, 
-            ~assets/img/people_books@1376w.jpg  1376w, 
-            ~assets/img/people_books@1920w.jpg  1920w"
+            <img v-if="!utskott.better_featured_image && loaded" data-srcset="/img/people_books@320w.jpg 320w,
+           /img/people_books@480w.jpg  480w, 
+            /img/people_books@768w.jpg 768w,
+            /img/people_books@1024w.jpg  1024w, 
+            /img/people_books@1376w.jpg  1376w, 
+            /img/people_books@1920w.jpg  1920w"
                     sizes="auto"
                     data-src="/img/people_books@1920w.jpg" class="lazyload" alt="people"/>
             <img v-if="utskott.better_featured_image && loaded" :srcset="utskott.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
@@ -96,6 +96,7 @@
         h3{
             color: #fff;
             z-index: 2;
+            text-shadow: 0px 0px 8px rgba(50, 50, 50, 0.9);
         }
 
         img{
@@ -177,7 +178,7 @@ export default {
     },
     created() {
         return axios.get(
-            'http://api.uppsalapolitices.se/wp-json/wp/v2/utskott'
+            'https://api.uppsalapolitices.se/wp-json/wp/v2/utskott'
         ).then((response) => {
             this.$store.commit('allUtskott', response.data)
         }).catch((error) => {

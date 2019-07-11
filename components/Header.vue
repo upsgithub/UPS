@@ -99,8 +99,8 @@ export default {
     },
     created() {
         return axios.all([
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/utskott')
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/utskott')
         ]).then(axios.spread((pages, utskott) => {
             this.$store.commit('headerPages', pages.data),
             this.$store.commit('headerUtskott', utskott.data)    

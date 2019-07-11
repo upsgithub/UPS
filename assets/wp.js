@@ -34,7 +34,7 @@ class WpApi {
       })
   }
 }
-//Lägg in URL till där ni har egna wordpressinstallationen inlagd. exempelvis http://localhost:8888/api-wp eller använd http://api.uppsalapolitices.se
-const wp = new WpApi('http://api.uppsalapolitices.se')
+//Lägg in URL till där ni har egna wordpressinstallationen inlagd. exempelvis https://localhost:8888/api-wp eller använd https://api.uppsalapolitices.se
+const wp = new WpApi('https://api.uppsalapolitices.se')
 
 export default wp

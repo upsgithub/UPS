@@ -63,9 +63,9 @@ import $ from 'jquery'
 export default {
     fetch({ store }){
         return axios.all([
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
-            axios.get('http://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/posts'),
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/slides'),
+            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30')
         ]).then(axios.spread((postRes, slidesRes, pagesRes) => {
                 store.commit('Posts', postRes.data),
                 store.commit('slideShow', slidesRes.data),
