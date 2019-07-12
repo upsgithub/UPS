@@ -36,6 +36,7 @@ export default {
   */
   plugins: [
     {src: '~/plugins/vue-instagram', ssr: false},
+    { src: '~/plugins/vuex-cache.js', ssr: false },
     {src: '~/plugins/vue-lazysizes.client.js'}
   ],
 
