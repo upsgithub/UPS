@@ -184,6 +184,9 @@ export const actions = {
 }
 
 export const getters = {
+    kalender: state => {
+        return state.kalender.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1);
+    },
     foreningPage: state => {
         return state.pages.filter(pages => pages.slug === 'foreningen')
     },

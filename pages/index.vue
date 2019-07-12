@@ -87,10 +87,10 @@ export default {
             color: "#eb5e43"
         }
     },
-    async created() {
-        await this.$store.cache.dispatch('get_Posts')
+    async mounted() {
         await this.$store.cache.dispatch('get_slideShow')
         await this.$store.cache.dispatch('get_allPages')
+        await this.$store.cache.dispatch('get_Posts')
     },
     computed: {
         english(){

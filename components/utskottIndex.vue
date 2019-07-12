@@ -61,7 +61,7 @@ export default {
             color: "#eb5e43"
         }
     },
-    async created() {
+    async mounted() {
         await this.$store.cache.dispatch('get_ordforande');
         await this.$store.cache.dispatch('get_allUtskott');
         //this.$store.dispatch('get_allPages');
