@@ -66,14 +66,8 @@ export default {
             current_start: 1
         }
     },
-    fetch({ store }){
-        return axios.get(
-            'https://api.uppsalapolitices.se/wp-json/wp/v2/posts?per_page=100'
-        ).then((response) => {
-            store.commit('Posts', response.data)
-        }).catch((error) => {
-            console.log(error)
-        })
+    async created() {
+        await this.$store.cache.dispatch('get_allPages')
     },
     methods: {
         get_newer(){

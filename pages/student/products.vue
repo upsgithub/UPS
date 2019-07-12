@@ -90,17 +90,9 @@ export default {
         KommandeEvent,
         SyncLoader
     },
-    fetch({ store }){
-        return axios.all([
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/produkter')    
-        ]).then(axios.spread((pageRes, produktRes) => {
-            store.commit('allPages', pageRes.data),
-            store.commit('produkter', produktRes.data)
-            this.loading = false;
-        })).catch((error) => {
-            console.log(error)
-        })
+    async created() {
+        this.$store.cache.dispatch('get_allPages');
+        this.$store.cache.dispatch('get_produkter');
     }
 }                
 </script>

@@ -88,9 +88,9 @@ export default {
         KommandeEvent,
         SyncLoader
     },
-    created() {
-        this.$store.dispatch('get_allPages')
-        this.$store.dispatch('get_produkter')
+   async created() {
+        await this.$store.cache.dispatch('get_allPages')
+        await this.$store.cache.dispatch('get_produkter')
 
     }
 }                

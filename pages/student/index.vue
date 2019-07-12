@@ -54,8 +54,8 @@ export default {
             color: '#eb5e43'
         }
     },
-    created() {
-        this.$store.dispatch('get_allPages');
+    async created() {
+        await this.$store.cache.dispatch('get_allPages');
     },
     methods: {
         current_url:function(){

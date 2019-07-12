@@ -14,10 +14,12 @@
 <script>
 import axios from 'axios'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import createCache from 'vuex-cache';
+
 
 
 export default {
-    data:function() {
+    data() {
         return {
             color: "#eb5e43"
         }

@@ -61,9 +61,9 @@ export default {
             color: "#eb5e43"
         }
     },
-    created() {
-        this.$store.dispatch('get_ordforande');
-        this.$store.dispatch('get_allUtskott');
+    async created() {
+        await this.$store.cache.dispatch('get_ordforande');
+        await this.$store.cache.dispatch('get_allUtskott');
         //this.$store.dispatch('get_allPages');
     },
     components: {
