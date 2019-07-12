@@ -2,8 +2,8 @@
     <div class="samarbeten container--full">
         <h4 v-if="english">Our partners</h4>
         <h4 v-else>Våra samarbetspartners</h4>
-        <sync-loader class="vue-spinner" :loading="loading" :color="color"></sync-loader>
-        <div class="samarbeten-wrapper">  
+        <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
+        <div v-else class="samarbeten-wrapper">  
             <div class="samarbete-logo col-6" v-for="sponsor in samarbeten" :key="sponsor.id">
                 <a class="a-button" v-bind:href="sponsor.acf.lank"><img v-bind:src="sponsor.acf.bild.url" /></a>
             </div>
@@ -14,23 +14,19 @@
 <script>
 import axios from 'axios'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import createCache from 'vuex-cache';
+
+
 
 export default {
-    data:function() {
+    data() {
         return {
-            color: "#eb5e43",
-            loading: true
+            color: "#eb5e43"
         }
     },
-    created() {
-        return axios.get(
-            'https://api.uppsalapolitices.se/wp-json/wp/v2/partner'
-        ).then((response) => {
-            this.$store.commit('samarbeten', response.data)
-            this.loading = false
-        }).catch((error) => {
-            console.log(error)
-        })
+    async created() {
+        //console.log(await this.$store.cache.has('get_samarbeten'))
+        await this.$store.cache.dispatch('get_samarbeten')
     },
     components: {
         SyncLoader
