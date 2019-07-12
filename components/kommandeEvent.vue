@@ -39,7 +39,7 @@ export default {
     };
   },
 
-  created:function() {
+  created() {
     this.get_kommandeEvent(),
     this.get_date()
   },
@@ -73,7 +73,6 @@ export default {
           let count = 0;
           for (var i = 0; i < response.data.items.length; i++) {
             if (this.checkDate(response.data.items[i].start)) {
-              //this.items.push(response.data.items[i]);
               this.$set( this.items, count, response.data.items[i] );
               count ++;
             }
@@ -92,7 +91,7 @@ export default {
     
   },
   computed: {
-      filteredItems: function () {
+      filteredItems() {
         return this.items.slice(0, 4)
      },
      english(){

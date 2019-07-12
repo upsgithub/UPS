@@ -1,3 +1,7 @@
+import createCache from 'vuex-cache';
+
+export const plugins = [ createCache() ]
+
 export const state = () => ({
     posts: [],
     welcomeMessage: [],
@@ -13,11 +17,15 @@ export const state = () => ({
     ordforande: [],
     postsEN: [],
     postsSV: [],
+    kalender: [],
     english: false,
     loading: false
 })
 
 export const mutations = {
+    kalender(state, kalender) {
+        state.kalender = kalender;
+    },
     loading(state, loading) {
         state.loading = loading;
     },
@@ -80,6 +88,15 @@ export const mutations = {
 import axios from 'axios'
 
 export const actions = {
+    async get_kalender (context) {
+        context.commit('loading', true)
+        await axios.get('https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo').then((response) => {
+            context.commit('kalender', response.data)
+            context.commit('loading', false)
+        }).catch((error) => {
+            console.log(error)
+        })
+    },
     async get_produkter (context) {
         context.commit('loading', true)
         await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/produkter').then((response) => {

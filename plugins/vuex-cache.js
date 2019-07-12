@@ -7,5 +7,5 @@ export default ({ store }) => {
 
   const setupVuexCache = createVuexCache(options);
 
-  window.onNuxtReady(() => setupVuexCache(store));
+  //window.onNuxtReady(() => setupVuexCache(store));
 };
