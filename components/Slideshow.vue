@@ -1,10 +1,9 @@
 <template>
     <div class="slideshow">
         <!-- Slider main container -->
-        
+        <sync-loader v-if="loadingSlide" class="vue-spinner vue-spinner--centered" :loading="loadingSlide" :color="color"></sync-loader>
         <div v-if="slides" class="swiper-container">
             <!-- Additional required wrapper -->
-            <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide" v-for="slide in slides" :key="slide.id">
@@ -65,8 +64,8 @@ export default{
         english() {
             return this.$store.state.english;
         },
-        loading(){
-            return this.$store.state.loading;
+        loadingSlide(){
+            return this.$store.state.loadingSlide;
         }
     },
     mounted(){
@@ -110,6 +109,14 @@ export default{
 .slideshow{
     height: 200px;
     width: 100%;
+    position: relative;
+}
+.vue-spinner--centered{
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
 }
 .swiper-container{
     height: 100%;

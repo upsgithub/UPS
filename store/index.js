@@ -19,7 +19,8 @@ export const state = () => ({
     postsSV: [],
     kalender: [],
     english: false,
-    loading: false
+    loading: false,
+    loadingSlide: false
 })
 
 export const mutations = {
@@ -28,6 +29,9 @@ export const mutations = {
     },
     loading(state, loading) {
         state.loading = loading;
+    },
+    loadingSlide(state, loadingSlide) {
+        state.loadingSlide = loadingSlide;
     },
     ordforande(state, ordforande){
         state.ordforande = ordforande;
@@ -125,10 +129,10 @@ export const actions = {
         })
     },
     async get_slideShow (context) {
-        context.commit('loading', true)
+        context.commit('loadingSlide', true)
         await axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/slides').then((response) => {
             context.commit('slideShow', response.data)
-            context.commit('loading', false)
+            context.commit('loadingSlide', false)
         }).catch((error) => {
             console.log(error)
         })
