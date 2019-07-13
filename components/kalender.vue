@@ -35,7 +35,7 @@ export default {
     components: {
         FullCalendar
     },
-    data:function(){
+    data(){
         return {
             fixedWeekCount: false,
             showNonCurrentDates: false,

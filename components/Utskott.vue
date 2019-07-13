@@ -176,14 +176,8 @@ export default {
             color: "#eb5e43"
         }
     },
-    created() {
-        return axios.get(
-            'https://api.uppsalapolitices.se/wp-json/wp/v2/utskott'
-        ).then((response) => {
-            this.$store.commit('allUtskott', response.data)
-        }).catch((error) => {
-            console.log(error)
-        })
+    async mounted() {
+       await this.$store.cache.dispatch('get_allUtskott');
     },
     methods: {
         current_url:function(){

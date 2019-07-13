@@ -199,7 +199,7 @@ export default{
                     return id;
            }
        },
-       change_language:function() {
+       change_language() {
             var current = this.$store.state.english;
             this.$store.commit('change_language', !current);
         }

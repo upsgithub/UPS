@@ -57,14 +57,8 @@ export default {
             color: "#eb5e43"
         }
     },
-    created() {
-        return axios.get(
-            'https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'
-        ).then((response) => {
-            this.$store.commit('allPages', response.data)
-        }).catch((error) => {
-            console.log(error)
-        })
+    async mounted() {
+        await this.$store.cache.dispatch('get_allPages');
     },
     methods: {
         current_url:function(){

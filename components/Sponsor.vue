@@ -24,8 +24,7 @@ export default {
             color: "#eb5e43"
         }
     },
-    async created() {
-        //console.log(await this.$store.cache.has('get_samarbeten'))
+    async mounted() {
         await this.$store.cache.dispatch('get_samarbeten')
     },
     components: {

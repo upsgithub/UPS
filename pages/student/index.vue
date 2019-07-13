@@ -54,7 +54,7 @@ export default {
             color: '#eb5e43'
         }
     },
-    async created() {
+    async mounted() {
         await this.$store.cache.dispatch('get_allPages');
     },
     methods: {

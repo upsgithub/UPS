@@ -66,7 +66,7 @@ export default {
             current_start: 1
         }
     },
-    async created() {
+    async mounted() {
         await this.$store.cache.dispatch('get_allPages')
     },
     methods: {

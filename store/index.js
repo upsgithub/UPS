@@ -23,9 +23,20 @@ export const state = () => ({
     loadingSlide: false
 })
 
+function checkDate(event_start) {
+    return (new Date(event_start.dateTime) > new Date()); 
+}
+
 export const mutations = {
     kalender(state, kalender) {
-        state.kalender = kalender;
+        let temp = []
+        for (let i = 0; i < kalender.items.length; i++) {
+            if (checkDate(kalender.items[i].start)) {
+                temp.push(kalender.items[i])
+            }
+        }
+        temp.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1);
+        state.kalender = temp;
     },
     loading(state, loading) {
         state.loading = loading;
@@ -189,7 +200,7 @@ export const actions = {
 
 export const getters = {
     kalender: state => {
-        return state.kalender.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1);
+        return state.kalender;
     },
     foreningPage: state => {
         return state.pages.filter(pages => pages.slug === 'foreningen')

@@ -60,17 +60,6 @@
 import axios from 'axios'
 
 export default {
-    data() {
-        return {
-
-        }
-    },
-    created() {
-
-    },
-    methods: {
-
-    },
     computed: {
         english() {
             return this.$store.state.english;
@@ -78,7 +67,7 @@ export default {
         produkter() {
             return this.$store.state.produkter;
         }
-}         
+    }         
 }
            
 </script>

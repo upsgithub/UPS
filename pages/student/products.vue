@@ -90,9 +90,9 @@ export default {
         KommandeEvent,
         SyncLoader
     },
-    async created() {
-        this.$store.cache.dispatch('get_allPages');
-        this.$store.cache.dispatch('get_produkter');
+    async mounted() {
+        await this.$store.cache.dispatch('get_allPages');
+        await this.$store.cache.dispatch('get_produkter');
     }
 }                
 </script>

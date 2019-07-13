@@ -91,22 +91,11 @@ import axios from 'axios'
 import $ from 'jquery'
 
 export default {
-    data:function() {
+    data() {
         return {
             showLangButton: true,
             lastScrollPosition: 0
         }
-    },
-    created() {
-        return axios.all([
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/pages?per_page=30'),
-            axios.get('https://api.uppsalapolitices.se/wp-json/wp/v2/utskott')
-        ]).then(axios.spread((pages, utskott) => {
-            this.$store.commit('headerPages', pages.data),
-            this.$store.commit('headerUtskott', utskott.data)    
-        })).catch((error) => {
-            console.log(error)
-        })
     },
     methods: {
         show : function(menu){
@@ -157,7 +146,9 @@ export default {
             return window.innerWidth;
         }
     },
-    mounted () {
+    async mounted () {
+        await this.$store.cache.dispatch('get_headerPages');
+        await this.$store.cache.dispatch('get_headerUtskott');
         window.addEventListener('scroll', 
         this.onScroll);
         
