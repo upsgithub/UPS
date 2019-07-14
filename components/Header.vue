@@ -31,7 +31,7 @@
 
             <div class="logo col-4">
                 <nuxt-link to="/">
-                    <img src="../assets/img/logo_bred_placeholder.png" />
+                    <img src="/img/logo_bred_placeholder@400w.png" class="lazyload"/>
                 </nuxt-link>
             </div>
 
@@ -192,8 +192,8 @@ export default {
     }
 
     .logo img{
-        width: auto;
-        max-height: 90px;
+        max-width: 250px;
+        height: 90px;
     }
 
     @media only screen and (min-width: 900px) {

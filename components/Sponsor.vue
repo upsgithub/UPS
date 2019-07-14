@@ -5,7 +5,7 @@
         <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
         <div v-else class="samarbeten-wrapper">  
             <div class="samarbete-logo col-6" v-for="sponsor in samarbeten" :key="sponsor.id">
-                <a class="a-button" v-bind:href="sponsor.acf.lank"><img v-bind:src="sponsor.acf.bild.url" /></a>
+                <a class="a-button" :href="sponsor.acf.lank"><img :data-src="sponsor.acf.bild.url" class="lazyload"/></a>
             </div>
         </div>
     </div>
