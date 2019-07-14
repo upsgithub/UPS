@@ -7,11 +7,11 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Uppsala Politices Studerande',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { hid: 'description', name: 'description', content: 'Välkommen till Uppsala Politices Studernades hemsida. Här kan du hitta information om vår förening och våra program på Uppsala Universitet.'}
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
