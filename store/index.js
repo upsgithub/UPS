@@ -83,6 +83,7 @@ export const mutations = {
                 state.forening.push(pages[i]);
             }
         }
+        state.pages = pages;
     },
     allPages(state, pages){
         state.pages = pages;
