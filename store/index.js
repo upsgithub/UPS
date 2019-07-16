@@ -72,6 +72,7 @@ export const mutations = {
         } */
     },
     headerPages(state, pages){
+        state.pages = pages;
         for(var i = 0; i < pages.length; i++){
             if(pages[i].parent == 78){
                 state.utbildning.push(pages[i]);
@@ -83,7 +84,6 @@ export const mutations = {
                 state.forening.push(pages[i]);
             }
         }
-        state.pages = pages;
     },
     allPages(state, pages){
         state.pages = pages;
