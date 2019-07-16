@@ -35,7 +35,7 @@
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                 <template v-else>
                     <template v-if="english">
-                        <div class="motherpage-preview col-6" v-for="page in summary_pages_en" :key="page.id">
+                        <div class="motherpage-preview" v-for="page in summary_pages_en" :key="page.id">
                             <div class="post-title">
                                 <h1>{{ page.title.rendered }}</h1>
                             </div>
@@ -44,7 +44,7 @@
                         </div>
                     </template>
                     <template v-else>
-                        <div class="motherpage-preview col-6" v-for="page in summary_pages_sv" :key="page.id">
+                        <div class="motherpage-preview" v-for="page in summary_pages_sv" :key="page.id">
                             <div class="post-title">
                                 <h1>{{ page.title.rendered }}</h1>
                             </div>
@@ -220,8 +220,9 @@ export default {
 .motherpage{
     
     &-preview{
-    height: 253px;
     float: left;
+    width: 100%;
+    margin-bottom: 20px;
     }
 
     &-text{
@@ -229,7 +230,17 @@ export default {
     }
 }
 
+
 @media only screen and (min-width: 800px) {
+    .motherpage{
+    
+        &-preview{
+        width: 50%;
+        min-height: 253px;
+        float: left;
+        }
+    }
+
     .banner{
         margin: 20px 0;
 
