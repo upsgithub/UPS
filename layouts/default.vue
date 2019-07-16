@@ -2,6 +2,7 @@
     <section class="container">
         <Header />
         <nuxt />
+        <mobileInfo  />
         <MobileMenu />
         <Footer />
     </section>
@@ -10,12 +11,14 @@
 <script>
 import Header from '~/components/Header.vue'
 import MobileMenu from '~/components/Mobile_menu.vue'
+import mobileInfo from '~/components/mobile-info.vue'
 import Footer from '~/components/Footer.vue'
 
 export default{
     components: {
         Header,
         MobileMenu,
+        mobileInfo,
         Footer
     }
 }
