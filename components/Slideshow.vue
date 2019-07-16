@@ -107,7 +107,7 @@ export default{
 
 <style lang="scss">
 .slideshow{
-    height: 200px;
+    height: 170px;
     width: 100%;
     position: relative;
 }
