@@ -111,8 +111,12 @@ export default {
       $('#'+id).toggle();
       $('#'+i).toggleClass('right down');
       
-      if( $('#'+i).attr('class') === 'arrow-holder right' ) {
-          
+      if( $('#'+i).attr('class') === 'arrow-holder down' ) {
+          $('#'+id+'sv').html('Dölj PDF');
+          $('#'+id+'en').html('Hide PDF');
+      } else {
+          $('#'+id+'sv').html('Visa PDF');
+          $('#'+id+'en').html('Show PDF');
       }
     },
     current_url: function() {
