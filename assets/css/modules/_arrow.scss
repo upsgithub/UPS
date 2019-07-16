@@ -1,4 +1,4 @@
-$arrowSize: 1rem;
+$arrowSize: 1.5rem;
 
 .arrow-holder{
     position: relative;
@@ -46,6 +46,14 @@ $arrowSize: 1rem;
     
     &:before {
         transform: rotate(-90deg) translate($arrowSize/2, $arrowSize/2);
+    }
+}
+
+.right .arrow{
+    transform: rotate(45deg) translate(0px, 0px);
+
+    &:before {
+        transform: rotate(-90deg) translate( -$arrowSize/2, $arrowSize/2);
     }
 }
   
