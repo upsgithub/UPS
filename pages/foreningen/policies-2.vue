@@ -175,6 +175,28 @@ export default {
 
 <style lang="scss" scoped>
 
+@media only screen and (min-width: 800px) {
+    .banner{
+        margin: 20px 0;
+
+        &-background{
+            height: 280px;
+            padding-top: 0px;
+        } 
+
+        &-text{
+            text-align: left;
+            width: 75%;
+            float: left;
+        }
+
+        &-kontakt{
+            width: 25%;
+            float: left;
+        }
+    }
+}
+
 .item__main {
     padding-bottom: 50px;
 }
