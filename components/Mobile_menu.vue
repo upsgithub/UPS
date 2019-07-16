@@ -370,18 +370,4 @@ export default{
         }
     }
     
-    #slide {
-        position: absolute;
-        left: -100px;
-        width: 100px;
-        height: 100px;
-        background: blue;
-        transition: 1s;
-    }
-
-    .burger:hover #slide {
-        transition: 1s;
-        left: 0;
-    }
-    
 </style>
