@@ -208,7 +208,7 @@ export default {
     }
     figure{
         overflow: hidden;
-        padding-top: 100%;
+        // padding-top: 100%;
         position: relative;
 
         iframe{
