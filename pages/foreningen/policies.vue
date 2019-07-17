@@ -55,7 +55,7 @@
                 <h3 :id="item.id+'sv'" v-else>{{ visaText }}</h3>
               </div>
 
-              <figure style="display: none" :id="item.id">
+              <figure class="item__policy" style="display: none" :id="item.id">
                 <iframe
                   :src='"https://docs.google.com/viewer?url="+item.acf.google_docs_lank+"&amp;hl=sv&amp;embedded=true"'
                 ></iframe>
@@ -142,7 +142,7 @@ export default {
       var cur_page_new = this.current_page(this.$store.state.pages, this.current_url());
             
             if(cur_page_new != undefined){
-                // om man går från svensk sida till englesk översättning
+                // om man går från svensk sida till engelsk översättning
                 if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
                     var page = this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
 
@@ -174,6 +174,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.item__policy{
+  margin-top: 20px;
+}
+
 .banner{
     text-align: center;
     display: inline-block;
