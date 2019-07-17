@@ -11,12 +11,12 @@
             </a>
         </div>
         <div class="contact__item contact__item--middle" :class="displayIcons">
-            <a href="https://www.facebook.com/uppsalapolitices/" target="_blank">
+            <a href="https://www.facebook.com/uppsalapolitices/" target="_blank" rel="noreferrer">
                 <img class="lazyload contact__item__icon" src="../assets/img/facebook.png"/>
             </a>
         </div>
         <div class="contact__item contact__item--top" :class="displayIcons">
-            <a href="https://www.instagram.com/uppsalapolitices/?hl=sv" target="_blank">
+            <a href="https://www.instagram.com/uppsalapolitices/?hl=sv" target="_blank" rel="noreferrer">
                 <img class="lazyload contact__item__icon" src="../assets/img/insta.png"/>
             </a>
         </div>

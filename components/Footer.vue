@@ -21,9 +21,15 @@
                     <h4>Sociala medier</h4>
                 </div>
                 <div class="img">
-                    <a class="a-button" href="https://www.facebook.com/uppsalapolitices/"><img src="../assets/img/facebook.png" class="lazyload" /></a>
-                    <a class="a-button" href="https://www.instagram.com/uppsalapolitices/?hl=sv"><img src="../assets/img/insta.png" class="lazyload" /></a>
-                    <a class="a-button" href="https://soundcloud.com/studentradion98-9/sets/sen-lunch-med-pk"><img src="../assets/img/soundcloud.png" class="lazyload" /></a>
+                    <a class="a-button" href="https://www.facebook.com/uppsalapolitices/" target="_blank" rel="noreferrer">
+                        <img src="../assets/img/facebook.png" class="lazyload" />
+                    </a>
+                    <a class="a-button" href="https://www.instagram.com/uppsalapolitices/?hl=sv" target="_blank" rel="noreferrer">
+                        <img src="../assets/img/insta.png" class="lazyload" />
+                    </a>
+                    <a class="a-button" href="https://soundcloud.com/studentradion98-9/sets/sen-lunch-med-pk" target="_blank" rel="noreferrer">
+                        <img src="../assets/img/soundcloud.png" class="lazyload" />
+                    </a>
                 </div>
             </div>
             <div class="footer-item col-4">
