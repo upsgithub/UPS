@@ -5,7 +5,7 @@
                 <h4>Senaste</h4>
             </div>        
         </div>    
-        <div class="content-wrapper--small">
+        <div class="blog content-wrapper--small">
             <div class="plain container--full">
                 <div class="posts">
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
@@ -24,7 +24,7 @@
                     <h4>Övriga inlägg</h4>
                 </div>        
             </div>
-        <div class="content-wrapper--small">
+        <div class="blog content-wrapper--small">
             <div class="plain container--full">
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                 <div v-else class="posts">
@@ -149,5 +149,13 @@ export default {
     padding: 20px 20px 10px 20px;
 
     border-bottom: 1px solid grey;
+}
+
+.blog{
+    figure{
+        overflow: hidden;
+        padding-top: 0;
+        position: relative;
+    }
 }
 </style>
