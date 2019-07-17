@@ -115,7 +115,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .banner{
     text-align: center;
     display: inline-block;
