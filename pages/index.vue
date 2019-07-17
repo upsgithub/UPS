@@ -58,12 +58,14 @@
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                     </picture>
                 </div>
-                <div v-if="post"  class="post col-7">
-                    <div class="post-title">
-                        <h1>{{ post.title.rendered }}</h1>
+                <nuxt-link class="a-post" to="/event/blogg">
+                    <div v-if="post"  class="post col-7">
+                        <div class="post-title">
+                            <h1>{{ post.title.rendered }}</h1>
+                        </div>
+                        <div class="post-text" v-html="post.excerpt.rendered"></div>
                     </div>
-                    <div class="post-text" v-html="post.excerpt.rendered"></div>
-                </div>
+                </nuxt-link>
             </div>
         </div>
         

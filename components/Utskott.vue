@@ -57,12 +57,12 @@
                     <template v-if="utskott && english">
                         <h4>President</h4>
                         <h5>{{ utskott.acf.ordforande_namn }}</h5>
-                        <button>Contact {{ utskott.acf.english_title }}</button>
+                        <a :href="'mailto:' + utskott.acf.kontaktlank"><button>Contact {{ utskott.acf.english_title }}</button></a>
                     </template>
                     <template v-else-if="utskott">
                         <h4>Ordförande</h4>
                         <h5>{{ utskott.acf.ordforande_namn }}</h5>
-                        <button else>Kontakta {{ utskott.title.rendered }}</button>
+                        <a :href="'mailto:' + utskott.acf.kontaktlank"><button else>Kontakta {{ utskott.title.rendered }}</button></a>
                     </template>
                 </div>
                 

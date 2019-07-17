@@ -10,7 +10,7 @@
                 <div class="posts">
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                     <div v-else-if="latest_post[0]" class="post-noimage-noborder col-12">
-                        <div class="post-title">
+                        <div class="post-title" :ref="latest_post[0].slug">
                             <h1>{{ latest_post[0].title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="latest_post[0].content.rendered"></div>
@@ -29,7 +29,7 @@
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                 <div v-else class="posts">
                     <div class="post-noimage col-12" v-for="post in five_posts" :key="post.id">
-                        <div class="post-title">
+                        <div class="post-title" :ref="post.slug">
                         <h1>{{ post.title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="post.content.rendered"></div>
@@ -38,7 +38,11 @@
                     <hr>
                 </div>
             </div>
-            <div class="blogg_buttons">
+            <div v-if="english" class="blogg_buttons">
+                <button v-if="newer_exists" @click="get_newer()">Newer posts</button>
+                <button v-if="older_exists" @click="get_older()">Older posts</button>
+            </div>
+            <div v-else class="blogg_buttons">
                 <button v-if="newer_exists" @click="get_newer()">Nyare inlägg</button>
                 <button v-if="older_exists" @click="get_older()">Äldre inlägg</button>
             </div>
@@ -63,11 +67,11 @@ export default {
     data:function() {
         return {
             color: "#eb5e43",
-            current_start: 1
+            current_start: 1,
         }
     },
     async mounted() {
-        await this.$store.cache.dispatch('get_allPages')
+        await this.$store.cache.dispatch('get_Posts')
     },
     methods: {
         get_newer(){
