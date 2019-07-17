@@ -13,7 +13,7 @@
                     <h1> Vilka är vi? </h1>
                 </div>
                 <div class="post-text">
-                    <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
+                    <sync-loader v-if="this.$store.state.loading && !this.$store.cache.has('get_Posts')" class="vue-spinner" :loading="this.$store.state.loading && !this.$store.cache.has('get_Posts')" :color="color"></sync-loader>
                     <div v-if="forening_page[0]" v-html="forening_page[0].excerpt.rendered"></div>
                 </div>
                 <nuxt-link v-if="english" class="a-button" to="/foreningen"><button>More about us</button></nuxt-link>
@@ -67,7 +67,7 @@
             </div>
         </div>
         
-    </div>  
+    </div> 
     <Instagram />
 </div>
 </template>
