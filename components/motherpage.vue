@@ -40,7 +40,7 @@
                                 <h1>{{ page.title.rendered }}</h1>
                             </div>
                             <div class="post-text" v-html="page.excerpt.rendered"></div>
-                            <nuxt-link :to="cur_page.slug + '/' + page.slug"><button class="a-button">Go to {{ page.title.rendered }}</button></nuxt-link>
+                            <nuxt-link :to="cur_page.acf.translates + '/' + page.slug"><button class="a-button">Go to {{ page.title.rendered }}</button></nuxt-link>
                         </div>
                     </template>
                     <template v-else>

@@ -28,7 +28,10 @@
                         
                     </div>
                     <div v-if="cur_page" class="post-text" v-html="cur_page.content.rendered"></div>
-                    <nuxt-link to="event/blogg" class="a-button"><button>Blogg</button></nuxt-link>
+                    <nuxt-link to="event/blogg" class="a-button">
+                        <button v-if="english">Go to Blog</button>
+                        <button v-else>Gå till bloggen</button>
+                    </nuxt-link>
                     
                     <kommandeEvent />
                     <kalender />
@@ -71,10 +74,36 @@ export default {
     },
     computed:{
         cur_page(){
-            return this.current_page(this.$store.state.pages, this.current_url());
+
+             var cur_page_new = this.current_page(this.$store.state.pages, this.current_url());
+            
+            if(cur_page_new != undefined){
+                // om man går från svensk sida till englesk översättning
+                if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
+                    var page = this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+
+                    if(page == undefined){
+                        return this.$store.state.english_error_page;
+                    } else {
+                        return page;
+                    }
+
+                // om man går från engelsk sida till svensk översättning 
+                } else if(!(this.english) &&  cur_page_new.acf.lang[0] == "Engelska") 
+                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+
+                // om man navigerar normalt
+                else {
+                    return  cur_page_new;
+                }
+
+            }
         },
         loading(){
             return this.cur_page == undefined;
+        },
+        english(){
+            return this.$store.state.english;
         }
     },
     components: {
