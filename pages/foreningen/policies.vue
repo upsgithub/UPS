@@ -51,8 +51,8 @@
                 <div  :id="i" @click="hide(item.id, i)" class="arrow-holder right">
                   <div class="arrow"></div>
                 </div>
-                <h3 :id="item.id+'en'" v-if="english">{{ showText }}</h3>
-                <h3 :id="item.id+'sv'" v-else>{{ visaText }}</h3>
+                <h3 @click="hide(item.id, i)" :id="item.id+'en'" v-if="english">{{ showText }}</h3>
+                <h3 @click="hide(item.id, i)" :id="item.id+'sv'" v-else>{{ visaText }}</h3>
               </div>
 
               <figure class="item__policy" style="display: none" :id="item.id">
