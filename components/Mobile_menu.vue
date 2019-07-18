@@ -92,7 +92,7 @@
                             <nuxt-link to="/foreningen/fristaende-ambeten">Fristående ämbeten</nuxt-link>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
-                            <nuxt-link to="/foreningen/policy">Policies</nuxt-link>
+                            <nuxt-link to="/foreningen/policies">Policies</nuxt-link>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
                             <a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a>
