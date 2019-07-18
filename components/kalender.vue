@@ -46,7 +46,7 @@ export default {
             defaultView: "dayGridMonth",
             firstDay: 1,
             calendarPlugins: [dayGridPlugin, googleCalendarPlugin],
-            googleCalendarApiKey: "AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo",
+            googleCalendarApiKey: process.env.GOOGLE_CALENDAR_KEY,
             weekNumbers: true,
             weekNumbersWithinDays: true,
             events: {
