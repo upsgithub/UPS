@@ -31,7 +31,7 @@ export default {
     return {
       loading: true,
       color: "#eb5e43", 
-      api_url: "https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo",
+      api_url: "https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=" + process.env.GOOGLE_CALENDAR_KEY,
       options: { month: 'short', day: 'numeric' },
     };
   },
