@@ -30,7 +30,7 @@
                         
                     </div>
                     <div>
-                        <div class="post-text" v-html="cur_page.content.rendered">
+                        <div class="post-text figure-class" v-html="cur_page.content.rendered">
 
                         </div>
                     </div>
@@ -115,7 +115,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .banner{
     text-align: center;
     display: inline-block;
@@ -206,13 +206,14 @@ export default {
     &-background{
         background-image: url("../assets/img/plain_placeholder.jpg");
     }
-
-    figure{
+    .figure-class {
+        figure{
         overflow: hidden;
         padding-top: 100%;
+        height: 100%;
         position: relative;
 
-        iframe{
+        iframe {
             border: 0;
             height: 100%;
             left: 0;
@@ -221,5 +222,7 @@ export default {
             width: 100%;
         }
     }
+    }
+    
 }
 </style>
