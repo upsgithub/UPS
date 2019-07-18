@@ -5,7 +5,7 @@
             <div class="menu-item col-2" @mouseleave="hide('utbildning')">
                 <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
                     <template v-if="english">
-                        <h2><nuxt-link to="/utbildning">Education</nuxt-link></h2>
+                        <h2 ><nuxt-link to="/utbildning">Education</nuxt-link></h2>
                     </template>
                     <template v-else>
                         <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
