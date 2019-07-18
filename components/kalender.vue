@@ -46,11 +46,11 @@ export default {
             defaultView: "dayGridMonth",
             firstDay: 1,
             calendarPlugins: [dayGridPlugin, googleCalendarPlugin],
-            googleCalendarApiKey: process.env.GOOGLE_CALENDAR_KEY,
+            googleCalendarApiKey: 'AIzaSyBHdD_5zD9F8YgfqeVa2xxL5hOoMFmdiZY',
             weekNumbers: true,
             weekNumbersWithinDays: true,
             events: {
-                googleCalendarId: "lucas.bornegrim@gmail.com"
+                googleCalendarId: "kalendern@uppsalapolitices.se"
             },
             timeFormat: "HH:mm",
             eventTimeFormat: {
