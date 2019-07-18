@@ -37,7 +37,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: '~/plugins/vue-instagram.js'},
+    {src: '~/plugins/vue-instagram.js', ssr: false},
     {src: '~/plugins/vuex-cache.js', ssr: false},
     {src: '~/plugins/vue-lazysizes.client.js'}
   ],
