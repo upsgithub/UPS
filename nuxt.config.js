@@ -9,7 +9,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Uppsala Politices Studerande',
+    title: 'Uppsala Politicesstuderande',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
