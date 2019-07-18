@@ -1,5 +1,5 @@
 <template>
-  <div class="upcoming-event">
+  <div v-if="eventExists" class="upcoming-event">
     <h4 v-if="english" class="event-header" >Upcoming events</h4>
         <h4 v-else class="event-header" >Kommande event</h4>
     <div class="flex-container-event">
@@ -31,8 +31,7 @@ export default {
     return {
       loading: true,
       color: "#eb5e43", 
-      api_url: "https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=" + process.env.GOOGLE_CALENDAR_KEY,
-      options: { month: 'short', day: 'numeric' },
+      options: { month: 'short', day: 'numeric' }
     };
   },
   async mounted() {
@@ -47,6 +46,9 @@ export default {
     } 
   },
   computed: {
+    eventExists() {
+      return this.$store.getters.kalender.length !== 0;
+    },
       filteredItems() {
         return this.$store.getters.kalender;
      },

@@ -119,7 +119,7 @@ export const actions = {
     },
     async get_kalender (context) {
         context.commit('loading', true)
-        await axios.get('https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyCBdwd1xviBKSzFDHm3WHwh6QvSyrX9tGo').then((response) => {
+        await axios.get('https://www.googleapis.com/calendar/v3/calendars/kalendern@uppsalapolitices.se/events?key='+ process.env.GOOGLE_CALENDAR_KEY).then((response) => {
             context.commit('kalender', response.data)
             context.commit('loading', false)
         }).catch((error) => {

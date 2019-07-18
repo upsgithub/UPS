@@ -19,7 +19,7 @@
 <style lang="scss">
 @media only screen and (min-width: 768px) {
     .fc{
-        margin: 0 20px;
+        margin: 50px 20px;
     }
 }
 </style>
