@@ -133,7 +133,7 @@ export const actions = {
     },
     async get_kalender (context) {
         context.commit('loading', true)
-        await axios.get('https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyBHdD_5zD9F8YgfqeVa2xxL5hOoMFmdiZY').then((response) => {
+        await axios.get('https://www.googleapis.com/calendar/v3/calendars/kalendern@uppsalapolitices.se/events?key=AIzaSyBHdD_5zD9F8YgfqeVa2xxL5hOoMFmdiZY').then((response) => {
             context.commit('kalender', response.data)
             context.commit('loading', false)
         }).catch((error) => {
