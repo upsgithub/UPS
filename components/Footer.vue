@@ -7,7 +7,7 @@
                     <h4>Contact us</h4>
                 </div>
                 <div v-else class="text">
-                    <h4>Kontakt oss</h4>
+                    <h4>Kontakta oss</h4>
                 </div>
                 <div class="img">
                     <a class="a-button" href="mailto:sekreterare@uppsalapolitices.se"><img src="../assets/img/mail.png" /></a>
