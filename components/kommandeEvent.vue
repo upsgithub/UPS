@@ -6,7 +6,7 @@
       <sync-loader v-if="this.$store.state.loading && !this.$store.cache.has('get_kalender')" :loading="this.$store.state.loading && !this.$store.cache.has('get_kalender')" :color="color" class="vue-spinner"></sync-loader>
       <div v-else @click="clickBox( item.htmlLink )" class="event-box" v-for="item in filteredItems" :key="item.id" >
         <h4 class="event-text event-text--name">{{ item.summary }}</h4>
-        <h4 class="event-text event-date">{{ changeDate(item.start.dateTime) }}</h4>
+        <h4 class="event-text event-date">{{ changeDate(item.start.realDate) }}</h4>
       </div>
     </div>
   </div>

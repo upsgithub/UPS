@@ -24,8 +24,20 @@ export const state = () => ({
     loadingSlide: false
 })
 
-function checkDate(event_start) {
-    return (new Date(event_start.dateTime) > new Date()); 
+function checkDate(event) {
+    if (event.start.date) {
+        if (new Date(event.start.date) > new Date()) {
+            event.start.realDate = event.start.date;
+            return true;
+        }
+    }
+    else if (event.start.dateTime) {
+        if (new Date(event.start.dateTime) > new Date()) {
+            event.start.realDate = event.start.dateTime;
+            return true;
+        }
+    }
+    
 }
 
 export const mutations = {
@@ -35,11 +47,13 @@ export const mutations = {
     kalender(state, kalender) {
         let temp = []
         for (let i = 0; i < kalender.items.length; i++) {
-            if (checkDate(kalender.items[i].start)) {
-                temp.push(kalender.items[i])
+            if (kalender.items[i].start) {
+                if (checkDate(kalender.items[i])) {       
+                    temp.push(kalender.items[i])
+                }
             }
         }
-        temp.sort((a, b) => (a.start.dateTime > b.start.dateTime) ? 1 : -1);
+        temp.sort((a, b) => (a.start.realDate > b.start.realDate) ? 1 : -1);
         state.kalender = temp;
     },
     loading(state, loading) {
@@ -119,7 +133,7 @@ export const actions = {
     },
     async get_kalender (context) {
         context.commit('loading', true)
-        await axios.get('https://www.googleapis.com/calendar/v3/calendars/kalendern@uppsalapolitices.se/events?key=AIzaSyBHdD_5zD9F8YgfqeVa2xxL5hOoMFmdiZY').then((response) => {
+        await axios.get('https://www.googleapis.com/calendar/v3/calendars/lucas.bornegrim@gmail.com/events?key=AIzaSyBHdD_5zD9F8YgfqeVa2xxL5hOoMFmdiZY').then((response) => {
             context.commit('kalender', response.data)
             context.commit('loading', false)
         }).catch((error) => {
@@ -214,7 +228,7 @@ export const actions = {
 
 export const getters = {
     kalender: state => {
-        return state.kalender;
+        return state.kalender.slice(0,4);
     },
     foreningPage: state => {
         return state.pages.filter(pages => pages.slug === 'foreningen')
