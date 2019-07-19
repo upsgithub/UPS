@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import kalender from '~/components/kalender.vue'
+
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import kommandeEvent from '~/components/kommandeEvent.vue'
@@ -109,7 +109,6 @@ export default {
     components: {
         Sponsor,
         Instagram,
-        kalender,
         kommandeEvent,
         SyncLoader
     }
