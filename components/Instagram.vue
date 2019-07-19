@@ -38,7 +38,7 @@
 export default {
     data:function() {
         return {
-            token: process.env.INSTA_TOKEN 
+            token: '1441523367.1677ed0.84515ba1c1de4a7ba69b2df1f8e21e4a' 
         }
     },
     methods: {
