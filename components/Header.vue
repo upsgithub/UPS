@@ -111,6 +111,11 @@ export default {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             if (currentScrollPosition < 0) { return }
             this.showLangButton = currentScrollPosition == 0
+        },
+        english_link(){
+            if(this.$route.query.lang == "en"){
+                return this.$store.commit('change_language', true);
+            }
         }
     },
     computed: {
@@ -150,7 +155,7 @@ export default {
         await this.$store.cache.dispatch('get_headerUtskott');
         window.addEventListener('scroll', 
         this.onScroll);
-        
+        this.english_link();
     },
     beforeDestroy () {
         window.removeEventListener('scroll', 
