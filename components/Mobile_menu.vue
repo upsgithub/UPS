@@ -81,8 +81,8 @@
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
                             <a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">
-                                <span v-if="english">Mötesprotokoll</span>
-                                <span v-else>Meeting protocols</span>
+                                <span v-if="english">Meeting minutes</span>
+                                <span v-else>Mötesprotokoll</span>
                             </a>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
