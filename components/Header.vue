@@ -57,7 +57,12 @@
                     <div class="desktop-item" @click="hide('forening')" v-for="page in forening" :key="page.id">
                         <h3><nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
-                    <div class="desktop-item" @click="hide('forening')"><h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a></h3></div>
+                    <div class="desktop-item" @click="hide('forening')">
+                        <h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">
+                            <span v-if="english">Meeting minutes</span>
+                            <span v-else>Mötesprotokoll</span>
+                        </a></h3>
+                    </div>
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')">
                         <h3 v-if="english"><nuxt-link to="/foreningen">Committees</nuxt-link></h3>
                         <h3 v-else><nuxt-link to="/foreningen">Utskotten</nuxt-link></h3>

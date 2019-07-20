@@ -10,7 +10,10 @@
                 <div class="item">
                     <div class="item__main">
                         <h2>
-                            <span @click="showMenu(), toggleClose()" class="item__main">
+                            <span v-if="english" @click="showMenu(), toggleClose()" class="item__main">
+                                <nuxt-link to="/utbildning">Education</nuxt-link>
+                            </span>
+                            <span v-else @click="showMenu(), toggleClose()" class="item__main">
                                 <nuxt-link to="/utbildning">Utbildning</nuxt-link>
                             </span>
                         </h2>
@@ -19,14 +22,8 @@
                         </div>
                     </div>
                     <ul id="utbildning-links" class="item item__sublinks" :class="subMenu1">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')">
-                            <nuxt-link to="/utbildning/master">Master</nuxt-link>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')">
-                            <nuxt-link to="/utbildning/kandidat">Kandidat</nuxt-link>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')">
-                            <nuxt-link to="/utbildning/skugga-en-student">Skugga en student</nuxt-link>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in utbildning" :key="page.id">
+                            <nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -42,20 +39,8 @@
                         </div>
                     </div>
                     <ul id="student-links" class="item item__sublinks" :class="subMenu2">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
-                            <nuxt-link to="/student/alumn">Alumn</nuxt-link>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
-                            <nuxt-link to="/student/projektpotten">Projektpotten</nuxt-link>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
-                            <nuxt-link to="/student/stipendier">Stipendier</nuxt-link>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
-                            <nuxt-link to="/student/produkter">Produkter</nuxt-link>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('student')">
-                            <nuxt-link to="/student/medlemskap">Medlemskap</nuxt-link>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in student" :key="page.id">
+                            <nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -79,7 +64,10 @@
                 <div class="item">
                     <div class="item__main">
                         <h2>
-                            <span @click="showMenu(), toggleClose()" >
+                            <span v-if="english" @click="showMenu(), toggleClose()" >
+                                <nuxt-link to="/foreningen">Association</nuxt-link>
+                            </span>
+                            <span v-else @click="showMenu(), toggleClose()" >
                                 <nuxt-link to="/foreningen">Föreningen</nuxt-link>
                             </span>
                         </h2>
@@ -88,17 +76,18 @@
                         </div>
                     </div>
                     <ul id="foreningen-links" class="item item__sublinks" :class="subMenu4">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
-                            <nuxt-link to="/foreningen/fristaende-ambeten">Fristående ämbeten</nuxt-link>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in forening" :key="page.id">
+                            <nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
-                            <nuxt-link to="/foreningen/policies">Policies</nuxt-link>
+                            <a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">
+                                <span v-if="english">Mötesprotokoll</span>
+                                <span v-else>Meeting protocols</span>
+                            </a>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
-                            <a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">Mötesprotokoll</a>
-                        </li>
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
-                            <nuxt-link to="/foreningen">Utskotten</nuxt-link>
+                            <nuxt-link v-if="english" to="/foreningen">Committees</nuxt-link>
+                            <nuxt-link v-else to="/foreningen">Utskotten</nuxt-link>
                         </li>
                     </ul>
                 </div>
@@ -207,7 +196,31 @@ export default{
     computed: {
         english(){
             return this.$store.state.english;
-        }
+        },
+        utskott(){
+            return this.$store.state.utskottHeader
+        },
+        utbildning(){
+            if(this.english){
+                return this.$store.getters.headerPagesUtbildning_eng
+            } else {
+                return this.$store.getters.headerPagesUtbildning_swe
+            }
+        },
+        student(){
+            if(this.english){
+                return this.$store.getters.headerPagesStudent_eng
+            } else {
+                return this.$store.getters.headerPagesStudent_swe
+            }
+        },
+        forening(){
+            if(this.english){
+                return this.$store.getters.headerPagesForening_eng
+            } else {
+                return this.$store.getters.headerPagesForening_swe
+            }
+        },
     }
 }
 </script>
