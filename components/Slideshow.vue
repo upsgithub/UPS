@@ -58,7 +58,7 @@ export default{
         }
     },
     computed: {
-        slides () {
+        slides () { 
             return this.$store.state.slides? this.$store.state.slides.slice(0, 5) : []
         },
         english() {
@@ -69,10 +69,12 @@ export default{
         }
     },
     mounted(){
-      this.initSwiper()
+        if(!this.$store.state.loadingSlide){
+            this.initSwiper();
+        }
     },
     methods: {
-        initSwiper(){
+        initSwiper: function(){
             var mySwiper = new Swiper ('.swiper-container', {
                 // Optional parameters
                 speed: 800,

@@ -39,19 +39,17 @@
         <kommandeEvent />
         <Sponsor />
         <div class="container--full">
-            <div class="posts col-12" v-for="post in posts" :key="post.id">
+            <div class="posts col-12" v-for="post in Posts" :key="post.id">
                 <div class="post-picture col-5">
-                     <picture v-if="post.better_featured_image">
-                        <img v-if="post.better_featured_image" 
-                        :data-srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
-                        post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
-                        post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
-                        post.better_featured_image.source_url + ' 1920w'"
-                        data-sizes="auto"
-                        :data-src="post.better_featured_image.source_url + '?lqip'"  
-                        :alt="post.better_featured_image.alt_text" 
-                        class="lazyload" >
-                    </picture>
+                    <img v-if="post.better_featured_image" 
+                    :data-srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                    post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                    post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                    post.better_featured_image.source_url + ' 1920w'"
+                    data-sizes="auto"
+                    :data-src="post.better_featured_image.source_url + '?lqip'"  
+                    :alt="post.better_featured_image.alt_text" 
+                    class="lazyload" >
                     <picture v-else>
                         <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
                         <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
@@ -89,15 +87,15 @@ export default {
             color: "#eb5e43"
         }
     },
-    async mounted() {
-        await this.$store.cache.dispatch('get_slideShow')
-        await this.$store.cache.dispatch('get_Posts')
+    async fetch({store, params}) {
+        await store.dispatch('get_Posts')
+        await store.dispatch('get_slideShow')
     },
     computed: {
         english(){
             return this.$store.state.english;
         },
-        posts(){
+        Posts(){
             if(this.english) {
                 return this.$store.state.postsEN.slice(0,3);
             } else {
