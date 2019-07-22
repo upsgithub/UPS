@@ -69,7 +69,8 @@ export default {
     computed: {
         ...mapState({
             posts: state => state.posts.list,
-            post: state => state.posts.post
+            post: state => state.posts.post,
+            postsEng: state => state.posts.listEng
         })
     },
     methods: {

@@ -25,7 +25,7 @@ export const actions = {
     }
 }
 export const getters = {
-    firstThree: state => {
-        return state.posts.slice(0,3);
+    postsEng: state => {
+        return state.list.filter(post => post.categories[0] === 1)
     }
 }
