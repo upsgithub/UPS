@@ -74,6 +74,7 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: process.env.API_BASE_URL
   },
 
   /*
@@ -84,7 +85,7 @@ export default {
     ** You can extend webpack config here
     */
     extend(config,{ isDev, isClient, loaders: { vue } }) {
-      if (isClient || isDev) {
+      if (isClient) {
         vue.transformAssetUrls.img = ['data-src', 'src']
         vue.transformAssetUrls.source = ['data-srcset', 'srcset']
       }

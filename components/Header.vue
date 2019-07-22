@@ -156,8 +156,8 @@ export default {
         }
     },
     async mounted () {
-        await this.$store.cache.dispatch('get_headerPages');
-        await this.$store.cache.dispatch('get_headerUtskott');
+        //await this.$store.cache.dispatch('get_headerPages');
+        //await this.$store.cache.dispatch('get_headerUtskott');
         window.addEventListener('scroll', 
         this.onScroll);
         this.english_link();

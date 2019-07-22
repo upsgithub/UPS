@@ -177,7 +177,7 @@ export default {
         }
     },
     async mounted() {
-       await this.$store.cache.dispatch('get_allUtskott');
+       //await this.$store.cache.dispatch('get_allUtskott');
     },
     methods: {
         current_url:function(){

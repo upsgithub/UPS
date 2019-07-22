@@ -35,7 +35,7 @@ export default {
     };
   },
   async mounted() {
-    await this.$store.cache.dispatch('get_kalender');
+    //await this.$store.cache.dispatch('get_kalender');
   },
   methods: {
     clickBox(link) {

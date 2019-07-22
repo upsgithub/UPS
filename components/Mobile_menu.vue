@@ -190,7 +190,7 @@ export default{
        },
        change_language() {
             var current = this.$store.state.english;
-            this.$store.commit('change_language', !current);
+            //this.$store.commit('change_language', !current);
         }
     },
     computed: {

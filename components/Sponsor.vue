@@ -25,7 +25,7 @@ export default {
         }
     },
     async mounted() {
-        await this.$store.cache.dispatch('get_samarbeten')
+        //await this.$store.cache.dispatch('get_samarbeten')
     },
     components: {
         SyncLoader

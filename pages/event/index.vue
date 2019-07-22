@@ -58,7 +58,7 @@ export default {
         }
     },
     async mounted() {
-        await this.$store.cache.dispatch('get_allPages');
+        //await this.$store.cache.dispatch('get_allPages');
     },
     methods: {
         current_url:function(){

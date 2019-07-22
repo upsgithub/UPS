@@ -1,7 +1,6 @@
 <template>
     <div class="slideshow">
         <!-- Slider main container -->
-        <sync-loader v-if="loadingSlide" class="vue-spinner vue-spinner--centered" :loading="loadingSlide" :color="color"></sync-loader>
         <div v-if="slides" class="swiper-container">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
@@ -19,13 +18,13 @@
                         <div class="slideshow__bar--w">
                             <div class="slideshow__bar-intro col-8 col-8--smaller">
                                 <div class="v-centered">
-                                    <h4 v-if="english" class="slideshow__bar-text">{{ slide.acf.slide_introtexten }}</h4>
+                                    <h4 v-if="english" class="slideshow__bar-text">{{ slide.acf.slide_introtexten }}</h4> 
                                     <h4 v-else class="slideshow__bar-text">{{ slide.acf.slide_introtext }}</h4>
                                 </div>
                             </div>
                             <div class="slideshow__bar-btn col-4 col-4--bigger">
                                 <nuxt-link :to="slide.acf.slidelank" class="a-button">
-                                    <button v-if="english" class="btn btn--default btn--small-h">{{ slide.acf.knapptexten }}</button>
+                                   <button v-if="english" class="btn btn--default btn--small-h">{{ slide.acf.knapptexten }}</button>
                                     <button v-else class="btn btn--default btn--small-h">{{ slide.acf.knapptext }}</button>
                                 </nuxt-link>
                             </div>
@@ -48,8 +47,8 @@
 </template>
 
 <script>
-import Swiper from 'swiper';
-import SyncLoader from 'vue-spinner/src/SyncLoader.vue';
+import Swiper from 'swiper'
+import { mapMutations, mapState } from 'vuex'
 
 export default{
     data:function(){
@@ -58,22 +57,18 @@ export default{
         }
     },
     computed: {
-        slides () { 
-            return this.$store.state.slides? this.$store.state.slides.slice(0, 5) : []
-        },
-        english() {
-            return this.$store.state.english;
-        },
-        loadingSlide(){
-            return this.$store.state.loadingSlide;
-        }
+        ...mapState({
+            slides: state => state.slides.list,
+            slide: state => state.slides.slide
+        })
     },
     mounted(){
-        if(!this.$store.state.loadingSlide){
-            this.initSwiper();
-        }
+        this.initSwiper()
     },
     methods: {
+        ...mapMutations({
+            setSlides: 'slides/set'
+        }),
         initSwiper: function(){
             var mySwiper = new Swiper ('.swiper-container', {
                 // Optional parameters
@@ -99,9 +94,6 @@ export default{
                 },
             }) 
         }
-    },
-    components: {
-        SyncLoader
     }
 }
 

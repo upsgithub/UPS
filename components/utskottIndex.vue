@@ -62,8 +62,8 @@ export default {
         }
     },
     async mounted() {
-        await this.$store.cache.dispatch('get_ordforande');
-        await this.$store.cache.dispatch('get_allUtskott');
+        //await this.$store.cache.dispatch('get_ordforande');
+        //await this.$store.cache.dispatch('get_allUtskott');
         //this.$store.dispatch('get_allPages');
     },
     components: {
