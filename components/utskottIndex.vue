@@ -54,6 +54,7 @@
 <script>
 import axios from 'axios'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
     data() {
@@ -70,7 +71,9 @@ export default {
         SyncLoader
     },
     methods: {
-
+        ...mapMutations({
+            setOrdforanden: 'ordforanden/set'
+        })
     },
     computed: {
         english() {
@@ -94,7 +97,10 @@ export default {
         },
         loaded(){
             return (this.utskott || this.ordforanden || this.content) != undefined;
-        }
+        },
+        ...mapState({
+            ordforanden: state => state.ordforanden.list
+        })
     }
 }                
 </script>

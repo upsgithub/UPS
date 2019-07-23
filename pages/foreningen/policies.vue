@@ -89,6 +89,7 @@ import Instagram from "~/components/Instagram.vue";
 import KommandeEvent from "~/components/kommandeEvent.vue";
 import SyncLoader from "vue-spinner/src/SyncLoader.vue";
 import $ from "jquery";
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   components: {
@@ -132,9 +133,15 @@ export default {
     },
     toggle(id) {
       console.log(id);
-    }
+    },
+    ...mapMutations({
+        setPolicies: 'policies/set'
+    })
   },
   computed: {
+    ...mapState({
+        policies: state => state.policies.list
+    }),
     english() {
       return this.$store.state.english;
     },

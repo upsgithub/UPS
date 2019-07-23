@@ -69,14 +69,14 @@ export default {
     computed: {
         ...mapState({
             posts: state => state.posts.list,
-            post: state => state.posts.post,
-            postsEng: state => state.posts.listEng
+            pages: state => state.pages.list
         })
     },
     methods: {
         ...mapMutations({
-            setPosts: 'posts/set'
-        }),
+            setPosts: 'posts/set',
+            setPages: 'pages/set'
+        })
     },
     components: {
         //Instagram,

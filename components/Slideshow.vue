@@ -18,14 +18,14 @@
                         <div class="slideshow__bar--w">
                             <div class="slideshow__bar-intro col-8 col-8--smaller">
                                 <div class="v-centered">
-                                    <h4 v-if="english" class="slideshow__bar-text">{{ slide.acf.slide_introtexten }}</h4> 
-                                    <h4 v-else class="slideshow__bar-text">{{ slide.acf.slide_introtext }}</h4>
+                                    <!-- v-if="english" <h4 class="slideshow__bar-text">{{ slide.acf.slide_introtexten }}</h4> -->
+                                    <!-- v-else --> <h4 class="slideshow__bar-text">{{ slide.acf.slide_introtext }}</h4>
                                 </div>
                             </div>
                             <div class="slideshow__bar-btn col-4 col-4--bigger">
                                 <nuxt-link :to="slide.acf.slidelank" class="a-button">
-                                   <button v-if="english" class="btn btn--default btn--small-h">{{ slide.acf.knapptexten }}</button>
-                                    <button v-else class="btn btn--default btn--small-h">{{ slide.acf.knapptext }}</button>
+                                   <!-- v-if="english" <button  class="btn btn--default btn--small-h">{{ slide.acf.knapptexten }}</button> -->
+                                    <!-- v-else --> <button class="btn btn--default btn--small-h">{{ slide.acf.knapptext }}</button>
                                 </nuxt-link>
                             </div>
                         </div>
@@ -58,8 +58,7 @@ export default{
     },
     computed: {
         ...mapState({
-            slides: state => state.slides.list,
-            slide: state => state.slides.slide
+            slides: state => state.slides.list
         })
     },
     mounted(){
@@ -79,7 +78,7 @@ export default{
                     delay: 4000,
                     disableOnInteraction: true,
                 },
-                loop: false,
+                loop: true,
                 preloadImages: false,
                 // If we need pagination
                 pagination: {

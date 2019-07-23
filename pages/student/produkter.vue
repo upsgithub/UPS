@@ -53,6 +53,7 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
     data() {
@@ -71,7 +72,10 @@ export default {
                     return pagesArr[i];
                 }
             }
-        }
+        },
+        ...mapMutations({
+            setProducts: 'produkter/set'
+        })
     },
     computed:{
         cur_page(){
@@ -79,7 +83,10 @@ export default {
         },
         loading(){
             return this.cur_page == undefined;
-        }
+        },
+        ...mapState({
+            produkter: state => state.produkter.list
+        })
     },
     components: {
         produkter,

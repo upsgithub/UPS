@@ -5,21 +5,18 @@ export const state = () => ({
 })
   
 export const mutations = {
-    set(state, produkter) {
-        state.list = produkter
+    set(state, utskotten) {
+        state.list = utskotten
     }
 }
 
 export const actions = {
     async get({commit}) {
-      await axios.get(process.env.API_BASE_URL + 'produkter')
+      await axios.get(process.env.API_BASE_URL + 'utskott')
         .then((res) => {
           if (res.status === 200) {
             commit('set', res.data)
           }
         })
     }
-}
-export const getters = {
-    
 }

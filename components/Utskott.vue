@@ -169,6 +169,7 @@ import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
+import { mapMutations, mapState } from 'vuex'
 
 export default {
     data:function(){
@@ -190,7 +191,10 @@ export default {
                     return utskottArr[i];
                 }
             }
-        }
+        },
+        ...mapMutations({
+            setUtskotten: 'utskotten/set'
+        })
     },
     computed:{
         utskott(){
@@ -204,7 +208,10 @@ export default {
         },
         english(){
             return this.$store.state.english;
-        }
+        },
+        ...mapState({
+            utskotten: state => state.utskotten.list
+        })
     },
     components: {
         Sponsor,

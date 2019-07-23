@@ -15,8 +15,7 @@
 import axios from 'axios'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import createCache from 'vuex-cache';
-
-
+import { mapMutations, mapState } from 'vuex'
 
 export default {
     data() {
@@ -36,7 +35,15 @@ export default {
         },
         english(){
             return this.$store.state.english;
-        }
+        },
+        ...mapState({
+            samarbeten: state => state.samarbeten.list
+        })
+    },
+    methods: {
+        ...mapMutations({
+            setSamarbeten: 'samarbeten/set'
+        })
     }
 }
 </script>

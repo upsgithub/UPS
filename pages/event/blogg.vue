@@ -60,6 +60,7 @@ import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import axios from 'axios'
 import $ from 'jquery'
+import { mapMutations, mapState } from 'vuex'
 // import { cursorTo } from 'readline';
 // import { start } from 'repl';
 
@@ -92,6 +93,9 @@ export default {
                 scrollTop: $("#home-anchor").offset().top
             }, 200);
         },
+        ...mapMutations({
+            setKalender: 'kalender/set'
+        })
     },
     computed: {
         english(){
@@ -118,7 +122,10 @@ export default {
         },
         loading(){
             return (this.latest_post || this.five_posts) == undefined;
-        }
+        },
+        ...mapState({
+            kalender: state => state.kalender.list
+        })
     },
     watch:{
         english(){

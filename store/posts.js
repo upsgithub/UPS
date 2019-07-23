@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 export const state = () => ({
-    list: [],
-    post: {}
+    list: []
 })
   
 export const mutations = {
@@ -19,13 +18,8 @@ export const actions = {
             commit('set', res.data)
           }
         })
-    },
-    async set({commit}, post) {
-        await commit('set', post)
     }
 }
 export const getters = {
-    postsEng: state => {
-        return state.list.filter(post => post.categories[0] === 1)
-    }
+    
 }
