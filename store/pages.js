@@ -1,12 +1,16 @@
 import axios from 'axios'
 
 export const state = () => ({
-    list: []
+    list: [],
+    page: {}
 })
   
 export const mutations = {
     set(state, pages) {
         state.list = pages
+    },
+    first(state, pages){
+        state.page = pages[0]
     }
 }
 
@@ -16,6 +20,7 @@ export const actions = {
         .then((res) => {
           if (res.status === 200) {
             commit('set', res.data)
+            commit('first', res.data)
           }
         })
     }

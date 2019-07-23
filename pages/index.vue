@@ -17,7 +17,7 @@
             <!-- forening first post image here -->
         </div>
         <!-- <kommandeEvent /> -->
-        <!-- <Sponsor /> -->
+        <Sponsor />
         <div class="container--full">
             <div class="posts col-12" v-for="post in 3" :key="post">
                 <div class="post-picture col-5">
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-//import Sponsor from '~/components/Sponsor.vue'
+import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
 //import Instagram from '~/components/Instagram.vue'
 //import KommandeEvent from '~/components/kommandeEvent.vue'
@@ -69,18 +69,18 @@ export default {
     computed: {
         ...mapState({
             posts: state => state.posts.list,
-            pages: state => state.pages.list
+            firstPage: state => state.pages.page
         })
     },
     methods: {
         ...mapMutations({
             setPosts: 'posts/set',
-            setPages: 'pages/set'
+            setFirstPage: 'pages/first'
         })
     },
     components: {
         //Instagram,
-        //Sponsor,
+        Sponsor,
         Slideshow,
         //KommandeEvent,
         SyncLoader

@@ -30,9 +30,6 @@ export default {
         SyncLoader
     },
     computed: {
-        samarbeten(){
-            return this.$store.state.samarbeten;
-        },
         english(){
             return this.$store.state.english;
         },
