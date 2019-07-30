@@ -4,17 +4,40 @@
         <Slideshow />
     </div>
     <div class="content-wrapper"> 
-        <div class="posts container--full" v-for="post in posts" :key="post.id">
+        <div class="posts container--full">
             <div class="post col-12">
                 <!-- <div v-if="english" class="post-title">
                     <h1> Who are we? </h1>
                 </div>
                 <div v-else class="post-title">
                     <h1> Vilka är vi? </h1>
+                </div> -->
+                <div class="post-title">
+                    <h1> Vilka är vi? </h1>
                 </div>
-                Forening first post content here -->
+                <div class="post-text">
+                    <div v-if="firstPage" v-html="firstPage.excerpt.rendered"></div>
+                </div>
+                <!-- <nuxt-link v-if="english" class="a-button" to="/foreningen"><button>More about us</button></nuxt-link>
+                <nuxt-link v-else class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link> -->
+                <nuxt-link class="a-button" to="/foreningen"><button>Mer om oss</button></nuxt-link> 
             </div>
-            <!-- forening first post image here -->
+            <div v-if="firstPage" class="post-picture col-5">
+                <img v-if="firstPage.better_featured_image" 
+                :data-srcset="firstPage.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                firstPage.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                firstPage.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                firstPage.better_featured_image.source_url + ' 1920w'"
+                data-sizes="auto"
+                :data-src="firstPage.better_featured_image.source_url + '?lqip'"  
+                :alt="firstPage.better_featured_image.alt_text" 
+                class="lazyload" >
+                <picture v-else>
+                    <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
+                    <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
+                    <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
+                </picture>
+            </div> 
         </div>
         <!-- <kommandeEvent /> -->
         <Sponsor />
@@ -69,13 +92,15 @@ export default {
     computed: {
         ...mapState({
             posts: state => state.posts.list,
-            firstPage: state => state.pages.page
+            firstPage: state => state.pages.page,
+            firstPageEn: state => state.pages.pageEn
         })
     },
     methods: {
         ...mapMutations({
             setPosts: 'posts/set',
-            setFirstPage: 'pages/first'
+            setForeningPage: 'pages/firstForeningPage',
+            setForeningPageEn: 'pages/firstForeningPageEn'
         })
     },
     components: {
