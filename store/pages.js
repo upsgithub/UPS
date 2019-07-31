@@ -5,7 +5,8 @@ export const state = () => ({
     page: {},
     pageEn: {},
     forening_list: [],
-    forening_en_list: []
+    forening_en_list: [],
+    english: false
 })
   
 export const mutations = {
@@ -31,6 +32,9 @@ export const mutations = {
     },
     firstForeningPageEn(state){
       state.pageEn = state.forening_en_list[0];
+    },
+    setLang(state){
+      state.english = true;
     }
 }
 
@@ -48,5 +52,5 @@ export const actions = {
     }
 }
 export const getters = {
-    
+
 }

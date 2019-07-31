@@ -1,12 +1,25 @@
 import axios from 'axios'
 
 export const state = () => ({
-    list: []
+    list: [],
+    listEn: []
 })
   
 export const mutations = {
     set(state, posts) {
-        state.list = posts
+        let tempPosts = [];
+        let tempPostsEn = [];
+        posts.forEach(element => {
+          if(element.categories[0] == 1){
+            tempPostsEn.push(element);
+          }
+          else{
+            tempPosts.push(element);
+          }
+        });
+
+        state.list = tempPosts;
+        state.listEn = tempPostsEn;
     }
 }
 
@@ -21,5 +34,10 @@ export const actions = {
     }
 }
 export const getters = {
-    
+  threePosts: state => {
+    return state.list.slice(0,3);
+  },
+  threePostsEn: state => {
+    return state.listEn.slice(0,3);
+  }
 }

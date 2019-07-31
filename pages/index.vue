@@ -41,33 +41,33 @@
         </div>
         <!-- <kommandeEvent /> -->
         <Sponsor />
-        <div class="container--full">
-            <div class="posts col-12" v-for="post in 3" :key="post">
+        <div class="container--full" v-if="threePosts">
+            <div class="posts col-12" v-for="post in threePosts" :key="post.id">
                 <div class="post-picture col-5">
-                   <img v-if="posts[post].better_featured_image" 
-                    :data-srcset="posts[post].better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
-                    posts[post].better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
-                    posts[post].better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
-                    posts[post].better_featured_image.source_url + ' 1920w'"
+                   <img v-if="post.better_featured_image" 
+                    :data-srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
+                    post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
+                    post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
+                    post.better_featured_image.source_url + ' 1920w'"
                     data-sizes="auto"
-                    :data-src="posts[post].better_featured_image.source_url + '?lqip'"  
-                    :alt="posts[post].better_featured_image.alt_text" 
+                    :data-src="post.better_featured_image.source_url + '?lqip'"  
+                    :alt="post.better_featured_image.alt_text" 
                     class="lazyload"> 
                     <picture v-else>
                         <source data-srcset="~assets/img/placeholder_img.png?webp" type="image/webp">
                         <source data-srcset="~assets/img/placeholder_img.png" type="image/png">
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                     </picture> 
-                </div>
+                </div> 
                 <nuxt-link class="a-post" to="/event/blogg">
-                    <div v-if="post"  class="post col-7">
+                    <div class="post col-7">
                         <div class="post-title">
-                            <h1>{{ posts[post].title.rendered }}</h1>
+                            <h1>{{ post.title.rendered }}</h1>
                         </div>
-                        <div class="post-text" v-html="posts[post].excerpt.rendered"></div>
+                        <div class="post-text" v-html="post.excerpt.rendered"></div>
                     </div>
                 </nuxt-link> 
-            </div>  
+            </div> 
         </div>
     </div>
     <!-- <Instagram /> -->
@@ -81,7 +81,7 @@ import Slideshow from '~/components/Slideshow.vue'
 //import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import $ from 'jquery'
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations, mapState, mapGetters } from 'vuex'
 
 export default {
     data:function(){
@@ -91,16 +91,20 @@ export default {
     },
     computed: {
         ...mapState({
-            posts: state => state.posts.list,
             firstPage: state => state.pages.page,
-            firstPageEn: state => state.pages.pageEn
+            firstPageEn: state => state.pages.pageEn,
+            english: state => state.pages.english,
+        }),
+        ...mapGetters({
+            threePosts: 'posts/threePosts',
+            threePostsEn: 'posts/threePostsEn'
         })
     },
     methods: {
         ...mapMutations({
-            setPosts: 'posts/set',
             setForeningPage: 'pages/firstForeningPage',
-            setForeningPageEn: 'pages/firstForeningPageEn'
+            setForeningPageEn: 'pages/firstForeningPageEn',
+            setLang: 'pages/setLang'
         })
     },
     components: {
