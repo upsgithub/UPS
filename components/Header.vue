@@ -117,7 +117,7 @@
 <script>
 import axios from 'axios'
 import $ from 'jquery'
-import { mapState, mapMutations, mapGetters } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
     data() {

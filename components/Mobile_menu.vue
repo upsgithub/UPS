@@ -22,9 +22,16 @@
                         </div>
                     </div>
                     <ul id="utbildning-links" class="item item__sublinks" :class="subMenu1">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in utbildning" :key="page.id">
-                            <nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
-                        </li>
+                        <template v-if="english">
+                            <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in utbildningEn" :key="page.id">
+                                <nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in utbildning" :key="page.id">
+                                <nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
+                            </li>
+                        </template>
                     </ul>
                 </div>
                 <div class="item">
@@ -39,9 +46,16 @@
                         </div>
                     </div>
                     <ul id="student-links" class="item item__sublinks" :class="subMenu2">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in student" :key="page.id">
-                            <nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
-                        </li>
+                        <template v-if="english">
+                            <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in studentEn" :key="page.id">
+                                <nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in student" :key="page.id">
+                                <nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
+                            </li>
+                        </template>
                     </ul>
                 </div>
                 <div class="item">
@@ -56,7 +70,10 @@
                         </div>
                     </div>
                     <ul id="event-links" class="item item__sublinks" :class="subMenu3">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('event')">
+                        <li v-if="english" class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('event')">
+                            <nuxt-link to="/event/blogg">Blog</nuxt-link>
+                        </li>
+                        <li v-else class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('event')">
                             <nuxt-link to="/event/blogg">Blogg</nuxt-link>
                         </li>
                     </ul>
@@ -76,9 +93,16 @@
                         </div>
                     </div>
                     <ul id="foreningen-links" class="item item__sublinks" :class="subMenu4">
-                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in forening" :key="page.id">
-                            <nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
-                        </li>
+                        <template v-if="english">
+                            <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in foreningEn" :key="page.id">
+                                <nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
+                            </li>
+                        </template>
+                        <template v-else>
+                            <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('utbildning')" v-for="page in forening" :key="page.id">
+                                <nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link>
+                            </li>
+                        </template>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
                             <a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">
                                 <span v-if="english">Meeting minutes</span>
@@ -95,8 +119,8 @@
         </div>
         <div class="burger">
             <div v-if="showLangButton" class="lang lang--bottom-l">
-                <img v-if="english" src="../assets/img/SV.png" @click="change_language()" />
-                <img v-else src="../assets/img/UK.png" @click="change_language()" />
+                <img v-if="english" src="../assets/img/SV.png" @click="setLang()" />
+                <img v-else src="../assets/img/UK.png" @click="setLang()" />
             </div>
             <div class="burger-h">
                 <div class="burger__menu-icon" @click="showMenu(), toggleClose()" v-bind:class="menuClose">
@@ -109,6 +133,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default{
     data: function() {
         return {
@@ -126,6 +152,9 @@ export default{
         }
     },
     methods: {
+       ...mapMutations({
+            setLang: 'pages/setLang'
+       }),
        toggleClose(){
            if(this.menuClose){
                this.menuClose = "";
@@ -187,40 +216,19 @@ export default{
                 default:
                     return id;
            }
-       },
-       change_language() {
-            var current = this.$store.state.english;
-            //this.$store.commit('change_language', !current);
-        }
+       }
     },
     computed: {
-        english(){
-            return this.$store.state.english;
-        },
-        utskott(){
-            return this.$store.state.utskottHeader
-        },
-        utbildning(){
-            if(this.english){
-                return this.$store.getters.headerPagesUtbildning_eng
-            } else {
-                return this.$store.getters.headerPagesUtbildning_swe
-            }
-        },
-        student(){
-            if(this.english){
-                return this.$store.getters.headerPagesStudent_eng
-            } else {
-                return this.$store.getters.headerPagesStudent_swe
-            }
-        },
-        forening(){
-            if(this.english){
-                return this.$store.getters.headerPagesForening_eng
-            } else {
-                return this.$store.getters.headerPagesForening_swe
-            }
-        },
+        ...mapState({
+            forening: state => state.pages.forening_list,
+            foreningEn: state => state.pages.forening_en_list,
+            utbildning: state => state.pages.utbildning_list,
+            utbildningEn: state => state.pages.utbildning_en_list,
+            student: state => state.pages.student_list,
+            studentEn: state => state.pages.student_en_list,
+            english: state => state.pages.english,
+            utskott: state => state.utskotten.list
+        })
     }
 }
 </script>
