@@ -11,13 +11,13 @@
                         <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                     </template>
                 </div>
-                <div v-if="!english" class="desktop-dropdown" ref="utbildning">
-                    <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning" :key="page.id">
+                <div v-if="english" class="desktop-dropdown" ref="utbildning">
+                    <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildningEn" :key="page.id">
                         <h3><nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
                 </div>
-                <div v-if="english" class="desktop-dropdown" ref="utbildning">
-                    <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildningEn" :key="page.id">
+                <div v-else class="desktop-dropdown" ref="utbildning">
+                    <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning" :key="page.id">
                         <h3><nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
                 </div>
@@ -27,7 +27,12 @@
                 <div class="text" @mouseover="show('student')" @click="hide('student')">
                     <h2><nuxt-link to="/student">Student</nuxt-link></h2>
                 </div>
-                <div class="desktop-dropdown" ref="student">
+                <div v-if="english" class="desktop-dropdown" ref="student">
+                    <div class="desktop-item" @click="hide('student')" v-for="page in studentEn" :key="page.id">
+                        <h3><nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
+                    </div>
+                </div>
+                <div v-else class="desktop-dropdown" ref="student">
                     <div class="desktop-item" @click="hide('student')" v-for="page in student" :key="page.id">
                         <h3><nuxt-link v-bind:to="'/student/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
@@ -66,9 +71,16 @@
                     </template>
                 </div>
                 <div class="desktop-dropdown" ref="forening">
-                    <div class="desktop-item" @click="hide('forening')" v-for="page in forening" :key="page.id">
-                        <h3><nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
-                    </div>
+                    <template v-if="english">
+                        <div class="desktop-item" @click="hide('forening')" v-for="page in foreningEn" :key="page.id">
+                            <h3><nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div class="desktop-item" @click="hide('forening')" v-for="page in forening" :key="page.id">
+                            <h3><nuxt-link v-bind:to="'/foreningen/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
+                        </div>
+                    </template>
                     <div class="desktop-item" @click="hide('forening')">
                         <h3><a href="https://drive.google.com/drive/u/1/folders/0B4DkCw-cVaitcWlURFZrb2VmeDQ" target="blank">
                             <span v-if="english">Meeting minutes</span>
