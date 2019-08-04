@@ -97,11 +97,12 @@
 </style>
 
 <script>
+import { mapState } from 'vuex'
 export default{
     computed: {
-        english(){
-            return this.$store.state.english;
-        }
+        ...mapState({
+            english: state => state.pages.english
+        })
     }
 }
 </script>

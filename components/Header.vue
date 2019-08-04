@@ -11,8 +11,13 @@
                         <h2><nuxt-link to="/utbildning">Utbildning</nuxt-link></h2>
                     </template>
                 </div>
-                <div class="desktop-dropdown" ref="utbildning">
+                <div v-if="!english" class="desktop-dropdown" ref="utbildning">
                     <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildning" :key="page.id">
+                        <h3><nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
+                    </div>
+                </div>
+                <div v-if="english" class="desktop-dropdown" ref="utbildning">
+                    <div class="desktop-item" @click="hide('utbildning')" v-for="page in utbildningEn" :key="page.id">
                         <h3><nuxt-link v-bind:to="'/utbildning/'+ page.slug ">{{ page.title.rendered }}</nuxt-link></h3>
                     </div>
                 </div>
@@ -40,7 +45,14 @@
                     <h2><nuxt-link to="/event">Event</nuxt-link></h2>
                 </div>
                 <div class="desktop-dropdown" ref="event">
-                    <div class="desktop-item" @click="hide('event')"><h3><nuxt-link to="/event/blogg">Blogg</nuxt-link></h3></div>
+                    <div class="desktop-item" @click="hide('event')">
+                        <template v-if="english">
+                            <h3><nuxt-link to="/event/blogg">Blog</nuxt-link></h3>
+                        </template>
+                        <template v-else>
+                            <h3><nuxt-link to="/event/blogg">Blogg</nuxt-link></h3>
+                        </template>
+                    </div>
                 </div>
             </div> 
 
@@ -83,8 +95,8 @@
         </div>
 
         <div v-if="showLangButton" class="lang_fixed">
-            <img v-if="english" src="../assets/img/SV.png" @click="change_language()" />
-            <img v-else src="../assets/img/UK.png" @click="change_language()" />
+            <img v-if="english" src="../assets/img/SV.png" @click="setLang()" />
+            <img v-else src="../assets/img/UK.png" @click="setLang()" />
         </div>
 
     </div>
@@ -93,6 +105,7 @@
 <script>
 import axios from 'axios'
 import $ from 'jquery'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 
 export default {
     data() {
@@ -102,65 +115,47 @@ export default {
         }
     },
     methods: {
+        ...mapMutations({
+            setLang: 'pages/setLang'
+        }),
         show : function(menu){
             $(this.$refs[menu]).fadeIn(150);
         },
         hide : function(menu){
             $(this.$refs[menu]).fadeOut(50);
         },
-        change_language:function() {
-            var current = this.$store.state.english;
-            this.$store.commit('change_language', !current);
-        },
         onScroll() {
             const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             if (currentScrollPosition < 0) { return }
             this.showLangButton = currentScrollPosition == 0
         },
-        english_link(){
+        langParameter(){
             if(this.$route.query.lang == "en"){
-                return this.$store.commit('change_language', true);
+                this.setLang()
             }
         }
     },
     computed: {
-        utskott(){
-            return this.$store.state.utskottHeader
-        },
-        utbildning(){
-            if(this.english){
-                return this.$store.getters.headerPagesUtbildning_eng
-            } else {
-                return this.$store.getters.headerPagesUtbildning_swe
-            }
-        },
-        student(){
-            if(this.english){
-                return this.$store.getters.headerPagesStudent_eng
-            } else {
-                return this.$store.getters.headerPagesStudent_swe
-            }
-        },
-        forening(){
-            if(this.english){
-                return this.$store.getters.headerPagesForening_eng
-            } else {
-                return this.$store.getters.headerPagesForening_swe
-            }
-        },
-        english(){
-            return this.$store.state.english;
-        },
+        ...mapState({
+            forening: state => state.pages.forening_list,
+            foreningEn: state => state.pages.forening_en_list,
+            utbildning: state => state.pages.utbildning_list,
+            utbildningEn: state => state.pages.utbildning_en_list,
+            student: state => state.pages.student_list,
+            studentEn: state => state.pages.student_en_list,
+            english: state => state.pages.english,
+            utskott: state => state.utskotten.list
+        }),
         current_width(){
             return window.innerWidth;
-        }
+        }  
     },
-    async mounted () {
+    mounted () {
         //await this.$store.cache.dispatch('get_headerPages');
         //await this.$store.cache.dispatch('get_headerUtskott');
         window.addEventListener('scroll', 
         this.onScroll);
-        this.english_link();
+        this.langParameter();
     },
     beforeDestroy () {
         window.removeEventListener('scroll', 

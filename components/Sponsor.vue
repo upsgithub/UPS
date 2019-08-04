@@ -23,18 +23,13 @@ export default {
             color: "#eb5e43"
         }
     },
-    async mounted() {
-        //await this.$store.cache.dispatch('get_samarbeten')
-    },
     components: {
         SyncLoader
     },
     computed: {
-        english(){
-            return this.$store.state.english;
-        },
         ...mapState({
-            samarbeten: state => state.samarbeten.list
+            samarbeten: state => state.samarbeten.list,
+            english: state => state.pages.english
         })
     },
     methods: {
