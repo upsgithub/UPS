@@ -62,11 +62,6 @@ export default {
             color: "#eb5e43"
         }
     },
-    async mounted() {
-        //await this.$store.cache.dispatch('get_ordforande');
-        //await this.$store.cache.dispatch('get_allUtskott');
-        //this.$store.dispatch('get_allPages');
-    },
     components: {
         SyncLoader
     },
@@ -76,31 +71,26 @@ export default {
         })
     },
     computed: {
-        english() {
-            return this.$store.state.english;
-        },
+        ...mapState({
+            foreningPages: state => state.pages.forening_list,
+            foreningPagesEn: state => state.pages.forening_en_list,
+            ordforanden: state => state.ordforanden.list,
+            utskotten: state => state.utskotten.list,
+            english: state => state.pages.english
+        }),
         content() {
             if(this.english) {
-                return this.$store.getters.foreningPage_eng;
+                return this.foreningPagesEn;
             } else {
-                return this.$store.getters.foreningPage;
+                return this.foreningPages;
             }
-        },
-        utskotten(){
-            return this.$store.state.utskott;
-        },
-        ordforanden(){
-            return this.$store.state.ordforande;
         },
         loading(){
             return (this.utskott || this.ordforanden || this.content) == undefined;
         },
         loaded(){
             return (this.utskott || this.ordforanden || this.content) != undefined;
-        },
-        ...mapState({
-            ordforanden: state => state.ordforanden.list
-        })
+        }
     }
 }                
 </script>

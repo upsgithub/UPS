@@ -63,19 +63,16 @@
 
 <script>
 import Sponsor from '~/components/Sponsor.vue'
-import Instagram from '~/components/Instagram.vue'
-import KommandeEvent from '~/components/kommandeEvent.vue'
+//import Instagram from '~/components/Instagram.vue'
+//import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import axios from 'axios'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 
 export default {
     data() {
         return {
             color: '#eb5e43'
         }
-    },
-    async mounted() {
-        //await this.$store.cache.dispatch('get_allPages');
     },
     methods: {
         current_url:function(){
@@ -91,14 +88,25 @@ export default {
         }
     },
     computed:{
+        ...mapState({
+            allPages: state => state.pages.list,
+            utbildingPages: state => state.pages.utbildning_list,
+            utbildingPagesEn: state => state.pages.utbildning_en_list,
+            studentPages: state => state.pages.student_list,
+            studentPagesEn: state => state.pages.student_en_list,
+            english: state => state.pages.english
+        }),
+        ...mapGetters({
+            english_error_page: 'pages/english_error_page'
+        }),
         cur_page(){
 
-            var cur_page_new = this.current_page(this.$store.state.pages, this.current_url());
+            var cur_page_new = this.current_page(this.allPages, this.current_url());
             
             if(cur_page_new != undefined){
                 // om man går från svensk sida till englesk översättning
                 if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
-                    var page = this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    var page = this.current_page(this.allPages,  cur_page_new.acf.translates);
 
                     if(page == undefined){
                         return this.$store.state.english_error_page;
@@ -108,7 +116,7 @@ export default {
 
                 // om man går från engelsk sida till svensk översättning 
                 } else if(!(this.english) &&  cur_page_new.acf.lang[0] == "Engelska") 
-                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    return this.current_page(this.allPages,  cur_page_new.acf.translates);
 
                 // om man navigerar normalt
                 else {
@@ -119,34 +127,31 @@ export default {
         summary_pages_sv(){
             if(this.cur_page != undefined){
                 if(this.cur_page.id == 78) { 
-                    return this.$store.getters.headerPagesUtbildning_swe; 
+                    return this.utbildingPages;
                 }
                 if(this.cur_page.id == 97) { 
-                    return this.$store.getters.headerPagesStudent_swe; 
+                    return this.studentPages;
                 }
             }
         },
         summary_pages_en(){
             if(this.cur_page != undefined){
                 if(this.cur_page.id == 463) { 
-                    return this.$store.getters.headerPagesUtbildning_eng; 
+                    return this.utbildingPagesEn;
                 }
                 if(this.cur_page.id == 458) { 
-                    return this.$store.getters.headerPagesStudent_eng; 
+                    return this.studentPagesEn;
                 }
             }
         },
         loading(){
             return this.cur_page == undefined;
-        },
-        english(){
-            return this.$store.state.english;
         }
     },
     components: {
         Sponsor,
-        Instagram,
-        KommandeEvent,
+        //Instagram,
+        //KommandeEvent,
         SyncLoader
     }
 }
