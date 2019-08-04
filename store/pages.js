@@ -93,5 +93,7 @@ export const actions = {
     }
 }
 export const getters = {
-  
+  english_error_page: state => {
+    return state.list.filter(list => list.slug === 'not-in-english')
+  }
 }
