@@ -1,7 +1,7 @@
 <template>
   <div class="container--full ig-container">
     <div class="content-wrapper ig-wrapper">
-        <vue-instagram :token="token" :count="1">
+        <vue-instagram :token="token" :count="1" v-once>
           <template slot="feeds" slot-scope="props">
             <a href="https://www.instagram.com/uppsalapolitices">
               
@@ -35,16 +35,12 @@
 </style>
 
 <script>
-import { mapState } from 'vuex';
 
 export default {
-    async mounted(){
-        await this.$store.cache.dispatch('instagram/get') 
-    },
-    computed: {
-      ...mapState({
-        token: state => state.instagram.token
-      })
+    data:function(){
+      return {
+        token: '1441523367.1677ed0.84515ba1c1de4a7ba69b2df1f8e21e4a'
+      }
     },
     methods: {
         clickIgImg(link) {

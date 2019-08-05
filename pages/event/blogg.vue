@@ -35,9 +35,8 @@
                         <h1>{{ post.title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="post.content.rendered"></div>
-                        <div class="post-footer">Uppsala Politicesstudernade - {{ post.date.substring(0,10) }}</div>
+                        <div class="post-footer">Uppsala Politicesstuderande - {{ post.date.substring(0,10) }}</div>
                     </div>
-                    <hr>
                 </div>
             </div>
             <div v-if="english" class="blogg_buttons">
