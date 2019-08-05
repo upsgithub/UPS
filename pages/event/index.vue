@@ -53,6 +53,16 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import { mapState } from 'vuex'
 
 export default {
+    head () {
+        if(this.cur_page){
+            return {
+                title: this.cur_page.title.rendered,
+                meta: [
+                    { hid: 'description', name: 'description', content: this.seo_desc(this.cur_page.excerpt.rendered) }
+                ]
+            }
+        }
+    },
     data:function(){
         return {
             color: '#eb5e43'
@@ -68,6 +78,13 @@ export default {
                     return pagesArr[i];
                 }
             }
+        },
+        seo_desc:function(content){
+            var stripedHtml = content.replace(/<[^>]+>/g, '');
+            stripedHtml = stripedHtml.replace(/&nbsp;/g, ' ');
+            var trimmedHtml = stripedHtml.replace(/\s+/g, " ").trim();
+            trimmedHtml = trimmedHtml.replace(/\[&hellip;\]/g, '...').replace(/&#8211;/g, '-');
+            return trimmedHtml;
         }
     },
     computed:{

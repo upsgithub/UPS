@@ -171,6 +171,16 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import { mapMutations, mapState } from 'vuex'
 
 export default {
+    head () {
+        if(this.utskott){
+            return {
+                title: this.utskott.title.rendered,
+                meta: [
+                    { hid: 'description', name: 'description', content: this.seo_desc(this.utskott.content.rendered) }
+                ]
+            }
+        }
+    },
     data:function(){
         return {
             color: "#eb5e43"
@@ -190,7 +200,14 @@ export default {
         },
         ...mapMutations({
             setUtskotten: 'utskotten/set'
-        })
+        }),
+        seo_desc:function(content){
+            var stripedHtml = content.replace(/<[^>]+>/g, '');
+            stripedHtml = stripedHtml.replace(/&nbsp;/g, ' ');
+            var trimmedHtml = stripedHtml.replace(/\s+/g, " ").trim();
+            trimmedHtml = trimmedHtml.replace(/\[&hellip;\]/g, '...').replace(/&#8211;/g, '-');
+            return trimmedHtml;
+        }
     },
     computed:{
         utskott(){

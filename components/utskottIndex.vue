@@ -59,6 +59,16 @@ import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import { mapMutations, mapState } from 'vuex'
 
 export default {
+    head () {
+        if(this.content){
+            return {
+                title: this.content[0].title.rendered,
+                meta: [
+                    { hid: 'description', name: 'description', content: this.seo_desc(this.content[0].excerpt.rendered) }
+                ]
+            }
+        }
+    },
     data() {
         return {
             color: "#eb5e43"
@@ -70,21 +80,28 @@ export default {
     methods: {
         ...mapMutations({
             setOrdforanden: 'ordforanden/set'
-        })
+        }),
+        seo_desc:function(content){
+            var stripedHtml = content.replace(/<[^>]+>/g, '');
+            stripedHtml = stripedHtml.replace(/&nbsp;/g, ' ');
+            var trimmedHtml = stripedHtml.replace(/\s+/g, " ").trim();
+            trimmedHtml = trimmedHtml.replace(/\[&hellip;\]/g, '...').replace(/&#8211;/g, '-');
+            return trimmedHtml;
+        }
     },
     computed: {
         ...mapState({
-            foreningPages: state => state.pages.forening_list,
-            foreningPagesEn: state => state.pages.forening_en_list,
+            foreningMain: state => state.pages.forening_main,
+            foreningMainEn: state => state.pages.forening_en_main,
             ordforanden: state => state.ordforanden.list,
             utskotten: state => state.utskotten.list,
             english: state => state.pages.english
         }),
         content() {
             if(this.english) {
-                return this.foreningPagesEn;
+                return this.foreningMainEn;
             } else {
-                return this.foreningPages;
+                return this.foreningMain;
             }
         },
         loading(){
