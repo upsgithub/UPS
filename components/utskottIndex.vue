@@ -127,7 +127,10 @@ export default {
     button {
         margin-top: 10px;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> e6d3cd7e8d22d4c1d81b08cba5d61ef9d15b8da0
     text-align: center;
     width: 100%;
 
