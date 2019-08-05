@@ -42,7 +42,7 @@
                 firstPageEn.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
                 firstPageEn.better_featured_image.source_url + ' 1920w'"
                 data-sizes="auto"
-                :data-src="firstPageEn.better_featured_image.source_url + '?lqip'"  
+                :data-src="firstPageEn.better_featured_image.media_details.sizes.medium_large.source_url"  
                 :alt="firstPageEn.better_featured_image.alt_text" 
                 class="lazyload" >
                 <picture v-else>
@@ -60,10 +60,10 @@
                    <img v-if="post.better_featured_image" 
                     :data-srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
                     post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
-                    post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
-                    post.better_featured_image.source_url + ' 1920w'"
+                    post.better_featured_image.media_details.sizes.medium_large.source_url + ' 1024w,' +
+                    post.better_featured_image.media_details.sizes.medium_large.source_url + ' 1920w'"
                     data-sizes="auto"
-                    :data-src="post.better_featured_image.source_url + '?lqip'"  
+                    :data-src="post.better_featured_image.media_details.sizes.medium_large.source_url + '?lqip'"  
                     :alt="post.better_featured_image.alt_text" 
                     class="lazyload"> 
                     <picture v-else>
@@ -88,10 +88,10 @@
                    <img v-if="post.better_featured_image" 
                     :data-srcset="post.better_featured_image.media_details.sizes.medium.source_url + ' 320w,' +
                     post.better_featured_image.media_details.sizes.medium_large.source_url + ' 768w,' +
-                    post.better_featured_image.media_details.sizes.large.source_url + ' 1024w,' +
-                    post.better_featured_image.source_url + ' 1920w'"
+                    post.better_featured_image.media_details.sizes.medium_large.source_url + ' 1024w,' +
+                    post.better_featured_image.media_details.sizes.medium_large.source_url + ' 1920w'"
                     data-sizes="auto"
-                    :data-src="post.better_featured_image.source_url + '?lqip'"  
+                    :data-src="post.better_featured_image.media_details.sizes.medium_large.source_url + '?lqip'"  
                     :alt="post.better_featured_image.alt_text" 
                     class="lazyload"> 
                     <picture v-else>
@@ -123,8 +123,6 @@ import Slideshow from '~/components/Slideshow.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import $ from 'jquery'
 import { mapMutations, mapState, mapGetters } from 'vuex'
-import { networkInterfaces } from 'os';
-import { moveCursor } from 'readline';
 
 export default {
     data:function(){

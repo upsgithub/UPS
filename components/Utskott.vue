@@ -67,10 +67,10 @@
                 </div>
                 
             </div>
-            <KommandeEvent />
+            <!-- <KommandeEvent /> -->
             <Sponsor />    
         </div>
-        <Instagram />
+        <!-- <Instagram /> -->
     </div>
 </template>
 
@@ -168,7 +168,6 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import axios from 'axios'
 import { mapMutations, mapState } from 'vuex'
 
 export default {
@@ -176,9 +175,6 @@ export default {
         return {
             color: "#eb5e43"
         }
-    },
-    async mounted() {
-       //await this.$store.cache.dispatch('get_allUtskott');
     },
     methods: {
         current_url:function(){
@@ -198,7 +194,7 @@ export default {
     },
     computed:{
         utskott(){
-            return this.current_utskott(this.$store.state.utskott, this.current_url());
+            return this.current_utskott(this.utskotten, this.current_url());
         },
         loading(){
             return this.utskott == undefined;
@@ -206,17 +202,15 @@ export default {
         loaded(){
             return this.utskott != undefined;
         },
-        english(){
-            return this.$store.state.english;
-        },
         ...mapState({
-            utskotten: state => state.utskotten.list
+            utskotten: state => state.utskotten.list,
+            english: state => state.pages.english
         })
     },
     components: {
         Sponsor,
-        Instagram,
-        KommandeEvent,
+        //Instagram,
+        //KommandeEvent,
         SyncLoader
     }
 }
