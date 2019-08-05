@@ -19,17 +19,18 @@ Nedan visas några screenshots på hemsidans design, som gjordes i Sketch.
 # Tech & Ramverk
 I detta projekt så användes följande:
 - [HTML5](https://www.w3schools.com/html/html5_intro.asp)
-- [PostCSS](https://postcss.org/)
+- [SASS](https://sass-lang.com/)
 - [JavaScript](https://developer.mozilla.org/sv-SE/docs/Web/JavaScript)
 - [Vue.js](https://vuejs.org/)
+- [NuxtJS](https://nuxtjs.org/)
 - [PHP](http://www.php.net/)
 - [WordPress](https://sv.wordpress.com/)
     - [Advanced Custom Fields](https://www.advancedcustomfields.com/)
 - [BEM](http://getbem.com/)
-- [Gulp](https://gulpjs.com/)
 
 # Features
-Inte specifierat ännu.
+- Headless CMS
+- Statically generated site powered by Vue.js and NuxtJS
 
 # Sätta upp och använda utvecklingsmiljö
 För att kunna bidra till projektet så behöver du ha en korrekt uppsatt utvecklingsmiljö. Se mer i våran wiki.
