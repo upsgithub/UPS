@@ -15,7 +15,7 @@
                             <h1>{{ latest_post[0].title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="latest_post[0].content.rendered"></div>
-                        <div class="post-footer">Uppsala Politicesstudernade - {{ latest_post[0].date.substring(0,10) }}</div>
+                        <div class="post-footer">Uppsala Politicesstuderande - {{ latest_post[0].date.substring(0,10) }}</div>
                     </div>
                 </div>
             </div>

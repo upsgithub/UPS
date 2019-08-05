@@ -17,6 +17,9 @@
 </template>
 
 <style lang="scss">
+.fc{
+    margin-top: 20px;
+}
 @media only screen and (min-width: 768px) {
     .fc{
         margin: 50px 20px;
