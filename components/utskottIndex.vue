@@ -20,6 +20,8 @@
                             <h4 v-if="ordforande && english">{{ ordforande.acf.titelen }}</h4>
                             <h4 v-else> {{ ordforande.acf.titel }} </h4>
                             <h5 v-if="ordforande">{{ ordforande.acf.namn }}</h5>
+                            <button v-if="ordforande && ordforande.acf.epost && english" class="btn btn--default"><a :href="'mailto:' + ordforande.acf.epost">Contact</a></button>
+                            <button v-else-if="ordforande && ordforande.acf.epost" class="btn btn--default"><a  :href="'mailto:' + ordforande.acf.epost">Kontakta</a></button>
                         </div> 
                     </div>
                 </template>
@@ -104,6 +106,11 @@ export default {
 }
 
 .ordfaranderiet{
+
+    button {
+        margin-top: 10px;
+    }
+
     text-align: center;
     width: 100%;
 

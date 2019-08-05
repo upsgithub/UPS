@@ -9,6 +9,10 @@
     &--default{
         color: #ffffff;
         background: #EB5E43;
+
+        a{
+            color: #ffffff;
+        }
     }
 
     &--small-h{
@@ -18,6 +22,7 @@
     &--link{
         padding: 20px 0px;
     }
+
 }
 
 

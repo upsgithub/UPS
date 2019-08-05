@@ -89,6 +89,7 @@ import Instagram from "~/components/Instagram.vue";
 import KommandeEvent from "~/components/kommandeEvent.vue";
 import SyncLoader from "vue-spinner/src/SyncLoader.vue";
 import $ from "jquery";
+import { mapMutations, mapState } from 'vuex'
 
 export default {
   components: {
@@ -132,19 +133,24 @@ export default {
     },
     toggle(id) {
       console.log(id);
-    }
+    },
+    ...mapMutations({
+        setPolicies: 'policies/set'
+    })
   },
   computed: {
-    english() {
-      return this.$store.state.english;
-    },
+    ...mapState({
+        allPages: state => state.pages.list,
+        policy: state => state.policies.list,
+        english: state => state.pages.english
+    }),
     cur_page() {
-      var cur_page_new = this.current_page(this.$store.state.pages, this.current_url());
+      var cur_page_new = this.current_page(this.allPages, this.current_url());
             
             if(cur_page_new != undefined){
-                // om man går från svensk sida till englesk översättning
+                // om man går från svensk sida till engelsk översättning
                 if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
-                    var page = this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    var page = this.current_page(this.allPages,  cur_page_new.acf.translates);
 
                     if(page == undefined){
                         return this.$store.state.english_error_page;
@@ -154,23 +160,16 @@ export default {
 
                 // om man går från engelsk sida till svensk översättning 
                 } else if(!(this.english) &&  cur_page_new.acf.lang[0] == "Engelska") 
-                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    return this.current_page(this.allPages,  cur_page_new.acf.translates);
 
                 // om man navigerar normalt
                 else {
                     return  cur_page_new;
                 }
             }
-    },
-    policy() {
-      return this.$store.state.policy;
     }
-  },
-  async mounted() {
-    await this.$store.cache.dispatch("get_allPages");
-    await this.$store.cache.dispatch("get_policy");
   }
-};
+}
 </script>
 
 

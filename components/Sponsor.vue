@@ -2,8 +2,7 @@
     <div class="samarbeten container--full">
         <h4 v-if="english">Our partners</h4>
         <h4 v-else>Våra samarbetspartners</h4>
-        <sync-loader v-if="this.$store.state.loading" class="vue-spinner" :loading="this.$store.state.loading" :color="color"></sync-loader>
-        <div v-else class="samarbeten-wrapper">  
+        <div v-if="samarbeten" class="samarbeten-wrapper">  
             <div class="samarbete-logo col-6" v-for="sponsor in samarbeten" :key="sponsor.id">
                 <a class="a-button" target="blank" :href="sponsor.acf.lank"><img :data-src="sponsor.acf.bild.url" class="lazyload"/></a>
             </div>
@@ -12,8 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import createCache from 'vuex-cache';
 import { mapMutations, mapState } from 'vuex'
 
@@ -22,9 +19,6 @@ export default {
         return {
             color: "#eb5e43"
         }
-    },
-    components: {
-        SyncLoader
     },
     computed: {
         ...mapState({

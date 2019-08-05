@@ -76,10 +76,10 @@
           </div>
         </div>
       </div>
-      <!-- <KommandeEvent /> -->
+      <KommandeEvent />
       <Sponsor />
     </div>
-    <!-- <Instagram /> -->
+    <Instagram />
   </div>
 </template>
 
@@ -94,8 +94,8 @@ import { mapMutations, mapState } from 'vuex'
 export default {
   components: {
     Sponsor,
-    //Instagram,
-    //KommandeEvent,
+    Instagram,
+    KommandeEvent,
     SyncLoader
   },
   data() {
@@ -169,7 +169,7 @@ export default {
             }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

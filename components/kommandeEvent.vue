@@ -3,7 +3,7 @@
     <h4 v-if="english" class="event-header" >Upcoming events</h4>
         <h4 v-else class="event-header" >Kommande event</h4>
     <div class="flex-container-event">
-      <sync-loader v-if="this.$store.state.loading && !this.$store.cache.has('get_kalender')" :loading="this.$store.state.loading && !this.$store.cache.has('get_kalender')" :color="color" class="vue-spinner"></sync-loader>
+      <sync-loader v-if="this.$store.state.loading && !this.$store.cache.has('kalender/get')" :loading="this.$store.state.loading && !this.$store.cache.has('kalender/get')" :color="color" class="vue-spinner"></sync-loader>
       <div v-else @click="clickBox( item.htmlLink )" class="event-box" v-for="item in filteredItems" :key="item.id" >
         <h4 class="event-text event-text--name">{{ item.summary }}</h4>
         <h4 class="event-text event-date">{{ changeDate(item.start.realDate) }}</h4>
@@ -19,14 +19,13 @@
 </style>
 
 <script>
-import axios from 'axios';
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
   components: {
     SyncLoader
   },
-
   data() {
     return {
       loading: true,
@@ -34,8 +33,8 @@ export default {
       options: { month: 'short', day: 'numeric' }
     };
   },
-  async mounted() {
-    //await this.$store.cache.dispatch('get_kalender');
+  async mounted(){
+    await this.$store.dispatch('kalender/get')
   },
   methods: {
     clickBox(link) {
@@ -47,22 +46,24 @@ export default {
   },
   computed: {
     eventExists() {
-      return this.$store.getters.kalender.length !== 0;
+      return this.kalenderGetter.length !== 0;
     },
-      filteredItems() {
-        return this.$store.getters.kalender;
-     },
-     english(){
-         return this.$store.state.english;
-     },
-     lang(){
-         if(this.english){
-             return "en";
-         } else {
-             return "sv";
-         }
-     }
-      
+    filteredItems() {
+      return this.kalenderGetter;
+    },
+    lang(){
+        if(this.english){
+            return "en";
+        } else {
+            return "sv";
+        }
+    },
+    ...mapState({
+        english: state => state.pages.english
+    }),
+    ...mapGetters({
+      kalenderGetter: 'kalender/kalenderGetter'
+    }) 
   }
 };
 </script>

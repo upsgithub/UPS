@@ -1,6 +1,6 @@
-//import createCache from 'vuex-cache';
+import createCache from 'vuex-cache';
 
-//export const plugins = [ createCache() ]
+export const plugins = [ createCache() ]
 
 export const actions = {
     async nuxtServerInit({ commit, dispatch }) {
@@ -12,6 +12,5 @@ export const actions = {
         await dispatch('samarbeten/get')
         await dispatch('ordforanden/get')
         await dispatch('produkter/get')
-        await dispatch('kalender/get')
     }
 }

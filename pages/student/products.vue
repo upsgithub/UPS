@@ -48,17 +48,16 @@
 </style>
 
 <script>
-import axios from 'axios'
 import produkter from '~/components/produkter.vue'
 import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import { mapState } from 'vuex'
 
 export default {
     data() {
         return {
-            loading: true,
             color: "#eb5e43"
         }
     },
@@ -77,11 +76,14 @@ export default {
     },
     computed:{
         cur_page(){
-            return this.current_page(this.$store.state.pages, this.current_url());
+            return this.current_page(this.allPages, this.current_url());
         },
         loading(){
             return this.cur_page == undefined;
-        }
+        },
+        ...mapState({
+            allPages: state => state.pages.list
+        })
     },
     components: {
         produkter,
@@ -89,11 +91,7 @@ export default {
         Instagram,
         KommandeEvent,
         SyncLoader
-    },
-    async mounted() {
-        await this.$store.cache.dispatch('get_allPages');
-        await this.$store.cache.dispatch('get_produkter');
     }
-}                
+}                  
 </script>
 

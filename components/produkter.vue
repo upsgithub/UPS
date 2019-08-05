@@ -81,16 +81,14 @@
 </style>
 
 <script>
-import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
     computed: {
-        english() {
-            return this.$store.state.english;
-        },
-        produkter() {
-            return this.$store.state.produkter;
-        }
+        ...mapState({
+            produkter: state => state.produkter.list,
+            english: state => state.pages.english
+        })
     }         
 }
            

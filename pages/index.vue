@@ -52,7 +52,7 @@
                 </picture>
             </div>  
         </div>
-        <!-- <kommandeEvent /> -->
+        <kommandeEvent />
         <Sponsor />
         <div class="container--full" v-if="threePosts && !english">
             <div class="posts col-12" v-for="post in threePosts" :key="post.id">
@@ -111,15 +111,15 @@
             </div> 
         </div>
     </div>
-    <!-- <Instagram /> -->
+    <Instagram />
 </div>
 </template>
 
 <script>
 import Sponsor from '~/components/Sponsor.vue'
 import Slideshow from '~/components/Slideshow.vue'
-//import Instagram from '~/components/Instagram.vue'
-//import KommandeEvent from '~/components/kommandeEvent.vue'
+import Instagram from '~/components/Instagram.vue'
+import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import $ from 'jquery'
 import { mapMutations, mapState, mapGetters } from 'vuex'
@@ -149,10 +149,10 @@ export default {
         })
     },
     components: {
-        //Instagram,
+        Instagram,
         Sponsor,
         Slideshow,
-        //KommandeEvent,
+        KommandeEvent,
         SyncLoader
     }
 }

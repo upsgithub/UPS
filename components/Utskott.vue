@@ -67,10 +67,10 @@
                 </div>
                 
             </div>
-            <!-- <KommandeEvent /> -->
+            <KommandeEvent />
             <Sponsor />    
         </div>
-        <!-- <Instagram /> -->
+        <Instagram />
     </div>
 </template>
 
@@ -209,8 +209,8 @@ export default {
     },
     components: {
         Sponsor,
-        //Instagram,
-        //KommandeEvent,
+        Instagram,
+        KommandeEvent,
         SyncLoader
     }
 }

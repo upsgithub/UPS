@@ -30,6 +30,7 @@ import FullCalendar from "@fullcalendar/vue";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import frLocale from "@fullcalendar/core/locales/sv";
+import { mapState } from 'vuex'
 
 export default {
     components: {
@@ -61,9 +62,9 @@ export default {
         };
     },
     computed:{
-        english(){
-            return this.$store.state.english;
-        },
+        ...mapState({
+            english: state => state.pages.english
+        }),
         buttonText(){
             if(this.english){
                 return {today: "Today"};

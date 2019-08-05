@@ -50,15 +50,13 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import kommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
+import { mapState } from 'vuex'
 
 export default {
     data:function(){
         return {
             color: '#eb5e43'
         }
-    },
-    async mounted() {
-        //await this.$store.cache.dispatch('get_allPages');
     },
     methods: {
         current_url:function(){
@@ -73,14 +71,18 @@ export default {
         }
     },
     computed:{
+        ...mapState({
+            english: state => state.pages.english,
+            allPages: state => state.pages.list
+        }),
         cur_page(){
 
-             var cur_page_new = this.current_page(this.$store.state.pages, this.current_url());
+             var cur_page_new = this.current_page(this.allPages, this.current_url());
             
             if(cur_page_new != undefined){
                 // om man går från svensk sida till englesk översättning
                 if(this.english &&  cur_page_new.acf.lang[0] == "Svenska"){
-                    var page = this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    var page = this.current_page(this.allPages,  cur_page_new.acf.translates);
 
                     if(page == undefined){
                         return this.$store.state.english_error_page;
@@ -90,7 +92,7 @@ export default {
 
                 // om man går från engelsk sida till svensk översättning 
                 } else if(!(this.english) &&  cur_page_new.acf.lang[0] == "Engelska") 
-                    return this.current_page(this.$store.state.pages,  cur_page_new.acf.translates);
+                    return this.current_page(this.allPages,  cur_page_new.acf.translates);
 
                 // om man navigerar normalt
                 else {
@@ -101,9 +103,6 @@ export default {
         },
         loading(){
             return this.cur_page == undefined;
-        },
-        english(){
-            return this.$store.state.english;
         }
     },
     components: {

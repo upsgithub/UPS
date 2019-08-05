@@ -2,7 +2,8 @@
     <div class="containter-content">
         <div class="content-wrapper--small" id="home-anchor">
             <div class="blog-heading">
-                <h4>Senaste</h4>
+                <h4 v-if="english">Latest</h4>
+                <h4 v-else>Senaste</h4>
             </div>        
         </div>    
         <div class="blog content-wrapper--small">
@@ -21,7 +22,8 @@
         </div>
             <div class="content-wrapper--small" id="post-anchor">
                 <div class="blog-heading">
-                    <h4>Övriga inlägg</h4>
+                    <h4 v-if="english">Other posts</h4>
+                    <h4 v-else>Övriga inlägg</h4>
                 </div>        
             </div>
         <div class="blog content-wrapper--small">
@@ -58,11 +60,8 @@ import Sponsor from '~/components/Sponsor.vue'
 import Instagram from '~/components/Instagram.vue'
 import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
-import axios from 'axios'
 import $ from 'jquery'
 import { mapMutations, mapState } from 'vuex'
-// import { cursorTo } from 'readline';
-// import { start } from 'repl';
 
 export default {
     data:function() {
@@ -70,9 +69,6 @@ export default {
             color: "#eb5e43",
             current_start: 1,
         }
-    },
-    async mounted() {
-        //await this.$store.cache.dispatch('get_Posts')
     },
     methods: {
         get_newer(){
@@ -92,20 +88,14 @@ export default {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#home-anchor").offset().top
             }, 200);
-        },
-        ...mapMutations({
-            setKalender: 'kalender/set'
-        })
+        }
     },
     computed: {
-        english(){
-            return this.$store.state.english;
-        },
         posts(){
             if(this.english){
-                return this.$store.state.postsEN;
+                return this.postsEn;
             } else {
-                return this.$store.state.postsSV;
+                return this.postsSv;
             }
         },  
         latest_post(){
@@ -124,7 +114,9 @@ export default {
             return (this.latest_post || this.five_posts) == undefined;
         },
         ...mapState({
-            kalender: state => state.kalender.list
+            postsEn: state => state.posts.listEn,
+            postsSv: state => state.posts.list,
+            english: state => state.pages.english
         })
     },
     watch:{

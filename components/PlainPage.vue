@@ -37,17 +37,17 @@
                 </div>
             </div>
             
-            <!-- <KommandeEvent /> -->
+            <KommandeEvent />
             <Sponsor />
         </div>
-        <!-- <Instagram /> -->
+        <Instagram />
     </div>        
 </template>
 
 <script>
 import Sponsor from '~/components/Sponsor.vue'
-//import Instagram from '~/components/Instagram.vue'
-//import KommandeEvent from '~/components/kommandeEvent.vue'
+import Instagram from '~/components/Instagram.vue'
+import KommandeEvent from '~/components/kommandeEvent.vue'
 import SyncLoader from 'vue-spinner/src/SyncLoader.vue'
 import { mapState, mapMutations, mapGetters } from 'vuex'
 
@@ -107,8 +107,8 @@ export default {
     },
     components: {
         Sponsor,
-        //Instagram,
-        //KommandeEvent,
+        Instagram,
+        KommandeEvent,
         SyncLoader
     }
 }
