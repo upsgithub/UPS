@@ -89,6 +89,8 @@ export const actions = {
             commit('firstForeningPage')
             commit('firstForeningPageEn')
           }
+        }).catch((error) => {
+          console.log(error)
         })
     }
 }

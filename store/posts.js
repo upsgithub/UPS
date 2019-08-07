@@ -30,6 +30,8 @@ export const actions = {
           if (res.status === 200) {
             commit('set', res.data)
           }
+        }).catch((error) => {
+          console.log(error)
         })
     }
 }
