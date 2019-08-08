@@ -4,7 +4,7 @@
     <div v-else >
         <div class="ordfaranderiet">
             <h3 v-if="english">The Presidium</h3>
-            <h3 v-else>Ordföranderiet</h3>
+            <h3 v-else>Presidiet</h3>
             
             <div class="ordfaranderiet-pictures">
                 <template v-for="ordforande in ordforanden">
