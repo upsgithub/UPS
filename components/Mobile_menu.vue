@@ -76,6 +76,12 @@
                         <li v-else class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('event')">
                             <nuxt-link to="/event/blogg">Blogg</nuxt-link>
                         </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('event')">
+                            <a href="https://polkand.wordpress.com/" target="blank">
+                                <span v-if="english">Praktik- och Utlandsblogg</span>
+                                <span v-else>Praktik- och Utlandsblogg</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="item">

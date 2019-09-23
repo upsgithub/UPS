@@ -5,6 +5,8 @@
 </template>
 
 <style>
+@import url(//db.onlinewebfonts.com/c/fe9c236a1c142788cb16ec5238c7833e?family=Minion+Pro);
+
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
