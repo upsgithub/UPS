@@ -58,6 +58,12 @@
                             <h3><nuxt-link to="/event/blogg">Blogg</nuxt-link></h3>
                         </template>
                     </div>
+                    <div class="desktop-item" @click="hide('event')">
+                        <h3><a href="https://polkand.wordpress.com/" target="blank">
+                            <span v-if="english">Praktik- och Utlandsblogg</span>
+                            <span v-else>Praktik- och Utlandsblogg</span>
+                        </a></h3>
+                    </div>
                 </div>
             </div> 
 
