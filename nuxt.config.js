@@ -16,7 +16,8 @@ export default {
       { hid: 'description', name: 'description', content: 'Välkommen till Uppsala Politices Studernades hemsida. Här kan du hitta information om vår förening och våra program på Uppsala Universitet.'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'shortcut icon', href: '/favicon.png' }
     ]
   },
 
