@@ -5,7 +5,7 @@
 </template>
 
 <style>
-@import url(//db.onlinewebfonts.com/c/fe9c236a1c142788cb16ec5238c7833e?family=Minion+Pro);
+@font-face {font-family: "Minion Pro"; src: url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.eot"); src: url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.eot?#iefix") format("embedded-opentype"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.woff2") format("woff2"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.woff") format("woff"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.ttf") format("truetype"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.svg#Minion Pro") format("svg"); }
 
 html {
   font-family: 'Minion Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
