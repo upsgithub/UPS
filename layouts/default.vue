@@ -25,7 +25,8 @@ export default{
 </script>
 <style>
 
-@font-face {font-family: "Minion Pro"; src: url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.eot"); src: url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.eot?#iefix") format("embedded-opentype"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.woff2") format("woff2"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.woff") format("woff"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.ttf") format("truetype"), url("https://db.onlinewebfonts.com/t/4b1b4c32d5c0ca98cf53cadb6908b535.svg#Minion Pro") format("svg"); }
+@font-face {font-family: "Minion Pro"; src: url("//db.onlinewebfonts.com/t/fe9c236a1c142788cb16ec5238c7833e.eot"); src: url("//db.onlinewebfonts.com/t/fe9c236a1c142788cb16ec5238c7833e.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/fe9c236a1c142788cb16ec5238c7833e.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/fe9c236a1c142788cb16ec5238c7833e.woff") format("woff"), url("//db.onlinewebfonts.com/t/fe9c236a1c142788cb16ec5238c7833e.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/fe9c236a1c142788cb16ec5238c7833e.svg#Minion Pro") format("svg"); }
+
 html {
   font-family: 'Minion Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
