@@ -96,11 +96,13 @@ export default {
         if(selectedPost !== undefined){
             five_posts.forEach(element => {
                 if(element.id == selectedPost){
-                    this.anchor = element.slug;
-                    console.log("Trying to scroll to id: #" + this.anchor);
-                    $([document.documentElement, document.body]).animate({
-                        scrollTop: $("#" + this.anchor).offset().top - 20
-                    }, 400);
+                    setTimeout(function(){
+                        this.anchor = element.slug;
+                        console.log("Trying to scroll to id: #" + this.anchor);
+                            $([document.documentElement, document.body]).animate({
+                                scrollTop: $("#" + this.anchor).offset().top - 20
+                            }, 400);
+                    }, 300);
                 }
             })
         }
