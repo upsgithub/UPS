@@ -11,7 +11,7 @@
                 <div class="posts">
                     <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                     <div v-else-if="latest_post[0]" class="post-noimage-noborder col-12">
-                        <div class="post-title" :ref="latest_post[0].slug">
+                        <div class="post-title" :ref="latest_post[0].slug" :id="latest_post[0].slug">
                             <h1>{{ latest_post[0].title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="latest_post[0].content.rendered"></div>
@@ -31,7 +31,7 @@
                 <sync-loader v-if="loading" class="vue-spinner" :loading="loading" :color="color"></sync-loader>
                 <div v-else class="posts">
                     <div class="post-noimage col-12" v-for="post in five_posts" :key="post.id">
-                        <div class="post-title" :ref="post.slug">
+                        <div class="post-title" :ref="post.slug" :id="post.slug">
                         <h1>{{ post.title.rendered }}</h1>
                         </div>
                         <div class="post-text" v-html="post.content.rendered"></div>
@@ -67,6 +67,7 @@ export default {
         return {
             color: "#eb5e43",
             current_start: 1,
+            anchor: 0
         }
     },
     methods: {
@@ -87,6 +88,21 @@ export default {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#home-anchor").offset().top
             }, 200);
+        }
+    },
+    mounted:function(){
+        var five_posts = this.posts.slice(this.current_start, this.current_start + 5);
+        var selectedPost = this.$route.query.id;
+        if(selectedPost !== undefined){
+            five_posts.forEach(element => {
+                if(element.id == selectedPost){
+                    this.anchor = element.slug;
+                    console.log("Trying to scroll to id: #" + this.anchor);
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#" + this.anchor).offset().top - 20
+                    }, 400);
+                }
+            })
         }
     },
     computed: {

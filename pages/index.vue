@@ -72,7 +72,7 @@
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                     </picture> 
                 </div> 
-                <nuxt-link class="a-post" to="/event/blogg">
+                <nuxt-link class="a-post" v-bind:to="'/event/blogg?id=' + post.id">
                     <div class="post col-7">
                         <div class="post-title">
                             <h1>{{ post.title.rendered }}</h1>
@@ -100,7 +100,7 @@
                         <img data-src="~assets/img/placeholder_img.png" class="lazyload" alt="Alternate text for the image">
                     </picture> 
                 </div> 
-                <nuxt-link class="a-post" to="/event/blogg">
+                <nuxt-link class="a-post" v-bind:to="'/event/blogg?id=' + post.id">
                     <div class="post col-7">
                         <div class="post-title">
                             <h1>{{ post.title.rendered }}</h1>
