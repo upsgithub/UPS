@@ -25,7 +25,7 @@ export const mutations = {
 
 export const actions = {
     async get({commit}) {
-      await axios.get(process.env.API_BASE_URL + 'posts')
+      await axios.get(process.env.API_BASE_URL + 'posts/?per_page=100')
         .then((res) => {
           if (res.status === 200) {
             commit('set', res.data)
