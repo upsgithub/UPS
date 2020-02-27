@@ -116,6 +116,12 @@
                             </a>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
+                            <a href="https://api.uppsalapolitices.se/wp-content/uploads/2019/11/UPS-stadgar-fastslagna-2019-05-14-1.pdf" target="blank">
+                                <span v-if="english">Statutes</span>
+                                <span v-else>Stadgar</span>
+                            </a>
+                        </li>
+                        <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
                             <nuxt-link v-if="english" to="/foreningen">Committees</nuxt-link>
                             <nuxt-link v-else to="/foreningen">Utskotten</nuxt-link>
                         </li>

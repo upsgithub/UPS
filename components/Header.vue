@@ -93,6 +93,13 @@
                             <span v-else>Mötesprotokoll</span>
                         </a></h3>
                     </div>
+                    <div class="desktop-item" @click="hide('forening')">
+                        <h3><a href="https://api.uppsalapolitices.se/wp-content/uploads/2019/11/UPS-stadgar-fastslagna-2019-05-14-1.pdf" target="blank">
+                            <span v-if="english">Statutes</span>
+                            <span v-else>Stadgar</span>
+                        </a></h3>
+                    </div>
+
                     <div class="desktop-item inner" ref="inner" @mouseover="show('utskotten')" @mouseleave="hide('utskotten')">
                         <h3 v-if="english"><nuxt-link to="/foreningen">Committees</nuxt-link></h3>
                         <h3 v-else><nuxt-link to="/foreningen">Utskotten</nuxt-link></h3>
