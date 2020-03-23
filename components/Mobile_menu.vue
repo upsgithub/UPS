@@ -116,7 +116,7 @@
                             </a>
                         </li>
                         <li class="item__sublinks__link" @click="showMenu(), toggleClose(), toggleDropMenu('foreningen')">
-                            <a href="https://api.uppsalapolitices.se/wp-content/uploads/2019/11/UPS-stadgar-fastslagna-2019-05-14-1.pdf" target="blank">
+                            <a href="https://api.uppsalapolitices.se/wp-content/uploads/2020/03/UPS-stadgar-fastslagna-2020-01-15.pdf" target="blank">
                                 <span v-if="english">Statutes</span>
                                 <span v-else>Stadgar</span>
                             </a>
