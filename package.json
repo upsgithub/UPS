@@ -19,7 +19,7 @@
     "cross-env": "^5.2.1",
     "dotenv": "^8.2.0",
     "jquery": "^3.4.1",
-    "lazysizes": "^5.1.2",
+    "lazysizes": "^5.2.1",
     "nginx": "0.0.0",
     "nuxt": "^2.10.1",
     "swiper": "^4.5.1",
