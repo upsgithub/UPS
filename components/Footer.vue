@@ -40,7 +40,7 @@
                     <h4>Adress</h4>
                 </div>
                 <div class="img">
-                    <p>Uppsala Politicesstuderande Box 514, <br>c/o Statsvetenskapliga institutionen 751 20 Uppsala, Test</p>
+                    <p>Uppsala Politicesstuderande Box 514, <br>c/o Statsvetenskapliga institutionen 751 20 Uppsala</p>
                 </div>
             </div>
         </div>
