@@ -1,6 +1,12 @@
 <template>
     <div class="menu container--full">
         <div class="wrapper">
+            
+              <div class="logo col-4">
+                <nuxt-link to="/">
+                    <img src="/img/logo_bred_placeholder@400w.png" class="lazyload"/>
+                </nuxt-link>
+            </div>
 
             <div class="menu-item col-2" @mouseleave="hide('utbildning')">
                 <div class="text" @mouseover="show('utbildning')" @click="hide('utbildning')">
@@ -39,11 +45,11 @@
                 </div>
             </div> 
 
-            <div class="logo col-4">
+            <!-- <div class="logo col-4">
                 <nuxt-link to="/">
                     <img src="/img/logo_bred_placeholder@400w.png" class="lazyload"/>
                 </nuxt-link>
-            </div>
+            </div> -->
 
             <div class="menu-item col-2" @mouseleave="hide('event')">
                 <div class="text" @mouseover="show('event')" @click="hide('event')">
