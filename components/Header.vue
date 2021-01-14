@@ -94,7 +94,7 @@
                         </a></h3>
                     </div>
                     <div class="desktop-item" @click="hide('forening')">
-                        <h3><a href="https://api.uppsalapolitices.se/wp-content/uploads/2020/03/UPS-stadgar" target="blank">
+                        <h3><a href="http://api.uppsalapolitices.se/wp-content/uploads/2021/01/UPS-stadgar-fastslagna-2020-05-22.pdf" target="blank">
                             <span v-if="english">Statutes</span>
                             <span v-else>Stadgar</span>
                         </a></h3>
