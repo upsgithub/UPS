@@ -22,7 +22,7 @@
     "lazysizes": "^5.3.0",
     "nginx": "0.0.0",
     "nuxt": "^2.14.12",
-    "swiper": "^4.5.1",
+    "swiper": "^6.5.1",
     "vue-instagram": "^2.0.1",
     "vue-spinner": "^1.0.4",
     "vuex-cache": "^3.3.0"
