@@ -32,7 +32,7 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-pngquant": "^8.0.0",
     "lqip-loader": "^2.2.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "nodemon": "^1.19.4",
     "sass-loader": "^7.3.1",
     "webp-loader": "^0.5.0"
